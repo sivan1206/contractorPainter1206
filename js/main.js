@@ -9,36 +9,56 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
-const createMobileMenu = () => {
-    const nav = document.querySelector('nav ul');
-    const menuButton = document.createElement('button');
-    menuButton.className = 'mobile-menu-button';
-    menuButton.innerHTML = '<i class="fas fa-bars"></i>';
-
-    
-    const handleResize = () => {
-        if (window.innerWidth <= 768) {
-            if (!document.querySelector('.mobile-menu-button')) {
-                document.querySelector('nav').appendChild(menuButton);
-            }
-        } else {
-            if (document.querySelector('.mobile-menu-button')) {
-                menuButton.remove();
-            }
+    const createMobileMenu = () => {
+        const nav = document.querySelector('nav ul');
+        const navContainer = document.querySelector('nav');
+        
+        // Eğer buton zaten varsa tekrar eklemeyi önle
+        let menuButton = document.querySelector('.mobile-menu-button');
+        if (!menuButton) {
+            menuButton = document.createElement('button');
+            menuButton.className = 'mobile-menu-button';
+            menuButton.innerHTML = '<i class="fas fa-bars"></i>';
+            navContainer.prepend(menuButton);
         }
+    
+        // Menü açma-kapama işlevi
+        const toggleMenu = () => {
+            nav.classList.toggle('active');
+            menuButton.classList.toggle('active');
+            document.body.classList.toggle('no-scroll');
+        };
+    
+        menuButton.addEventListener('click', toggleMenu);
+    
+        // Dışarı tıklanınca kapatma
+        document.addEventListener('click', (e) => {
+            if (!navContainer.contains(e.target) && !menuButton.contains(e.target)) {
+                nav.classList.remove('active');
+                menuButton.classList.remove('active');
+                document.body.classList.remove('no-scroll');
+            }
+        });
+    
+        // Menü içindeki linklere tıklanınca menüyü kapat
+        nav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', toggleMenu);
+        });
+    
+        // Ekran boyutu değişince menüyü kapat ve butonu yönet
+        const handleResize = () => {
+            if (window.innerWidth > 768) {
+                nav.classList.remove('active');
+                menuButton.classList.remove('active');
+                document.body.classList.remove('no-scroll');
+            }
+        };
+    
+        window.addEventListener('resize', handleResize);
     };
-
-   
-    handleResize();
-    window.addEventListener('resize', handleResize);
-
-    menuButton.addEventListener('click', () => {
-        nav.classList.toggle('active');
-        menuButton.innerHTML = nav.classList.contains('active')
-            ? '<i class="fas fa-times"></i>'
-            : '<i class="fas fa-bars"></i>';
-    });
-};
+    
+    document.addEventListener('DOMContentLoaded', createMobileMenu);
+    
 
 createMobileMenu();
 

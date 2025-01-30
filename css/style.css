@@ -779,3 +779,45 @@ select:hover {
 select option[value=""][disabled] {
     color: #666;
 }
+.mobile-menu-button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    z-index: 100;
+}
+
+.mobile-menu-button.active i {
+    color: red; /* Açıldığında renk değişimi yapabilirsin */
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 15px;
+}
+
+@media (max-width: 768px) {
+    nav ul {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background: white;
+        padding: 10px;
+        width: 200px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    nav ul.active {
+        display: flex;
+    }
+
+    .no-scroll {
+        overflow: hidden;
+    }
+}
