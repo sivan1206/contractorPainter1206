@@ -201,12 +201,25 @@ document.addEventListener("DOMContentLoaded", function () {
     galleryScroll.addEventListener("mouseleave", () => {
         isScrolling = false;
     });
-}
+});
 
+// Reveal animations on scroll
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.animationPlayState = 'running';
+            entry.target.style.opacity = '1';
+        }
+    });
+}, { threshold: 0.1 });
 
+document.querySelectorAll('.animate-on-scroll').forEach(element => {
+    element.style.animationPlayState = 'paused';
+    element.style.opacity = '0';
+    observer.observe(element);
+});
 
 
   
 
-);
 
