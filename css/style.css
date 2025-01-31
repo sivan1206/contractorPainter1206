@@ -5,17 +5,35 @@
     box-sizing: border-box;
 }
 body {
-    font-family: 'Arial', sans-serif;
-    line-height: 1.6;
+    margin: 0;
+    min-height: 100vh;
     
-}
+    background-image: 
+      radial-gradient(ellipse at 50% 50%, 
+        #e29578 0%,
+        #edf6f9 70%,
+        #ffddd2 100%
+      ),
+      linear-gradient(45deg,
+        rgba(0, 0, 0, 0.05) 25%,
+        transparent 25%,
+        transparent 75%,
+        rgba(0, 0, 0, 0.05) 75%
+      );
+    background-attachment: fixed;
+    background-size: cover, 4px 4px;
+  }
 header {
-    background: #fff;
+    
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     position: fixed;
     width: 100%;
     top: 0;
+    left: 0;
+    top: 0;
     z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.3); 
+    
 }
 
 nav {
@@ -30,25 +48,96 @@ nav {
 .logo {
     font-size: 1.5rem;
     font-weight: bold;
-    color: #333;
+    color: #ffffff;
+}
+
+nav {
+    
+    padding: 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
 }
 
 nav ul {
     display: flex;
     list-style: none;
+    padding: 0;
+    margin: 0;
+    justify-content: center;
+    gap: 1rem;
+}
+
+nav ul li {
+    position: relative;
 }
 
 nav ul li a {
     text-decoration: none;
-    color: #333;
+    color: #fff; /* Yazı rengini beyaz yapıyoruz ki siyah arka planda net görünsün */
     padding: 0.5rem 1rem;
-    transition: color 0.3s;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 8px;
+    transition: color 0.3s, background-color 0.3s, transform 0.3s;
+    display: block;
 }
 
 nav ul li a:hover {
-    color: #007bff;
+    color: #fff;
+    background-color: #007bff;
+    transform: translateY(-3px);
 }
 
+nav ul li a:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.5);
+}
+
+@media (max-width: 768px) { /* 768px veya istediğiniz breakpoint */
+    .main-nav {
+        display: none; /* Mobil menü açılana kadar gizle */
+        flex-direction: column; /* Alt alta sırala */
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.9); /* Arka plan rengi */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Gölge (isteğe bağlı) */
+        z-index: 1001; /* Diğer elementlerin üzerinde olsun */
+    }
+
+    .main-nav.active {
+        display: flex; /* Menü açılınca göster */
+    }
+
+    .main-nav li {
+        margin: 10px 0; /* Öğeler arası boşluk */
+    }
+
+    .mobile-menu-button {
+        display: block; /* Butonu göster */
+        background: none;
+        border: none;
+        padding: 10px;
+        font-size: 20px;
+        cursor: pointer;
+        color: #ffffff; /* İkon rengi */
+        z-index: 1002; /* Menünün üzerinde olsun */
+    }
+
+    .mobile-menu-button.active i::before { /* İkonun "X" olması için */
+        content: "\f00d"; /* Font Awesome "X" ikonu */
+    }
+}
+
+/* Daha büyük ekranlarda gizle */
+@media (min-width: 769px) {
+    .mobile-menu-button {
+        display: none;
+    }
+}
 .hero {
     position: relative;
     height: 100vh;
@@ -58,6 +147,7 @@ nav ul li a:hover {
     align-items: center;
     color: white;
     z-index: 1; 
+    box-shadow: 0 2px 5px rgb(116, 114, 114);
 }
 
 .hero-slider {
@@ -193,8 +283,12 @@ nav ul li a:hover {
 
 .services h2 {
     text-align: center;
-    margin-bottom: 3rem;
-    color: #333;
+    margin-bottom: 5rem;
+    font-size: 2rem;
+    color: #ffffff;
+    position: relative;
+    font-weight: 700;
+    letter-spacing: -1px;
 }
 
 .service-grid {
@@ -248,12 +342,12 @@ nav ul li a:hover {
 }
 :root {
     --primary-color: #4361ee;       /* Daha canlı mavi */
-    --secondary-color: #3f37c9;     /* Derin mavi */
+    --secondary-color: #ffddd2;     /* Derin mavi */
     --accent-color: #4cc9f0;        /* Açık mavi aksan */
-    --background-color: #f8f9ff;    /* Hafif mavi temalı arka plan */
+    --background-color: #ecb8a5;    /* Hafif mavi temalı arka plan */
     --text-dark: #2b2d42;          /* Daha koyu metin rengi */
     --text-light: #6c757d;         
-    --gradient: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    --gradient: linear-gradient(135deg, #edf6f9 0%, var(--secondary-color) 100%);
     --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
@@ -286,8 +380,8 @@ nav ul li a:hover {
 .contact h2 {
     text-align: center;
     margin-bottom: 5rem;
-    font-size: 3rem;
-    color: var(--text-dark);
+    font-size: 2rem;
+    color: #ffffff;
     position: relative;
     font-weight: 700;
     letter-spacing: -1px;
@@ -317,11 +411,11 @@ nav ul li a:hover {
 
 .contact-info {
     padding: 2.5rem;
-    background: rgba(255, 255, 255, 0.95);
+    background: #ebf2fa;
     border-radius: 20px;
     backdrop-filter: blur(12px);
     box-shadow: var(--shadow);
-    border: 1px solid rgba(255, 255, 255, 0.4);
+    border: 1px solid rgba(238, 106, 106, 0.4);
     transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
     position: relative;
     overflow: hidden;
@@ -334,7 +428,7 @@ nav ul li a:hover {
     left: -50%;
     width: 200%;
     height: 200%;
-    background: var(--gradient);
+    background: #010353;
     opacity: 0.05;
     transform: rotate(45deg);
 }
@@ -403,13 +497,14 @@ nav ul li a:hover {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     border: 1px solid rgba(0, 0, 0, 0.05);
+    text-decoration: none;
+    color: #333;
 }
 
 .social-links a:hover {
     transform: translateY(-3px) scale(1.1);
     box-shadow: 0 8px 15px rgba(67, 97, 238, 0.2);
-    background: var(--gradient);
-    color: white !important;
+    background: #30bced; 
 }
 
 .email-icons {
@@ -530,7 +625,7 @@ footer {
     
     .social-links a i {
         font-size: 1.4rem; 
-        color: var(--primary-color); 
+         
     }
     
     .contact-container {
@@ -563,14 +658,14 @@ footer {
 
 .gallery {
     padding: 5rem 0;
-    background: #f9f9f9;
+   
     overflow: hidden;
 }
 
 .gallery h2 {
     text-align: center;
     margin-bottom: 3rem;
-    color: #202020;
+    color: #ffffff;
 }
 
 .gallery-container {
@@ -673,12 +768,15 @@ footer {
   }
   .social-links a:nth-child(1) {
     color: #1877f2;
+    z-index: 1000;
   }
   .social-links a:nth-child(2) {
     color: #e4405f;
+    z-index: 1000;
   }
   .social-links a:nth-child(3) {
     color: #25d366;
+    z-index: 1000;
   }
 @media (min-width: 769px) { 
     .social-links a i {

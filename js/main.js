@@ -8,6 +8,12 @@ document.addEventListener('DOMContentLoaded', () => {
         window.scrollY > 50 ? header.classList.add('scrolled') : header.classList.remove('scrolled');
     });
 
+    const mobileMenuButton = document.querySelector('.mobile-menu-button');
+    const mainNav = document.querySelector('.main-nav');
+    
+    mobileMenuButton.addEventListener('click', () => {
+        mainNav.classList.toggle('active'); // "active" sınıfını ekle/kaldır
+    });
 
     const createMobileMenu = () => {
         const nav = document.querySelector('nav ul');
@@ -58,6 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     
     document.addEventListener('DOMContentLoaded', createMobileMenu);
+    
     
 
 createMobileMenu();
@@ -241,5 +248,3 @@ document.querySelectorAll('.animate-on-scroll').forEach(element => {
 
 
   
-
-
