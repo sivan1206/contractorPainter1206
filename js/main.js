@@ -259,30 +259,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // Add mouse events only for desktop (over 1024px)
-    if (isDesktop) {
-        gallery.addEventListener('mousedown', (e) => {
-            e.preventDefault(); // Prevent default behavior (text selection, etc.)
-            handleStart(e.clientX);
-            gallery.style.cursor = 'grabbing'; // Change cursor to grabbing
-        });
-
-        gallery.addEventListener('mousemove', (e) => {
-            e.preventDefault(); // Prevent default behavior
-            handleMove(e.clientX);
-            velocity = e.movementX * multiplier;
-        });
-
-        gallery.addEventListener('mouseup', handleEnd);
-        gallery.addEventListener('mouseleave', handleEnd);
-
-        // Add mouse wheel support for horizontal scrolling
-        gallery.addEventListener('wheel', (e) => {
-            e.preventDefault(); // Prevent default behavior of vertical scrolling
-            // Scroll horizontally based on the wheel delta
-            gallery.scrollLeft += e.deltaY * multiplier; 
-        });
-    }
+    
 
     // Touch events (for mobile/tablet)
     gallery.addEventListener('touchstart', (e) => {
