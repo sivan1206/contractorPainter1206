@@ -10,7 +10,7 @@ body {
     
     background-image: 
       radial-gradient(ellipse at 50% 50%, 
-        #e29578 0%,
+       #F7CFD8 10%,
         #edf6f9 70%,
         #ffddd2 100%
       ),
@@ -342,17 +342,17 @@ nav ul li a:focus {
 }
 :root {
     --primary-color: #4361ee;       /* Daha canlı mavi */
-    --secondary-color: #ffddd2;     /* Derin mavi */
-    --accent-color: #4cc9f0;        /* Açık mavi aksan */
+    --secondary-color: #FFE3E3;     /* Derin mavi */
+    --accent-color:#789DBC;        /* Açık mavi aksan */
     --background-color: #ecb8a5;    /* Hafif mavi temalı arka plan */
     --text-dark: #2b2d42;          /* Daha koyu metin rengi */
     --text-light: #6c757d;         
-    --gradient: linear-gradient(135deg, #edf6f9 0%, var(--secondary-color) 100%);
+    --gradient: linear-gradient(270deg, #FFE3E3 0%, #FEF9F2 34%, #F7CFD8 100%) ;
     --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
 .contact {
-    background: var(--background-color);
+    background: var(--gradient);
     padding: 8rem 5% 6rem;
     position: relative;
     overflow: hidden;
@@ -381,7 +381,7 @@ nav ul li a:focus {
     text-align: center;
     margin-bottom: 5rem;
     font-size: 2rem;
-    color: #ffffff;
+    color: #789DBC;
     position: relative;
     font-weight: 700;
     letter-spacing: -1px;
@@ -395,7 +395,7 @@ nav ul li a:focus {
     transform: translateX(-50%);
     width: 80px;
     height: 4px;
-    background: var(--gradient);
+    background:linear-gradient(135deg, #ffffff 0%, #003e80 200%);;
     border-radius: 2px;
 }
 
@@ -413,9 +413,8 @@ nav ul li a:focus {
     padding: 2.5rem;
     background: #ebf2fa;
     border-radius: 20px;
-    backdrop-filter: blur(12px);
+    backdrop-filter: blur(8px);
     box-shadow: var(--shadow);
-    border: 1px solid rgba(238, 106, 106, 0.4);
     transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
     position: relative;
     overflow: hidden;
@@ -504,7 +503,7 @@ nav ul li a:focus {
 .social-links a:hover {
     transform: translateY(-3px) scale(1.1);
     box-shadow: 0 8px 15px rgba(67, 97, 238, 0.2);
-    background: #30bced; 
+    background: #b3deeb; 
 }
 
 .email-icons {
@@ -656,9 +655,10 @@ footer {
 .contact-info:nth-child(3) { animation-delay: 0.6s; }
 
 
+/* Ana galeri düzeni */
 .gallery {
-    padding: 5rem 0;
-   
+    padding: 5rem 5%;
+    margin: 0 auto;
     overflow: hidden;
 }
 
@@ -668,45 +668,52 @@ footer {
     color: #ffffff;
 }
 
-.gallery-container {
+/* Yatay kaydırma düzeni */
+.horizontal-scroll-wrapper.squares {
+    position: relative;
     width: 100%;
-    overflow: hidden;
-    position: relative;
-}
-
-.gallery-scroll {
+    height: auto;
+    overflow-x: auto; /* Kaydırma özelliğini koru */
     display: flex;
-    gap: 2rem;
-    padding: 2rem;
-    width: max-content;
-    animation: scroll 180s linear infinite;
+    flex-wrap: nowrap;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    gap: 20px; /* Öğeler arası boşluk */
+    cursor: grab; /* Fare ile tutma efekti */
+    padding-bottom: 10px; /* Mobilde kaydırma alanını iyileştirmek için */
 }
 
-
-@keyframes scroll {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+/* Scrollbar'ı gizle */
+.horizontal-scroll-wrapper.squares::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Edge için */
+}
+.horizontal-scroll-wrapper.squares {
+    scrollbar-width: none; /* Firefox için */
+    -ms-overflow-style: none; /* IE ve Edge için */
 }
 
-
-.gallery-item {
-    min-width: 280px;
-    height: 380px;
+/* Gallery item */
+.horizontal-scroll-wrapper.squares .gallery-item {
+    flex: 0 0 90vw; /* Mobilde bir öğe tam genişlikte */
+    height: 400px;
     position: relative;
-    border-radius: 10px;
+    border-radius: 4px;
     overflow: hidden;
     box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease;
+    scroll-snap-align: start;
 }
 
-.gallery-item img {
+/* Görseller */
+.horizontal-scroll-wrapper.squares img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform 0.3s ease;
 }
 
-
+/* Overlay ve yazı efektleri */
 .gallery-overlay {
     position: absolute;
     bottom: -100%;
@@ -720,28 +727,50 @@ footer {
     transition: transform 0.3s ease, bottom 0.3s ease;
 }
 
-
-.gallery-item:hover .gallery-overlay {
+/* Hover durumunda yazıyı göster */
+.horizontal-scroll-wrapper.squares .gallery-item:hover .gallery-overlay {
     transform: translateY(0);
     bottom: 0;
 }
 
-.gallery-item:hover img {
+/* Hover ile resmin büyümesi */
+.horizontal-scroll-wrapper.squares .gallery-item:hover img {
     transform: scale(1.05);
 }
 
-
+/* 📌 Mobil uyum */
 @media (max-width: 768px) {
-    .gallery-item {
-        min-width: 200px;
+    .horizontal-scroll-wrapper.squares .gallery-item {
+        flex: 0 0 90vw; /* Mobilde bir öğe */
         height: 250px;
     }
+}
 
-    .gallery-scroll {
-        gap: 1rem;
-        animation: scroll 250s linear infinite;
+/* 📌 Tablet ve küçük ekranlar */
+@media (min-width: 769px) and (max-width: 1023px) {
+    .horizontal-scroll-wrapper.squares .gallery-item {
+        flex: 0 0 calc(50% - 20px); /* 2 öğe yan yana */
+        height: 350px;
     }
 }
+
+/* 📌 Web için 3 öğe görünümü */
+@media (min-width: 1024px) {
+    .horizontal-scroll-wrapper.squares .gallery-item {
+        flex: 0 0 calc(33.33% - 20px); /* 3 öğe yan yana */
+        height: 400px;
+       
+    }
+}
+
+
+
+
+
+
+
+
+
 
 
 

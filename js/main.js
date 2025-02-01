@@ -1,25 +1,22 @@
 document.addEventListener('DOMContentLoaded', () => {
- 
-    
-
-   
+    // Header scroll event
     window.addEventListener('scroll', function() {
         const header = document.querySelector('header');
         window.scrollY > 50 ? header.classList.add('scrolled') : header.classList.remove('scrolled');
     });
 
+    // Mobile Menu functionality
     const mobileMenuButton = document.querySelector('.mobile-menu-button');
     const mainNav = document.querySelector('.main-nav');
     
     mobileMenuButton.addEventListener('click', () => {
-        mainNav.classList.toggle('active'); // "active" sınıfını ekle/kaldır
+        mainNav.classList.toggle('active'); 
     });
 
     const createMobileMenu = () => {
         const nav = document.querySelector('nav ul');
         const navContainer = document.querySelector('nav');
         
-        // Eğer buton zaten varsa tekrar eklemeyi önle
         let menuButton = document.querySelector('.mobile-menu-button');
         if (!menuButton) {
             menuButton = document.createElement('button');
@@ -28,7 +25,6 @@ document.addEventListener('DOMContentLoaded', () => {
             navContainer.prepend(menuButton);
         }
     
-        // Menü açma-kapama işlevi
         const toggleMenu = () => {
             nav.classList.toggle('active');
             menuButton.classList.toggle('active');
@@ -37,7 +33,6 @@ document.addEventListener('DOMContentLoaded', () => {
     
         menuButton.addEventListener('click', toggleMenu);
     
-        // Dışarı tıklanınca kapatma
         document.addEventListener('click', (e) => {
             if (!navContainer.contains(e.target) && !menuButton.contains(e.target)) {
                 nav.classList.remove('active');
@@ -46,12 +41,10 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     
-        // Menü içindeki linklere tıklanınca menüyü kapat
         nav.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', toggleMenu);
         });
     
-        // Ekran boyutu değişince menüyü kapat ve butonu yönet
         const handleResize = () => {
             if (window.innerWidth > 768) {
                 nav.classList.remove('active');
@@ -63,14 +56,9 @@ document.addEventListener('DOMContentLoaded', () => {
         window.addEventListener('resize', handleResize);
     };
     
-    document.addEventListener('DOMContentLoaded', createMobileMenu);
+    createMobileMenu();
     
-    
-
-createMobileMenu();
-
-
-   
+    // WhatsApp Button animation
     const animateWhatsAppButton = () => {
         const whatsappButton = document.querySelector(".whatsapp-button");
         if (!whatsappButton) return;
@@ -84,7 +72,7 @@ createMobileMenu();
         setInterval(startAnimation, 3000);
     };
 
-   
+    // Hero Slider functionality
     function initHeroSlider() {
         const slides = document.querySelectorAll('.slide');
         const heroContent = document.querySelector('.hero-content');
@@ -136,12 +124,11 @@ createMobileMenu();
         document.querySelector('.hero').addEventListener('click', handleInteraction);
         document.querySelector('.hero').addEventListener('touchstart', handleInteraction);
         
-        // New code to handle video playback and transition
         const handleVideoPlayback = () => {
             const currentVideo = slides[currentSlide].querySelector('video');
             if (currentVideo) {
                 currentVideo.play();
-                currentVideo.addEventListener('ended', showNextSlide); // Transition to next slide when video ends
+                currentVideo.addEventListener('ended', showNextSlide); 
             }
             const previousVideo = slides[(currentSlide - 1 + slides.length) % slides.length].querySelector('video');
             if (previousVideo) {
@@ -153,122 +140,174 @@ createMobileMenu();
             slide.addEventListener('transitionend', handleVideoPlayback);
         });
     };
-    
 
-   
     createMobileMenu();
     animateWhatsAppButton();
-    initHeroSlider();
+        initHeroSlider();
+
+
+// Ensure functions are attached to the window object
+window.copyEmail = function () {
+    const emailElement = document.getElementById("email-text");
+    if (!emailElement) {
+        console.error("E-posta elementi bulunamadı.");
+        return;
+    }
+
+    const email = emailElement.innerText.trim();
+
+    // Use Clipboard API for modern browsers
+    if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(email)
+            .then(() => alert("📋 E-posta adresi kopyalandı!"))
+            .catch(err => {
+                console.error("Clipboard API hatası:", err);
+                fallbackCopy(email);
+            });
+    } else {
+        fallbackCopy(email);
+    }
+};
+
+// Fallback method for older browsers
+window.fallbackCopy = function (text) {
+    const tempInput = document.createElement("input");
+    tempInput.value = text;
+    document.body.appendChild(tempInput);
+    tempInput.select();
+
+    try {
+        document.execCommand("copy");
+        alert("📋 E-posta adresi kopyalandı!");
+    } catch (err) {
+        console.error("Fallback kopyalama hatası:", err);
+        alert("Kopyalama işlemi başarısız oldu!");
+    }
+
+    document.body.removeChild(tempInput);
+};
+
+// Email sending function
+window.sendEmail = function () {
+    const emailElement = document.getElementById("email-text");
+    if (!emailElement) {
+        console.error("E-posta elementi bulunamadı.");
+        return;
+    }
+
+    const email = emailElement.innerText.trim();
+    
+    if (email) {
+        window.location.href = `mailto:${email}`;
+    } else {
+        alert("📧 Geçerli bir e-posta adresi bulunamadı!");
+    }
+};
+
+
+
+
+
+
+
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const gallery = document.querySelector('.horizontal-scroll-wrapper.squares');
+    if (!gallery) return;
+
+    let isDragging = false;
+    let startX;
+    let scrollStart;
+    let velocity = 0;
+    let requestId;
+
+    // Improved pointer detection
+    const isTouchDevice = 'ontouchstart' in window;
+    const isDesktop = window.innerWidth > 1024; // Check if it's a desktop
+    const multiplier = isTouchDevice ? 1.5 : 1.2;
+
+    // Common start handler
+    const handleStart = (clientX) => {
+        isDragging = true;
+        startX = clientX;
+        scrollStart = gallery.scrollLeft;
+        gallery.style.scrollSnapType = 'none'; // Disable scroll snap while dragging
+        cancelAnimationFrame(requestId);
+    };
+
+    // Common move handler
+    const handleMove = (clientX) => {
+        if (!isDragging) return;
+        const delta = clientX - startX;
+        gallery.scrollLeft = scrollStart - delta * multiplier;
+    };
+
+    // Common end handler
+    const handleEnd = () => {
+        isDragging = false;
+        gallery.style.scrollSnapType = 'x mandatory'; // Re-enable scroll snap after dragging
+        
+        // Add momentum
+        velocity *= 0.95;
+        if (Math.abs(velocity) > 0.5) {
+            gallery.scrollLeft += velocity;
+            requestId = requestAnimationFrame(() => handleEnd());
+        }
+    };
+
+    // Add mouse events only for desktop (over 1024px)
+    if (isDesktop) {
+        gallery.addEventListener('mousedown', (e) => {
+            e.preventDefault(); // Prevent default behavior (text selection, etc.)
+            handleStart(e.clientX);
+            gallery.style.cursor = 'grabbing'; // Change cursor to grabbing
+        });
+
+        gallery.addEventListener('mousemove', (e) => {
+            e.preventDefault(); // Prevent default behavior
+            handleMove(e.clientX);
+            velocity = e.movementX * multiplier;
+        });
+
+        gallery.addEventListener('mouseup', handleEnd);
+        gallery.addEventListener('mouseleave', handleEnd);
+
+        // Add mouse wheel support for horizontal scrolling
+        gallery.addEventListener('wheel', (e) => {
+            e.preventDefault(); // Prevent default behavior of vertical scrolling
+            // Scroll horizontally based on the wheel delta
+            gallery.scrollLeft += e.deltaY * multiplier; 
+        });
+    }
+
+    // Touch events (for mobile/tablet)
+    gallery.addEventListener('touchstart', (e) => {
+        handleStart(e.touches[0].clientX);
+    }, { passive: true });
+
+    gallery.addEventListener('touchmove', (e) => {
+        handleMove(e.touches[0].clientX);
+        velocity = e.touches[0].clientX - startX;
+    }, { passive: true });
+
+    gallery.addEventListener('touchend', handleEnd);
 });
 
-document.addEventListener("DOMContentLoaded", function () {
-    const galleryScroll = document.querySelector(".gallery-scroll");
+        
+        
 
 
-    let isDown = false;
-    let startX;
-    let scrollLeft;
-    let isScrolling = true; 
-
-    galleryScroll.addEventListener("mousedown", (e) => {
-        isDown = true;
-        startX = e.pageX - galleryScroll.offsetLeft;
-        scrollLeft = galleryScroll.scrollLeft;
-        galleryScroll.style.animationPlayState = "paused"; 
-    });
-
-    galleryScroll.addEventListener("mouseleave", () => {
-        isDown = false;
-        galleryScroll.style.animationPlayState = isScrolling ? "running" : "paused"; 
-    });
-
-    galleryScroll.addEventListener("mouseup", () => {
-        isDown = false;
-        galleryScroll.style.animationPlayState = isScrolling ? "running" : "paused"; 
-    });
-
-    galleryScroll.addEventListener("mousemove", (e) => {
-        if (!isDown) return;
-        e.preventDefault();
-        const x = e.pageX - galleryScroll.offsetLeft;
-        const walk = (x - startX) * 2; 
-        galleryScroll.scrollLeft = scrollLeft - walk;
-    });
 
 
-    galleryScroll.addEventListener("touchstart", (e) => {
-        isDown = true;
-        startX = e.touches[0].pageX - galleryScroll.offsetLeft;
-        scrollLeft = galleryScroll.scrollLeft;
-        galleryScroll.style.animationPlayState = "paused"; 
-    });
 
-    galleryScroll.addEventListener("touchend", () => {
-        isDown = false;
-        galleryScroll.style.animationPlayState = isScrolling ? "running" : "paused"; 
-    });
 
-    galleryScroll.addEventListener("touchmove", (e) => {
-        if (!isDown) return;
-        e.preventDefault();
-        const x = e.touches[0].pageX - galleryScroll.offsetLeft;
-        const walk = (x - startX) * 2; 
-        galleryScroll.scrollLeft = scrollLeft - walk;
+
+
+
     });
 
     
-    galleryScroll.innerHTML += galleryScroll.innerHTML;
-
-
-    galleryScroll.addEventListener("mouseenter", () => {
-        isScrolling = true;
-        galleryScroll.style.animationPlayState = "running";
-    });
-
-    galleryScroll.addEventListener("mouseleave", () => {
-        isScrolling = false;
-    });
-});
-
-// Reveal animations on scroll
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.animationPlayState = 'running';
-            entry.target.style.opacity = '1';
-        }
-    });
-}, { threshold: 0.1 });
-
-document.querySelectorAll('.animate-on-scroll').forEach(element => {
-    element.style.animationPlayState = 'paused';
-    element.style.opacity = '0';
-observer.observe(element);
-});
-function callPhone() {
-    window.location.href = "tel:+905078322912";
-}
-
-function copyEmail() {
-    var emailText = document.getElementById("email-text").textContent;
-    var tempInput = document.createElement("input");
-    tempInput.value = emailText;
-    document.body.appendChild(tempInput);
-    tempInput.select();
-    document.execCommand("copy");
-    document.body.removeChild(tempInput);
-    alert("E-posta adresi kopyalandı!");
-}
-
-function sendEmail() {
-    var email = "boyaustamistanbul@gmail.com";
-    window.location.href = "mailto:" + email;
-}
-
-
-
-
-
-
-
-  
