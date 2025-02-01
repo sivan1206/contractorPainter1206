@@ -191,7 +191,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (!isDown) return;
         e.preventDefault();
         const x = e.pageX - galleryScroll.offsetLeft;
-        const walk = (x - startX) * 0.; 
+        const walk = (x - startX) * 2; 
         galleryScroll.scrollLeft = scrollLeft - walk;
     });
 
@@ -212,7 +212,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (!isDown) return;
         e.preventDefault();
         const x = e.touches[0].pageX - galleryScroll.offsetLeft;
-        const walk = (x - startX) * 0.5; 
+        const walk = (x - startX) * 2; 
         galleryScroll.scrollLeft = scrollLeft - walk;
     });
 
@@ -243,8 +243,32 @@ const observer = new IntersectionObserver((entries) => {
 document.querySelectorAll('.animate-on-scroll').forEach(element => {
     element.style.animationPlayState = 'paused';
     element.style.opacity = '0';
-    observer.observe(element);
+observer.observe(element);
 });
+function callPhone() {
+    window.location.href = "tel:+905078322912";
+}
+
+function copyEmail() {
+    var emailText = document.getElementById("email-text").textContent;
+    var tempInput = document.createElement("input");
+    tempInput.value = emailText;
+    document.body.appendChild(tempInput);
+    tempInput.select();
+    document.execCommand("copy");
+    document.body.removeChild(tempInput);
+    alert("E-posta adresi kopyalandı!");
+}
+
+function sendEmail() {
+    var email = "boyaustamistanbul@gmail.com";
+    window.location.href = "mailto:" + email;
+}
+
+
+
+
+
 
 
   
