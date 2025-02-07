@@ -85,15 +85,11 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-    color: #fff;
-    background-color: #007bff;
-    transform: translateY(-3px);
-}
-
-nav ul li a:focus {
-    outline: none;
-    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.5);
-}
+    color: #474242;
+    background-color: #e2e2e2;
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 1px 7px #F7CFD8;
+    }
 
 @media (max-width: 768px) { /* 768px veya istediğiniz breakpoint */
     .main-nav {
@@ -255,9 +251,6 @@ nav ul li a:focus {
         padding: 10px 20px;
     }
 }
-
-
-
 
 .cta-button {
     display: inline-block;
@@ -664,8 +657,13 @@ footer {
 
 .gallery h2 {
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: 5rem;
+    font-size: 2rem;
     color: #ffffff;
+    position: relative;
+    font-weight: 700;
+    letter-spacing: -1px;
+    
 }
 
 /* Yatay kaydırma düzeni */
@@ -762,17 +760,6 @@ footer {
        
     }
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 .social-links {
