@@ -299,15 +299,15 @@ nav ul li a:hover {
 }
 
 .service-card:nth-child(1) {
-    background: url('../images/services/ic-mekan.jpg') center/cover;
+    background: url('../images/services/istanbul-boya-ustas-ic-mekan.WebP') center/cover;
 }
 
 .service-card:nth-child(2) {
-    background: url('../images/services/discepheres2.jpg') center/cover;
+    background: url('../images/services/istanbul-boya-ustas-discepheres2.WebP') center/cover;
 }
 
 .service-card:nth-child(3) {
-    background: url('../images/services/dekoratif1.jpg') center/cover;
+    background: url('../images/services/istanbul-boya-ustas-dekoratif1.WebP') center/cover;
 }
 
 .service-content {
