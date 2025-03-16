@@ -193,6 +193,10 @@ nav ul li a:hover {
     font-size: 2.5rem;
     margin-bottom: 10px;
 }
+.slide-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
 
 .slide-content p {
     font-size: 1.2rem;
