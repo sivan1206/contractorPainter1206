@@ -1,4 +1,3 @@
-
 * {
     margin: 0;
     padding: 0;
@@ -955,4 +954,173 @@ nav ul {
 .email-icons i:hover {
     color: #007bff;
 }
+/* BOYA REHBERİ BÖLÜMÜ - CKiburn Inspired */
+.boya-rehberi {
+    --primary: #3b70d3;  /* Coral accent */
+    --secondary: #4ccdd1;  /* Earthy green */
+    --accent: #FFD6C8;     /* Soft peach */
+    --text: #3E3E3E;       /* Dark gray */
+    --surface: rgba(255, 255, 255, 0.92); /* Glass surface */
+    
+    padding: 4rem 2rem;
+    margin: 4rem auto;
+    max-width: 1200px;
+    
+    border-radius: 28px;
+    backdrop-filter: blur(16px);
+    box-shadow: 
+        0 12px 24px rgba(0, 0, 0, 0.08),
+        0 4px 12px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
 
+.boya-rehberi:hover {
+    transform: translateY(-4px);
+}
+
+.boya-rehberi::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -30%;
+    width: 160%;
+    height: 160%;
+    background: linear-gradient(
+        45deg,
+        rgba(255, 126, 109, 0.08) 0%,
+        rgba(138, 155, 110, 0.05) 50%,
+        rgba(255, 214, 200, 0.03) 100%
+    );
+    transform: rotate(15deg);
+    z-index: -1;
+}
+
+.boya-rehberi h2 {
+    font: 700 2.8rem/1.1 'Inter', sans-serif;
+    color: var(--text);
+    text-align: center; 
+    margin-bottom: 3rem;
+    position: relative;
+    padding-bottom: 1.5rem;
+    background: linear-gradient(45deg, var(--primary), var(--secondary));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.boya-rehberi h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: var(--secondary);
+    border-radius: 2px;
+    opacity: 0.8;
+}
+
+.boya-rehberi h3 {
+    font: 600 1.8rem/1.3 'Inter', sans-serif;
+    color: var(--secondary);
+    margin: 3rem 0 1.5rem;
+    padding: 1rem 2rem;
+    background: rgba(138, 155, 110, 0.05);
+    border-left: 4px solid var(--primary);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.boya-rehberi ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.boya-rehberi li {
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    backdrop-filter: blur(8px);
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 
+        0 6px 20px rgba(0, 0, 0, 0.04),
+        0 2px 8px rgba(0, 0, 0, 0.02);
+}
+
+.boya-rehberi li:hover {
+    transform: translateY(-8px);
+    box-shadow: 
+        0 12px 28px rgba(0, 0, 0, 0.08),
+        0 4px 16px rgba(0, 0, 0, 0.04);
+}
+
+.boya-rehberi strong {
+    display: block;
+    color: var(--primary);
+    margin-bottom: 1rem;
+    font: 600 1.1rem/1.4 'Inter', sans-serif;
+    letter-spacing: -0.3px;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.boya-rehberi strong::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--secondary);
+    font-size: 1.8rem;
+    line-height: 1;
+}
+
+.boya-rehberi p, 
+.boya-rehberi li {
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 1.05rem;
+    letter-spacing: -0.1px;
+}
+
+.boya-rehberi a {
+    color: var(--secondary);
+    text-decoration: none;
+    position: relative;
+    font-weight: 600;
+    transition: color 0.3s ease;
+    border-bottom: 2px solid rgba(138, 155, 110, 0.2);
+}
+
+.boya-rehberi a:hover {
+    color: var(--primary);
+    border-bottom-color: var(--primary);
+}
+
+@media (max-width: 768px) {
+    .boya-rehberi {
+        padding: 2rem 1.5rem;
+        margin: 2rem 1rem;
+        border-radius: 20px;
+    }
+    
+    .boya-rehberi h2 {
+        font-size: 2.4rem;
+    }
+    
+    .boya-rehberi h3 {
+        font-size: 1.6rem;
+        padding: 1rem;
+    }
+    
+    .boya-rehberi ul {
+        grid-template-columns: 1fr;
+    }
+}
