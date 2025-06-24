@@ -1,290 +1,301 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Header scroll event
-    window.addEventListener('scroll', function() {
-        const header = document.querySelector('header');
-        window.scrollY > 50 ? header.classList.add('scrolled') : header.classList.remove('scrolled');
-    });
-
-    // Mobile Menu functionality
+    // Mobile Menu Toggle
     const mobileMenuButton = document.querySelector('.mobile-menu-button');
     const mainNav = document.querySelector('.main-nav');
     
     mobileMenuButton.addEventListener('click', () => {
-        mainNav.classList.toggle('active'); 
+        mainNav.classList.toggle('active');
+        document.body.classList.toggle('no-scroll');
     });
-
-    const createMobileMenu = () => {
-        const nav = document.querySelector('nav ul');
-        const navContainer = document.querySelector('nav');
-        
-        let menuButton = document.querySelector('.mobile-menu-button');
-        if (!menuButton) {
-            menuButton = document.createElement('button');
-            menuButton.className = 'mobile-menu-button';
-            menuButton.innerHTML = '<i class="fas fa-bars"></i>';
-            navContainer.prepend(menuButton);
-        }
     
-        const toggleMenu = () => {
-            nav.classList.toggle('active');
-            menuButton.classList.toggle('active');
-            document.body.classList.toggle('no-scroll');
-        };
+    // Hero Slider Functionality
+    const slides = document.querySelectorAll('.slide');
+    let currentSlide = 0;
+    let slideInterval;
     
-        menuButton.addEventListener('click', toggleMenu);
-    
-        document.addEventListener('click', (e) => {
-            if (!navContainer.contains(e.target) && !menuButton.contains(e.target)) {
-                nav.classList.remove('active');
-                menuButton.classList.remove('active');
-                document.body.classList.remove('no-scroll');
-            }
-        });
-    
-        nav.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', toggleMenu);
-        });
-    
-        const handleResize = () => {
-            if (window.innerWidth > 768) {
-                nav.classList.remove('active');
-                menuButton.classList.remove('active');
-                document.body.classList.remove('no-scroll');
-            }
-        };
-    
-        window.addEventListener('resize', handleResize);
-    };
-    
-    createMobileMenu();
-    
-    // WhatsApp Button animation
-    const animateWhatsAppButton = () => {
-        const whatsappButton = document.querySelector(".whatsapp-button");
-        if (!whatsappButton) return;
-
-        const startAnimation = () => {
-            whatsappButton.classList.add("shake");
-            setTimeout(() => whatsappButton.classList.remove("shake"), 1000);
-        };
-
-        startAnimation();
-        setInterval(startAnimation, 3000);
-    };
-
-    // Hero Slider functionality
-    function initHeroSlider() {
-        const slides = document.querySelectorAll('.slide');
-        const heroContent = document.querySelector('.hero-content');
-        let currentSlide = 0;
-        let isTransitioning = false;
-    
-        const updateHeroContent = (title, description) => {
-            if (!heroContent) return;
-            
-            heroContent.querySelector('h1').textContent = title;
-            heroContent.querySelector('p').textContent = description;
-            
-            heroContent.style.opacity = '0';
-            setTimeout(() => {
-                heroContent.style.opacity = '1';
-            }, 500);
-        };
-    
-        const showNextSlide = () => {
-            if (isTransitioning) return;
-            isTransitioning = true;
-    
-            slides[currentSlide].classList.remove('active');
-            currentSlide = (currentSlide + 1) % slides.length;
-            slides[currentSlide].classList.add('active');
-    
-            const newTitle = slides[currentSlide].dataset.title;
-            const newDesc = slides[currentSlide].dataset.description;
-            
-            setTimeout(() => {
-                updateHeroContent(newTitle, newDesc);
-                isTransitioning = false;
-            }, 3000); 
-        };
-    
-        slides[currentSlide].classList.add('active');
-        updateHeroContent(
-            slides[currentSlide].dataset.title,
-            slides[currentSlide].dataset.description
-        );
-    
-        let slideInterval = setInterval(showNextSlide, 8000); 
-        const handleInteraction = () => {
-            clearInterval(slideInterval);
-            showNextSlide();
-            slideInterval = setInterval(showNextSlide, 8000);
-        };
-    
-        document.querySelector('.hero').addEventListener('click', handleInteraction);
-        document.querySelector('.hero').addEventListener('touchstart', handleInteraction);
-        
-        const handleVideoPlayback = () => {
-            const currentVideo = slides[currentSlide].querySelector('video');
-            if (currentVideo) {
-                currentVideo.play();
-                currentVideo.addEventListener('ended', showNextSlide); 
-            }
-            const previousVideo = slides[(currentSlide - 1 + slides.length) % slides.length].querySelector('video');
-            if (previousVideo) {
-                previousVideo.pause();
-            }
-        };
-    
-        slides.forEach(slide => {
-            slide.addEventListener('transitionend', handleVideoPlayback);
-        });
-    };
-
-    createMobileMenu();
-    animateWhatsAppButton();
-        initHeroSlider();
-
-
-// Ensure functions are attached to the window object
-window.copyEmail = function () {
-    const emailElement = document.getElementById("email-text");
-    if (!emailElement) {
-        console.error("E-posta elementi bulunamadı.");
-        return;
+    function showSlide(n) {
+        slides.forEach(slide => slide.classList.remove('active'));
+        slides[n].classList.add('active');
     }
-
-    const email = emailElement.innerText.trim();
-
-    // Use Clipboard API for modern browsers
-    if (navigator.clipboard && window.isSecureContext) {
+    
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+    }
+    
+    function startSlider() {
+        slideInterval = setInterval(nextSlide, 5000);
+    }
+    
+    function stopSlider() {
+        clearInterval(slideInterval);
+    }
+    
+    // Auto slide every 5 seconds
+    startSlider();
+    
+    // Pause slider when mouse is over
+    const sliderContainer = document.querySelector('.slider-container');
+    sliderContainer.addEventListener('mouseenter', stopSlider);
+    sliderContainer.addEventListener('mouseleave', startSlider);
+    
+    // Price Calculator
+    const calculateBtn = document.getElementById('calculate-btn');
+    const areaInput = document.getElementById('area');
+    const serviceTypeSelect = document.getElementById('service-type');
+    const estimatedCost = document.getElementById('estimated-cost');
+    
+    calculateBtn.addEventListener('click', () => {
+        const area = parseFloat(areaInput.value);
+        const serviceType = parseFloat(serviceTypeSelect.value);
+        
+        if (!isNaN(area) && area > 0) {
+            const cost = area * serviceType;
+            estimatedCost.textContent = cost.toLocaleString('tr-TR') + ' TL';
+        } else {
+            alert('Lütfen geçerli bir metrekare değeri girin!');
+        }
+    });
+    
+    // Email Copy Function
+    window.copyEmail = function () {
+        const email = document.getElementById('email-text').textContent;
         navigator.clipboard.writeText(email)
-            .then(() => alert("📋 E-posta adresi kopyalandı!"))
+            .then(() => {
+                alert('E-posta adresi kopyalandı: ' + email);
+            })
             .catch(err => {
-                console.error("Clipboard API hatası:", err);
-                fallbackCopy(email);
+                console.error('Kopyalama işlemi başarısız oldu:', err);
+                alert('Kopyalama işlemi başarısız oldu!');
             });
-    } else {
-        fallbackCopy(email);
-    }
-};
-
-// Fallback method for older browsers
-window.fallbackCopy = function (text) {
-    const tempInput = document.createElement("input");
-    tempInput.value = text;
-    document.body.appendChild(tempInput);
-    tempInput.select();
-
-    try {
-        document.execCommand("copy");
-        alert("📋 E-posta adresi kopyalandı!");
-    } catch (err) {
-        console.error("Fallback kopyalama hatası:", err);
-        alert("Kopyalama işlemi başarısız oldu!");
-    }
-
-    document.body.removeChild(tempInput);
-};
-
-// Email sending function
-window.sendEmail = function () {
-    const emailElement = document.getElementById("email-text");
-    if (!emailElement) {
-        console.error("E-posta elementi bulunamadı.");
-        return;
-    }
-
-    const email = emailElement.innerText.trim();
+    };
     
-    if (email) {
-        window.location.href = `mailto:${email}`;
-    } else {
-        alert("📧 Geçerli bir e-posta adresi bulunamadı!");
-    }
-};
-
-
-
-
-
-
-
-
-
-
-
-
-document.addEventListener('DOMContentLoaded', () => {
-    const gallery = document.querySelector('.horizontal-scroll-wrapper.squares');
-    if (!gallery) return;
-
-    let isDragging = false;
-    let startX;
-    let scrollStart;
-    let velocity = 0;
-    let requestId;
-
-    // Improved pointer detection
-    const isTouchDevice = 'ontouchstart' in window;
-    const isDesktop = window.innerWidth > 1024; // Check if it's a desktop
-    const multiplier = isTouchDevice ? 1.5 : 1.2;
-
-    // Common start handler
-    const handleStart = (clientX) => {
-        isDragging = true;
-        startX = clientX;
-        scrollStart = gallery.scrollLeft;
-        gallery.style.scrollSnapType = 'none'; // Disable scroll snap while dragging
-        cancelAnimationFrame(requestId);
+    // Email Send Function
+    window.sendEmail = function () {
+        const email = 'boyaustamistanbul@gmail.com';
+        window.location.href = 'mailto:' + email;
     };
-
-    // Common move handler
-    const handleMove = (clientX) => {
-        if (!isDragging) return;
-        const delta = clientX - startX;
-        gallery.scrollLeft = scrollStart - delta * multiplier;
-    };
-
-    // Common end handler
-    const handleEnd = () => {
-        isDragging = false;
-        gallery.style.scrollSnapType = 'x mandatory'; // Re-enable scroll snap after dragging
+    
+    // Form Submission
+    const quoteForm = document.getElementById('quote-form');
+    quoteForm.addEventListener('submit', (e) => {
+        e.preventDefault();
         
-        // Add momentum
-        velocity *= 0.95;
-        if (Math.abs(velocity) > 0.5) {
-            gallery.scrollLeft += velocity;
-            requestId = requestAnimationFrame(() => handleEnd());
+        // Basit form doğrulama
+        const name = document.getElementById('name').value;
+        const phone = document.getElementById('phone').value;
+        
+        if (!name || !phone) {
+            alert('Lütfen zorunlu alanları doldurun (Adınız Soyadınız ve Telefon)');
+            return;
         }
-    };
-
+        
+        alert('Formunuz başarıyla gönderildi! En kısa sürede sizinle iletişime geçeceğiz.');
+        quoteForm.reset();
+    });
     
-
-    // Touch events (for mobile/tablet)
-    gallery.addEventListener('touchstart', (e) => {
-        handleStart(e.touches[0].clientX);
-    }, { passive: true });
-
-    gallery.addEventListener('touchmove', (e) => {
-        handleMove(e.touches[0].clientX);
-        velocity = e.touches[0].clientX - startX;
-    }, { passive: true });
-
-    gallery.addEventListener('touchend', handleEnd);
-});
-
+    // Smooth Scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            if (this.getAttribute('href') === '#') return;
+            
+            e.preventDefault();
+            
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                window.scrollTo({
+                    top: target.offsetTop - 70,
+                    behavior: 'smooth'
+                });
+                
+                // Close mobile menu if open
+                if (mainNav.classList.contains('active')) {
+                    mainNav.classList.remove('active');
+                    document.body.classList.remove('no-scroll');
+                }
+            }
+        });
+    });
+    
+    // Testimonial Slider
+    const testimonials = document.querySelectorAll('.testimonial');
+    let currentTestimonial = 0;
+    
+    function showTestimonial(index) {
+        testimonials.forEach(testimonial => testimonial.classList.remove('active'));
+        testimonials[index].classList.add('active');
+    }
+    
+    window.nextSlide = function() {
+        currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+        showTestimonial(currentTestimonial);
+    };
+    
+    window.prevSlide = function() {
+        currentTestimonial = (currentTestimonial - 1 + testimonials.length) % testimonials.length;
+        showTestimonial(currentTestimonial);
+    };
+    
+    // Initialize first testimonial
+    showTestimonial(currentTestimonial);
+    
+    // Auto rotate testimonials
+    setInterval(nextSlide, 8000);
+    
+    // Gallery Horizontal Scroll
+    const gallery = document.querySelector('.horizontal-scroll-wrapper');
+    if (gallery) {
+        let isDown = false;
+        let startX;
+        let scrollLeft;
         
+        gallery.addEventListener('mousedown', (e) => {
+            isDown = true;
+            startX = e.pageX - gallery.offsetLeft;
+            scrollLeft = gallery.scrollLeft;
+        });
         
+        gallery.addEventListener('mouseleave', () => {
+            isDown = false;
+        });
+        
+        gallery.addEventListener('mouseup', () => {
+            isDown = false;
+        });
+        
+        gallery.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - gallery.offsetLeft;
+            const walk = (x - startX) * 2; // scroll hızı
+            gallery.scrollLeft = scrollLeft - walk;
+        });
+        
+        // Touch events for mobile
+        gallery.addEventListener('touchstart', (e) => {
+            isDown = true;
+            startX = e.touches[0].pageX - gallery.offsetLeft;
+            scrollLeft = gallery.scrollLeft;
+        });
+        
+        gallery.addEventListener('touchend', () => {
+            isDown = false;
+        });
+        
+        gallery.addEventListener('touchmove', (e) => {
+            if (!isDown) return;
+            const x = e.touches[0].pageX - gallery.offsetLeft;
+            const walk = (x - startX) * 2;
+            gallery.scrollLeft = scrollLeft - walk;
+        });
+    }
 
 
+// Slider elementlerini seç
+const container = document.querySelector('.testimonial-container');
+const testimonialsSlider = document.querySelectorAll('.testimonial');
+const prevButton = document.getElementById('prev-testimonial');
+const nextButton = document.getElementById('next-testimonial');
+const indicatorsContainer = document.getElementById('slider-indicators');
 
+if (container && testimonialsSlider.length > 0 && prevButton && nextButton && indicatorsContainer) {
+    let currentIndex = 0;
+    let testimonialWidth = testimonialsSlider[0].offsetWidth;
+    const totalTestimonials = testimonialsSlider.length;
+    let autoSlideInterval;
 
+    // İndikatörleri oluştur
+    for (let i = 0; i < totalTestimonials; i++) {
+        const indicator = document.createElement('div');
+        indicator.classList.add('indicator');
+        if (i === 0) indicator.classList.add('active');
+        indicator.dataset.index = i;
+        indicatorsContainer.appendChild(indicator);
+    }
 
+    const indicators = indicatorsContainer.querySelectorAll('.indicator');
 
+    // Slider'ı güncelleme fonksiyonu
+    function updateSlider() {
+        testimonialWidth = testimonialsSlider[0].offsetWidth;
+        container.style.transform = `translateX(-${currentIndex * testimonialWidth}px)`;
 
+        // Aktif indikatörü güncelle
+        indicators.forEach((indicator, index) => {
+            if (index === currentIndex) {
+                indicator.classList.add('active');
+            } else {
+                indicator.classList.remove('active');
+            }
+        });
+    }
 
+    // Önceki testimonial
+    function prevTestimonial() {
+        currentIndex = (currentIndex - 1 + totalTestimonials) % totalTestimonials;
+        updateSlider();
+        resetAutoSlide();
+    }
 
+    // Sonraki testimonial
+    function nextTestimonial() {
+        currentIndex = (currentIndex + 1) % totalTestimonials;
+        updateSlider();
+        resetAutoSlide();
+    }
+
+    // Belirli bir testimonial'a git
+    function goToTestimonial(index) {
+        currentIndex = index;
+        updateSlider();
+        resetAutoSlide();
+    }
+
+    // Navigasyon butonlarına event listener ekle
+    prevButton.addEventListener('click', prevTestimonial);
+    nextButton.addEventListener('click', nextTestimonial);
+
+    // İndikatörlere tıklama olayı
+    indicators.forEach(indicator => {
+        indicator.addEventListener('click', () => {
+            const index = parseInt(indicator.dataset.index);
+            goToTestimonial(index);
+        });
     });
 
+    // Otomatik geçiş
+    function startAutoSlide() {
+        autoSlideInterval = setInterval(() => {
+            currentIndex = (currentIndex + 1) % totalTestimonials;
+            updateSlider();
+        }, 5000);
+    }
+
+    function stopAutoSlide() {
+        clearInterval(autoSlideInterval);
+    }
+
+    function resetAutoSlide() {
+        stopAutoSlide();
+        startAutoSlide();
+    }
+
+    // Slider üzerine gelince otomatik kaydırmayı durdur
+    container.addEventListener('mouseenter', stopAutoSlide);
+    container.addEventListener('mouseleave', startAutoSlide);
+
+    // Pencere boyutu değiştiğinde slider'ı güncelle
+    window.addEventListener('resize', () => {
+        container.style.transition = 'none';
+        updateSlider();
+        setTimeout(() => {
+            container.style.transition = 'transform 0.5s ease';
+        }, 100);
+    });
+
+    // Başlangıçta slider'ı güncelle ve otomatik kaydırmayı başlat
+    updateSlider();
+    startAutoSlide();
+}
     
+});
