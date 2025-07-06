@@ -1,7 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
-
-    const mobileMenuButton = document.querySelector('.mobile-menu-button');
-    const mainNav = document.querySelector('.main-nav');
+    
+    const select = (selector) => document.querySelector(selector);
+    const selectAll = (selector) => document.querySelectorAll(selector);
+   
+    const mobileMenuButton = select('.mobile-menu-button');
+    const mainNav = select('.main-nav');
     if (mobileMenuButton && mainNav) {
         mobileMenuButton.addEventListener('click', () => {
             mainNav.classList.toggle('active');
@@ -9,224 +12,185 @@ document.addEventListener('DOMContentLoaded', () => {
             document.body.classList.toggle('no-scroll');
         });
     }
-    const slides = document.querySelectorAll('.slide');
+
+  
+    const slides = selectAll('.slide');
     if (slides.length > 0) {
         let currentSlide = 0;
         let slideInterval;
 
-        function showSlide(n) {
-            slides.forEach(slide => slide.classList.remove('active'));
-            slides[n].classList.add('active');
-        }
+        const showSlide = (n) => {
+            slides.forEach((slide, index) => {
+                slide.classList.toggle('active', index === n);
+            });
+        };
 
-        function nextSlide() {
+        const nextSlide = () => {
             currentSlide = (currentSlide + 1) % slides.length;
             showSlide(currentSlide);
-        }
+        };
 
-        function startSlider() {
-            stopSlider();
+        const startSlider = () => {
+            clearInterval(slideInterval); 
             slideInterval = setInterval(nextSlide, 5000);
-        }
-
-        function stopSlider() {
-            clearInterval(slideInterval);
-        }
-
-        const sliderContainer = document.querySelector('.hero-slider');
-        sliderContainer.addEventListener('mouseenter', stopSlider);
-        sliderContainer.addEventListener('mouseleave', startSlider);
-
+        };
+        
+        select('.hero-slider').addEventListener('mouseenter', () => clearInterval(slideInterval));
+        select('.hero-slider').addEventListener('mouseleave', startSlider);
+        
+        showSlide(0); 
         startSlider();
     }
 
-
-    const calculateBtn = document.getElementById('calculate-btn');
+   
+    const calculateBtn = select('#calculate-btn');
     if (calculateBtn) {
-        const areaInput = document.getElementById('area');
-        const serviceTypeSelect = document.getElementById('service-type');
-        const estimatedCost = document.getElementById('estimated-cost');
-
         calculateBtn.addEventListener('click', () => {
-            const area = parseFloat(areaInput.value);
-            const servicePrice = parseFloat(serviceTypeSelect.value);
+            const area = parseFloat(select('#area').value);
+            const servicePrice = parseFloat(select('#service-type').value);
 
-            if (!isNaN(area) && area > 0) {
+            if (area > 0 && servicePrice > 0) {
                 const cost = area * servicePrice;
-                estimatedCost.textContent = cost.toLocaleString('tr-TR', { minimumFractionDigits: 0 }) + ' TL';
+                select('#estimated-cost').textContent = cost.toLocaleString('tr-TR', { minimumFractionDigits: 0, maximumFractionDigits: 0 }) + ' TL';
             } else {
-                alert('Lütfen geçerli bir metrekare değeri girin!');
+                alert('Lütfen geçerli bir metrekare ve hizmet türü girin!');
             }
         });
     }
 
 
-    const emailLink = document.querySelector('.email-icons .fa-paper-plane');
-    if (emailLink) {
-        emailLink.addEventListener('click', () => {
-            const email = document.getElementById('email-text').textContent;
-            window.location.href = 'mailto:' + email;
-        });
-    }
-
-
-    const quoteForm = document.getElementById('quote-form');
+    const quoteForm = select('#quote-form');
     if (quoteForm) {
         quoteForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            const name = document.getElementById('name').value;
-            const phone = document.getElementById('phone').value;
+            const name = select('#name').value.trim();
+            const phone = select('#phone').value.trim();
 
             if (!name || !phone) {
                 alert('Lütfen zorunlu alanları doldurun (Adınız Soyadınız ve Telefon)');
                 return;
             }
+            
             alert('Teklif talebiniz alınmıştır! En kısa sürede sizinle iletişime geçeceğiz.');
             quoteForm.reset();
         });
     }
 
+    
+    document.body.addEventListener('click', (e) => {
+        const anchor = e.target.closest('a[href^="#"]');
+        if (!anchor || anchor.getAttribute('href') === '#') return;
+        
+        e.preventDefault();
+        const targetElement = select(anchor.getAttribute('href'));
+        
+        if(targetElement) {
+            const offsetTop = targetElement.offsetTop - 70; 
+            window.scrollTo({
+                top: offsetTop,
+                behavior: 'smooth'
+            });
 
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            if (this.getAttribute('href') === '#') return;
-
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
-            const targetElement = document.querySelector(targetId);
-
-            if (targetElement) {
-                window.scrollTo({
-                    top: targetElement.offsetTop - 70,
-                    behavior: 'smooth'
-                });
-
-                if (mainNav.classList.contains('active')) {
-                    mainNav.classList.remove('active');
-                    mobileMenuButton.classList.remove('active');
-                    document.body.classList.remove('no-scroll');
-                }
+           
+            if (mainNav && mainNav.classList.contains('active')) {
+                mainNav.classList.remove('active');
+                mobileMenuButton.classList.remove('active');
+                document.body.classList.remove('no-scroll');
             }
-        });
+        }
     });
 
+   
+    const testimonialContainer = select('.testimonial-container');
+    if (testimonialContainer) {
+        const items = selectAll('.testimonial');
+        const totalItems = items.length;
+        if (totalItems === 0) return; 
 
-    const container = document.querySelector('.testimonial-container');
-    const testimonialsSliderItems = document.querySelectorAll('.testimonial');
-    const prevButton = document.getElementById('prev-testimonial');
-    const nextButton = document.getElementById('next-testimonial');
-    const indicatorsContainer = document.getElementById('slider-indicators');
-
-    if (container && testimonialsSliderItems.length > 0 && prevButton && nextButton && indicatorsContainer) {
+        const indicatorsContainer = select('#slider-indicators');
         let currentIndex = 0;
-        const totalTestimonials = testimonialsSliderItems.length;
         let autoSlideInterval;
 
-
-        for (let i = 0; i < totalTestimonials; i++) {
+        for (let i = 0; i < totalItems; i++) {
             const indicator = document.createElement('div');
             indicator.classList.add('indicator');
-            if (i === 0) indicator.classList.add('active');
             indicator.dataset.index = i;
             indicatorsContainer.appendChild(indicator);
         }
-
-        const indicators = indicatorsContainer.querySelectorAll('.indicator');
-
-        function updateSlider() {
-
-            container.style.transform = `translateX(-${currentIndex * 100}%)`;
-
-            indicators.forEach((indicator, index) => {
-                indicator.classList.toggle('active', index === currentIndex);
-            });
-        }
-
-        function slideTo(index) {
+        const indicators = selectAll('.indicator');
+        
+        const updateSlider = (index) => {
+            testimonialContainer.style.transform = `translateX(-${index * 100}%)`;
+            indicators.forEach((ind, i) => ind.classList.toggle('active', i === index));
             currentIndex = index;
-            updateSlider();
-            resetAutoSlide();
-        }
+        };
 
-        prevButton.addEventListener('click', () => slideTo((currentIndex - 1 + totalTestimonials) % totalTestimonials));
-        nextButton.addEventListener('click', () => slideTo((currentIndex + 1) % totalTestimonials));
-
-        indicators.forEach(indicator => {
-            indicator.addEventListener('click', () => slideTo(parseInt(indicator.dataset.index)));
-        });
-
-        function startAutoSlide() {
-            stopAutoSlide();
-            autoSlideInterval = setInterval(() => {
-                currentIndex = (currentIndex + 1) % totalTestimonials;
-                updateSlider();
-            }, 5000);
-        }
-
-        function stopAutoSlide() {
+        const resetAutoSlide = () => {
             clearInterval(autoSlideInterval);
-        }
+            autoSlideInterval = setInterval(() => updateSlider((currentIndex + 1) % totalItems), 5000);
+        };
 
-        function resetAutoSlide() {
-            stopAutoSlide();
-            startAutoSlide();
-        }
+        select('#prev-testimonial')?.addEventListener('click', () => updateSlider((currentIndex - 1 + totalItems) % totalItems));
+        select('#next-testimonial')?.addEventListener('click', () => updateSlider((currentIndex + 1) % totalItems));
+        indicatorsContainer?.addEventListener('click', (e) => {
+            if(e.target.matches('.indicator')) updateSlider(parseInt(e.target.dataset.index));
+        });
 
-        const sliderElement = document.querySelector('.testimonial-slider');
-        sliderElement.addEventListener('mouseenter', stopAutoSlide);
-        sliderElement.addEventListener('mouseleave', startAutoSlide);
+        const sliderElement = select('.testimonial-slider');
+        sliderElement?.addEventListener('mouseenter', () => clearInterval(autoSlideInterval));
+        sliderElement?.addEventListener('mouseleave', resetAutoSlide);
 
-
-        window.addEventListener('resize', updateSlider);
-
-        startAutoSlide();
-        updateSlider();
+        updateSlider(0);
+        resetAutoSlide();
     }
+    
+   
+    const faqContainer = select('.faq-container');
+    if (faqContainer) {
+        const faqItemsContainer = faqContainer.querySelector('.faq-items-container');
+        const searchInput = faqContainer.querySelector('#faq-search');
+        
+        if (faqItemsContainer) {
+            faqItemsContainer.addEventListener('click', (e) => {
+                const question = e.target.closest('.faq-question');
+                if (!question) return;
 
-    const faqItems = document.querySelectorAll('.faq-item');
-    const searchInput = document.getElementById('faq-search');
-
-    if (faqItems.length > 0) {
-        faqItems.forEach(item => {
-            const question = item.querySelector('.faq-question');
-            question.addEventListener('click', () => {
-
-                faqItems.forEach(otherItem => {
-                    if (otherItem !== item) otherItem.classList.remove('active');
+                const clickedItem = question.parentElement;
+                const activeItem = faqItemsContainer.querySelector('.faq-item.active');
+                
+                if (activeItem && activeItem !== clickedItem) {
+                    activeItem.classList.remove('active');
+                }
+                clickedItem.classList.toggle('active');
+            });
+        }
+        
+        if (searchInput) {
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase().trim();
+                const allFaqItems = faqContainer.querySelectorAll('.faq-item');
+                
+                allFaqItems.forEach(item => {
+                    const content = item.textContent.toLowerCase();
+                    item.style.display = content.includes(searchTerm) ? '' : 'none';
                 });
-
-                item.classList.toggle('active');
             });
-        });
+        }
     }
-
-    if (searchInput) {
-        searchInput.addEventListener('input', function () {
-            const searchTerm = this.value.toLowerCase().trim();
-            faqItems.forEach(item => {
-                const questionText = item.querySelector('.faq-question').textContent.toLowerCase();
-                const answerText = item.querySelector('.faq-answer').textContent.toLowerCase();
-
-                const matches = questionText.includes(searchTerm) || answerText.includes(searchTerm);
-                item.style.display = matches ? 'block' : 'none';
-            });
-        });
-    }
-
-
-    const readMoreBtn = document.getElementById('read-more-btn');
-    const moreContent = document.getElementById('more-content');
-
+    
+   
+    const readMoreBtn = select('#read-more-btn');
+    const moreContent = select('#more-content');
     if (readMoreBtn && moreContent) {
-        readMoreBtn.addEventListener('click', function () {
-            moreContent.classList.toggle('active');
-            const isVisible = moreContent.classList.contains('active');
+        readMoreBtn.addEventListener('click', function() {
+            
+            const isVisible = moreContent.style.display === 'block';
+            moreContent.style.display = isVisible ? 'none' : 'block';
+
+           
             this.innerHTML = isVisible
-                ? 'Daha Az Göster <i class="fas fa-chevron-up"></i>'
-                : 'Devamını Oku <i class="fas fa-chevron-down"></i>';
-
-
-            moreContent.style.display = isVisible ? 'block' : 'none';
+                ? 'Daha Fazla Bilgi <i class="fas fa-chevron-down"></i>'
+                : 'Daha Az Göster <i class="fas fa-chevron-up"></i>';
         });
     }
 
