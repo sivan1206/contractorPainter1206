@@ -140,15 +140,18 @@ nav ul li a:hover {
     z-index: 2
 }
 
-.slide-title {
-    font-family: 'Arial', sans-serif;
-    font-size: 2.4rem;
+
+.slide-content h1,
+.slide-content .slide-title {
+    font-family: 'Arial', 'Helvetica Neue', sans-serif; 
+    font-size: 2.5rem;
     font-weight: 700;
     color: #fff;
-    margin-bottom: 0.75rem;
-    font-size: 2.5rem;
-    margin-bottom: 10px
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); 
 }
+
 
 .slide-content p {
     font-size: 1.2rem
