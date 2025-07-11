@@ -35,9 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
             slideInterval = setInterval(nextSlide, 5000);
         };
         
-        select('.hero-slider').addEventListener('mouseenter', () => clearInterval(slideInterval));
-        select('.hero-slider').addEventListener('mouseleave', startSlider);
-        
+       
         showSlide(0); 
         startSlider();
     }
