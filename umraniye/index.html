@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>İstanbul Ümraniye Boya Ustası | Profesyonel Boya Badana Hizmeti</title>
+  <meta name="description"
+    content="Ümraniye bölgesinde 20 yıllık deneyimle iç ve dış cephe boyama, dekoratif boya ve ofis boyama hizmetleri. İstanbul Ümraniye'de uygun fiyatlı boyacı arayanlara özel çözümler.">
+  <meta name="keywords"
+    content="Ümraniye boyacı, İstanbul  Ümraniye boya ustası, ev boyama, iç cephe boya, dış cephe boya, dekoratif boya, profesyonel boyacı, uygun fiyatlı boya badana, güvenilir boyacı Ümraniye">
+  <meta name="author" content="Ümraniye Boyacılık">
+  <meta name="robots" content="index, follow">
+  <link rel="icon" href="https://istanbulboyacilik.com/umraniye/images/favicon.ico" type="image/x-icon">
+
+ <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "İstanbul Boyacılık Ümraniye",
+  "description": "Ümraniye'de iç cephe, dış cephe, daire ve ofis boyama hizmetleri sunan profesyonel boyacı ustası. Uygun fiyatlı, kaliteli ve garantili boya badana işleri.",
+  "image": "https://istanbulboyacilik.com/umraniye/images/istanbulboyaustasi.png",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Tatlısu Mah. Alemdağ Cad. No:45",
+    "addressLocality": "Ümraniye",
+    "addressRegion": "İstanbul",
+    "postalCode": "34775",
+    "addressCountry": "TR"
+  },
+  "telephone": "+90-507-832-2912",
+  "email": "mailto:boyaustamistanbul@gmail.com",
+  "url": "https://istanbulboyacilik.com/umraniye/",
+  "priceRange": "₺₺",
+  "openingHours": [
+    "Mo-Su 00:00-23:59"
+  ],
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 41.0286,
+    "longitude": 29.1148
+  },
+  "areaServed": [
+    {
+      "@type": "Place",
+      "name": "Ümraniye, İstanbul"
+    },
+    {
+      "@type": "Place",
+      "name": "İstanbul"
+    }
+  ],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5.0",
+    "reviewCount": "9"
+  }
+}
+</script>
+
+
+
+
+  <style>
+    :root {
+      --primary: #4361ee;
+      --secondary: #3a0ca3;
+      --accent: #4cc9f0;
+      --light: #f8f9fa;
+      --dark: #2b2d42;
+      --success: #25D366;
+      --warning: #FF9E00;
+      --shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background: var(--light);
+      overflow-x: hidden;
+    }
+
+    /* Header & Navigation - Mobile First */
+    header {
+      background-color: rgba(0, 0, 0, 0.92);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(184, 183, 183, 0.1);
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 5%;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo i {
+      color: var(--light);
+    }
+
+    .main-nav {
+      position: fixed;
+      top: 70px;
+      left: 0;
+      right: 0;
+      background: rgba(78, 78, 78, 0.95);
+      flex-direction: column;
+      padding: 1rem;
+      align-items: center;
+      transform: translateY(-150%);
+      transition: transform 0.4s ease;
+      z-index: 999;
+      gap: 0;
+      display: flex;
+    }
+
+    .main-nav.active {
+      transform: translateY(0);
+    }
+
+    .main-nav li {
+      margin: 0.5rem 0;
+      width: 100%;
+      text-align: center;
+    }
+
+    .main-nav li a {
+      display: block;
+      padding: 1rem;
+      border-radius: 0;
+      text-decoration: none;
+      color: #fff;
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    .main-nav li a:hover,
+    .main-nav li a.active {
+      background-color: var(--primary);
+      color: rgb(255, 255, 255);
+    }
+
+
+    .mobile-menu-button {
+      display: block;
+      background: transparent;
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+      z-index: 1001;
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      height: 100vh;
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+        url('images/gallery/istanbul-boya-ustas-IsYeri.WebP') center/cover no-repeat;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #fff;
+      padding: 0 1rem;
+      margin-top: 70px;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      padding: 1rem;
+    }
+
+    .hero h1 {
+      font-size: 2.2rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.3;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      color: #e0e0e0;
+    }
+
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 1rem 1.8rem;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+      box-shadow: 0 4px 15px rgba(67, 97, 238, 0.4);
+    }
+
+    .btn-primary:hover {
+      background: #3251d4;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(67, 97, 238, 0.5);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: white;
+      border: 2px solid white;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-3px);
+    }
+
+    .whatsapp-button {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background: var(--success);
+      color: #fff;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      text-decoration: none;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      z-index: 100;
+      transition: var(--transition);
+    }
+
+    .whatsapp-button:hover {
+      transform: scale(1.1);
+    }
+  </style>
+  <link rel="stylesheet" href="styles.pure.css">
+ 
+  
+
+
+
+
+  <link rel="preload" as="image" href="images/gallery/istanbul-boya-ustas-IsYeri.WebP">
+</head>
+
+<body>
+  <header>
+    <nav>
+      <div class="logo">
+        <i class="fas fa-paint-roller"></i>İstanbul Boyacılık/Ümraniye
+      </div>
+      <ul class="main-nav">
+        <li><a href="#anasayfa" class="active">Ana Sayfa</a></li>
+        <li><a href="#hizmetler">Hizmetler</a></li>
+        <li><a href="#fiyatlar">Fiyatlar</a></li>
+        <li><a href="#umraniye-mahalleler">Mahalleler</a></li>
+        <li><a href="#yorumlar">Yorumlar</a></li>
+        <li><a href="#iletisim">İletişim</a></li>
+
+      </ul>
+      <button class="mobile-menu-button" aria-label="Menüyü Aç/Kapat">
+        <i class="fas fa-bars"></i>
+      </button>
+    </nav>
+  </header>
+
+
+  <section id="anasayfa" class="hero">
+    <div class="hero-content">
+      <h1>İstanbul Ümraniye Profesyonel Boya Ustası</h1>
+      <p>20 yıllık tecrübemizle iç ve dış cephe boya hizmetleri. Ümraniye'nin her bölgesinde profesyonel boyama
+        çözümleri sunuyoruz.</p>
+      <div class="hero-buttons">
+        <a href="tel:+905078322912" class="btn btn-primary">
+          <i class="fas fa-phone"></i>Bizi Hemen Arayın</a>
+        <a href="#iletisim" class="btn btn-secondary">
+          <i class="fas fa-envelope"></i> Ücretsiz Teklif Al
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="hizmetler" class="services">
+    <div class="section-title">
+      <h2>Hizmetlerimiz</h2>
+    </div>
+    <div class="services-grid">
+
+      <div class="service-card">
+        <div class="service-img">
+          <img src="images/gallery/istanbul-boya-ustas-icMekan.WebP" alt="Ümraniye iç mekan boyama hizmeti"
+            class="responsive" loading="lazy" width="400" height="300">
+        </div>
+        <div class="service-content">
+          <h3><i class="fas fa-home"></i> İç Mekan Boyama</h3>
+          <p>Evinizin iç mekanları için profesyonel boyama hizmeti. Su bazlı, plastik ve silikonlu boya uygulamaları.
+          </p>
+          <ul class="service-features">
+            <li>Duvar ve tavan boyama</li>
+            <li>Badana işleri</li>
+            <li>Renk danışmanlığı</li>
+            <li>Kalıcı ve sağlıklı çözümler</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-img">
+          <img src="images/gallery/istanbul-boya-ustas-disCephe.WebP" alt="Ümraniye Dış Cephe Boyama"
+            class="responsive" loading="lazy" width="400" height="300">
+        </div>
+        <div class="service-content">
+          <h3><i class="fas fa-building"></i> Dış Cephe Boyama</h3>
+          <p>Binanızın dış cephesi için uzman boyama çözümleri. Mantolama ve dış cephe sistemleri.</p>
+          <ul class="service-features">
+            <li>Isı yalıtımlı boya</li>
+            <li>Su geçirmez kaplamalar</li>
+            <li>Küf ve mantar önleyici işlemler</li>
+            <li>Uzun ömürlü koruma</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-img">
+          <img src="images/gallery/istanbul-boya-ustas-dekoratif.WebP" alt="Ümraniye Dekoratif Boyama"
+            class="responsive" loading="lazy" width="400" height="300">
+        </div>
+        <div class="service-content">
+          <h3><i class="fas fa-paint-brush"></i> Dekoratif Boyama</h3>
+          <p>Özel desenler ve dekoratif boya uygulamaları. İtalyan sıva ve efekt uygulamaları.</p>
+          <ul class="service-features">
+            <li>Özel duvar tekstürleri</li>
+            <li>Metalik ve mermer efektleri</li>
+            <li>Fresko ve trompe l'oeil</li>
+            <li>Özel proje tasarımları</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+
+  <section id="fiyatlar" class="pricing">
+    <div class="section-title">
+      <h2>Fiyat Tablosu</h2>
+    </div>
+    <div class="pricing-table">
+      <table>
+        <thead>
+          <tr>
+            <th>Hizmet Türü</th>
+            <th>Metrekare Fiyatı</th>
+            <th>Ortalama Süre (100m²)</th>
+            <th>Garanti</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>İç Cephe Boyama</td>
+            <td>100-200 TL</td>
+            <td>2-3 Gün</td>
+            <td>3 Yıl</td>
+          </tr>
+          <tr>
+            <td>Dış Cephe Boyama</td>
+            <td>150-250 TL</td>
+            <td>3-5 Gün</td>
+            <td>5 Yıl</td>
+          </tr>
+          <tr>
+            <td>Dekoratif Boyama</td>
+            <td>250-500 TL</td>
+            <td>4-7 Gün</td>
+            <td>5 Yıl</td>
+          </tr>
+          <tr>
+            <td>Ofis Boyama</td>
+            <td>120-220 TL</td>
+            <td>2-4 Gün</td>
+            <td>3 Yıl</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+
+  <section class="seo-content">
+    <h1>Ümraniye Boya Ustası ile Profesyonel Çözümler</h1>
+    <p>İstanbul <strong>Ümraniye boyacı ustası</strong> arayışında olanlar için kaliteli, zamanında ve titiz işçilik
+      sunan ekibimizle hizmet veriyoruz. <strong>Ümraniye boya ustası</strong> olarak ev, ofis, daire ve iş yerleri
+      için en uygun boya çözümlerini sunuyoruz. Uygun fiyat ve müşteri memnuniyeti garantisiyle boya ihtiyaçlarınıza
+      profesyonel yaklaşım sergiliyoruz.</p>
+    <p><strong>Ümraniye boya badana</strong> hizmetlerimiz, iç cephe boyama, dış cephe yenileme, dekoratif duvar
+      boyası uygulamaları ve ofis boyama gibi geniş bir yelpazeyi kapsar. Alanında uzman ustalarımız ile işinizi kısa
+      sürede ve temiz bir şekilde tamamlıyoruz. Ayrıca tüm işlerimiz garantilidir ve kullanılan boyalar birinci sınıf
+      markalardan seçilmektedir.</p>
+    <p>Google'da <strong>"Ümraniye'de en iyi boyacı"</strong> olarak öne çıkmamızın nedeni, şeffaf fiyat politikamız,
+      ücretsiz keşif hizmetimiz ve hızlı randevu sistemimizdir. Eğer siz de kaliteli ve uygun fiyatlı bir
+      <strong>Ümraniye boyacı ustası</strong> arıyorsanız, bizimle hemen iletişime geçin ve profesyonel farkı yaşayın.
+    </p>
+
+    <h2>Ümraniye'de Boya Hizmeti Almak İçin 5 Neden</h2>
+    <p>1. <strong>Uzman Ekip</strong>: Yılların deneyimine sahip boyacı ustalarımız, işlerini titizlikle yapmaktadır.
+    </p>
+    <p>2. <strong>Kaliteli Malzeme</strong>: Sadece birinci sınıf boyalar ve malzemeler kullanıyoruz.</p>
+    <p>3. <strong>Hızlı Hizmet</strong>: Randevulara sadık kalarak işlerinizi zamanında teslim ediyoruz.</p>
+    <p>4. <strong>Uygun Fiyat</strong>: Ümraniye bölgesinde en uygun fiyatları sunuyoruz.</p>
+    <p>5. <strong>Garantili İşçilik</strong>: Tüm işlerimiz uzun süreli garanti kapsamındadır.</p>
+
+    <h2>Ümraniye'de Hangi Boya Hizmetlerini Sunuyoruz?</h2>
+    <p>İstanbul Ümraniye'de boya ustası olarak verdiğimiz hizmetler şunlardır:</p>
+    <ul>
+      <li><strong>İç Cephe Boyama</strong>: Evinizdeki tüm iç mekanların boyanması</li>
+      <li><strong>Dış Cephe Boyama</strong>: Bina dış cephelerinin yenilenmesi ve boyanması</li>
+      <li><strong>Dekoratif Boya Uygulamaları</strong>: Özel tekniklerle duvarlara desen ve doku uygulamaları</li>
+      <li><strong>Ofis ve İş Yeri Boyama</strong>: İş yerlerinizin modern ve temiz bir görünüme kavuşması</li>
+      <li><strong>Badana ve Tamirat İşleri</strong>: Boya öncesi hazırlık ve tamirat hizmetleri</li>
+    </ul>
+
+    <h2>Ümraniye Boyacı Ustası Fiyatları</h2>
+    <p>Ümraniye bölgesinde boya ustası fiyatları, yapılacak işin kapsamına göre değişmektedir. Ancak biz her zaman
+      uygun fiyat politikası ile müşterilerimize en iyi hizmeti sunmayı hedefliyoruz. Ücretsiz keşif hizmetimiz
+      sayesinde, evinize veya iş yerinize gelerek detaylı bir değerlendirme yapıyor ve net bir fiyat teklifi sunuyoruz.
+    </p>
+    <p>Fiyatlandırmada etkili olan faktörler:</p>
+    <ul>
+      <li>Yapılacak işin türü (iç cephe, dış cephe, dekoratif vb.)</li>
+      <li>Boya yapılacak alanın metrekaresi</li>
+      <li>Kullanılacak boya ve malzemenin kalitesi</li>
+      <li>İşin aciliyeti ve zamanlaması</li>
+    </ul>
+    <p>Ümraniye boya badana fiyatları hakkında net bilgi almak için lütfen iletişime geçin.</p>
+
+    <h2>Ümraniye'de Boyacı Ustası Ararken Dikkat Edilmesi Gerekenler</h2>
+    <p>Boyacı ustası seçerken dikkat etmeniz gereken bazı önemli noktalar vardır:</p>
+    <p><strong>Referanslar</strong>: Daha önce yapılmış işleri inceleyin ve müşteri yorumlarını okuyun.</p>
+    <p><strong>Kaliteli Malzeme Kullanımı</strong>: Kullanılan boya ve malzemelerin kalitesi işin ömrünü doğrudan
+      etkiler.</p>
+    <p><strong>Garanti</strong>: Yapılan işin garanti kapsamında olması önemlidir.</p>
+    <p><strong>Temiz İşçilik</strong>: Boya işlemi sonrası temizlik de hizmetin bir parçası olmalıdır.</p>
+    <p>Biz Ümraniye boya ustası ekibi olarak tüm bu kriterleri en iyi şekilde yerine getiriyoruz.</p>
+  </section>
+
+ <section id="umraniye-mahalleler" class="districts">
+  <div class="section-title">
+    <h2>Ümraniye’de Hizmet Verdiğimiz Mahalleler</h2>
+    <p><strong>Ümraniye boyacı ustası</strong> olarak aşağıdaki mahallelerde ev, ofis ve iş yeri boyama hizmeti sunmaktayız:</p>
+  </div>
+  <div class="district-group">
+    <h3>Ümraniye Mahalleleri</h3>
+    <ul>
+      <li><strong>Ümraniye Adem Yavuz Mahallesi</strong></li>
+      <li><strong>Ümraniye Armağan Evler Mahallesi</strong></li>
+      <li><strong>Ümraniye Aşağı Dudullu Mahallesi</strong></li>
+      <li><strong>Ümraniye Atakent Mahallesi</strong></li>
+      <li><strong>Ümraniye Atatürk Mahallesi</strong></li>
+      <li><strong>Ümraniye Bahçelievler Mahallesi</strong></li>
+      <li><strong>Ümraniye Bulgurlu Mahallesi</strong></li>
+      <li><strong>Ümraniye Esenevler Mahallesi</strong></li>
+      <li><strong>Ümraniye Eski Dudullu Mahallesi</strong></li>
+      <li><strong>Ümraniye Huzur Mahallesi</strong></li>
+      <li><strong>Ümraniye Ihlamurkuyu Mahallesi</strong></li>
+      <li><strong>Ümraniye İnkılap Mahallesi</strong></li>
+      <li><strong>Ümraniye İnönü Mahallesi</strong></li>
+      <li><strong>Ümraniye Kadıköy Mahallesi</strong></li>
+      <li><strong>Ümraniye Kavaklıdere Mahallesi</strong></li>
+      <li><strong>Ümraniye Mehmet Akif Mahallesi</strong></li>
+      <li><strong>Ümraniye Merkez Mahallesi</strong></li>
+      <li><strong>Ümraniye Namık Kemal Mahallesi</strong></li>
+      <li><strong>Ümraniye Necip Fazıl Mahallesi</strong></li>
+      <li><strong>Ümraniye Nuriosmaniye Mahallesi</strong></li>
+      <li><strong>Ümraniye Olgunlar Mahallesi</strong></li>
+      <li><strong>Ümraniye Parseller Mahallesi</strong></li>
+      <li><strong>Ümraniye Ramazanpaşa Mahallesi</strong></li>
+      <li><strong>Ümraniye Reşadiye Mahallesi</strong></li>
+      <li><strong>Ümraniye Saray Mahallesi</strong></li>
+      <li><strong>Ümraniye Sırrıpaşa Mahallesi</strong></li>
+      <li><strong>Ümraniye Tavşantepe Mahallesi</strong></li>
+      <li><strong>Ümraniye Tepeüstü Mahallesi</strong></li>
+      <li><strong>Ümraniye Yayla Mahallesi</strong></li>
+      <li><strong>Ümraniye Yenisahra Mahallesi</strong></li>
+      <li><strong>Ümraniye Yukarı Dudullu Mahallesi</strong></li>
+      <li><strong>Ümraniye Yukarı Tahsin Mahallesi</strong></li>
+      <li><strong>Ümraniye Zafer Mahallesi</strong></li>
+      <li><strong>Ümraniye Zeynel Ağa Mahallesi</strong></li>
+      <li><strong>Ümraniye Şerifali Mahallesi</strong></li>
+      <li><strong>Ümraniye Şeyhli Mahallesi</strong></li>
+    </ul>
+  </div>
+</section>
+
+
+<section id="yorumlar" class="testimonials">
+  <div class="section-title">
+    <h2>Ümraniye Boyacılık <strong>Müşteri Yorumları</strong></h2>
+  </div>
+  <div class="testimonials-grid">
+
+    <div class="testimonial-card">
+      <div class="rating">
+        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+      </div>
+      <p class="testimonial-content">
+        "<strong>Ümraniye’de</strong>ki dairemizi <strong>profesyonel</strong> bir şekilde boyadılar. <strong>İşçilik gerçekten mükemmeldi</strong>, <strong>zamanında</strong> ve söz verdikleri gibi tamamladılar. <strong>Boya kalitesi</strong> harikaydı ve çalışanlar çok <strong>saygılı</strong>ydı. Kesinlikle tekrar <strong>tercih edeceğim</strong> bir ekip!"
+      </p>
+      <div class="client-info">
+        <div class="client-avatar">M</div>
+        <div class="client-details">
+          <h4><strong>Mehmet Can</strong></h4>
+          <p><strong>Ümraniye / İstanbul</strong></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial-card">
+      <div class="rating">
+        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+      </div>
+      <p class="testimonial-content">
+        "<strong>Ofisimiz için</strong> tercih ettiğimiz <strong>Ümraniye boyacı ustası</strong>, işini <strong>titizlikle</strong> yaptı. <strong>İç cephe</strong> ve <strong>dış cephe boya</strong> işlemleri çok <strong>profesyonelce</strong> ilerledi. <strong>Fiyat performans</strong> açısından da çok memnun kaldık. İş bitiminden sonra <strong>temizlik</strong> bile eksiksizdi."
+      </p>
+      <div class="client-info">
+        <div class="client-avatar">E</div>
+        <div class="client-details">
+          <h4><strong>Elif Kaya</strong></h4>
+          <p><strong>Ümraniye / İstanbul</strong></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial-card">
+      <div class="rating">
+        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+      </div>
+      <p class="testimonial-content">
+        "<strong>Ümraniye’de</strong> evimizi boyattık. İşin her aşamasında bize <strong>destek oldular</strong> ve istediğimiz renklerde en <strong>kaliteli sonuçları</strong> aldık. <strong>Zamanında teslim</strong> ve sorunsuz iletişim için teşekkürler."
+      </p>
+      <div class="client-info">
+        <div class="client-avatar">S</div>
+        <div class="client-details">
+          <h4><strong>Selin Yılmaz</strong></h4>
+          <p><strong>Ümraniye / İstanbul</strong></p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script type="application/ld+json">
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Mehmet Can"
+      },
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      },
+      "reviewBody": "Ümraniye’deki dairemizi profesyonel bir şekilde boyadılar. İşçilik gerçekten mükemmeldi, zamanında ve söz verdikleri gibi tamamladılar. Boya kalitesi harikaydı ve çalışanlar çok saygılıydı. Kesinlikle tekrar tercih edeceğim bir ekip!",
+      "itemReviewed": {
+        "@type": "LocalBusiness",
+        "name": "İstanbul Boyacılık Ümraniye"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Elif Kaya"
+      },
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      },
+      "reviewBody": "Ofisimiz için tercih ettiğimiz Ümraniye boyacı ustası, işini titizlikle yaptı. İç cephe ve dış cephe boya işlemleri çok profesyonelce ilerledi. Fiyat performans açısından da çok memnun kaldık. İş bitiminden sonra temizlik bile eksiksizdi.",
+      "itemReviewed": {
+        "@type": "LocalBusiness",
+        "name": "İstanbul Boyacılık Ümraniye"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Selin Yılmaz"
+      },
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      },
+      "reviewBody": "Ümraniye’de evimizi boyattık. İşin her aşamasında bize destek oldular ve istediğimiz renklerde en kaliteli sonuçları aldık. Zamanında teslim ve sorunsuz iletişim için teşekkürler.",
+      "itemReviewed": {
+        "@type": "LocalBusiness",
+        "name": "İstanbul Boyacılık Ümraniye"
+      }
+    }
+  ]
+  </script>
+</section>
+
+
+
+  <section id="iletisim" class="contact">
+    <div class="section-title">
+      <h2>İletişim</h2>
+    </div>
+    <div class="contact-container">
+      <div class="contact-info">
+        <h3>İletişim Bilgileri</h3>
+        <p>
+          <i class="fas fa-phone"></i>
+          Telefon: <a href="tel:+905078322912" style="color: #4361ee; font-weight: 500;">0507 832 29 12</a>
+        </p>
+        <p>
+          <i class="fas fa-envelope"></i>
+          E-posta: boyaustamistanbul@gmail.com
+        </p>
+        <p>
+          <i class="fas fa-map-marker-alt"></i>
+          Adres: Demirkapı Cd. No:1 İstanbul/Ümraniye
+        </p>
+        <p>
+          <i class="fas fa-clock"></i>
+          Çalışma Saatleri: Pzt-Cmt 00:00-23:59
+        </p>
+        <div class="social-links">
+          <a href="https://www.facebook.com/people/%C4%B0stanbull-Boyac%C4%B1l%C4%B1k/pfbid02jfsoicPA9G4MQuW6GZA55CsYxLETtxgG2mwi2hH3n2zPguLDeE8tGB4G14bsCxMCl/"
+            target="_blank" aria-label="İstanbul Boyacılık Facebook sayfası">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="https://www.instagram.com/istanbulboyacilik/" target="_blank"
+            aria-label="İstanbul Boyacılık Instagram sayfası">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://wa.me/905078322912" target="_blank" rel="noopener noreferrer"
+            aria-label="İstanbul Boyacılık WhatsApp ile iletişime geçin">
+            <i class="fab fa-whatsapp"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="contact-form">
+        <h3>Hızlı Teklif Formu</h3>
+        <form id="quote-form">
+          <div class="form-group">
+            <label for="name">Adınız Soyadınız*</label>
+            <input type="text" id="name" required>
+          </div>
+          <div class="form-group">
+            <label for="phone">Telefon*</label>
+            <input type="tel" id="phone" required>
+          </div>
+          <div class="form-group">
+            <label for="email">E-posta</label>
+            <input type="email" id="email">
+          </div>
+          <div class="form-group">
+            <label for="service">Hizmet Türü*</label>
+            <select id="service" required>
+              <option value="">Seçiniz</option>
+              <option value="ic-cephe">İç Cephe Boyama</option>
+              <option value="dis-cephe">Dış Cephe Boyama</option>
+              <option value="dekoratif">Dekoratif Boyama</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Mesajınız</label>
+            <textarea id="message"></textarea>
+          </div>
+          <button type="submit" class="btn-form">
+            <i class="fas fa-paper-plane"></i> Gönder
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+
+
+  <a href="https://wa.me/905078322912" class="whatsapp-button" target="_blank" rel="noopener noreferrer"
+    aria-label="WhatsApp ile iletişime geç">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>İstanbul Boyacılık Ümraniye</h3>
+        <p>20 yıldır İstanbul Ümraniye'de profesyonel boya hizmetleri sunuyoruz. Kaliteli işçilik, uygun fiyatlar ve
+          müşteri memnuniyeti önceliğimizdir.</p>
+      </div>
+      <div class="footer-section">
+        <h3>Hızlı Erişim</h3>
+        <ul>
+          <li><a href="#anasayfa">Ana Sayfa</a></li>
+          <li><a href="#hizmetler">Hizmetlerimiz</a></li>
+          <li><a href="#fiyatlar">Fiyatlar</a></li>
+          <li><a href="#yorumlar">Yorumlar</a></li>
+          <li><a href="#iletisim">İletişim</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>İletişim</h3>
+        <p><i class="fas fa-phone"></i> 0507 832 29 12</p>
+        <p><i class="fas fa-envelope"></i> boyaustamistanbul@gmail.com</p>
+        <p><i class="fas fa-map-marker-alt"></i> Demirkapı Cd. No:1 İstanbul/Ümraniye</p>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 İstanbul Boyacılık Ümraniye - Tüm Hakları Saklıdır</p>
+      <p><a href="/gizlilik-politikasi">Gizlilik Politikası</a> | <a href="/kullanim-kosullari">Kullanım Koşulları</a>
+      </p>
+    </div>
+  </footer>
+  <script src="main.js"></script>
+
+</body>
+
+</html>

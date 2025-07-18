@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>İstanbul Acıbadem Boya Ustası | Profesyonel Boya Badana Hizmeti</title>  
+  <meta name="description"
+    content="Acıbadem bölgesinde 20 yıllık deneyimle iç ve dış cephe boyama, dekoratif boya ve ofis boyama hizmetleri. İstanbul Acıbadem'de uygun fiyatlı boyacı arayanlara özel çözümler.">
+  <meta name="keywords"
+    content="Acıbadem boyacı, İstanbul boya ustası, ev boyama, iç cephe boya, dış cephe boya, dekoratif boya, profesyonel boyacı, uygun fiyatlı boya badana, güvenilir boyacı Acıbadem">
+  <meta name="author" content="Acıbadem Boyacılık">
+  <meta name="robots" content="index, follow">
+
+  <link rel="icon" href="https://istanbulboyacilik.com/acibadem/images/favicon.ico" type="image/x-icon">
+ 
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "İstanbul Boyacılık Acıbadem",
+    "image": "https://istanbulboyacilik.com/acibadem/images/istanbulboyaustasi.png",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Demirkapı Cd. No:1",
+      "addressLocality": "Acıbadem",
+      "addressRegion": "İstanbul",
+      "postalCode": "34000",
+      "addressCountry": "TR"
+    },
+    "telephone": "+905078322912",
+    "email": "boyaustamistanbul@gmail.com",
+    "url": "https://istanbulboyacilik.com/acibadem/",
+    "priceRange": "₺₺",
+    "openingHours": "Mo-Sa 00:00-23:59",
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "41.0138",
+      "longitude": "29.0438"
+    },
+    "areaServed": {
+      "@type": "Place",
+      "name": "İstanbul Acıbadem"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5",
+      "reviewCount": "9"
+    }
+  }
+  </script>
+
+  <style>
+    :root {
+      --primary: #4361ee;
+      --secondary: #3a0ca3;
+      --accent: #4cc9f0;
+      --light: #f8f9fa;
+      --dark: #2b2d42;
+      --success: #25D366;
+      --warning: #FF9E00;
+      --shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background: var(--light);
+      overflow-x: hidden;
+    }
+
+    header {
+      background-color: rgba(0, 0, 0, 0.92);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(184, 183, 183, 0.1);
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 5%;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo i {
+      color: var(--light);
+    }
+
+    .main-nav {
+      position: fixed;
+      top: 70px;
+      left: 0;
+      right: 0;
+      background: rgba(78, 78, 78, 0.95);
+      flex-direction: column;
+      padding: 1rem;
+      align-items: center;
+      transform: translateY(-150%);
+      transition: transform 0.4s ease;
+      z-index: 999;
+      gap: 0;
+      display: flex;
+    }
+
+    .main-nav.active {
+      transform: translateY(0);
+    }
+
+    .main-nav li {
+      margin: 0.5rem 0;
+      width: 100%;
+      text-align: center;
+    }
+
+    .main-nav li a {
+      display: block;
+      padding: 1rem;
+      border-radius: 0;
+      text-decoration: none;
+      color: #fff;
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    .main-nav li a:hover,
+    .main-nav li a.active {
+      background-color: var(--primary);
+      color: white;
+    }
+
+    .mobile-menu-button {
+      display: block;
+      background: transparent;
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+      z-index: 1001;
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      height: 100vh;
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+        url('images/gallery/istanbul-boya-ustas-IsYeri.WebP') center/cover no-repeat;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #fff;
+      padding: 0 1rem;
+      margin-top: 70px;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      padding: 1rem;
+    }
+
+    .hero h1 {
+      font-size: 2.2rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.3;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      color: #e0e0e0;
+    }
+
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 1rem 1.8rem;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+      box-shadow: 0 4px 15px rgba(67, 97, 238, 0.4);
+    }
+
+    .btn-primary:hover {
+      background: #3251d4;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(67, 97, 238, 0.5);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: white;
+      border: 2px solid white;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-3px);
+    }
+
+    .whatsapp-button {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background: var(--success);
+      color: #fff;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      text-decoration: none;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      z-index: 100;
+      transition: var(--transition);
+    }
+
+    .whatsapp-button:hover {
+      transform: scale(1.1);
+    }
+  </style>
+  <link rel="stylesheet" href="styles.pure.css">
+  <link rel="preload" as="image" href="images/gallery/istanbul-boya-ustas-IsYeri.WebP">
+</head>
+
+<body>
+  <header>
+    <nav>
+      <div class="logo">
+        <i class="fas fa-paint-roller"></i>İstanbul Boyacılık/Acıbadem
+      </div>
+      <ul class="main-nav">
+        <li><a href="#anasayfa" class="active">Ana Sayfa</a></li>
+        <li><a href="#hizmetler">Hizmetler</a></li>
+        <li><a href="#fiyatlar">Fiyatlar</a></li>
+        <li><a href="#yorumlar">Yorumlar</a></li>
+        <li><a href="#iletisim">İletişim</a></li>
+      </ul>
+      <button class="mobile-menu-button" aria-label="Menüyü Aç/Kapat">
+        <i class="fas fa-bars"></i>
+      </button>
+    </nav>
+  </header>
+   <section id="anasayfa" class="hero">
+    <div class="hero-content">
+      <h1>İstanbul Acıbadem Profesyonel Boya Ustası</h1>
+      <p>20 yıllık tecrübemizle iç ve dış cephe boya hizmetleri. Acıbadem'in her bölgesinde profesyonel boyama çözümleri
+        sunuyoruz.</p>
+      <div class="hero-buttons">
+        <a href="tel:+905078322912" class="btn btn-primary">
+          <i class="fas fa-phone"></i> Hemen Ara: 0507 832 29 12
+        </a>
+        <a href="#iletisim" class="btn btn-secondary">
+          <i class="fas fa-envelope"></i> Ücretsiz Teklif Al
+        </a>
+      </div>
+    </div>
+  </section>
+  <section id="hizmetler" class="services">
+    <div class="section-title">
+      <h2>Hizmetlerimiz</h2>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-img">
+          <img src="images/gallery/icCehpe.WebP" alt="Acıbadem iç mekan boyama hizmeti" class="responsive"
+            loading="lazy" width="400" height="300">
+        </div>
+        <div class="service-content">
+          <h3><i class="fas fa-home"></i> İç Mekan Boyama</h3>
+          <p>Evinizin iç mekanları için profesyonel boyama hizmeti. Su bazlı, plastik ve silikonlu boya uygulamaları.
+          </p>
+          <ul class="service-features">
+            <li>Duvar ve tavan boyama</li>
+            <li>Badana işleri</li>
+            <li>Renk danışmanlığı</li>
+            <li>Kalıcı ve sağlıklı çözümler</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-img">
+          <img src="images/gallery/disCehpe.WebP" alt="Acıbadem Dış Cephe Boyama" class="responsive" loading="lazy"
+            width="400" height="300">
+        </div>
+        <div class="service-content">
+          <h3><i class="fas fa-building"></i> Dış Cephe Boyama</h3>
+          <p>Binanızın dış cephesi için uzman boyama çözümleri. Mantolama ve dış cephe sistemleri.</p>
+          <ul class="service-features">
+            <li>Isı yalıtımlı boya</li>
+            <li>Su geçirmez kaplamalar</li>
+            <li>Küf ve mantar önleyici işlemler</li>
+            <li>Uzun ömürlü koruma</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-img">
+          <img src="images/gallery/istanbul-boya-ustas-dekoratif1.WebP" alt="Acıbadem Dekoratif Boyama"
+            class="responsive" loading="lazy" width="400" height="300">
+        </div>
+        <div class="service-content">
+          <h3><i class="fas fa-paint-brush"></i> Dekoratif Boyama</h3>
+          <p>Özel desenler ve dekoratif boya uygulamaları. İtalyan sıva ve efekt uygulamaları.</p>
+          <ul class="service-features">
+            <li>Özel duvar tekstürleri</li>
+            <li>Metalik ve mermer efektleri</li>
+            <li>Fresko ve trompe l'oeil</li>
+            <li>Özel proje tasarımları</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+ 
+  <section id="fiyatlar" class="pricing">
+    <div class="section-title">
+      <h2>Fiyat Tablosu</h2>
+    </div>
+    <div class="pricing-table">
+      <table>
+        <thead>
+          <tr>
+            <th>Hizmet Türü</th>
+            <th>Metrekare Fiyatı</th>
+            <th>Ortalama Süre (100m²)</th>
+            <th>Garanti</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>İç Cephe Boyama</td>
+            <td>100-200 TL</td>
+            <td>2-3 Gün</td>
+            <td>3 Yıl</td>
+          </tr>
+          <tr>
+            <td>Dış Cephe Boyama</td>
+            <td>150-250 TL</td>
+            <td>3-5 Gün</td>
+            <td>5 Yıl</td>
+          </tr>
+          <tr>
+            <td>Dekoratif Boyama</td>
+            <td>250-500 TL</td>
+            <td>4-7 Gün</td>
+            <td>5 Yıl</td>
+          </tr>
+          <tr>
+            <td>Ofis Boyama</td>
+            <td>120-220 TL</td>
+            <td>2-4 Gün</td>
+            <td>3 Yıl</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+  <section class="seo-content">
+    <h1>Acıbadem Boya Ustası ile Profesyonel Çözümler</h1>
+    <p>İstanbul <strong>Acıbadem boyacı ustası</strong> arayışında olanlar için kaliteli, zamanında ve titiz işçilik
+      sunan ekibimizle hizmet veriyoruz. <strong>Acıbadem boya ustası</strong> olarak ev, ofis, daire ve iş yerleri için
+      en uygun boya çözümlerini sunuyoruz. Uygun fiyat ve müşteri memnuniyeti garantisiyle boya ihtiyaçlarınıza
+      profesyonel yaklaşım sergiliyoruz.</p>
+    <p><strong>Acıbadem boya badana</strong> hizmetlerimiz, iç cephe boyama, dış cephe yenileme, dekoratif duvar boyası
+      uygulamaları ve ofis boyama gibi geniş bir yelpazeyi kapsar. Alanında uzman ustalarımız ile işinizi kısa sürede ve
+      temiz bir şekilde tamamlıyoruz. Ayrıca tüm işlerimiz garantilidir ve kullanılan boyalar birinci sınıf markalardan
+      seçilmektedir.</p>
+    <p>Google'da <strong>"Acıbadem'de en iyi boyacı"</strong> olarak öne çıkmamızın nedeni, şeffaf fiyat politikamız,
+      ücretsiz keşif hizmetimiz ve hızlı randevu sistemimizdir. Eğer siz de kaliteli ve uygun fiyatlı bir
+      <strong>Acıbadem boyacı ustası</strong> arıyorsanız, bizimle hemen iletişime geçin ve profesyonel farkı yaşayın.
+    </p>
+
+    <h2>Acıbadem'de Boya Hizmeti Almak İçin 5 Neden</h2>
+    <p>1. <strong>Uzman Ekip</strong>: Yılların deneyimine sahip boyacı ustalarımız, işlerini titizlikle yapmaktadır.
+    </p>
+    <p>2. <strong>Kaliteli Malzeme</strong>: Sadece birinci sınıf boyalar ve malzemeler kullanıyoruz.</p>
+    <p>3. <strong>Hızlı Hizmet</strong>: Randevulara sadık kalarak işlerinizi zamanında teslim ediyoruz.</p>
+    <p>4. <strong>Uygun Fiyat</strong>: Acıbadem bölgesinde en uygun fiyatları sunuyoruz.</p>
+    <p>5. <strong>Garantili İşçilik</strong>: Tüm işlerimiz uzun süreli garanti kapsamındadır.</p>
+
+    <h2>Acıbadem'de Hangi Boya Hizmetlerini Sunuyoruz?</h2>
+    <p>İstanbul Acıbadem'de boya ustası olarak verdiğimiz hizmetler şunlardır:</p>
+    <ul>
+      <li><strong>İç Cephe Boyama</strong>: Evinizdeki tüm iç mekanların boyanması</li>
+      <li><strong>Dış Cephe Boyama</strong>: Bina dış cephelerinin yenilenmesi ve boyanması</li>
+      <li><strong>Dekoratif Boya Uygulamaları</strong>: Özel tekniklerle duvarlara desen ve doku uygulamaları</li>
+      <li><strong>Ofis ve İş Yeri Boyama</strong>: İş yerlerinizin modern ve temiz bir görünüme kavuşması</li>
+      <li><strong>Badana ve Tamirat İşleri</strong>: Boya öncesi hazırlık ve tamirat hizmetleri</li>
+    </ul>
+
+    <h2>Acıbadem Boyacı Ustası Fiyatları</h2>
+    <p>Acıbadem bölgesinde boya ustası fiyatları, yapılacak işin kapsamına göre değişmektedir. Ancak biz her zaman uygun
+      fiyat politikası ile müşterilerimize en iyi hizmeti sunmayı hedefliyoruz. Ücretsiz keşif hizmetimiz sayesinde,
+      evinize veya iş yerinize gelerek detaylı bir değerlendirme yapıyor ve net bir fiyat teklifi sunuyoruz.</p>
+    <p>Fiyatlandırmada etkili olan faktörler:</p>
+    <ul>
+      <li>Yapılacak işin türü (iç cephe, dış cephe, dekoratif vb.)</li>
+      <li>Boya yapılacak alanın metrekaresi</li>
+      <li>Kullanılacak boya ve malzemenin kalitesi</li>
+      <li>İşin aciliyeti ve zamanlaması</li>
+    </ul>
+    <p>Acıbadem boya badana fiyatları hakkında net bilgi almak için lütfen iletişime geçin.</p>
+
+    <h2>Acıbadem'de Boyacı Ustası Ararken Dikkat Edilmesi Gerekenler</h2>
+    <p>Boyacı ustası seçerken dikkat etmeniz gereken bazı önemli noktalar vardır:</p>
+    <p><strong>Referanslar</strong>: Daha önce yapılmış işleri inceleyin ve müşteri yorumlarını okuyun.</p>
+    <p><strong>Kaliteli Malzeme Kullanımı</strong>: Kullanılan boya ve malzemelerin kalitesi işin ömrünü doğrudan
+      etkiler.</p>
+    <p><strong>Garanti</strong>: Yapılan işin garanti kapsamında olması önemlidir.</p>
+    <p><strong>Temiz İşçilik</strong>: Boya işlemi sonrası temizlik de hizmetin bir parçası olmalıdır.</p>
+    <p>Biz Acıbadem boya ustası ekibi olarak tüm bu kriterleri en iyi şekilde yerine getiriyoruz.</p>
+  </section>
+
+  <section id="yorumlar" class="testimonials">
+    <div class="section-title">
+      <h2>Acıbadem Boyacı Yorumları – Gerçek Müşteri Deneyimleri</h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="rating">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+            class="fas fa-star"></i>
+        </div>
+        <p class="testimonial-content">"İstanbul Acıbadem'de evimi boyatmak için <strong>İstanbul Boyacılık</strong>
+          ekibiyle çalıştım. <strong>İç cephe boyama</strong> hizmeti gerçekten profesyoneldi. Zamanında teslim ve
+          tertemiz işçilik için teşekkür ederim. <strong>Acıbadem boya ustası</strong> arayanlara kesinlikle tavsiye
+          ederim."</p>
+        <div class="client-info">
+          <div class="client-avatar">A</div>
+          <div class="client-details">
+            <h4>Ahmet Yılmaz</h4>
+            <p>Ataşehir / İstanbul</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="rating">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+            class="fas fa-star"></i>
+        </div>
+        <p class="testimonial-content">"Enes Bey sayesinde <strong>İstanbul’da boya badana</strong> işlerimiz Baran Bey
+          ve Barış Bey'in eliyle tam istediğimiz gibi oldu. Hem hızlı hem uygun fiyatlı çalışıyorlar.
+          <strong>Acıbadem'de kaliteli boyacı</strong> arayanlar için çok iyi bir adres."</p>
+        <div class="client-info">
+          <div class="client-avatar">E</div>
+          <div class="client-details">
+            <h4>Esma Aldoğan</h4>
+            <p>Şişli / İstanbul</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="rating">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+            class="fas fa-star"></i>
+        </div>
+        <p class="testimonial-content">"<strong>Acıbadem dış cephe boyama ve Bina Boyama</strong> konusunda titiz bir
+          işçilik sergilediler. Evimizin dış cephesi yepyeni oldu. Kullanılan malzemeler kaliteli, ustalar işinin ehli.
+          <strong>Garantili boyacı hizmeti</strong> istiyorsanız kesinlikle öneririm."</p>
+        <div class="client-info">
+          <div class="client-avatar">S</div>
+          <div class="client-details">
+            <h4>Soner DOĞAN</h4>
+            <p>Beşiktaş / İstanbul</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "Review",
+          "author": {
+            "@type": "Person",
+            "name": "Ahmet Yılmaz"
+          },
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5",
+            "bestRating": "5"
+          },
+          "reviewBody": "İstanbul Acıbadem'de evimi boyatmak için İstanbul Boyacılık ekibiyle çalıştım.İç cephe boyama hizmeti gerçekten profesyoneldi. Zamanında teslim ve tertemiz işçilik için teşekkür ederim. Acıbadem boya ustası arayanlara kesinlikle tavsiye ederim.",
+          "itemReviewed": {
+            "@type": "LocalBusiness",
+            "name": "İstanbul Boyacılık"
+          }
+        }
+        </script>
+
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "Review",
+          "author": {
+            "@type": "Person",
+            "name": "Esma Aldoğan"
+          },
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5",
+            "bestRating": "5"
+          },
+          "reviewBody": "Acıbadem boya badana işlerimiz tam istediğimiz gibi oldu. Uygun fiyatlı ve kaliteli boyacı hizmeti verdiler.",
+          "itemReviewed": {
+            "@type": "LocalBusiness",
+            "name": "İstanbul Acıbadem Boyacılık"
+          }
+        }
+        </script>
+
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "Review",
+          "author": {
+            "@type": "Person",
+            "name": "Soner DOĞAN"
+          },
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5",
+            "bestRating": "5"
+          },
+          "reviewBody": "Acıbadem dış cephe boyama konusunda oldukça memnun kaldık. Kaliteli malzeme ve garantili boyacı hizmeti aldık.",
+          "itemReviewed": {
+            "@type": "LocalBusiness",
+            "name": "Acıbadem Boyacılık"
+          }
+        }
+        </script>
+  </section>
+  
+
+  <section id="iletisim" class="contact">
+    <div class="section-title">
+      <h2>İletişim</h2>
+    </div>
+    <div class="contact-container">
+      <div class="contact-info">
+        <h3>İletişim Bilgileri</h3>
+        <p>
+          <i class="fas fa-phone"></i>
+          Telefon: <a href="tel:+905078322912" style="color: #4361ee; font-weight: 500;">0507 832 29 12</a>
+        </p>
+        <p>
+          <i class="fas fa-envelope"></i>
+          E-posta: boyaustamistanbul@gmail.com
+        </p>
+        <p>
+          <i class="fas fa-map-marker-alt"></i>
+          Adres: Demirkapı Cd. No:1 İstanbul/Acıbadem
+        </p>
+        <p>
+          <i class="fas fa-clock"></i>
+          Çalışma Saatleri: Pzt-Cmt 00:00-23:59
+        </p>
+       <div class="social-links">
+                    <a href="https://www.facebook.com/people/%C4%B0stanbull-Boyac%C4%B1l%C4%B1k/pfbid02jfsoicPA9G4MQuW6GZA55CsYxLETtxgG2mwi2hH3n2zPguLDeE8tGB4G14bsCxMCl/"
+                        target="_blank" aria-label="İstanbul Boyacılık Facebook sayfası">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://www.instagram.com/istanbulboyacilik/" target="_blank"
+                        aria-label="İstanbul Boyacılık Instagram sayfası">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://wa.me/905078322912" target="_blank" rel="noopener noreferrer"
+                        aria-label="İstanbul Boyacılık WhatsApp ile iletişime geçin">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                </div>
+      </div>
+
+      <div class="contact-form">
+        <h3>Hızlı Teklif Formu</h3>
+        <form id="quote-form">
+          <div class="form-group">
+            <label for="name">Adınız Soyadınız*</label>
+            <input type="text" id="name" required>
+          </div>
+          <div class="form-group">
+            <label for="phone">Telefon*</label>
+            <input type="tel" id="phone" required>
+          </div>
+          <div class="form-group">
+            <label for="email">E-posta</label>
+            <input type="email" id="email">
+          </div>
+          <div class="form-group">
+            <label for="service">Hizmet Türü*</label>
+            <select id="service" required>
+              <option value="">Seçiniz</option>
+              <option value="ic-cephe">İç Cephe Boyama</option>
+              <option value="dis-cephe">Dış Cephe Boyama</option>
+              <option value="dekoratif">Dekoratif Boyama</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Mesajınız</label>
+            <textarea id="message"></textarea>
+          </div>
+          <button type="submit" class="btn-form">
+            <i class="fas fa-paper-plane"></i> Gönder
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+  <a href="https://wa.me/905078322912" class="whatsapp-button" target="_blank" rel="noopener noreferrer"
+    aria-label="WhatsApp ile iletişime geç">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Acıbadem Boyacılık</h3>
+        <p>20 yıldır İstanbul Acıbadem'da profesyonel boya hizmetleri sunuyoruz. Kaliteli işçilik, uygun fiyatlar ve
+          müşteri memnuniyeti önceliğimizdir.</p>
+      </div>
+      <div class="footer-section">
+        <h3>Hızlı Erişim</h3>
+        <ul>
+          <li><a href="#anasayfa">Ana Sayfa</a></li>
+          <li><a href="#hizmetler">Hizmetlerimiz</a></li>
+          <li><a href="#fiyatlar">Fiyatlar</a></li>
+          <li><a href="#yorumlar">Yorumlar</a></li>
+          <li><a href="#iletisim">İletişim</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>İletişim</h3>
+        <p><i class="fas fa-phone"></i> 0507 832 29 12</p>
+        <p><i class="fas fa-envelope"></i> boyaustamistanbul@gmail.com</p>
+        <p><i class="fas fa-map-marker-alt"></i> Demirkapı Cd. No:1 İstanbul/Acıbadem</p>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Acıbadem Boyacılık - Tüm Hakları Saklıdır</p>
+      <p>
+ <a href="https://istanbulboyacilik.com/gizlilik-politikasi.html">Gizlilik Politikası</a> |
+        <a href="https://istanbulboyacilik.com/kullanim-kosullari.html">Kullanım Koşulları</a>      </p>
+    </div>
+  </footer>
+  <script src="main.js"></script>
+
+</body>
+
+</html>

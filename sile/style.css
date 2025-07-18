@@ -1,0 +1,624 @@
+section {
+      padding: 4rem 1.5rem;
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    
+    .section-title h2 {
+      font-size: 2.2rem;
+      color: var(--dark);
+      position: relative;
+      display: inline-block;
+      padding-bottom: 1rem;
+    }
+    
+    .section-title h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+    
+    /* Services Section */
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .service-card {
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+    
+    .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+    }
+    
+    .service-img {
+      height: 220px;
+      overflow: hidden;
+    }
+    
+    .service-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .service-card:hover .service-img img {
+      transform: scale(1.05);
+    }
+    
+    .service-content {
+      padding: 1.5rem;
+    }
+    
+    .service-content h3 {
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .service-content h3 i {
+      color: var(--accent);
+    }
+    
+    .service-content p {
+      margin-bottom: 1.2rem;
+      color: #555;
+      font-size: 1rem;
+    }
+    
+    .service-features {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .service-features li {
+      padding: 0.5rem 0;
+      position: relative;
+      padding-left: 1.8rem;
+      font-size: 0.95rem;
+    }
+    
+    .service-features li::before {
+      content: '\f00c';
+      font-family: 'Font Awesome 5 Free';
+      font-weight: 900;
+      position: absolute;
+      left: 0;
+      top: 0.6rem;
+      color: var(--accent);
+      font-size: 0.9rem;
+    }
+    
+    /* Pricing Section */
+    .pricing {
+      background: #f8f9fa;
+    }
+    
+    .pricing-table {
+      width: 100%;
+      overflow-x: auto;
+      margin: 0 auto;
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+      max-width: 1000px;
+    }
+    
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      min-width: 600px;
+    }
+    
+    th, td {
+      padding: 1rem;
+      text-align: left;
+      border-bottom: 1px solid #eee;
+      font-size: 0.95rem;
+    }
+    
+    th {
+      background-color: var(--primary);
+      color: #fff;
+      font-weight: 600;
+    }
+    
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+    
+    tr:hover {
+      background-color: #f1f1f1;
+    }
+    
+    /* SEO Content Section */
+    .seo-content {
+      background: white;
+      padding: 3rem 1.5rem;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      max-width: 1200px;
+      margin: 0 auto 3rem;
+    }
+    
+    .seo-content h1 {
+      font-size: 2.2rem;
+      color: var(--dark);
+      margin-bottom: 1.5rem;
+      line-height: 1.3;
+    }
+    
+    .seo-content h2 {
+      font-size: 1.8rem;
+      color: var(--primary);
+      margin: 2rem 0 1rem;
+    }
+    
+    .seo-content p {
+      margin-bottom: 1.2rem;
+      line-height: 1.8;
+      font-size: 1.05rem;
+    }
+    
+    .seo-content strong {
+      color: var(--primary);
+    }
+    
+    .seo-content ul {
+      margin: 1rem 0 1rem 2rem;
+    }
+    
+    .seo-content li {
+      margin-bottom: 0.8rem;
+      line-height: 1.6;
+    }
+    
+    /* Testimonials Section */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.8rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .testimonial-card {
+      background: white;
+      padding: 1.8rem;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      position: relative;
+    }
+    
+    .testimonial-card::before {
+      content: '\f10d';
+      font-family: 'Font Awesome 5 Free';
+      font-weight: 900;
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      font-size: 1.8rem;
+      color: rgba(67, 97, 238, 0.1);
+    }
+    
+    .rating {
+      color: gold;
+      margin-bottom: 1rem;
+      font-size: 1rem;
+    }
+    
+    .testimonial-content {
+      font-style: italic;
+      margin-bottom: 1.5rem;
+      color: #555;
+      line-height: 1.7;
+      font-size: 0.95rem;
+    }
+    
+    .client-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    
+    .client-avatar {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      background: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+    
+    .client-details h4 {
+      font-weight: 600;
+      margin-bottom: 0.2rem;
+      font-size: 1.05rem;
+    }
+    
+    .client-details p {
+      color: #777;
+      font-size: 0.85rem;
+    }
+    
+    /* Contact Section */
+    .contact-container {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .contact-info {
+      background: white;
+      padding: 1.8rem;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+    }
+    
+    .contact-info h3 {
+      font-size: 1.6rem;
+      color: var(--primary);
+      margin-bottom: 1.8rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 2px solid var(--accent);
+    }
+    
+    .contact-info p {
+      margin: 1.2rem 0;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.8rem;
+    }
+    
+    .social-links a {
+      width: 45px;
+      height: 45px;
+      background: var(--light);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      color: var(--dark);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+    
+    .social-links a:hover {
+      background: var(--primary);
+      color: white;
+      transform: translateY(-3px);
+    }
+    
+    .contact-form {
+      background: white;
+      padding: 1.8rem;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+    }
+    
+    .contact-form h3 {
+      font-size: 1.6rem;
+      color: var(--primary);
+      margin-bottom: 1.8rem;
+    }
+    
+    .form-group {
+      margin-bottom: 1.3rem;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      color: #555;
+      font-size: 0.95rem;
+    }
+    
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-family: 'Roboto', sans-serif;
+      transition: var(--transition);
+    }
+    
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(76, 201, 240, 0.2);
+    }
+    
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+    
+    .btn-form {
+      width: 100%;
+      padding: 1rem;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .btn-form:hover {
+      background: #3251d4;
+      transform: translateY(-2px);
+    }
+    
+    footer {
+      background: var(--dark);
+      color: #fff;
+      padding: 3rem 1.5rem 1.5rem;
+    }
+    
+    .footer-content {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .footer-section h3 {
+      font-size: 1.4rem;
+      margin-bottom: 1.3rem;
+      color: var(--accent);
+    }
+    
+    .footer-section li, 
+    .footer-section p {
+      margin-bottom: 0.7rem;
+      opacity: 0.85;
+      font-size: 0.95rem;
+    }
+    
+    .footer-section ul {
+      list-style: none;
+    }
+    
+    .footer-section a {
+      color: #fff;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+    
+    .footer-section a:hover {
+      color: var(--accent);
+    }
+    
+    .copyright {
+      text-align: center;
+      padding-top: 2.5rem;
+      margin-top: 2.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.9rem;
+      opacity: 0.7;
+    }
+    
+    .copyright p {
+      margin-bottom: 0.5rem;
+    }
+    
+    /* Media Queries for Larger Screens */
+    @media (min-width: 576px) {
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      
+      .hero p {
+        font-size: 1.2rem;
+      }
+      
+      .services-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      }
+      
+      .testimonials-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      }
+      
+      .seo-content h1 {
+        font-size: 2.5rem;
+      }
+    }
+    
+    @media (min-width: 768px) {
+      .mobile-menu-button {
+        display: none;
+      }
+      
+      .main-nav {
+        position: static;
+        flex-direction: row;
+        background: transparent;
+        transform: none;
+        display: flex;
+        padding: 0;
+        width: auto;
+      }
+      
+      .main-nav li {
+        width: auto;
+        margin: 0;
+      }
+      
+      .main-nav li a {
+        padding: 0.5rem 1rem;
+        border-radius: 30px;
+      }
+      
+      .hero {
+        margin-top: 0;
+      }
+      
+      .hero h1 {
+        font-size: 3rem;
+      }
+      
+      .section-title h2 {
+        font-size: 2.5rem;
+      }
+      
+      .contact-container {
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      }
+      
+      .footer-content {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      }
+    }
+    
+    @media (min-width: 992px) {
+      .hero h1 {
+        font-size: 3.5rem;
+      }
+      
+      .hero p {
+        font-size: 1.3rem;
+      }
+      
+      .section-title h2 {
+        font-size: 2.8rem;
+      }
+      
+      .service-content h3 {
+        font-size: 1.5rem;
+      }
+      
+      .seo-content {
+        padding: 4rem;
+      }
+    }
+    /* Districts Section */
+.districts {
+  background: #f8f9fa;
+  padding: 4rem 1.5rem;
+}
+
+.district-group {
+  background: white;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.district-group h3 {
+  font-size: 1.6rem;
+  color: var(--primary);
+  margin-bottom: 1.5rem;
+  text-align: center;
+  padding-bottom: 0.8rem;
+  border-bottom: 2px solid var(--accent);
+  position: relative;
+}
+
+.district-group h3::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background: var(--accent);
+  border-radius: 2px;
+}
+
+.district-group ul {
+  columns: 2;
+  column-gap: 2rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.district-group li {
+  padding: 0.7rem 0;
+  position: relative;
+  padding-left: 1.8rem;
+  font-size: 1.05rem;
+  break-inside: avoid;
+}
+
+.district-group li::before {
+  content: '\f3c5'; /* Font Awesome map marker icon */
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  position: absolute;
+  left: 0;
+  top: 0.7rem;
+  color: var(--accent);
+  font-size: 1rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .district-group ul {
+    columns: 1;
+  }
+
+  .district-group li {
+    padding: 0.6rem 0;
+    font-size: 1rem;
+    padding-left: 2rem; /* ← Çakışmayı önlemek için artırıldı */
+  }
+
+  .district-group li::before {
+    top: 0.55rem;        /* ← İkonun metinle hizalanması sağlandı */
+    font-size: 0.9rem;   /* ← Küçük ekran için ikon biraz küçültüldü */
+  }
+}
