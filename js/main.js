@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
+
     const select = (selector) => document.querySelector(selector);
     const selectAll = (selector) => document.querySelectorAll(selector);
-   
+
     const mobileMenuButton = select('.mobile-menu-button');
     const mainNav = select('.main-nav');
     if (mobileMenuButton && mainNav) {
@@ -12,36 +12,27 @@ document.addEventListener('DOMContentLoaded', () => {
             document.body.classList.toggle('no-scroll');
         });
     }
-
-  
     const slides = selectAll('.slide');
     if (slides.length > 0) {
         let currentSlide = 0;
         let slideInterval;
-
         const showSlide = (n) => {
             slides.forEach((slide, index) => {
                 slide.classList.toggle('active', index === n);
             });
         };
-
         const nextSlide = () => {
             currentSlide = (currentSlide + 1) % slides.length;
             showSlide(currentSlide);
         };
-
         const startSlider = () => {
-            clearInterval(slideInterval); 
+            clearInterval(slideInterval);
             slideInterval = setInterval(nextSlide, 5000);
         };
-        
-       
-        showSlide(0); 
+        showSlide(0);
         startSlider();
     }
-
-   
-    const calculateBtn = select('#calculate-btn');
+        const calculateBtn = select('#calculate-btn');
     if (calculateBtn) {
         calculateBtn.addEventListener('click', () => {
             const area = parseFloat(select('#area').value);
@@ -68,28 +59,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 alert('Lütfen zorunlu alanları doldurun (Adınız Soyadınız ve Telefon)');
                 return;
             }
-            
+
             alert('Teklif talebiniz alınmıştır! En kısa sürede sizinle iletişime geçeceğiz.');
             quoteForm.reset();
         });
     }
-
-    
     document.body.addEventListener('click', (e) => {
         const anchor = e.target.closest('a[href^="#"]');
         if (!anchor || anchor.getAttribute('href') === '#') return;
-        
+
         e.preventDefault();
         const targetElement = select(anchor.getAttribute('href'));
-        
-        if(targetElement) {
-            const offsetTop = targetElement.offsetTop - 70; 
+        if (targetElement) {
+            const offsetTop = targetElement.offsetTop - 70;
             window.scrollTo({
                 top: offsetTop,
                 behavior: 'smooth'
             });
-
-           
             if (mainNav && mainNav.classList.contains('active')) {
                 mainNav.classList.remove('active');
                 mobileMenuButton.classList.remove('active');
@@ -97,13 +83,11 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     });
-
-   
     const testimonialContainer = select('.testimonial-container');
     if (testimonialContainer) {
         const items = selectAll('.testimonial');
         const totalItems = items.length;
-        if (totalItems === 0) return; 
+        if (totalItems === 0) return;
 
         const indicatorsContainer = select('#slider-indicators');
         let currentIndex = 0;
@@ -116,7 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
             indicatorsContainer.appendChild(indicator);
         }
         const indicators = selectAll('.indicator');
-        
+
         const updateSlider = (index) => {
             testimonialContainer.style.transform = `translateX(-${index * 100}%)`;
             indicators.forEach((ind, i) => ind.classList.toggle('active', i === index));
@@ -131,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
         select('#prev-testimonial')?.addEventListener('click', () => updateSlider((currentIndex - 1 + totalItems) % totalItems));
         select('#next-testimonial')?.addEventListener('click', () => updateSlider((currentIndex + 1) % totalItems));
         indicatorsContainer?.addEventListener('click', (e) => {
-            if(e.target.matches('.indicator')) updateSlider(parseInt(e.target.dataset.index));
+            if (e.target.matches('.indicator')) updateSlider(parseInt(e.target.dataset.index));
         });
 
         const sliderElement = select('.testimonial-slider');
@@ -141,51 +125,48 @@ document.addEventListener('DOMContentLoaded', () => {
         updateSlider(0);
         resetAutoSlide();
     }
-    
-   
-    const faqContainer = select('.faq-container');
-    if (faqContainer) {
-        const faqItemsContainer = faqContainer.querySelector('.faq-items-container');
-        const searchInput = faqContainer.querySelector('#faq-search');
-        
-        if (faqItemsContainer) {
-            faqItemsContainer.addEventListener('click', (e) => {
-                const question = e.target.closest('.faq-question');
-                if (!question) return;
 
-                const clickedItem = question.parentElement;
-                const activeItem = faqItemsContainer.querySelector('.faq-item.active');
-                
-                if (activeItem && activeItem !== clickedItem) {
-                    activeItem.classList.remove('active');
+    const faqItems = document.querySelectorAll('.faq-item');
+    const searchInput = document.getElementById('faq-search');
+
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        question.addEventListener('click', () => {
+            faqItems.forEach(otherItem => {
+                if (otherItem !== item) otherItem.classList.remove('active');
+            });
+            item.classList.toggle('active');
+        });
+    });
+    if (searchInput) {
+        searchInput.addEventListener('input', function () {
+            const searchTerm = this.value.toLowerCase().trim();
+
+            faqItems.forEach(item => {
+                const questionText = item.querySelector('.faq-question').textContent.toLowerCase();
+                const answerText = item.querySelector('.faq-answer').textContent.toLowerCase();
+
+                const matches = questionText.includes(searchTerm) || answerText.includes(searchTerm);
+                item.style.display = matches ? 'block' : 'none';
+
+                if (matches && searchTerm && answerText.includes(searchTerm) && !item.classList.contains('active')) {
+                    item.classList.add('active');
                 }
-                clickedItem.classList.toggle('active');
             });
-        }
-        
-        if (searchInput) {
-            searchInput.addEventListener('input', function() {
-                const searchTerm = this.value.toLowerCase().trim();
-                const allFaqItems = faqContainer.querySelectorAll('.faq-item');
-                
-                allFaqItems.forEach(item => {
-                    const content = item.textContent.toLowerCase();
-                    item.style.display = content.includes(searchTerm) ? '' : 'none';
+            if (!searchTerm) {
+                faqItems.forEach(item => {
+                    item.classList.remove('active');
+                    item.style.display = 'block';
                 });
-            });
-        }
+            }
+        });
     }
-    
-   
     const readMoreBtn = select('#read-more-btn');
     const moreContent = select('#more-content');
     if (readMoreBtn && moreContent) {
-        readMoreBtn.addEventListener('click', function() {
-            
+        readMoreBtn.addEventListener('click', function () {
             const isVisible = moreContent.style.display === 'block';
             moreContent.style.display = isVisible ? 'none' : 'block';
-
-           
             this.innerHTML = isVisible
                 ? 'Daha Fazla Bilgi <i class="fas fa-chevron-down"></i>'
                 : 'Daha Az Göster <i class="fas fa-chevron-up"></i>';
