@@ -49,21 +49,53 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     const quoteForm = select('#quote-form');
-    if (quoteForm) {
-        quoteForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const name = select('#name').value.trim();
-            const phone = select('#phone').value.trim();
+if (quoteForm) {
+    quoteForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = select('#name').value.trim();
+        const phone = select('#phone').value.trim();
+        const district = select('#district') ? select('#district').value.trim() : '';
+        const service = select('#service') ? select('#service').value.trim() : '';
+        const email = select('#email') ? select('#email').value.trim() : '';
+        const message = select('#message') ? select('#message').value.trim() : '';
 
-            if (!name || !phone) {
-                alert('Lütfen zorunlu alanları doldurun (Adınız Soyadınız ve Telefon)');
+        // RECATCHA doğrulama (örnek, reCAPTCHA v2 ile)
+        if (typeof grecaptcha !== "undefined") {
+            let recaptchaResponse = grecaptcha.getResponse();
+            if (!recaptchaResponse) {
+                alert('Lütfen doğrulama testi (reCAPTCHA) çözün.');
                 return;
             }
+        }
 
-            alert('Teklif talebiniz alınmıştır! En kısa sürede sizinle iletişime geçeceğiz.');
-            quoteForm.reset();
-        });
-    }
+        if (!name || !phone || !district || !service) {
+            alert('Lütfen zorunlu alanları doldurun (Adınız Soyadınız, Telefon, İlçe/Semt ve Hizmet Türü)');
+            return;
+        }
+
+        // WhatsApp mesajı oluştur
+        let waMessage =
+            `Yeni Teklif Talebi:%0A` +
+            `Ad Soyad: ${name}%0A` +
+            `Telefon: ${phone}%0A` +
+            (email ? `E-posta: ${email}%0A` : "") +
+            `İlçe/Semt: ${district}%0A` +
+            `Hizmet Türü: ${service}%0A` +
+            (message ? `Mesaj: ${message}%0A` : "");
+
+        // WhatsApp numarası başında 90 olmadan girme!
+        let whatsappNo = '905078322912';
+        let waURL = `https://wa.me/${whatsappNo}?text=${waMessage}`;
+
+        // WhatsApp’a yönlendir
+        window.open(waURL, '_blank');
+
+        // İsteğe bağlı: Formu resetle
+        quoteForm.reset();
+    });
+}
+
+
     document.body.addEventListener('click', (e) => {
         const anchor = e.target.closest('a[href^="#"]');
         if (!anchor || anchor.getAttribute('href') === '#') return;
