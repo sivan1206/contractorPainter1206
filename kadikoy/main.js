@@ -73,5 +73,64 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    const quoteForm = document.getElementById('quote-form');
+    if (quoteForm) {
+        quoteForm.addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const nameInput = document.getElementById('quote-name');
+            const districtInput = document.getElementById('quote-district');
+            const serviceSelect = document.getElementById('quote-service');
+            const timingSelect = document.getElementById('quote-timing');
+            const messageInput = document.getElementById('quote-message');
+
+            const name = nameInput ? nameInput.value.trim() : '';
+            const district = districtInput ? districtInput.value.trim() : '';
+            const service = serviceSelect ? serviceSelect.value : '';
+            const timing = timingSelect ? timingSelect.value : '';
+            const customMessage = messageInput ? messageInput.value.trim() : '';
+
+            if (!name || !district) {
+                alert('Lütfen adınızı ve Kadıköy\'deki bölgenizi belirtin.');
+                return;
+            }
+
+            const serviceLabels = {
+                'ic-cephe': 'İç cephe boyama',
+                'dis-cephe': 'Dış cephe boyama',
+                'dekoratif': 'Dekoratif uygulama',
+                'isyeri': 'Ofis / iş yeri boyama',
+                'tamirat': 'Tamirat ve alçı işlemleri'
+            };
+
+            const timingLabels = {
+                'hemen': 'en kısa sürede',
+                'hafta-sonu': 'hafta sonu',
+                'bu-hafta': 'bu hafta içinde',
+                'bu-ay': 'bu ay içinde'
+            };
+
+            const messageParts = [
+                `Merhaba, ben ${name}.`,
+                `Kadıköy ${district}'te boya badana hizmeti için bilgi almak istiyorum.`
+            ];
+
+            if (service && serviceLabels[service]) {
+                messageParts.push(`Hizmet türü: ${serviceLabels[service]}.`);
+            }
+
+            if (timing && timingLabels[timing]) {
+                messageParts.push(`Planlanan zaman: ${timingLabels[timing]}.`);
+            }
+
+            if (customMessage) {
+                messageParts.push(`Not: ${customMessage}`);
+            }
+
+            const whatsappUrl = `https://wa.me/905078322912?text=${encodeURIComponent(messageParts.join('\n'))}`;
+            window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+        });
+    }
+
 });
 
