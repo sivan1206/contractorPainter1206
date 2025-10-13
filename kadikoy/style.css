@@ -67,6 +67,9 @@ section {
     
     .service-content {
       padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
     }
     
     .service-content h3 {
@@ -91,6 +94,7 @@ section {
     .service-features {
       list-style: none;
       padding: 0;
+      margin-top: auto;
     }
     
     .service-features li {
@@ -198,10 +202,11 @@ section {
     /* Testimonials Section */
     .testimonials-grid {
       display: grid;
-      grid-template-columns: 1fr;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 1.8rem;
       max-width: 1200px;
       margin: 0 auto;
+      align-items: stretch;
     }
     
     .testimonial-card {
@@ -210,6 +215,9 @@ section {
       border-radius: 12px;
       box-shadow: var(--shadow);
       position: relative;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
     }
     
     .testimonial-card::before {
@@ -241,6 +249,7 @@ section {
       display: flex;
       align-items: center;
       gap: 12px;
+      margin-top: auto;
     }
     
     .client-avatar {
@@ -270,10 +279,11 @@ section {
     /* Contact Section */
     .contact-container {
       display: grid;
-      grid-template-columns: 1fr;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 2.5rem;
       max-width: 1200px;
       margin: 0 auto;
+      align-items: stretch;
     }
     
     .contact-info {
