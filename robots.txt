@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://istanbulboyacilik.com/sitemap.xml
