@@ -171,7 +171,603 @@
     ]
   }
   </script>
-  <style>:root{--primary:#007FFF;--primary-dark:#4361ee;--secondary:#2c3e50;--secondary-dark:#1a2530;--accent:#25d366;--light:#f9f9f9;--light-gray:#e9ecef;--medium-gray:#6c757d;--dark-gray:#444;--white:#fff;--black:#000;--overlay:rgba(0, 0, 0, 0.7);--pricing-gradient:linear-gradient(135deg, #f5f7fa 0%, #e4e8f5 100%);--testimonials-gradient:linear-gradient(135deg, var(--secondary) 0%, var(--secondary-dark) 100%);--button-gradient:linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);--highlight-gradient:linear-gradient(135deg, #fff6f6 0%, #ffecec 100%);--text-dark:#333;--text-light:#fff;--text-gray:#555;--border-radius:10px;--box-shadow:0 10px 30px rgba(0, 0, 0, 0.1);--transition:all 0.3s ease}*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Poppins',sans-serif;line-height:1.6;color:var(--text-dark);background-color:var(--white);overflow-x:hidden}header{position:absolute;top:0;left:0;width:100%;z-index:1000;background:#fff0;transition:background 0.3s ease}header.scrolled{background-color:rgb(0 0 0 / .3);box-shadow:0 2px 5px rgb(0 0 0 / .1);position:fixed}.container{width:90%;max-width:1200px;margin:0 auto}nav{display:flex;justify-content:space-between;align-items:center;padding:20px 0}.logo{display:flex;align-items:center;font-size:1.8rem;font-weight:700;color:var(--white)}.logo i{margin-right:10px}.main-nav{display:flex;list-style:none}.main-nav li{margin-left:25px}.main-nav a{text-decoration:none;color:var(--white);font-weight:500;transition:color 0.3s ease;padding:5px 0;position:relative}.main-nav a:after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background-color:var(--primary);transition:width 0.3s ease}.main-nav a:hover:after,.main-nav a.active:after{width:100%}.mobile-menu-button{display:none;background:none;border:none;font-size:1.8rem;cursor:pointer;color:var(--white)}.hero{position:relative;height:100vh;display:flex;align-items:center;text-align:center;color:var(--white);overflow:hidden}.skip-link{position:absolute;left:10px;top:-80px;background:var(--primary);color:var(--white);padding:10px 16px;border-radius:8px;box-shadow:0 6px 18px rgb(0 0 0 / .2);transition:top .2s ease,opacity .2s ease;opacity:0;font-weight:600;z-index:1001}.skip-link:focus{top:10px;opacity:1}.hero::before{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(var(--overlay),var(--overlay)),url(images/kadikoy-boyaci.WebP) no-repeat center center/cover}.hero-content{position:relative;max-width:800px;margin:0 auto;padding:0 20px;z-index:2}.hero h1{font-size:3.5rem;margin-bottom:20px;line-height:1.2;letter-spacing:1px}.hero p{font-size:1.2rem;margin-bottom:30px;max-width:600px;margin-left:auto;margin-right:auto}.hero-buttons{display:flex;justify-content:center;gap:20px;flex-wrap:wrap}.btn{display:inline-flex;align-items:center;justify-content:center;text-align:center;background:var(--white);color:var(--primary);padding:14px 35px;border-radius:50px;text-decoration:none;font-weight:600;transition:var(--transition);box-shadow:0 4px 15px rgb(0 0 0 / .15);position:relative;z-index:1;font-size:1.1rem}.btn i{margin-right:8px}.btn-primary{background-color:var(--primary);color:var(--white)}.btn-primary:hover{background-color:var(--light);color:var(--primary);transform:translateY(-3px)}.btn-secondary{background-color:#fff0;color:var(--white);border:2px solid var(--white)}.btn-secondary:hover{background-color:var(--white);color:var(--primary);transform:translateY(-3px);box-shadow:0 7px 15px rgb(255 255 255 / .3)}.whatsapp-button{position:fixed;bottom:30px;right:30px;width:65px;height:65px;background-color:#25d366;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2.2rem;z-index:1000;transition:all 0.3s ease;text-decoration:none}.whatsapp-button:hover{transform:translateY(-5px) scale(1.1)}.price-guide-section{background:var(--light);padding:80px 0;margin:60px 0}.price-options{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px;margin-top:40px}.price-option{background:#fff;padding:30px;border-radius:15px;box-shadow:0 10px 30px rgb(0 0 0 / .1);text-align:center;transition:transform 0.3s ease}.price-option:hover{transform:translateY(-10px)}.price-option.featured{background:var(--primary);color:#fff;transform:scale(1.05)}.price-option.featured:hover{transform:scale(1.05) translateY(-10px)}.price-option.featured .btn{background:#fff;color:var(--primary)}.price-tag{font-size:2.5rem;font-weight:700;margin:20px 0;color:var(--primary)}.price-option.featured .price-tag{color:#fff}.price-features{list-style:none;padding:0;margin:25px 0}.price-features li{padding:10px 0;border-bottom:1px solid var(--light-gray)}.price-option.featured .price-features li{border-bottom-color:rgb(255 255 255 / .3)}@media (max-width:992px){.hero h1{font-size:2.8rem}.section-title h2{font-size:2.3rem}.price-option.featured{transform:scale(1)}.price-option.featured:hover{transform:translateY(-10px)}}@media (max-width:768px){.mobile-menu-button{display:block}header{position:fixed;background:rgb(0 0 0 / .75);box-shadow:0 4px 15px rgb(0 0 0 / .35)}.main-nav{position:fixed;top:80px;left:0;flex-direction:column;background:rgb(255 255 255 / .95);width:100%;height:0;overflow:hidden;transition:all 0.4s ease;box-shadow:0 5px 10px rgb(0 0 0 / .1);backdrop-filter:blur(10px);z-index:1500}.main-nav.active{height:auto;padding:20px 0}.main-nav li{margin:15px 30px}.main-nav a{color:var(--secondary);font-size:1.2rem}.hero{min-height:100vh}.hero-content{padding-top:120px}.hero h1{font-size:2.1rem;line-height:1.3}.hero p{font-size:1rem}.district-group ul{grid-template-columns:repeat(2,1fr)}.section-title h2{font-size:2rem}.faq-question{padding:18px 60px 18px 20px;font-size:1.15rem}.faq-question::after{right:20px}.faq-item.active .faq-answer{padding:0 20px 20px 20px}.contact-banner{padding:25px 20px}.price-options{grid-template-columns:1fr}}@media (max-width:576px){.hero h1{font-size:2rem}.hero-buttons{flex-direction:column;gap:15px}.services-grid{grid-template-columns:1fr}.logo{font-size:1.5rem}.hero p{font-size:.95rem}.district-group ul{grid-template-columns:1fr}.district-group{padding:20px}.section-title h2{font-size:1.8rem}.faq-question{padding-left:15px;padding-right:50px}.faq-question i{font-size:1.2rem;margin-right:12px}.faq-item.active .faq-answer{padding-left:15px}}.hero::before{background:linear-gradient(180deg,rgb(0 0 0 / .5) 0%,rgb(0 0 0 / .8) 100%)!important;z-index:1}.hero-media{position:absolute;inset:0;z-index:0;overflow:hidden}.hero-media picture,.hero-media img{width:100%;height:100%;display:block;object-fit:cover}.breadcrumb-nav{background:var(--light-gray);font-size:.95rem}.breadcrumb-nav .container{padding:12px 0}.breadcrumb-nav ol{display:flex;gap:10px;list-style:none;padding:0;margin:0;color:var(--medium-gray)}.breadcrumb-nav a{color:var(--secondary);text-decoration:none;font-weight:600}.breadcrumb-nav li[aria-current="page"]{color:var(--primary);font-weight:600}</style>
+  <style>
+    :root {
+      --primary: #0050B5;
+      --primary-dark: #002F7A;
+      --secondary: #2c3e50;
+      --secondary-dark: #1a2530;
+      --accent: #25d366;
+      --light: #f9f9f9;
+      --light-gray: #e9ecef;
+      --medium-gray: #6c757d;
+      --dark-gray: #444;
+      --white: #fff;
+      --black: #000;
+      --overlay: rgba(0, 0, 0, 0.7);
+      --pricing-gradient: linear-gradient(135deg, #f5f7fa 0%, #e4e8f5 100%);
+      --testimonials-gradient: linear-gradient(135deg, var(--secondary) 0%, var(--secondary-dark) 100%);
+      --button-gradient: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      --highlight-gradient: linear-gradient(135deg, #fff6f6 0%, #ffecec 100%);
+      --text-dark: #333;
+      --text-light: #fff;
+      --text-gray: #555;
+      --border-radius: 10px;
+      --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s ease
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.6;
+      color: var(--text-dark);
+      background-color: var(--white);
+      overflow-x: hidden
+    }
+
+    header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background: #fff0;
+      transition: background 0.3s ease
+    }
+
+    header.scrolled {
+      background-color: rgb(0 0 0 / .3);
+      box-shadow: 0 2px 5px rgb(0 0 0 / .1);
+      position: fixed
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--white)
+    }
+
+    .logo i {
+      margin-right: 10px
+    }
+
+    .main-nav {
+      display: flex;
+      list-style: none
+    }
+
+    .main-nav li {
+      margin-left: 25px
+    }
+
+    .main-nav a {
+      text-decoration: none;
+      color: var(--white);
+      font-weight: 500;
+      transition: color 0.3s ease;
+      padding: 5px 0;
+      position: relative
+    }
+
+    .main-nav a:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--primary);
+      transition: width 0.3s ease
+    }
+
+    .main-nav a:hover:after,
+    .main-nav a.active:after {
+      width: 100%
+    }
+
+    .mobile-menu-button {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+      color: var(--white)
+    }
+
+    .hero {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      color: var(--white);
+      overflow: hidden
+    }
+
+    .skip-link {
+      position: absolute;
+      left: 10px;
+      top: -80px;
+      background: var(--primary);
+      color: var(--white);
+      padding: 10px 16px;
+      border-radius: 8px;
+      box-shadow: 0 6px 18px rgb(0 0 0 / .2);
+      transition: top .2s ease, opacity .2s ease;
+      opacity: 0;
+      font-weight: 600;
+      z-index: 1001
+    }
+
+    .skip-link:focus {
+      top: 10px;
+      opacity: 1
+    }
+
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0,0,0,0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(var(--overlay), var(--overlay)), url(images/kadikoy-boyaci.WebP) no-repeat center center/cover
+    }
+
+    .hero-content {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 20px;
+      z-index: 2
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+      line-height: 1.2;
+      letter-spacing: 1px
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto
+    }
+
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: var(--white);
+      color: var(--primary);
+      padding: 14px 35px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: var(--transition);
+      box-shadow: 0 4px 15px rgb(0 0 0 / .15);
+      position: relative;
+      z-index: 1;
+      font-size: 1.1rem;
+      min-height: 48px;
+      min-width: 48px
+    }
+
+    .btn:focus-visible {
+      outline: 3px solid var(--white);
+      outline-offset: 2px;
+      box-shadow: 0 0 0 3px rgba(0, 80, 181, 0.4)
+    }
+
+    .btn i {
+      margin-right: 8px
+    }
+
+    .btn-primary {
+      background-color: var(--primary);
+      color: var(--white)
+    }
+
+    .btn-primary:hover {
+      background-color: var(--light);
+      color: var(--primary);
+      transform: translateY(-3px)
+    }
+
+    .btn-secondary {
+      background-color: #fff0;
+      color: var(--white);
+      border: 2px solid var(--white)
+    }
+
+    .btn-secondary:hover {
+      background-color: var(--white);
+      color: var(--primary);
+      transform: translateY(-3px);
+      box-shadow: 0 7px 15px rgb(255 255 255 / .3)
+    }
+
+    .whatsapp-button {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 65px;
+      height: 65px;
+      background-color: #25d366;
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.2rem;
+      z-index: 1000;
+      transition: all 0.3s ease;
+      text-decoration: none
+    }
+
+    .whatsapp-button:hover {
+      transform: translateY(-5px) scale(1.1)
+    }
+
+    .price-guide-section {
+      background: var(--light);
+      padding: 80px 0;
+      margin: 60px 0
+    }
+
+    .price-options {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 40px
+    }
+
+    .price-option {
+      background: #fff;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgb(0 0 0 / .1);
+      text-align: center;
+      transition: transform 0.3s ease
+    }
+
+    .price-option:hover {
+      transform: translateY(-10px)
+    }
+
+    .price-option.featured {
+      background: var(--primary);
+      color: #fff;
+      transform: scale(1.05)
+    }
+
+    .price-option.featured:hover {
+      transform: scale(1.05) translateY(-10px)
+    }
+
+    .price-option.featured .btn {
+      background: #fff;
+      color: var(--primary)
+    }
+
+    .price-tag {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin: 20px 0;
+      color: var(--primary)
+    }
+
+    .price-option.featured .price-tag {
+      color: #fff
+    }
+
+    .price-features {
+      list-style: none;
+      padding: 0;
+      margin: 25px 0
+    }
+
+    .price-features li {
+      padding: 10px 0;
+      border-bottom: 1px solid var(--light-gray)
+    }
+
+    .price-option.featured .price-features li {
+      border-bottom-color: rgb(255 255 255 / .3)
+    }
+
+    .social-links {
+      margin-top: 15px
+    }
+
+    .social-links h3 {
+      margin-bottom: 12px
+    }
+
+    .social-links a {
+      display: inline-flex;
+      width: 50px;
+      height: 50px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      color: #fff;
+      margin-right: 12px;
+      font-size: 1.25rem;
+      transition: var(--transition);
+      text-decoration: none;
+      border: 2px solid #fff
+    }
+
+    .social-links a i {
+      color: #fff;
+    }
+
+    .social-links a.facebook {
+      background: #1877f2
+    }
+
+    .social-links a.instagram {
+      background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 20%, #fd5949 45%, #d6249f 60%, #285aeb 90%)
+    }
+
+    .social-links a.whatsapp {
+      background: #25d366
+    }
+
+    .social-links a:hover,
+    .social-links a:focus-visible {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25)
+    }
+
+    @media (max-width:992px) {
+      .hero h1 {
+        font-size: 2.8rem
+      }
+
+      .section-title h2 {
+        font-size: 2.3rem
+      }
+
+      .price-option.featured {
+        transform: scale(1)
+      }
+
+      .price-option.featured:hover {
+        transform: translateY(-10px)
+      }
+    }
+
+    @media (max-width:768px) {
+      .mobile-menu-button {
+        display: block
+      }
+
+      header {
+        position: fixed;
+        background: rgb(0 0 0 / .75);
+        box-shadow: 0 4px 15px rgb(0 0 0 / .35)
+      }
+
+      .main-nav {
+        position: fixed;
+        top: 80px;
+        left: 0;
+        flex-direction: column;
+        background: rgb(255 255 255 / .95);
+        width: 100%;
+        height: 0;
+        overflow: hidden;
+        transition: all 0.4s ease;
+        box-shadow: 0 5px 10px rgb(0 0 0 / .1);
+        backdrop-filter: blur(10px);
+        z-index: 1500
+      }
+
+      .main-nav.active {
+        height: auto;
+        padding: 20px 0
+      }
+
+      .main-nav li {
+        margin: 15px 30px
+      }
+
+      .main-nav a {
+        color: var(--secondary);
+        font-size: 1.2rem
+      }
+
+      .hero {
+        min-height: 100vh
+      }
+
+      .hero-content {
+        padding-top: 120px
+      }
+
+      .hero h1 {
+        font-size: 2.1rem;
+        line-height: 1.3
+      }
+
+      .hero p {
+        font-size: 1rem
+      }
+
+      .district-group ul {
+        grid-template-columns: repeat(2, 1fr)
+      }
+
+      .section-title h2 {
+        font-size: 2rem
+      }
+
+      .faq-question {
+        padding: 18px 60px 18px 20px;
+        font-size: 1.15rem
+      }
+
+      .faq-question::after {
+        right: 20px
+      }
+
+      .faq-item.active .faq-answer {
+        padding: 0 20px 20px 20px
+      }
+
+      .contact-banner {
+        padding: 25px 20px
+      }
+
+      .price-options {
+        grid-template-columns: 1fr
+      }
+    }
+
+    @media (max-width:576px) {
+      .hero h1 {
+        font-size: 2rem
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+        gap: 15px
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr
+      }
+
+      .logo {
+        font-size: 1.5rem
+      }
+
+      .hero p {
+        font-size: .95rem
+      }
+
+      .district-group ul {
+        grid-template-columns: 1fr
+      }
+
+      .district-group {
+        padding: 20px
+      }
+
+      .section-title h2 {
+        font-size: 1.8rem
+      }
+
+      .faq-question {
+        padding-left: 15px;
+        padding-right: 50px
+      }
+
+      .faq-question i {
+        font-size: 1.2rem;
+        margin-right: 12px
+      }
+
+      .faq-item.active .faq-answer {
+        padding-left: 15px
+      }
+    }
+
+    .hero::before {
+      background: linear-gradient(180deg, rgb(0 0 0 / .5) 0%, rgb(0 0 0 / .8) 100%) !important;
+      z-index: 1
+    }
+
+    .hero-media {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden
+    }
+
+    .hero-media picture,
+    .hero-media img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover
+    }
+
+    .breadcrumb-nav {
+      background: var(--light-gray);
+      font-size: .95rem
+    }
+
+    .breadcrumb-nav .container {
+      padding: 12px 0
+    }
+
+    .breadcrumb-nav ol {
+      display: flex;
+      gap: 10px;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      color: var(--medium-gray)
+    }
+
+    .breadcrumb-nav a {
+      color: var(--secondary);
+      text-decoration: none;
+      font-weight: 600
+    }
+
+    .breadcrumb-nav li[aria-current="page"] {
+      color: var(--primary);
+      font-weight: 600
+    }
+  </style>
   <link rel="stylesheet" href="styles.pure.css">
   <link rel="preload" as="image" type="image/webp"
     imagesrcset="images/kadikoy-boyaci-768.webp 768w, images/kadikoy-boyaci-1280.webp 1280w, images/kadikoy-boyaci-1920.webp 1920w"
@@ -198,6 +794,7 @@
     });
   </script>
 </head>
+
 <body>
   <a href="#main-content" class="skip-link">Ana İçeriğe Atla</a>
 
@@ -205,8 +802,11 @@
     <div class="container">
       <nav aria-label="Ana menü">
         <div class="logo">
-          <a href="https://istanbulboyacilik.com" style="color:white;text-decoration:none;">
-            <i class="fas fa-paint-roller"></i></a>Kadıköy boyacı
+          <a href="https://istanbulboyacilik.com" aria-label="İstanbul Boyacılık ana sayfası" style="color:white;text-decoration:none;display:inline-flex;align-items:center;gap:8px;">
+            <i class="fas fa-paint-roller" aria-hidden="true"></i>
+            <span class="visually-hidden">İstanbul Boyacılık</span>
+          </a>
+          <span class="logo-location">Kadıköy Boyacı</span>
         </div>
         <ul class="main-nav">
           <li><a href="#anasayfa" class="active">Ana Sayfa</a></li>
@@ -423,7 +1023,8 @@
                 <tbody>
                   <tr itemprop="about" itemscope="" itemtype="https://schema.org/Thing">
                     <td style="padding: 10px; border-bottom: 1px solid var(--light-gray);" itemprop="name">
-                      <strong>Kadıköy boyacı fiyatları</strong></td>
+                      <strong>Kadıköy boyacı fiyatları</strong>
+                    </td>
                     <td style="padding: 10px; border-bottom: 1px solid var(--light-gray);" itemprop="description">Bilgi
                       + Fiyat</td>
                     <td style="padding: 10px; border-bottom: 1px solid var(--light-gray);" itemprop="alternateName">2+1
@@ -431,7 +1032,8 @@
                   </tr>
                   <tr itemprop="about" itemscope="" itemtype="https://schema.org/Thing">
                     <td style="padding: 10px; border-bottom: 1px solid var(--light-gray);" itemprop="name">
-                      <strong>Kadıköy boya badana fiyatları</strong></td>
+                      <strong>Kadıköy boya badana fiyatları</strong>
+                    </td>
                     <td style="padding: 10px; border-bottom: 1px solid var(--light-gray);" itemprop="description">Hizmet
                       Karşılaştırma</td>
                     <td style="padding: 10px; border-bottom: 1px solid var(--light-gray);" itemprop="alternateName">
@@ -439,7 +1041,8 @@
                   </tr>
                   <tr itemprop="about" itemscope="" itemtype="https://schema.org/Thing">
                     <td style="padding: 10px; border-bottom: 1px solid var(--light-gray);" itemprop="name">
-                      <strong>Kadıköy boyacı ustası tavsiye</strong></td>
+                      <strong>Kadıköy boyacı ustası tavsiye</strong>
+                    </td>
                     <td style="padding: 10px; border-bottom: 1px solid var(--light-gray);" itemprop="description">
                       Referans Araştırma</td>
                     <td style="padding: 10px; border-bottom: 1px solid var(--light-gray);" itemprop="alternateName">
@@ -447,7 +1050,8 @@
                   </tr>
                   <tr itemprop="about" itemscope="" itemtype="https://schema.org/Thing">
                     <td style="padding: 10px; border-bottom: 1px solid var(--light-gray);" itemprop="name">
-                      <strong>Kadıköy apartman boyama fiyatı</strong></td>
+                      <strong>Kadıköy apartman boyama fiyatı</strong>
+                    </td>
                     <td style="padding: 10px; border-bottom: 1px solid var(--light-gray);" itemprop="description">B2B +
                       Yönetim</td>
                     <td style="padding: 10px; border-bottom: 1px solid var(--light-gray);" itemprop="alternateName">Kat
@@ -923,15 +1527,15 @@
             <p><i class="fas fa-map-marker-alt"></i> Adres: Söğütlüçeşme Cd. No: 120, 34714 Kadıköy/İstanbul</p>
             <div class="social-links">
               <h3>Bizi Takip Edin</h3>
-              <a href="https://www.facebook.com/people/%C4%B0stanbull-Boyac%C4%B1l%C4%B1k/pfbid02jfsoicPA9G4MQuW6GZA55CsYxLETtxgG2mwi2hH3n2zPguLDeE8tGB4G14bsCxMCl/"
+              <a class="facebook" href="https://www.facebook.com/people/%C4%B0stanbull-Boyac%C4%B1l%C4%B1k/pfbid02jfsoicPA9G4MQuW6GZA55CsYxLETtxgG2mwi2hH3n2zPguLDeE8tGB4G14bsCxMCl/"
                 target="_blank" rel="noopener noreferrer" aria-label="Facebook">
                 <i class="fab fa-facebook-f"></i>
               </a>
-              <a href="https://www.instagram.com/istanbulboyacilik/" target="_blank" rel="noopener noreferrer"
+              <a class="instagram" href="https://www.instagram.com/istanbulboyacilik/" target="_blank" rel="noopener noreferrer"
                 aria-label="Instagram">
                 <i class="fab fa-instagram"></i>
               </a>
-              <a href="https://wa.me/905078322912?text=Merhaba,%20Kadıköy%20boyacı%20ustası%20olarak%20keşif%20randevusu%20almak%20istiyorum."
+              <a class="whatsapp" href="https://wa.me/905078322912?text=Merhaba,%20Kadıköy%20boyacı%20ustası%20olarak%20keşif%20randevusu%20almak%20istiyorum."
                 target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
                 <i class="fab fa-whatsapp"></i>
               </a>
@@ -944,7 +1548,8 @@
               </iframe>
               <p style="font-size: 0.9em; text-align: center; margin-top: 10px;">Haritada yerimizi görmek için tıklayın.
                 <a href="https://g.page/kadikoy-boyaci-ustasi?share" target="_blank" rel="noopener noreferrer">Yol
-                  Tarifi Al</a></p>
+                  Tarifi Al</a>
+              </p>
             </div>
           </div>
           <div class="contact-form">
@@ -1025,7 +1630,8 @@
           <p><i class="fas fa-envelope"></i> E-posta: <a
               href="mailto:boyaustamistanbul@gmail.com">boyaustamistanbul@gmail.com</a></p>
           <p><i class="fas fa-map-marker-alt"></i> Adres: Söğütlüçeşme Cd. No: 120, 34714
-            <strong>Kadıköy/İstanbul</strong></p>
+            <strong>Kadıköy/İstanbul</strong>
+          </p>
           <div class="social-icons" style="margin-top: 20px;">
             <a href="https://www.facebook.com/people/%C4%B0stanbull-Boyac%C4%B1l%C4%B1k/pfbid02jfsoicPA9G4MQuW6GZA55CsYxLETtxgG2mwi2hH3n2zPguLDeE8tGB4G14bsCxMCl/"
               target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
