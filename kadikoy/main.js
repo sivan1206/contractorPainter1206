@@ -7,9 +7,27 @@ document.addEventListener('DOMContentLoaded', function () {
     const mobileMenuButton = document.querySelector('.mobile-menu-button');
     const mainNav = document.querySelector('.main-nav');
 
+    const updateMenuToggleState = (isExpanded) => {
+        if (!mobileMenuButton) {
+            return;
+        }
+        mobileMenuButton.setAttribute('aria-expanded', isExpanded);
+        mobileMenuButton.setAttribute('aria-label', isExpanded ? 'Menüyü Kapat' : 'Menüyü Aç');
+    };
+
     if (mobileMenuButton && mainNav) {
         mobileMenuButton.addEventListener('click', () => {
+            const newState = !mainNav.classList.contains('active');
             mainNav.classList.toggle('active');
+            updateMenuToggleState(newState);
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && mainNav.classList.contains('active')) {
+                mainNav.classList.remove('active');
+                updateMenuToggleState(false);
+                mobileMenuButton.focus();
+            }
         });
     }   
     const navLinks = document.querySelectorAll('.main-nav a');
@@ -17,6 +35,7 @@ document.addEventListener('DOMContentLoaded', function () {
         link.addEventListener('click', function () {
             if (mainNav.classList.contains('active')) {
                 mainNav.classList.remove('active');
+                updateMenuToggleState(false);
             }
             navLinks.forEach(l => l.classList.remove('active'));
             this.classList.add('active');
