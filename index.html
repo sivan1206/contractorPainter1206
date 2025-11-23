@@ -566,7 +566,164 @@
     <meta name="apple-mobile-web-app-title" content="İstanbul Boyacılık">
     <link rel="sitemap" type="application/xml" title="Sitemap" href="https://istanbulboyacilik.com/sitemap.xml">
 
-    <style>:root{--primary:#4361ee;--dark:#2b2d42;--max-width:1200px}*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Segoe UI',Tahoma,sans-serif;background:#f8f9fa;line-height:1.6;color:#333;overflow-x:hidden}.skip-link{position:absolute;left:-999px;top:auto;width:1px;height:1px;overflow:hidden;background:#fff;color:#000;padding:.75rem 1rem;z-index:2000;border-radius:.5rem;text-decoration:none;font-weight:600}.skip-link:focus{left:50%;top:10px;width:auto;height:auto;transform:translateX(-50%);box-shadow:0 0 0 3px var(--primary)}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}header{position:fixed;width:100%;top:0;z-index:1000;background:rgb(0 0 0 / .3)}nav{display:flex;justify-content:space-between;align-items:center;height:70px;padding:0 5%;max-width:var(--max-width);margin:0 auto}.logo{font-size:1.5rem;font-weight:700;color:#fff}.main-nav{display:flex}.hero{position:relative;width:100%;color:#fff;display:flex;justify-content:center;align-items:center;z-index:1;box-shadow:0 2px 5px rgb(0 0 0 / .1);aspect-ratio:16/9}.hero-slider,.slide{position:absolute;inset:0}.slide{opacity:0;transition:opacity 1s ease-in-out}.slide.active{opacity:1}.slide img{width:100%;height:100%;object-fit:cover}.slide-content{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:90%;text-align:center;background:rgb(0 0 0 / .5);padding:2rem}h1,.slide-title{font-size:clamp(1.8rem, 4vw, 2.5rem);font-weight:700;color:#fff;margin-bottom:.75rem}.slide-content p{font-size:clamp(1rem, 2vw, 1.2rem)}img{max-width:100%;height:auto}@media(max-width:768px){.main-nav{display:none}.hero{height:80vh;aspect-ratio:4/5}}</style>
+    <style>
+        :root {
+            --primary: #4361ee;
+            --dark: #2b2d42;
+            --max-width: 1200px
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            background: #f8f9fa;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden
+        }
+
+        .skip-link {
+            position: absolute;
+            left: -999px;
+            top: auto;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+            background: #fff;
+            color: #000;
+            padding: .75rem 1rem;
+            z-index: 2000;
+            border-radius: .5rem;
+            text-decoration: none;
+            font-weight: 600
+        }
+
+        .skip-link:focus {
+            left: 50%;
+            top: 10px;
+            width: auto;
+            height: auto;
+            transform: translateX(-50%);
+            box-shadow: 0 0 0 3px var(--primary)
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0
+        }
+
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            background: rgb(0 0 0 / .3)
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+            padding: 0 5%;
+            max-width: var(--max-width);
+            margin: 0 auto
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #fff
+        }
+
+        .main-nav {
+            display: flex
+        }
+
+        .hero {
+            position: relative;
+            width: 100%;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1;
+            box-shadow: 0 2px 5px rgb(0 0 0 / .1);
+            aspect-ratio: 16/9
+        }
+
+        .hero-slider,
+        .slide {
+            position: absolute;
+            inset: 0
+        }
+
+        .slide {
+            opacity: 0;
+            transition: opacity 1s ease-in-out
+        }
+
+        .slide.active {
+            opacity: 1
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover
+        }
+
+        .slide-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            text-align: center;
+            background: rgb(0 0 0 / .5);
+            padding: 2rem
+        }
+
+        h1,
+        .slide-title {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: .75rem
+        }
+
+        .slide-content p {
+            font-size: clamp(1rem, 2vw, 1.2rem)
+        }
+
+        img {
+            max-width: 100%;
+            height: auto
+        }
+
+        @media(max-width:768px) {
+            .main-nav {
+                display: none
+            }
+
+            .hero {
+                height: 80vh;
+                aspect-ratio: 4/5
+            }
+        }
+    </style>
 
     <link rel="preload" as="image" href="images/hero/discephe/istanbul-boya-ustas-boyaustasi.WebP">
     <link rel="preload" as="style" href="styles.pure.css" onload="this.onload=null;this.rel='stylesheet'">
@@ -621,7 +778,10 @@
                 <div class="slider-container" aria-live="polite">
                     <div class="slide active" data-title="İstanbul Boya Ustasi"
                         data-description="İstanbul  boya ustasi">
-                        <img src="images/hero/discephe/istanbul-boya-ustas-boyaustasi.WebP"
+                        <img src="images/hero/discephe/istanbul-boya-ustas-boyaustasi.WebP" srcset="images/hero/discephe/istanbul-boya-ustas-boyaustasi-480.webp 480w,
+                                    images/hero/discephe/istanbul-boya-ustas-boyaustasi-800.webp 800w,
+                                    images/hero/discephe/istanbul-boya-ustas-boyaustasi.WebP 1200w"
+                            sizes="(max-width: 600px) 480px, (max-width: 900px) 800px, 1200px"
                             alt="İstanbul'da profesyonel boya badana hizmeti veren deneyimli boyacı ustası" width="1200"
                             height="800" fetchpriority="high" loading="eager" decoding="async"
                             style="object-fit: cover; width: 100%; height: 100%;">
@@ -635,7 +795,7 @@
                         <img src="images/hero/icmekan/istanbul-boya-ustas-icmekan.WebP"
                             alt="istanbul modern bir boyama örneği " width="1200" height="800" loading="lazy"
                             decoding="async">
-                        <div class="slide-content">
+                                <!-- Inline CSS moved to styles.pure.css for performance. -->
                             <p class="slide-title">Yaşam Alanlarınızı Yenileyen İç Mekan Boya</p>
                             <p>Evinizi güzelleştirin. İç mekan boyama hizmetlerimizle yaşam alanlarınızı daha modern ve
                                 şık
@@ -741,9 +901,12 @@
 
                 <div class="service-card">
                     <div class="service-img">
-                        <img src="images/services/istanbul-boya-ustas-icMekan.WebP"
-                            alt="İstanbul'da bir daire için profesyonel iç cephe boyacı hizmeti" width="600"
-                            height="400" loading="lazy" decoding="async">
+                        <img src="images/services/istanbul-boya-ustas-icMekan.WebP" srcset="images/services/istanbul-boya-ustas-icMekan-400.webp 400w,
+                                    images/services/istanbul-boya-ustas-icMekan-800.webp 800w,
+                                    images/services/istanbul-boya-ustas-icMekan.WebP 1200w"
+                            sizes="(max-width: 600px) 400px, (max-width: 900px) 800px, 1200px"
+                            alt="İstanbul'da bir daire için profesyonel iç cephe boyacı hizmeti" width="1200"
+                            height="800" loading="lazy" decoding="async">
                     </div>
                     <div class="service-content">
                         <h3><i class="fas fa-home"></i> İç Cephe Ev & Ofis Boyama</h3>
@@ -761,9 +924,12 @@
 
                 <div class="service-card">
                     <div class="service-img">
-                        <img src="images/gallery/discehpe/istanbul-boya-ustas-disCephe-Uygulamsi.WebP"
-                            alt="İstanbul'da bir binanın dış cephesine yapılan boyacı ve yalıtım uygulaması" width="600"
-                            height="400" loading="lazy" decoding="async">
+                        <img src="images/gallery/discehpe/istanbul-boya-ustas-disCephe-Uygulamsi.WebP" srcset="images/gallery/discehpe/istanbul-boya-ustas-disCephe-Uygulamsi-400.webp 400w,
+                                    images/gallery/discehpe/istanbul-boya-ustas-disCephe-Uygulamsi-800.webp 800w,
+                                    images/gallery/discehpe/istanbul-boya-ustas-disCephe-Uygulamsi.WebP 1200w"
+                            sizes="(max-width: 600px) 400px, (max-width: 900px) 800px, 1200px"
+                            alt="İstanbul'da bir binanın dış cephesine yapılan boyacı ve yalıtım uygulaması"
+                            width="1200" height="800" loading="lazy" decoding="async">
                     </div>
                     <div class="service-content">
                         <h3><i class="fas fa-building"></i> Dış Cephe Boyama & Yalıtım</h3>
@@ -808,8 +974,10 @@
 
                 <div class="gallery-item">
                     <img src="images/gallery/discehpe/istanbul-boya-ustas-disCephe.WebP"
-                        alt="İstanbul Ataşehir'de tamamladığımız dış cephe boya ustası projesi" width="400" height="300"
-                        loading="lazy" decoding="async">
+                        srcset="images/gallery/discehpe/istanbul-boya-ustas-disCephe-400.webp 400w, images/gallery/discehpe/istanbul-boya-ustas-disCephe-800.webp 800w, images/gallery/discehpe/istanbul-boya-ustas-disCephe.WebP 1200w"
+                        sizes="(max-width: 600px) 400px, (max-width: 900px) 800px, 1200px"
+                        alt="İstanbul Ataşehir'de tamamladığımız dış cephe boya ustası projesi" width="1200"
+                        height="800" loading="lazy" decoding="async">
                     <div class="gallery-overlay">
                         <h3>Dış Cephe Yenileme Projesi</h3>
                         <p>Ataşehir / İstanbul</p>
@@ -819,8 +987,10 @@
 
                 <div class="gallery-item">
                     <img src="images/services/istanbul-boya-ustas-mutfak.WebP"
+                        srcset="images/services/istanbul-boya-ustas-mutfak-400.webp 400w, images/services/istanbul-boya-ustas-mutfak-800.webp 800w, images/services/istanbul-boya-ustas-mutfak.WebP 1200w"
+                        sizes="(max-width: 600px) 400px, (max-width: 900px) 800px, 1200px"
                         alt="Beylikdüzü'nde bir mutfak için yapılan saten boya ustası ve alçı tamiratı işçiliği"
-                        width="400" height="300" loading="lazy" decoding="async">
+                        width="1200" height="800" loading="lazy" decoding="async">
                     <div class="gallery-overlay">
                         <h3>Daire İçi Mutfak Boyama</h3>
                         <p>Beylikdüzü / İstanbul</p>
@@ -830,8 +1000,10 @@
 
                 <div class="gallery-item">
                     <img src="images/gallery/dekoratif/istanbul-boya-ustas-dekoratif1.WebP"
+                        srcset="images/gallery/dekoratif/istanbul-boya-ustas-dekoratif1-400.webp 400w, images/gallery/dekoratif/istanbul-boya-ustas-dekoratif1-800.webp 800w, images/gallery/dekoratif/istanbul-boya-ustas-dekoratif1.WebP 1200w"
+                        sizes="(max-width: 600px) 400px, (max-width: 900px) 800px, 1200px"
                         alt="Kadıköy'de bir salona uygulanan beton efektli dekoratif boya ustasının çalışması"
-                        width="400" height="300" loading="lazy" decoding="async">
+                        width="1200" height="800" loading="lazy" decoding="async">
                     <div class="gallery-overlay">
                         <h3>Dekoratif Beton Efekt Boya</h3>
                         <p>Kadıköy / İstanbul</p>
@@ -841,7 +1013,9 @@
 
                 <div class="gallery-item">
                     <img src="images/services/istanbul-boya-ustas-ofis.WebP"
-                        alt="Şişli'deki bir ofis için yapılan komple ofis boyama hizmeti" width="400" height="300"
+                        srcset="images/services/istanbul-boya-ustas-ofis-400.webp 400w, images/services/istanbul-boya-ustas-ofis-800.webp 800w, images/services/istanbul-boya-ustas-ofis.WebP 1200w"
+                        sizes="(max-width: 600px) 400px, (max-width: 900px) 800px, 1200px"
+                        alt="Şişli'deki bir ofis için yapılan komple ofis boyama hizmeti" width="1200" height="800"
                         loading="lazy" decoding="async">
                     <div class="gallery-overlay">
                         <h3>Kurumsal Ofis Boyama</h3>
@@ -852,7 +1026,9 @@
 
                 <div class="gallery-item">
                     <img src="images/services/istanbul-boya-ustas-IsYeri.WebP"
-                        alt="Fatih'te bir mağazanın iç dekorasyon boya ve badana işleri" width="400" height="300"
+                        srcset="images/services/istanbul-boya-ustas-IsYeri-400.webp 400w, images/services/istanbul-boya-ustas-IsYeri-800.webp 800w, images/services/istanbul-boya-ustas-IsYeri.WebP 1200w"
+                        sizes="(max-width: 600px) 400px, (max-width: 900px) 800px, 1200px"
+                        alt="Fatih'te bir mağazanın iç dekorasyon boya ve badana işleri" width="1200" height="800"
                         loading="lazy" decoding="async">
                     <div class="gallery-overlay">
                         <h3>Mağaza & İş Yeri Boyama</h3>
@@ -863,8 +1039,10 @@
 
                 <div class="gallery-item">
                     <img src="images/services/istanbul-boya-ustas-villa.WebP"
-                        alt="Beykoz'daki bir villa için yapılan komple iç ve dış cephe boya projesi" width="400"
-                        height="300" loading="lazy" decoding="async">
+                        srcset="images/services/istanbul-boya-ustas-villa-400.webp 400w, images/services/istanbul-boya-ustas-villa-800.webp 800w, images/services/istanbul-boya-ustas-villa.WebP 1200w"
+                        sizes="(max-width: 600px) 400px, (max-width: 900px) 800px, 1200px"
+                        alt="Beykoz'daki bir villa için yapılan komple iç ve dış cephe boya projesi" width="1200"
+                        height="800" loading="lazy" decoding="async">
                     <div class="gallery-overlay">
                         <h3>Villa Boyama Projesi</h3>
                         <p>Beykoz / İstanbul</p>
@@ -931,7 +1109,7 @@
                 </div>
                 <div class="workflow-timeline">
 
-                    <!-- Adım 1 -->
+
                     <div class="workflow-item">
                         <div class="workflow-icon"><i class="fas fa-handshake"></i></div>
                         <div class="workflow-content">
@@ -944,7 +1122,7 @@
                         </div>
                     </div>
 
-                    <!-- Adım 2 -->
+
                     <div class="workflow-item">
                         <div class="workflow-icon"><i class="fa-solid fa-turkish-lira-sign"></i></div>
                         <div class="workflow-content">
@@ -956,7 +1134,7 @@
                         </div>
                     </div>
 
-                    <!-- Adım 3 -->
+
                     <div class="workflow-item">
                         <div class="workflow-icon"><i class="fas fa-shield-alt"></i></div>
                         <div class="workflow-content">
@@ -968,7 +1146,7 @@
                         </div>
                     </div>
 
-                    <!-- Adım 4 -->
+
                     <div class="workflow-item">
                         <div class="workflow-icon"><i class="fas fa-paint-roller"></i></div>
                         <div class="workflow-content">
@@ -980,7 +1158,7 @@
                         </div>
                     </div>
 
-                    <!-- Adım 5 -->
+
                     <div class="workflow-item">
                         <div class="workflow-icon"><i class="fas fa-check-circle"></i></div>
                         <div class="workflow-content">
@@ -1071,8 +1249,8 @@
                     </div>
                     <button type="button" id="calculate-btn">Hesapla</button>
                     <div class="result">
-                        <h4 style="color:#222;">Tahmini Maliyet: <span id="estimated-cost" style="color:#111;"
-                            aria-live="polite" role="status">0 TL</span>
+                        <h4 style="color:#ffffff;">Tahmini Maliyet: <span id="estimated-cost" style="color:#f8f8f8;"
+                                aria-live="polite" role="status">0 TL</span>
                         </h4>
                         <p style="color:#222;">Detaylı <strong>teklifi al</strong>mak için <a href="#iletisim"
                                 style="color:#005fa3;text-decoration:underline;">iletişime geçin</a></p>
@@ -1547,13 +1725,13 @@
                     <form id="quote-form" aria-describedby="quote-form-instructions">
                         <div class="form-group">
                             <label for="name">Adınız Soyadınız*</label>
-                            <input type="text" id="name" name="name" required autocomplete="name"
-                                minlength="3" maxlength="120">
+                            <input type="text" id="name" name="name" required autocomplete="name" minlength="3"
+                                maxlength="120">
                         </div>
                         <div class="form-group">
                             <label for="phone">Telefon*</label>
-                            <input type="tel" id="phone" name="phone" required autocomplete="tel"
-                                inputmode="tel" pattern="^\+?[0-9\s-]{8,}$" placeholder="05xx xxx xx xx">
+                            <input type="tel" id="phone" name="phone" required autocomplete="tel" inputmode="tel"
+                                pattern="^\+?[0-9\s-]{8,}$" placeholder="05xx xxx xx xx">
                         </div>
                         <div class="form-group">
                             <label for="email">E-posta</label>
