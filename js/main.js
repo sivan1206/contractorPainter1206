@@ -5,32 +5,114 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const mobileMenuButton = select('.mobile-menu-button');
     const mainNav = select('.main-nav');
+    const updateMenuState = (isOpen) => {
+        if (!mobileMenuButton) return;
+        mobileMenuButton.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        mobileMenuButton.setAttribute('aria-label', isOpen ? 'Menüyü Kapat' : 'Menüyü Aç');
+    };
+
     if (mobileMenuButton && mainNav) {
         mobileMenuButton.addEventListener('click', () => {
+            const willOpen = !mainNav.classList.contains('active');
             mainNav.classList.toggle('active');
             mobileMenuButton.classList.toggle('active');
-            document.body.classList.toggle('no-scroll');
+            document.body.classList.toggle('no-scroll', willOpen);
+            updateMenuState(willOpen);
+        });
+
+        mainNav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mainNav.classList.remove('active');
+                mobileMenuButton.classList.remove('active');
+                document.body.classList.remove('no-scroll');
+                updateMenuState(false);
+            });
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && mainNav.classList.contains('active')) {
+                mainNav.classList.remove('active');
+                mobileMenuButton.classList.remove('active');
+                document.body.classList.remove('no-scroll');
+                updateMenuState(false);
+                mobileMenuButton.focus();
+            }
         });
     }
     const slides = selectAll('.slide');
     if (slides.length > 0) {
+        const sliderContainer = select('.slider-container');
+        const motionQuery = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
         let currentSlide = 0;
         let slideInterval;
+        let sliderInitialized = false;
+
         const showSlide = (n) => {
             slides.forEach((slide, index) => {
                 slide.classList.toggle('active', index === n);
             });
         };
+
         const nextSlide = () => {
             currentSlide = (currentSlide + 1) % slides.length;
             showSlide(currentSlide);
         };
-        const startSlider = () => {
+
+        const stopSlider = () => {
             clearInterval(slideInterval);
+            slideInterval = null;
+        };
+
+        const startSlider = () => {
+            if (motionQuery?.matches) {
+                stopSlider();
+                return;
+            }
+            stopSlider();
             slideInterval = setInterval(nextSlide, 5000);
         };
-        showSlide(0);
-        startSlider();
+
+        const initHeroSlider = () => {
+            if (sliderInitialized) return;
+            showSlide(0);
+            if (!motionQuery?.matches) {
+                startSlider();
+            }
+            sliderInitialized = true;
+        };
+
+        motionQuery?.addEventListener('change', (event) => {
+            if (!sliderInitialized) return;
+            if (event.matches) {
+                stopSlider();
+            } else {
+                startSlider();
+            }
+        });
+
+        const pauseInteractions = ['mouseenter', 'focusin', 'touchstart'];
+        const resumeInteractions = ['mouseleave', 'focusout', 'touchend'];
+        pauseInteractions.forEach(evt => sliderContainer?.addEventListener(evt, stopSlider));
+        resumeInteractions.forEach(evt => sliderContainer?.addEventListener(evt, () => {
+            if (motionQuery?.matches) return;
+            if (!sliderInitialized) {
+                initHeroSlider();
+                return;
+            }
+            startSlider();
+        }));
+
+        if ('IntersectionObserver' in window && sliderContainer) {
+            const heroObserver = new IntersectionObserver((entries, observer) => {
+                if (entries.some(entry => entry.isIntersecting)) {
+                    initHeroSlider();
+                    observer.disconnect();
+                }
+            }, { threshold: 0.25 });
+            heroObserver.observe(sliderContainer);
+        } else {
+            initHeroSlider();
+        }
     }
         const calculateBtn = select('#calculate-btn');
     if (calculateBtn) {
@@ -112,6 +194,7 @@ if (quoteForm) {
                 mainNav.classList.remove('active');
                 mobileMenuButton.classList.remove('active');
                 document.body.classList.remove('no-scroll');
+                updateMenuState(false);
             }
         }
     });
@@ -122,8 +205,11 @@ if (quoteForm) {
         if (totalItems === 0) return;
 
         const indicatorsContainer = select('#slider-indicators');
+        const sliderWrapper = select('.testimonial-slider');
+        const motionQuery = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
         let currentIndex = 0;
         let autoSlideInterval;
+        let testimonialsInitialized = false;
 
         for (let i = 0; i < totalItems; i++) {
             const indicator = document.createElement('div');
@@ -139,23 +225,77 @@ if (quoteForm) {
             currentIndex = index;
         };
 
-        const resetAutoSlide = () => {
+        const stopAutoSlide = () => {
             clearInterval(autoSlideInterval);
+            autoSlideInterval = null;
+        };
+
+        const startAutoSlide = () => {
+            if (motionQuery?.matches) {
+                stopAutoSlide();
+                return;
+            }
+            stopAutoSlide();
             autoSlideInterval = setInterval(() => updateSlider((currentIndex + 1) % totalItems), 5000);
         };
 
-        select('#prev-testimonial')?.addEventListener('click', () => updateSlider((currentIndex - 1 + totalItems) % totalItems));
-        select('#next-testimonial')?.addEventListener('click', () => updateSlider((currentIndex + 1) % totalItems));
+        const initTestimonialSlider = () => {
+            if (testimonialsInitialized) return;
+            updateSlider(0);
+            if (!motionQuery?.matches) {
+                startAutoSlide();
+            }
+            testimonialsInitialized = true;
+        };
+
+        const handleMotionChange = (event) => {
+            if (!testimonialsInitialized) return;
+            if (event.matches) {
+                stopAutoSlide();
+            } else {
+                startAutoSlide();
+            }
+        };
+
+        motionQuery?.addEventListener('change', handleMotionChange);
+
+        select('#prev-testimonial')?.addEventListener('click', () => {
+            if (!testimonialsInitialized) initTestimonialSlider();
+            updateSlider((currentIndex - 1 + totalItems) % totalItems);
+            startAutoSlide();
+        });
+        select('#next-testimonial')?.addEventListener('click', () => {
+            if (!testimonialsInitialized) initTestimonialSlider();
+            updateSlider((currentIndex + 1) % totalItems);
+            startAutoSlide();
+        });
         indicatorsContainer?.addEventListener('click', (e) => {
             if (e.target.matches('.indicator')) updateSlider(parseInt(e.target.dataset.index));
         });
 
-        const sliderElement = select('.testimonial-slider');
-        sliderElement?.addEventListener('mouseenter', () => clearInterval(autoSlideInterval));
-        sliderElement?.addEventListener('mouseleave', resetAutoSlide);
+        const pauseEvents = ['mouseenter', 'focusin', 'touchstart'];
+        const resumeEvents = ['mouseleave', 'focusout', 'touchend'];
+        pauseEvents.forEach(evt => sliderWrapper?.addEventListener(evt, stopAutoSlide));
+        resumeEvents.forEach(evt => sliderWrapper?.addEventListener(evt, () => {
+            if (motionQuery?.matches) return;
+            if (!testimonialsInitialized) {
+                initTestimonialSlider();
+                return;
+            }
+            startAutoSlide();
+        }));
 
-        updateSlider(0);
-        resetAutoSlide();
+        if ('IntersectionObserver' in window && sliderWrapper) {
+            const testimonialObserver = new IntersectionObserver((entries, observer) => {
+                if (entries.some(entry => entry.isIntersecting)) {
+                    initTestimonialSlider();
+                    observer.disconnect();
+                }
+            }, { threshold: 0.25 });
+            testimonialObserver.observe(sliderWrapper);
+        } else {
+            initTestimonialSlider();
+        }
     }
 
     const faqItems = document.querySelectorAll('.faq-item');

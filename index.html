@@ -12,6 +12,11 @@
     <link rel="canonical" href="https://istanbulboyacilik.com">
     <link rel="alternate" href="https://istanbulboyacilik.com" hreflang="tr">
     <link rel="alternate" href="https://istanbulboyacilik.com" hreflang="x-default">
+    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+    <link rel="preconnect" href="https://www.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.gstatic.com">
+    <link rel="preconnect" href="https://www.google.com" crossorigin>
     <meta property="og:title" content="İstanbul Profesyonel Boyacı Ustası | Garantili Boya Badana">
     <meta property="og:description"
         content="20 yıllık tecrübe ile İstanbul'da boya badana hizmeti. Ücretsiz keşif, kaliteli işçilik ve müşteri memnuniyeti garantisi. Teklif almak için hemen arayın!">
@@ -29,7 +34,7 @@
         content="İstanbul'un tüm ilçelerinde profesyonel boya badana ustası ekibimizle ücretsiz keşif ve garantili işçilik sunuyoruz. Hemen teklif alın.">
     <meta name="twitter:image" content="https://istanbulboyacilik.com/images/istanbulboyaustasi.png">
     <meta name="twitter:site" content="@istanbulboyacilik">
-    <script type="application/ld+json">
+     <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@graph": [
@@ -561,13 +566,15 @@
     <meta name="apple-mobile-web-app-title" content="İstanbul Boyacılık">
     <link rel="sitemap" type="application/xml" title="Sitemap" href="https://istanbulboyacilik.com/sitemap.xml">
 
-    <style>  
-    :root{--primary:#4361ee;--dark:#2b2d42;--max-width:1200px}*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Segoe UI',Tahoma,sans-serif;background:#f8f9fa;line-height:1.6;color:#333;overflow-x:hidden}header{position:fixed;width:100%;top:0;z-index:1000;background:rgb(0 0 0 / .3)}nav{display:flex;justify-content:space-between;align-items:center;height:70px;padding:0 5%;max-width:var(--max-width);margin:0 auto}.logo{font-size:1.5rem;font-weight:700;color:#fff}.main-nav{display:flex}.hero{position:relative;width:100%;color:#fff;display:flex;justify-content:center;align-items:center;z-index:1;box-shadow:0 2px 5px rgb(0 0 0 / .1);aspect-ratio:16/9}.hero-slider,.slide{position:absolute;inset:0}.slide{opacity:0;transition:opacity 1s ease-in-out}.slide.active{opacity:1}.slide img{width:100%;height:100%;object-fit:cover}.slide-content{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:90%;text-align:center;background:rgb(0 0 0 / .5);padding:2rem}h1,.slide-title{font-size:clamp(1.8rem,4vw,2.5rem);font-weight:700;color:#fff;margin-bottom:.75rem}.slide-content p{font-size:clamp(1rem,2vw,1.2rem)}img{max-width:100%;height:auto}@media(max-width:768px){.main-nav{display:none}.hero{height:80vh;aspect-ratio:4/5}}
-   </style>
+    <style>
+        :root{--primary:#4361ee;--dark:#2b2d42;--max-width:1200px}*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Segoe UI',Tahoma,sans-serif;background:#f8f9fa;line-height:1.6;color:#333;overflow-x:hidden}header{position:fixed;width:100%;top:0;z-index:1000;background:rgb(0 0 0 / .3)}nav{display:flex;justify-content:space-between;align-items:center;height:70px;padding:0 5%;max-width:var(--max-width);margin:0 auto}.logo{font-size:1.5rem;font-weight:700;color:#fff}.main-nav{display:flex}.hero{position:relative;width:100%;color:#fff;display:flex;justify-content:center;align-items:center;z-index:1;box-shadow:0 2px 5px rgb(0 0 0 / .1);aspect-ratio:16/9}.hero-slider,.slide{position:absolute;inset:0}.slide{opacity:0;transition:opacity 1s ease-in-out}.slide.active{opacity:1}.slide img{width:100%;height:100%;object-fit:cover}.slide-content{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:90%;text-align:center;background:rgb(0 0 0 / .5);padding:2rem}h1,.slide-title{font-size:clamp(1.8rem, 4vw, 2.5rem);font-weight:700;color:#fff;margin-bottom:.75rem}.slide-content p{font-size:clamp(1rem, 2vw, 1.2rem)}img{max-width:100%;height:auto}@media(max-width:768px){.main-nav{display:none}.hero{height:80vh;aspect-ratio:4/5}}
+    </style>
 
     <link rel="preload" as="image" href="images/hero/discephe/istanbul-boya-ustas-boyaustasi.WebP">
-
-    <link rel="stylesheet" href="styles.pure.css">
+    <link rel="preload" as="style" href="styles.pure.css" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="styles.pure.css">
+    </noscript>
 
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -593,7 +600,7 @@
             <div class="logo">
                 <i class="fas fa-paint-roller"></i>İstanbul Boyacılık
             </div>
-            <ul class="main-nav">
+            <ul class="main-nav" id="primary-navigation">
                 <li><a href="#anasayfa" class="active">Ana Sayfa</a></li>
                 <li><a href="#hizmetler">Hizmetler</a></li>
                 <li><a href="#galeri">Galeri</a></li>
@@ -603,1271 +610,1342 @@
                 <li><a href="#yorumlar">Yorumlar</a></li>
 
             </ul>
-            <button class="mobile-menu-button" aria-label="Menüyü Aç/Kapat">
+            <button class="mobile-menu-button" aria-label="Menüyü Aç" aria-expanded="false" aria-controls="primary-navigation">
                 <i class="fas fa-bars"></i>
             </button>
         </nav>
     </header>
     <main id="icerik" role="main">
-        <section id="anasayfa" class="hero">
-        <div class="hero-slider">
-            <div class="slider-container">
-                <div class="slide active" data-title="İstanbul Boya Ustasi" data-description="İstanbul  boya ustasi">
-                    <img src="images/hero/discephe/istanbul-boya-ustas-boyaustasi.WebP"
-                        alt="İstanbul'da profesyonel boya badana hizmeti veren deneyimli boyacı ustası" width="1200"
-                        height="800" fetchpriority="high" loading="eager" decoding="async"
-                        style="object-fit: cover; width: 100%; height: 100%;">
-                    <div class="slide-content">
-                        <h1>İstanbul Profesyonel Boya Badana ve Boyacı Ustası</h1>
-                        <p>20 yıllık tecrübemizle iç ve dış cephe boya hizmetleri. İstanbul'un her bölgesinde
-                            profesyonel boyama çözümleri sunuyoruz.</p>
+        <section id="anasayfa" class="hero" role="region" aria-label="Öne çıkan hizmetler slaytları">
+            <div class="hero-slider">
+                <div class="slider-container" aria-live="polite">
+                    <div class="slide active" data-title="İstanbul Boya Ustasi"
+                        data-description="İstanbul  boya ustasi">
+                        <img src="images/hero/discephe/istanbul-boya-ustas-boyaustasi.WebP"
+                            alt="İstanbul'da profesyonel boya badana hizmeti veren deneyimli boyacı ustası" width="1200"
+                            height="800" fetchpriority="high" loading="eager" decoding="async"
+                            style="object-fit: cover; width: 100%; height: 100%;">
+                        <div class="slide-content">
+                            <h1>İstanbul Profesyonel Boya Badana ve Boyacı Ustası</h1>
+                            <p>20 yıllık tecrübemizle iç ve dış cephe boya hizmetleri. İstanbul'un her bölgesinde
+                                profesyonel boyama çözümleri sunuyoruz.</p>
+                        </div>
                     </div>
-                </div>
-                <div class="slide" data-title="İç Mekan Boyama" data-description="İç mekan boyama">
-                    <img src="images/hero/icmekan/istanbul-boya-ustas-icmekan.WebP"
-                        alt="istanbul modern bir boyama örneği " width="1200" height="800" loading="lazy">
-                    <div class="slide-content">
-                        <p class="slide-title">Yaşam Alanlarınızı Yenileyen İç Mekan Boya</p>
-                        <p>Evinizi güzelleştirin. İç mekan boyama hizmetlerimizle yaşam alanlarınızı daha modern ve şık
-                            hale getirin.</p>
-                    </div>
-                </div>
-
-                <div class="slide" data-title="Ofis Boyama"
-                    data-description="Ofisinizin havasını değiştirin, verimliliği artırın.">
-                    <img src="images/hero/icmekan/istanbul-boya-ustas-ofis.webp"
-                        alt="İstanbul Şişli'de modern bir ofisin boyanmış hali" width="1200" height="800"
-                        loading="lazy">
-                    <div class="slide-content">
-                        <p class="slide-title">Profesyonel Ofis Boyama Çözümleri</p>
-                        <p>Ofisinizin havasını değiştirin, verimliliği artırın. Renklerin gücünden faydalanarak çalışma
-                            ortamınızı daha verimli hale getirin.</p>
-                    </div>
-                </div>
-
-                <div class="slide" data-title="İstanbul Boya Ustası - İstanbul Boya Badana Ustası | Dekoratif İşlemler"
-                    data-description="Dekoratif işlemler">
-                    <img src="images/hero/dekoratif/istanbul-boya-ustas-dekoratif1.WebP"
-                        alt="İstanbul Bebek'te dekoratif boyama işlemi yapılan bir duvar" width="1200" height="800"
-                        loading="lazy">
-                    <div class="slide-content">
-                        <p class="slide-title">Evinize Değer Katan Dekoratif Uygulamalar</p>
-                        <p>Ev ve ofis dekorasyonunuzu renklendirin. Farklı dekoratif boyama teknikleriyle mekânınıza
-                            benzersiz bir hava katın.</p>
-                    </div>
-                </div>
-                <div class="slide" data-title="İstanbul Profesyonel Boya Ustası | Ücretsiz Keşif, Net Fiyatlar"
-                    data-description="İstanbul'da tecrübeli boya ustası arıyorsanız, 1 günde temiz ve garantili boya badana hizmetimizle tanışın. Eşyalarınız korunur, eviniz tertemiz teslim edilir.">
-
-                    <img src="images/hero/discephe/istanbul-boya-ustasi-istanbulboyaustasi.WebP"
-                        alt="İstanbul'da bir evin salonunu boyayan profesyonel ve titiz boya ustası ekibi" width="1200"
-                        height="800" loading="lazy">
-
-                    <div class="slide-content">
-                        <h2 class="slide-title">Hayalinizdeki Renkler, Usta Ellerle 1 Günde Teslim!</h2>
-                        <p>Eşyalarınızı özenle koruyor, evinizi tertemiz ve tam zamanında teslim ediyoruz. Sürpriz
-                            maliyetler olmadan, net fiyat garantisiyle.</p>
+                    <div class="slide" data-title="İç Mekan Boyama" data-description="İç mekan boyama">
+                        <img src="images/hero/icmekan/istanbul-boya-ustas-icmekan.WebP"
+                            alt="istanbul modern bir boyama örneği " width="1200" height="800" loading="lazy" decoding="async">
+                        <div class="slide-content">
+                            <p class="slide-title">Yaşam Alanlarınızı Yenileyen İç Mekan Boya</p>
+                            <p>Evinizi güzelleştirin. İç mekan boyama hizmetlerimizle yaşam alanlarınızı daha modern ve
+                                şık
+                                hale getirin.</p>
+                        </div>
                     </div>
 
-                </div>
-
-                <div class="slide" data-title="Dış Cephe Boyama"
-                    data-description="Binanızın dış cephesini yenileyin, değerini artırın.">
-                    <img src="images/hero/discephe/istanbul-boya-ustas-discepheres1.WebP"
-                        alt="Bir apartmanın dış cephesine iskele kurularak yapılan boya ve mantolama işlemi"
-                        width="1200" height="800" loading="lazy">
-                    <div class="slide-content">
-                        <p class="slide-title">Dayanıklı ve Estetik Dış Cephe Boyama</p>
-
-                        <p>Binanızın dış cephesini yenileyin, değerini artırın. Kaliteli dış cephe boyama hizmeti ile
-                            estetik ve dayanıklılığı bir arada sunuyoruz.</p>
+                    <div class="slide" data-title="Ofis Boyama"
+                        data-description="Ofisinizin havasını değiştirin, verimliliği artırın.">
+                        <img src="images/hero/icmekan/istanbul-boya-ustas-ofis.webp"
+                            alt="İstanbul Şişli'de modern bir ofisin boyanmış hali" width="1200" height="800"
+                            loading="lazy" decoding="async">
+                        <div class="slide-content">
+                            <p class="slide-title">Profesyonel Ofis Boyama Çözümleri</p>
+                            <p>Ofisinizin havasını değiştirin, verimliliği artırın. Renklerin gücünden faydalanarak
+                                çalışma
+                                ortamınızı daha verimli hale getirin.</p>
+                        </div>
                     </div>
-                </div>
 
-
-
-                <div class="slide" data-title="İstanbul Boya Ustası - İstanbul Boya Badana Ustası | İç Mekan Boyama"
-                    data-description="İç mekan boyama">
-                    <img src="images/hero/icmekan/istanbul-boya-ustas-hero-bg.WebP"
-                        alt="İstanbul boyacı, ev boyama modern" width="1200" height="800" loading="lazy">
-                    <div class="slide-content">
-                        <p class="slide-title">Modern Renklerle Kusursuz İşçilik</p>
-                        <p>İç mekanlarınızı tazeleyin ve estetik bir görünüm kazandırın. Kaliteli iç mekan boyama
-                            hizmetimizle yaşam alanlarınızda fark yaratın.</p>
+                    <div class="slide"
+                        data-title="İstanbul Boya Ustası - İstanbul Boya Badana Ustası | Dekoratif İşlemler"
+                        data-description="Dekoratif işlemler">
+                        <img src="images/hero/dekoratif/istanbul-boya-ustas-dekoratif1.WebP"
+                            alt="İstanbul Bebek'te dekoratif boyama işlemi yapılan bir duvar" width="1200" height="800"
+                            loading="lazy" decoding="async">
+                        <div class="slide-content">
+                            <p class="slide-title">Evinize Değer Katan Dekoratif Uygulamalar</p>
+                            <p>Ev ve ofis dekorasyonunuzu renklendirin. Farklı dekoratif boyama teknikleriyle mekânınıza
+                                benzersiz bir hava katın.</p>
+                        </div>
                     </div>
-                </div>
+                    <div class="slide" data-title="İstanbul Profesyonel Boya Ustası | Ücretsiz Keşif, Net Fiyatlar"
+                        data-description="İstanbul'da tecrübeli boya ustası arıyorsanız, 1 günde temiz ve garantili boya badana hizmetimizle tanışın. Eşyalarınız korunur, eviniz tertemiz teslim edilir.">
 
+                        <img src="images/hero/discephe/istanbul-boya-ustasi-istanbulboyaustasi.WebP"
+                            alt="İstanbul'da bir evin salonunu boyayan profesyonel ve titiz boya ustası ekibi"
+                            width="1200" height="800" loading="lazy" decoding="async">
 
-                <div class="slide" data-title="İstanbul Boya Ustası - İstanbul Boya Badana Ustası"
-                    data-description="İstanbul boya ustasi">
-                    <img src="images/hero/discephe/istanbul-boya-ustas-istanbulboyaustasi.WebP" alt="boya ustası"
-                        width="1200" height="800" loading="lazy">
-                    <div class="slide-content">
-                        <p class="slide-title">20 Yıllık Tecrübe ile Tüm İstanbul'a Hizmet</p>
-                        <p>20 yıllık tecrübemizle iç ve dış cephe boya hizmetleri. İstanbul'un her bölgesinde
-                            profesyonel boyama çözümleri sunuyoruz.</p>
+                        <div class="slide-content">
+                            <h2 class="slide-title">Hayalinizdeki Renkler, Usta Ellerle 1 Günde Teslim!</h2>
+                            <p>Eşyalarınızı özenle koruyor, evinizi tertemiz ve tam zamanında teslim ediyoruz. Sürpriz
+                                maliyetler olmadan, net fiyat garantisiyle.</p>
+                        </div>
+
                     </div>
-                </div>
 
-            </div>
-        </div>
+                    <div class="slide" data-title="Dış Cephe Boyama"
+                        data-description="Binanızın dış cephesini yenileyin, değerini artırın.">
+                        <img src="images/hero/discephe/istanbul-boya-ustas-discepheres1.WebP"
+                            alt="Bir apartmanın dış cephesine iskele kurularak yapılan boya ve mantolama işlemi"
+                            width="1200" height="800" loading="lazy" decoding="async">
+                        <div class="slide-content">
+                            <p class="slide-title">Dayanıklı ve Estetik Dış Cephe Boyama</p>
 
-        <div class="call-us-button">
-            <a href="tel:+905078322912" class="call-button">
-                <i class="fas fa-phone"></i> Bizi arayın
-            </a>
-        </div>
-    </section>
+                            <p>Binanızın dış cephesini yenileyin, değerini artırın. Kaliteli dış cephe boyama hizmeti
+                                ile
+                                estetik ve dayanıklılığı bir arada sunuyoruz.</p>
+                        </div>
+                    </div>
 
-    <section id="hizmetler" class="services">
-        <div class="section-title">
-            <h2>Profesyonel Boya Badana Hizmetlerimiz</h2>
-        </div>
-        <div class="service-grid">
 
-            <div class="service-card">
-                <div class="service-img">
-                    <img src="images/services/istanbul-boya-ustas-icMekan.WebP"
-                        alt="İstanbul'da bir daire için profesyonel iç cephe boyacı hizmeti" width="600" height="400"
-                        loading="lazy">
-                </div>
-                <div class="service-content">
-                    <h3><i class="fas fa-home"></i> İç Cephe Ev & Ofis Boyama</h3>
-                    <p>İstanbul'daki ev ve ofisleriniz için uzman boyacı ustası ekibimizle yaşam alanlarınızı
-                        yeniliyoruz. Sadece estetik değil, sağlıklı çözümler sunuyoruz.</p>
-                    <ul class="service-features">
-                        <li>Kusursuz Duvar ve Tavan Boyama</li>
-                        <li>Detaylı Alçı ve Sıva Tamiratı</li>
-                        <li>Renk Seçimi Danışmanlığı</li>
-                        <li><strong>Garantili ve Temiz İşçilik</strong></li>
-                    </ul>
+
+                    <div class="slide" data-title="İstanbul Boya Ustası - İstanbul Boya Badana Ustası | İç Mekan Boyama"
+                        data-description="İç mekan boyama">
+                        <img src="images/hero/icmekan/istanbul-boya-ustas-hero-bg.WebP"
+                            alt="İstanbul boyacı, ev boyama modern" width="1200" height="800" loading="lazy" decoding="async">
+                        <div class="slide-content">
+                            <p class="slide-title">Modern Renklerle Kusursuz İşçilik</p>
+                            <p>İç mekanlarınızı tazeleyin ve estetik bir görünüm kazandırın. Kaliteli iç mekan boyama
+                                hizmetimizle yaşam alanlarınızda fark yaratın.</p>
+                        </div>
+                    </div>
+
+
+                    <div class="slide" data-title="İstanbul Boya Ustası - İstanbul Boya Badana Ustası"
+                        data-description="İstanbul boya ustasi">
+                        <img src="images/hero/discephe/istanbul-boya-ustas-istanbulboyaustasi.WebP" alt="boya ustası"
+                            width="1200" height="800" loading="lazy" decoding="async">
+                        <div class="slide-content">
+                            <p class="slide-title">20 Yıllık Tecrübe ile Tüm İstanbul'a Hizmet</p>
+                            <p>20 yıllık tecrübemizle iç ve dış cephe boya hizmetleri. İstanbul'un her bölgesinde
+                                profesyonel boyama çözümleri sunuyoruz.</p>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
-
-            <div class="service-card">
-                <div class="service-img">
-                    <img src="images/gallery/discehpe/istanbul-boya-ustas-disCephe-Uygulamsi.WebP"
-                        alt="İstanbul'da bir binanın dış cephesine yapılan boyacı ve yalıtım uygulaması" width="600"
-                        height="400" loading="lazy">
-                </div>
-                <div class="service-content">
-                    <h3><i class="fas fa-building"></i> Dış Cephe Boyama & Yalıtım</h3>
-                    <p>Binalarınızın değerini artıran ve yıllara meydan okuyan dış cephe boya çözümleri. Hava
-                        koşullarına karşı tam koruma sağlıyoruz.</p>
-                    <ul class="service-features">
-                        <li>Isı ve Su Yalıtımlı Boyalar</li>
-                        <li>Mantolama Üzeri Boya Uygulamaları</li>
-                        <li>Küf ve Yosun Oluşumunu Önleme</li>
-                        <li><strong>Uzun Ömürlü ve Kaliteli Malzemeler</strong></li>
-                    </ul>
-                </div>
-            </div>
-
-
-            <div class="service-card">
-                <div class="service-img">
-                    <img src="images/gallery/dekoratif/istanbul-boya-ustas-dekoratif.WebP"
-                        alt="İstanbul'da uzman usta tarafından yapılan İtalyan dekoratif boyacı çalışması" width="600"
-                        height="400" loading="lazy">
-                </div>
-                <div class="service-content">
-                    <h3><i class="fas fa-paint-brush"></i> Dekoratif & İtalyan Boya</h3>
-                    <p>Mekanlarınıza sanatsal bir dokunuş katmak için İtalyan boya, sedef boya ve modern efekt
-                        uygulamaları ile fark yaratıyoruz.</p>
-                    <ul class="service-features">
-                        <li>Beton ve Mermer Efektli Duvarlar</li>
-                        <li>Özel Desen ve Doku Çalışmaları</li>
-                        <li>Kişiye Özel Tasarım Uygulamaları</li>
-                        <li><strong>Estetik ve Göz Alıcı Sonuçlar</strong></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="galeri" class="gallery">
-        <div class="section-title">
-            <h2>Referans Çalışmalarımız ve Projelerimiz</h2>
-        </div>
-        <div class="horizontal-scroll-wrapper">
-
-            <div class="gallery-item">
-                <img src="images/gallery/discehpe/istanbul-boya-ustas-disCephe.WebP"
-                    alt="İstanbul Ataşehir'de tamamladığımız dış cephe boya ustası projesi" width="400" height="300"
-                    loading="lazy">
-                <div class="gallery-overlay">
-                    <h3>Dış Cephe Yenileme Projesi</h3>
-                    <p>Ataşehir / İstanbul</p>
-                </div>
-            </div>
-
-
-            <div class="gallery-item">
-                <img src="images/services/istanbul-boya-ustas-mutfak.WebP"
-                    alt="Beylikdüzü'nde bir mutfak için yapılan saten boya ustası ve alçı tamiratı işçiliği" width="400"
-                    height="300" loading="lazy">
-                <div class="gallery-overlay">
-                    <h3>Daire İçi Mutfak Boyama</h3>
-                    <p>Beylikdüzü / İstanbul</p>
-                </div>
-            </div>
-
-
-            <div class="gallery-item">
-                <img src="images/gallery/dekoratif/istanbul-boya-ustas-dekoratif1.WebP"
-                    alt="Kadıköy'de bir salona uygulanan beton efektli dekoratif boya ustasının çalışması" width="400"
-                    height="300" loading="lazy">
-                <div class="gallery-overlay">
-                    <h3>Dekoratif Beton Efekt Boya</h3>
-                    <p>Kadıköy / İstanbul</p>
-                </div>
-            </div>
-
-
-            <div class="gallery-item">
-                <img src="images/services/istanbul-boya-ustas-ofis.WebP"
-                    alt="Şişli'deki bir ofis için yapılan komple ofis boyama hizmeti" width="400" height="300"
-                    loading="lazy">
-                <div class="gallery-overlay">
-                    <h3>Kurumsal Ofis Boyama</h3>
-                    <p>Şişli / İstanbul</p>
-                </div>
-            </div>
-
-
-            <div class="gallery-item">
-                <img src="images/services/istanbul-boya-ustas-IsYeri.WebP"
-                    alt="Fatih'te bir mağazanın iç dekorasyon boya ve badana işleri" width="400" height="300"
-                    loading="lazy">
-                <div class="gallery-overlay">
-                    <h3>Mağaza & İş Yeri Boyama</h3>
-                    <p>Fatih / İstanbul</p>
-                </div>
-            </div>
-
-
-            <div class="gallery-item">
-                <img src="images/services/istanbul-boya-ustas-villa.WebP"
-                    alt="Beykoz'daki bir villa için yapılan komple iç ve dış cephe boya projesi" width="400"
-                    height="300" loading="lazy">
-                <div class="gallery-overlay">
-                    <h3>Villa Boyama Projesi</h3>
-                    <p>Beykoz / İstanbul</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="neden-biz" class="why-us">
-        <div class="container">
-            <div class="section-title">
-                <h2>Neden İstanbul'da Bizi Tercih Etmelisiniz?</h2>
-            </div>
-            <div class="reasons-grid">
-                <div class="reason-card">
-                    <i class="fas fa-broom"></i>
-                    <h3>Titiz ve Temiz İşçilik</h3>
-                    <p>Evinizi veya ofisinizi kendi mekanımız gibi görüyor, işe başlamadan her yeri koruma altına alıyor
-                        ve iş bitiminde tertemiz teslim ediyoruz.</p>
-                </div>
-                <div class="reason-card">
-                    <i class="fas fa-check-circle"></i>
-                    <h3>Söz Verilen Zamanda Teslim</h3>
-                    <p>Anlaştığımız işi, anlaştığımız günde, beklenmedik bahaneler üretmeden bitiririz. Zamanınızın
-                        değerli olduğunu biliyoruz.</p>
-                </div>
-                <div class="reason-card">
-                    <i class="fas fa-brush"></i>
-                    <h3>Sadece Kaliteli Malzeme</h3>
-                    <p>İsteğinize göre Filli Boya, Marshall, Jotun gibi en iyi markalarla çalışarak, yatırımınızın
-                        karşılığı olan kalıcı sonuçlar elde ederiz.</p>
-                </div>
-                <div class="reason-card">
-                    <i class="fas fa-handshake"></i>
-                    <h3>Güvenilir ve Şeffaf Usta</h3>
-                    <p>Ücretsiz keşiften iş teslimine kadar tüm süreçte şeffaf iletişim kurar, size güven verir ve
-                        aklınızda soru işareti bırakmayız.</p>
-                </div>
-                <div class="reason-card">
-                    <i class="fas fa-shield-alt"></i>
-                    <h3>Eşya Koruma Garantisi</h3>
-                    <p>Değerli eşyalarınız, mobilyalarınız ve zeminleriniz özel örtülerle titizlikle korunur. Bir damla
-                        boya lekesiyle karşılaşmazsınız.</p>
-                </div>
-                <div class="reason-card">
-                    <i class="fas fa-thumbs-up"></i>
-                    <h3>%100 Müşteri Memnuniyeti</h3>
-                    <p>Amacımız sadece duvarları boyamak değil, bizi İstanbul'daki çevresine gönül rahatlığıyla tavsiye
-                        eden mutlu müşteriler kazanmaktır.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-    <section id="nasil-calisiyoruz" class="section">
-        <div class="container section--md">
-            <div class="section-title">
-                <h2>Adım Adım Hayallerinize Giden Yol</h2>
-                <p>Sizin için her detayı düşündük. Size sadece hayalinizdeki renklerin keyfini çıkarmak kalıyor.</p>
-            </div>
-            <div class="workflow-timeline">
-
-                <!-- Adım 1 -->
-                <div class="workflow-item">
-                    <div class="workflow-icon"><i class="fas fa-handshake"></i></div>
-                    <div class="workflow-content">
-                        <span class="step-number">Adım 1</span>
-                        <h3>Tanışma & Ücretsiz Keşif</h3>
-                        <p>Bize ulaştığınızda, sizi dinlemek için oradayız. Evinizi ziyaret edip isteklerinizi anlıyor,
-                            size özel renk ve malzeme önerileri sunuyoruz. Elbette tamamen ücretsiz ve samimi bir
-                            sohbetle.</p>
-                    </div>
-                </div>
-
-                <!-- Adım 2 -->
-                <div class="workflow-item">
-                    <div class="workflow-icon"><i class="fa-solid fa-turkish-lira-sign"></i></div>
-                    <div class="workflow-content">
-                        <span class="step-number">Adım 2</span>
-                        <h3>Net ve Anlaşılır Teklif</h3>
-                        <p>Sürprizlere yer yok. Yapılacak her işi, malzeme detaylarını ve toplam ücreti net bir şekilde
-                            size sunuyoruz. Aklınızda tek bir soru işareti bile kalmıyor.</p>
-                    </div>
-                </div>
-
-                <!-- Adım 3 -->
-                <div class="workflow-item">
-                    <div class="workflow-icon"><i class="fas fa-shield-alt"></i></div>
-                    <div class="workflow-content">
-                        <span class="step-number">Adım 3</span>
-                        <h3>Eşyalarınız Bize Emanet</h3>
-                        <p>Boyadan önce en az boya kadar önem verdiğimiz bir adım var: koruma. Değerli eşyalarınızı ve
-                            zeminleri titizlikle kaplıyor, evinizi bize emanet ettiğiniz gibi koruyoruz.</p>
-                    </div>
-                </div>
-
-                <!-- Adım 4 -->
-                <div class="workflow-item">
-                    <div class="workflow-icon"><i class="fas fa-paint-roller"></i></div>
-                    <div class="workflow-content">
-                        <span class="step-number">Adım 4</span>
-                        <h3>Usta Dokunuşlarla Renklendirme</h3>
-                        <p>Sıra en keyifli kısımda! Ekibimiz, pürüzsüz hale getirdiğimiz duvarlarınızı hayallerinizdeki
-                            renklere kavuşturuyor. Her fırça darbesinde kaliteyi ve özeni hissedeceksiniz.</p>
-                    </div>
-                </div>
-
-                <!-- Adım 5 -->
-                <div class="workflow-item">
-                    <div class="workflow-icon"><i class="fas fa-check-circle"></i></div>
-                    <div class="workflow-content">
-                        <span class="step-number">Adım 5</span>
-                        <h3>Mutlu Son & Tertemiz Teslimat</h3>
-                        <p>İşimiz bittiğinde, ardımızda bir damla boya lekesi bırakmıyoruz. Son kontrolü birlikte
-                            yapıyor ve yüzünüzdeki gülümsemeyle size veda ediyoruz.</p>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-
-    <section id="boya-rehberi" class="boya-rehberi">
-        <div class="section-title">
-            <h2>İstanbul'da Boya Ustası Arayanlar İçin Kapsamlı Rehber</h2>
-        </div>
-        <p>İstanbul'da güvenilir bir <strong>boya badana ustası</strong> bulmak, evinizin veya iş yerinizin çehresini
-            değiştirecek en önemli adımdır. Doğru renkler ve profesyonel bir işçilikle mekanlar sadece yenilenmez, aynı
-            zamanda değer kazanır. **İstanbul Boyacılık** olarak, 20 yıllık tecrübemiz ve uzman <strong>boyacı</strong>
-            ekibimizle bu süreçte yanınızdayız. Sunduğumuz kaliteli ve garantili boya badana hizmeti ile mekanlarınıza
-            estetik ve kalıcı çözümler getiriyoruz. Bu rehberde, İstanbul'da bir <strong>boya ustası</strong> seçerken
-            nelere dikkat etmeniz gerektiğini ve merak ettiğiniz tüm soruların cevaplarını bulacaksınız.</p>
-
-        <h3>Boya Ücretleri ve Maliyetler</h3>
-        <div class="pricing-table">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Hizmet Türü</th>
-                        <th>Metrekare Fiyatı</th>
-                        <th>Ortalama Süre (100m²)</th>
-                        <th>Garanti</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>İç Cephe Boyama</td>
-                        <td>100-200 TL</td>
-                        <td>2-3 Gün</td>
-                        <td>3 Yıl</td>
-                    </tr>
-                    <tr>
-                        <td>Dış Cephe Boyama</td>
-                        <td>150-250 TL</td>
-                        <td>3-5 Gün</td>
-                        <td>5 Yıl</td>
-                    </tr>
-                    <tr>
-                        <td>Dekoratif Boyama</td>
-                        <td>250-500 TL</td>
-                        <td>4-7 Gün</td>
-                        <td>5 Yıl</td>
-                    </tr>
-                    <tr>
-                        <td>Ofis Boyama</td>
-                        <td>120-220 TL</td>
-                        <td>2-4 Gün</td>
-                        <td>3 Yıl</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <div class="calculator">
-            <h3>Boya Maliyeti Hesaplama Aracı</h3>
-            <form id="price-calculator">
-                <div class="form-group">
-                    <label for="area">Metrekare (m²):</label>
-                    <input type="number" id="area" min="10" max="1000" required>
-                </div>
-                <div class="form-group">
-                    <label for="service-type">Hizmet Türü:</label>
-                    <select id="service-type" required>
-                        <option value="100">İç Cephe Boyama</option>
-                        <option value="150">Dış Cephe Boyama</option>
-                        <option value="250">Dekoratif Boyama</option>
-                        <option value="120">Ofis Boyama</option>
-                    </select>
-                </div>
-                <button type="button" id="calculate-btn">Hesapla</button>
-                <div class="result">
-                    <h4 style="color:#222;">Tahmini Maliyet: <span id="estimated-cost" style="color:#111;">0 TL</span>
-                    </h4>
-                    <p style="color:#222;">Detaylı <strong>teklifi al</strong>mak için <a href="#iletisim"
-                            style="color:#005fa3;text-decoration:underline;">iletişime geçin</a></p>
-                </div>
-            </form>
-        </div>
-
-    </section>
-
-    <section class="seo-content">
-        <div class="container">
-            <h2>İstanbul'un Güvenilir Boyacı Ustasıyla Tanışın</h2>
-            <div class="seo-intro">
-                <p>İstanbul gibi metropol bir şehirde <strong>boyacı ustası</strong> arayışınız, sadece bir hizmet alımı
-                    değil, aynı zamanda yaşam ve çalışma alanlarınıza gösterdiğiniz özenin bir ifadesidir. Profesyonel
-                    ekibimizle bu hassasiyetin farkındayız. <strong>İstanbul geneli daire boyama</strong> hizmetimizden,
-                    büyük ölçekli ofis ve iş yeri projelerine kadar her işi, bir zanaatkar titizliği ve profesyonel bir
-                    yaklaşımla ele alıyoruz. Amacımız, mekanlarınızı sadece yenilemek değil, onların ruhunu, karakterini
-                    ve mülkünüzün değerini yüceltmektir.</p>
-            </div>
-            <div id="more-content" style="display: none;">
-                <h3>Profesyonel Boya Badana Hizmetinin Farkı Nedir?</h3>
-                <p>Rekabetin yoğun olduğu <strong>İstanbul boyacı</strong> piyasasında hizmet kalitemizi sıradanlıktan
-                    ayıran temel prensiplerimiz vardır:</p>
-                <ul>
-                    <li><strong>Danışmanlık ve Keşif:</strong> Sadece boya yapmıyoruz; mekanınızın ışığını, mimari
-                        detaylarını ve sizin yaşam tarzınızı analiz ederek, tüm İstanbul'daki ev ve iş yerleri için en
-                        doğru renk ve malzeme paletini birlikte oluşturuyoruz.</li>
-                    <li><strong>Altyapı Mükemmelliği:</strong> Duvarlar tuvalimizdir ve tuval kusursuz olmalıdır.
-                        Boyadan önce yüzeydeki tüm pürüzleri, çatlakları ve eski boya katmanlarını profesyonel
-                        ekipmanlarla giderir, tüm İstanbul'daki projelerimizde pürüzsüz bir zemin yaratırız.</li>
-                    <li><strong>Detaylara Önem:</strong> Süpürgelikler, priz kenarları, kapı pervazları gibi en ince
-                        detaylarda bile hatasız ve temiz bir işçilik sunarak farkımızı ortaya koyarız.</li>
-                </ul>
-                <p><strong>İstanbul boya badana fiyatları</strong> araştırırken unutmayın; profesyonel bir hizmetin geri
-                    dönüşü çok daha fazladır. Doğru renkler, pürüzsüz duvarlar ve temiz işçilik, mekanınızın algılanan
-                    değerini anında yükseltir. Size bu süreci zahmetsiz ve keyifli bir deneyim olarak sunmak için
-                    buradayız. Tüm İstanbul için ücretsiz keşif ve danışmanlık hizmetimizden yararlanmak için bizimle
-                    iletişime geçebilirsiniz.</p>
-            </div>
-            <div class="read-more-container">
-                <button id="read-more-btn" class="btn btn-read-more">Daha Fazla Bilgi <i
-                        class="fas fa-chevron-down"></i></button>
-            </div>
-        </div>
-    </section>
-
-    <section id="sss" class="faq-section">
-        <div class="section-title">
-            <h2>Sıkça Sorulan Sorular</h2>
-            <p>İstanbul boya hizmetlerimiz hakkında merak ettikleriniz</p>
-        </div>
-
-        <div class="faq-container">
-            <div class="search-container">
-                <i class="fas fa-search"></i>
-                <input type="text" id="faq-search" placeholder="Sorunuzu buraya yazın...">
-            </div>
-
-            <div class="stats-bar">
-                <div class="stat-item">
-                    <div class="number">16</div>
-                    <div class="label">Soru-Cevap</div>
-                </div>
-                <div class="stat-item">
-                    <div class="number">2025</div>
-                    <div class="label">Güncel Fiyatlar</div>
-                </div>
-                <div class="stat-item">
-                    <div class="number">7/24</div>
-                    <div class="label">Destek Hattı</div>
-                </div>
-            </div>
-
-            <div class="faq-items-container">
-
-                <div class="faq-column">
-
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <i class="fa-solid fa-brush"></i>
-                            🏠 İstanbul’da güvenilir bir boyacı ustası nasıl bulunur?
-                        </div>
-                        <div class="faq-answer">
-                            <p>İstanbul’da evini ya da iş yerini boyatmak isteyenler için güvenilir bir boyacı ustası
-                                bulmak, işin kalitesi
-                                açısından oldukça önemlidir. En iyi boyacıları bulmak için <strong>referanslı ustalarla
-                                    çalışmak</strong>,
-                                <strong>müşteri yorumlarını</strong> incelemek ve <strong>yüz yüze fiyat
-                                    teklifi</strong> almak önerilir.
-                                İstanbul Boyacılık olarak her semte hizmet veriyor, <strong>profesyonel ekip ve kaliteli
-                                    malzeme</strong>
-                                garantisi sunuyoruz. Hemen bizimle iletişime geçerek ücretsiz keşif talebinde
-                                bulunabilirsiniz.
-                            </p>
-                        </div>
-                    </div>
-
-
-
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <i class="fas fa-building"></i>
-                            ✅ 3+1 dairenin komple boya badana maliyeti ortalama ne kadar tutar?
-                        </div>
-                        <div class="faq-answer">
-                            <p>İstanbul'da 3+1 (yaklaşık 100-120 m²) bir dairenin komple boyanması, seçilen boya markası
-                                (<strong>Filli Boya, Marshall, Jotun vb.</strong>), duvarların durumu ve işçilik
-                                kalitesine göre genellikle <strong>15.000 TL ile 30.000 TL</strong> arasında
-                                değişmektedir. Net fiyat için ücretsiz keşif hizmetimizden yararlanabilirsiniz.</p>
-                        </div>
-                    </div>
-
-
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <i class="fas fa-home"></i>
-                            🏠 2+1 dairenin boya badana maliyeti ne kadar olur?
-                        </div>
-                        <div class="faq-answer">
-                            <p>İstanbul'da 2+1 (yaklaşık 70-90 m²) bir dairenin boyanması genellikle <strong>8.000 TL
-                                    ile 20.000 TL</strong> arasında bir maliyete sahiptir. Fiyatlandırma, tavan, duvar,
-                                kapı ve peteklerin boyanıp boyanmayacağına ve ek tamirat işlerine göre değişebilir.</p>
-                        </div>
-                    </div>
-
-
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <i class="fas fa-box-open"></i>
-                            ❓ Boya işlemi öncesi benim yapmam gereken bir hazırlık var mı?
-                        </div>
-                        <div class="faq-answer">
-                            <p>Sizin için süreci en kolay hale getiriyoruz. Kırılabilecek küçük ve özel eşyalarınızı
-                                kaldırmanız yeterlidir. Geri kalan büyük mobilyaların (koltuk, dolap vb.) çekilmesi,
-                                üzerlerinin koruyucu naylonlarla kaplanması ve yerlerin örtülmesi gibi tüm işlemleri
-                                <strong>profesyonel ekibimiz titizlikle yapmaktadır.</strong>
-                            </p>
-                        </div>
-                    </div>
-
-
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <i class="fas fa-clock"></i>
-                            🕒 Ortalama bir dairenin boyanması kaç gün sürer?
-                        </div>
-                        <div class="faq-answer">
-                            <p>Eşyalı ve içerisinde yaşam olan standart 3+1 bir dairenin boya badana işlemi, gerekli
-                                alçı tamiratları da dahil olmak üzere genellikle <strong>2 gün içerisinde</strong>
-                                tamamlanır. Eşyasız ve boş daireler daha hızlı, yaklaşık <strong>1-2 günde</strong>
-                                teslim edilebilir.</p>
-                        </div>
-                    </div>
-
-
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <i class="fas fa-broom"></i>
-                            🛡️ İşiniz bittikten sonra temizlik yapıyor musunuz?
-                        </div>
-                        <div class="faq-answer">
-                            <p>En çok önem verdiğimiz konulardan biri temizliktir. İşe başlamadan önce tüm eşyalarınızı
-                                ve zeminleri özel örtülerle tamamen izole ederiz. İş bitiminde tüm koruma malzemelerini
-                                toplar, yerleri süpürür ve evinizi size <strong>tertemiz bir şekilde</strong> teslim
-                                ederiz. Bir damla boya lekesiyle karşılaşmazsınız.</p>
-                        </div>
-                    </div>
-
-
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <i class="fas fa-tint-slash"></i>
-                            💧 Duvarlarımdaki rutubet ve küf sorununu çözüyor musunuz?
-                        </div>
-                        <div class="faq-answer">
-                            <p>Evet, bu bizim uzmanlık alanlarımızdan biridir. Önce özel küf önleyici solüsyonlarla
-                                yüzeyi temizliyor, gerekirse <strong>nem bariyeri veya yalıtım astarı</strong> uyguluyor
-                                ve ardından küf oluşumunu engelleyen özel boyalar kullanıyoruz.</p>
-                        </div>
-                    </div>
-
-
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <i class="fas fa-paint-brush"></i>
-                            🎨 Kullandığınız boya markaları nelerdir?
-                        </div>
-                        <div class="faq-answer">
-                            <p>Müşteri memnuniyeti için sadece en kaliteli ve sertifikalı markalarla çalışıyoruz:
-                                <strong>Filli Boya, Marshall, Jotun, Dyo</strong> gibi sektörün lider markaları. Renk ve
-                                boya türü seçimi konusunda size ücretsiz danışmanlık yapıyoruz.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="faq-column">
-
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <i class="fas fa-wind"></i>
-                            👃 Boya kokusu ne kadar sürede geçer? Sağlığa zararlı mı?
-                        </div>
-                        <div class="faq-answer">
-                            <p>Kullandığımız su bazlı, kaliteli boyaların büyük çoğunluğu <strong>neredeyse
-                                    kokusuzdur</strong> ve insan sağlığına zararlı VOC (Uçucu Organik Bileşen) oranları
-                                çok düşüktür. İyi bir havalandırma ile boya kokusu genellikle <strong>aynı gün
-                                    içerisinde</strong> kaybolur.</p>
-                        </div>
-                    </div>
-
-
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <i class="fas fa-palette"></i>
-                            ✨ Dekoratif boya (İtalyan boya) nedir?
-                        </div>
-                        <div class="faq-answer">
-                            <p>Dekoratif boya, duvarlara doku ve özel efektler (mermer, beton, kadife vb.) kazandıran
-                                sanatsal bir uygulamadır. Genellikle TV ünitesi arkası gibi <strong>odak noktası
-                                    yaratılmak istenen</strong> tek bir duvara uygulanır ve mekana benzersiz bir estetik
-                                katar.</p>
-                        </div>
-                    </div>
-
-
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <i class="fas fa-certificate"></i>
-                            💯 Yaptığınız işe garanti veriyor musunuz?
-                        </div>
-                        <div class="faq-answer">
-                            <p>Evet, yaptığımız tüm işlerin arkasındayız. Bu nedenle, iç cephe boya işlerimizde
-                                <strong>3 yıla</strong>, dış cephe işlerimizde ise <strong>5 yıla varan işçilik
-                                    garantisi</strong> sunuyoruz.
-                            </p>
-                        </div>
-                    </div>
-
-
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <i class="fas fa-search-dollar"></i>
-                            🔍 Ücretsiz keşif hizmetiniz neleri kapsıyor?
-                        </div>
-                        <div class="faq-answer">
-                            <p>Ücretsiz keşifte uzman ekibimiz adresinize gelir; duvarları inceler, net metraj ölçümü
-                                yapar, renk ve malzeme danışmanlığı sunar ve son olarak size tüm detayları içeren,
-                                <strong>gizli maliyet barındırmayan</strong> net bir fiyat teklifi sunar.
-                            </p>
-                        </div>
-                    </div>
-
-
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <i class="fas fa-tools"></i>
-                            🛠️ Duvardaki çatlak, delik gibi tamiratları yapıyor musunuz?
-                        </div>
-                        <div class="faq-answer">
-                            <p>Kesinlikle. Boyadan önce duvardaki tüm çivi deliği, çatlak ve dökülmeleri özel alçı
-                                dolgularıyla titizlikle tamir ediyor, zımparalıyor ve <strong>pürüzsüz bir
-                                    yüzey</strong> elde ettikten sonra boya uygulamasına geçiyoruz.</p>
-                        </div>
-                    </div>
-
-
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <i class="fas fa-user-check"></i>
-                            🧑‍🔧 İyi bir boyacı ustasını nasıl anlarım?
-                        </div>
-                        <div class="faq-answer">
-                            <p>İyi bir usta, sadece fiyat vermez; size süreç hakkında bilgi verir, malzeme seçenekleri
-                                sunar, referans gösterebilir ve <strong>işine garanti verir</strong>. İletişimi
-                                kuvvetli, temizliğe özen gösteren ve anlaşılan zamanda işi bitiren ustalar
-                                profesyoneldir.</p>
-                        </div>
-                    </div>
-
-
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <i class="fas fa-ruler-combined"></i>
-                            📐 1 Usta Günde Kaç m² Boya Yapar?
-                        </div>
-                        <div class="faq-answer">
-                            <p>Deneyimli bir boyacı ustası, yüzeyin durumuna ve işin detaylarına bağlı olarak bir günde
-                                ortalama <strong>50 m² ile 100 m²</strong> arasında duvar ve tavan boyayabilir. Bu
-                                rakam, tamirat işlerinin yoğunluğuna göre değişebilir.</p>
-                        </div>
-                    </div>
-
-
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <i class="fas fa-handshake"></i>
-                            🤝 İstanbul'da güvenilir bir boyacıya nasıl ulaşırım?
-                        </div>
-                        <div class="faq-answer">
-                            <p>İstanbul'da güvenilir bir boyacı ustası için <strong>İstanbul Boyacılık</strong> gibi
-                                kurumsal ve müşteri yorumları olumlu olan profesyonel firmaları tercih edebilirsiniz.
-                                Online platformlar ve çevrenizden alacağınız tavsiyeler de doğru ustayı bulmanıza
-                                yardımcı olabilir.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="contact-banner">
-                <h3>Başka sorunuz mu var?</h3>
-                <p>7/24 destek ekibimiz sorularınızı yanıtlamak için hazır</p>
-                <a href="tel:+905078322912" class="btn">
-                    <i class="fas fa-phone"></i> Hemen Arayın: 0507 832 29 12
+            <div class="call-us-button">
+                <a href="tel:+905078322912" class="call-button">
+                    <i class="fas fa-phone"></i> Bizi arayın
                 </a>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="bolgeler" class="districts">
-        <div class="section-title">
-            <h2>Hizmet Verdiğimiz İstanbul İlçeleri</h2>
-        </div>
-        <div class="district-grid">
-
-            <div class="district-group">
-                <h3>Anadolu Yakası</h3>
-                <ul>
-                    <li><a href="https://istanbulboyacilik.com/atasehir/">Ataşehir Boyacı</a></li>
-                    <li><a href="https://istanbulboyacilik.com/beykoz/">Beykoz Boyacı</a></li>
-                    <li><a href="https://istanbulboyacilik.com/cekmekoy/">Çekmeköy Boyacı</a></li>
-                    <li><a href="https://istanbulboyacilik.com/kadikoy/">Kadıköy Boyacı</a></li>
-                    <li><a href="https://istanbulboyacilik.com/kartal/">Kartal Boyacı</a></li>
-                    <li><a href="https://istanbulboyacilik.com/maltepe/">Maltepe Boyacı</a></li>
-                    <li><a href="https://istanbulboyacilik.com/pendik/">Pendik Boyacı</a></li>
-                    <li><a href="https://istanbulboyacilik.com/sancaktepe/">Sancaktepe Boyacı</a></li>
-                    <li><a href="https://istanbulboyacilik.com/sultanbeyli/">Sultanbeyli Boyacı</a></li>
-                    <li><a href="https://istanbulboyacilik.com/tuzla/">Tuzla Boyacı</a></li>
-                    <li><a href="https://istanbulboyacilik.com/umraniye/">Ümraniye Boyacı</a></li>
-                    <li><a href="https://istanbulboyacilik.com/uskudar/">Üsküdar Boyacı</a></li>
-                    <li><a href="https://istanbulboyacilik.com/sile/">Şile Boyacı</a></li>
-                </ul>
+        <section id="hizmetler" class="services">
+            <div class="section-title">
+                <h2>Profesyonel Boya Badana Hizmetlerimiz</h2>
             </div>
+            <div class="service-grid">
 
-            <div class="district-group">
-                <h3>Avrupa Yakası</h3>
-                <ul>
-                    <li><a href="https://istanbulboyacilik.com/arnavutkoy/">Arnavutköy Boyacı</a></li>
-                    <li><a href="https://istanbulboyacilik.com/avcilar/">Avcılar Boyacı</a></li>
-                    <li><a href="https://istanbulboyacilik.com/bagcilar/">Bağcılar Boyacı</a></li>
-                    <li><a href="https://istanbulboyacilik.com/bahcelievler/">Bahçelievler Boyacı</a></li>
-                    <li><a href="https://istanbulboyacilik.com/bakirkoy/">Bakırköy Boyacı</a></li>
-                    <li><a href="https://istanbulboyacilik.com/basaksehir/">Başakşehir Boyacı</a></li>
-                    <li><a href="https://istanbulboyacilik.com/bayrampasa/">Bayrampaşa Boyacı</a></li>
-                    <li><a href="https://istanbulboyacilik.com/besiktas/">Beşiktaş Boyacı</a></li>
-                    <li><a href="https://istanbulboyacilik.com/beylikduzu/">Beylikdüzü Boyacı</a></li>
-                    <li><a href="https://istanbulboyacilik.com/beyoglu/">Beyoğlu Boyacı</a></li>
-                    <li><a href="https://istanbulboyacilik.com/buyukcekmece/">Büyükçekmece Boyacı</a></li>
-                    <li><a href="https://istanbulboyacilik.com/catalca/">Çatalca Boyacı</a></li>
-                    <li><a href="https://istanbulboyacilik.com/esenler/">Esenler Boyacı</a></li>
-                    <li><a href="https://istanbulboyacilik.com/esenyurt/">Esenyurt Boyacı</a></li>
-                    <li><a href="https://istanbulboyacilik.com/fatih/">Fatih Boyacı</a></li>
-                    <li><a href="https://istanbulboyacilik.com/gaziosmanpasa/">Gaziosmanpaşa Boyacı</a></li>
-                    <li><a href="https://istanbulboyacilik.com/gungoren/">Güngören Boyacı</a></li>
-                    <li><a href="https://istanbulboyacilik.com/kagithane/">Kağıthane Boyacı</a></li>
-                    <li><a href="https://istanbulboyacilik.com/kucukcekmece/">Küçükçekmece Boyacı</a></li>
-                    <li><a href="https://istanbulboyacilik.com/sariyer/">Sarıyer Boyacı</a></li>
-                    <li><a href="https://istanbulboyacilik.com/silivri/">Silivri Boyacı</a></li>
-                    <li><a href="https://istanbulboyacilik.com/sisli/">Şişli Boyacı</a></li>
-                    <li><a href="https://istanbulboyacilik.com/zeytinburnu/">Zeytinburnu Boyacı</a></li>
-                </ul>
-            </div>
-            <div class="district-group">
-                <h3>Semtler</h3>
-                <ul>
-                    <li><a href="https://istanbulboyacilik.com/acibadem/">Acıbadem Boyacı</a></li>
-                    <li><a href="https://istanbulboyacilik.com/bebek/">Bebek Boyacı</a></li>
-                    <li><a href="https://istanbulboyacilik.com/etiler/">Etiler Boyacı</a></li>
-                    <li><a href="https://istanbulboyacilik.com/camlica/">Çamlıca Boyacı</a></li>
-                    <li><a href="https://istanbulboyacilik.com/levent/">Levent Boyacı</a></li>
-                    <li><a href="https://istanbulboyacilik.com/nisantasi/">Nişantaşı Boyacı</a></li>
-                    <li><a href="https://istanbulboyacilik.com/tarabya/">Tarabya Boyacı</a></li>
-                    <li><a href="https://istanbulboyacilik.com/zekeriyakoy/">Zekeriyaköy Boyacı</a></li>
-                    <li><a href="https://istanbulboyacilik.com/ulus/">Ulus Boyacı</a></li>
-                    <li><a href="https://istanbulboyacilik.com/kandilli/">Kandilli Boyacı</a></li>
-                    <li><a href="https://istanbulboyacilik.com/acarkent/">Acarkent Boyacı</a></li>
-                    <li><a href="https://istanbulboyacilik.com/kemerburgaz/">Kemerburgaz Boyacı</a></li>
-                </ul>
-            </div>
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="images/services/istanbul-boya-ustas-icMekan.WebP"
+                            alt="İstanbul'da bir daire için profesyonel iç cephe boyacı hizmeti" width="600"
+                            height="400" loading="lazy" decoding="async">
+                    </div>
+                    <div class="service-content">
+                        <h3><i class="fas fa-home"></i> İç Cephe Ev & Ofis Boyama</h3>
+                        <p>İstanbul'daki ev ve ofisleriniz için uzman boyacı ustası ekibimizle yaşam alanlarınızı
+                            yeniliyoruz. Sadece estetik değil, sağlıklı çözümler sunuyoruz.</p>
+                        <ul class="service-features">
+                            <li>Kusursuz Duvar ve Tavan Boyama</li>
+                            <li>Detaylı Alçı ve Sıva Tamiratı</li>
+                            <li>Renk Seçimi Danışmanlığı</li>
+                            <li><strong>Garantili ve Temiz İşçilik</strong></li>
+                        </ul>
+                    </div>
+                </div>
 
-        </div>
-    </section>
 
-    <section id="iletisim" class="contact">
-        <div class="section-title">
-            <h2>İletişim</h2>
-        </div>
-        <div class="contact-container">
-            <div class="contact-info">
-                <h3>İletişim Bilgileri</h3>
-                <p>
-                    <i class="fas fa-phone"></i>
-                    Telefon: <a href="tel:+905078322912" class="clickable-text">0507 832 29 12</a>
-                </p>
-                <p>
-                    <i class="fas fa-envelope"></i>
-                    <span class="email-content">
-                        E-posta:
-                        <span id="email-text">boyaustamistanbul@gmail.com</span>
-                        <span class="email-icons">
-                            <i class="fas fa-paper-plane" onclick="sendEmail()" title="Gönder"></i>
-                        </span>
-                    </span>
-                </p>
-                <p>
-                    <i class="fas fa-map-marker-alt"></i>Demirkapı Cd. No:1 Bayrampaşa/İstanbul
-                </p>
-                <p>
-                    <i class="fas fa-clock"></i>Çalışma Saatleri: Pzt-Cmt 00:00-23:59
-                </p>
-                <div class="social-links">
-                    <a href="https://www.facebook.com/people/%C4%B0stanbull-Boyac%C4%B1l%C4%B1k/pfbid02jfsoicPA9G4MQuW6GZA55CsYxLETtxgG2mwi2hH3n2zPguLDeE8tGB4G14bsCxMCl/"
-                        target="_blank" aria-label="İstanbul Boyacılık Facebook sayfası">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a href="https://www.instagram.com/istanbulboyacilik/" target="_blank"
-                        aria-label="İstanbul Boyacılık Instagram sayfası">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="https://wa.me/905078322912?text=Merhaba%2C%20boya%20ve%20badana%20hizmeti%20i%C3%A7in%20yard%C4%B1m%20almak%20istiyorum.%20Bilgi%20verebilir%20misiniz%3F"
-                        target="_blank" rel="noopener noreferrer"
-                        aria-label="İstanbul Boyacılık WhatsApp ile iletişime geçin">
-                        <i class="fab fa-whatsapp"></i>
-                    </a>
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="images/gallery/discehpe/istanbul-boya-ustas-disCephe-Uygulamsi.WebP"
+                            alt="İstanbul'da bir binanın dış cephesine yapılan boyacı ve yalıtım uygulaması" width="600"
+                            height="400" loading="lazy" decoding="async">
+                    </div>
+                    <div class="service-content">
+                        <h3><i class="fas fa-building"></i> Dış Cephe Boyama & Yalıtım</h3>
+                        <p>Binalarınızın değerini artıran ve yıllara meydan okuyan dış cephe boya çözümleri. Hava
+                            koşullarına karşı tam koruma sağlıyoruz.</p>
+                        <ul class="service-features">
+                            <li>Isı ve Su Yalıtımlı Boyalar</li>
+                            <li>Mantolama Üzeri Boya Uygulamaları</li>
+                            <li>Küf ve Yosun Oluşumunu Önleme</li>
+                            <li><strong>Uzun Ömürlü ve Kaliteli Malzemeler</strong></li>
+                        </ul>
+                    </div>
+                </div>
+
+
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="images/gallery/dekoratif/istanbul-boya-ustas-dekoratif.WebP"
+                            alt="İstanbul'da uzman usta tarafından yapılan İtalyan dekoratif boyacı çalışması"
+                            width="600" height="400" loading="lazy" decoding="async">
+                    </div>
+                    <div class="service-content">
+                        <h3><i class="fas fa-paint-brush"></i> Dekoratif & İtalyan Boya</h3>
+                        <p>Mekanlarınıza sanatsal bir dokunuş katmak için İtalyan boya, sedef boya ve modern efekt
+                            uygulamaları ile fark yaratıyoruz.</p>
+                        <ul class="service-features">
+                            <li>Beton ve Mermer Efektli Duvarlar</li>
+                            <li>Özel Desen ve Doku Çalışmaları</li>
+                            <li>Kişiye Özel Tasarım Uygulamaları</li>
+                            <li><strong>Estetik ve Göz Alıcı Sonuçlar</strong></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
+        </section>
 
-            <div class="contact-form">
-                <h3>Hızlı Teklif Formu</h3>
-                <form id="quote-form">
-                    <div class="form-group">
-                        <label for="name">Adınız Soyadınız*</label>
-                        <input type="text" id="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Telefon*</label>
-                        <input type="tel" id="phone" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">E-posta</label>
-                        <input type="email" id="email">
-                    </div>
-                    <div class="form-group">
-                        <label for="district">İlçe / Semt*</label>
-                        <select id="district" required>
-                            <option value="">Seçiniz</option>
-                            <option value="adalar">Adalar</option>
-                            <option value="atasehir">Ataşehir</option>
-                            <option value="beykoz">Beykoz</option>
-                            <option value="camlica">Çamlıca</option>
-                            <option value="cekmekoy">Çekmeköy</option>
-                            <option value="kadikoy">Kadıköy</option>
-                            <option value="kartal">Kartal</option>
-                            <option value="maltepe">Maltepe</option>
-                            <option value="pendik">Pendik</option>
-                            <option value="sancaktepe">Sancaktepe</option>
-                            <option value="sultanbeyli">Sultanbeyli</option>
-                            <option value="tuzla">Tuzla</option>
-                            <option value="umraniye">Ümraniye</option>
-                            <option value="uskudar">Üsküdar</option>
-                            <option value="arnavutkoy">Arnavutköy</option>
-                            <option value="avcilar">Avcılar</option>
-                            <option value="bagcilar">Bağcılar</option>
-                            <option value="bahcelievler">Bahçelievler</option>
-                            <option value="bakirkoy">Bakırköy</option>
-                            <option value="basaksehir">Başakşehir</option>
-                            <option value="bayrampasa">Bayrampaşa</option>
-                            <option value="besiktas">Beşiktaş</option>
-                            <option value="beylikduzu">Beylikdüzü</option>
-                            <option value="beyoglu">Beyoğlu</option>
-                            <option value="buyukcekmece">Büyükçekmece</option>
-                            <option value="catalca">Çatalca</option>
-                            <option value="esenyurt">Esenyurt</option>
-                            <option value="esenler">Esenler</option>
-                            <option value="fatih">Fatih</option>
-                            <option value="gaziosmanpasa">Gaziosmanpaşa</option>
-                            <option value="gungoren">Güngören</option>
-                            <option value="kucukcekmece">Küçükçekmece</option>
-                            <option value="sariyer">Sarıyer</option>
-                            <option value="sile">Şile</option>
-                            <option value="sisli">Şişli</option>
-                            <option value="zeytinburnu">Zeytinburnu</option>
-                            <option value="etiler">Etiler</option>
-                            <option value="ulus">Ulus</option>
-                            <option value="bebek">Bebek</option>
-                            <option value="nisantasi">Nişantaşı</option>
-                            <option value="levent">Levent</option>
+        <section id="galeri" class="gallery">
+            <div class="section-title">
+                <h2>Referans Çalışmalarımız ve Projelerimiz</h2>
+            </div>
+            <div class="horizontal-scroll-wrapper">
 
+                <div class="gallery-item">
+                    <img src="images/gallery/discehpe/istanbul-boya-ustas-disCephe.WebP"
+                        alt="İstanbul Ataşehir'de tamamladığımız dış cephe boya ustası projesi" width="400" height="300"
+                        loading="lazy" decoding="async">
+                    <div class="gallery-overlay">
+                        <h3>Dış Cephe Yenileme Projesi</h3>
+                        <p>Ataşehir / İstanbul</p>
+                    </div>
+                </div>
+
+
+                <div class="gallery-item">
+                    <img src="images/services/istanbul-boya-ustas-mutfak.WebP"
+                        alt="Beylikdüzü'nde bir mutfak için yapılan saten boya ustası ve alçı tamiratı işçiliği"
+                        width="400" height="300" loading="lazy" decoding="async">
+                    <div class="gallery-overlay">
+                        <h3>Daire İçi Mutfak Boyama</h3>
+                        <p>Beylikdüzü / İstanbul</p>
+                    </div>
+                </div>
+
+
+                <div class="gallery-item">
+                    <img src="images/gallery/dekoratif/istanbul-boya-ustas-dekoratif1.WebP"
+                        alt="Kadıköy'de bir salona uygulanan beton efektli dekoratif boya ustasının çalışması"
+                        width="400" height="300" loading="lazy" decoding="async">
+                    <div class="gallery-overlay">
+                        <h3>Dekoratif Beton Efekt Boya</h3>
+                        <p>Kadıköy / İstanbul</p>
+                    </div>
+                </div>
+
+
+                <div class="gallery-item">
+                    <img src="images/services/istanbul-boya-ustas-ofis.WebP"
+                        alt="Şişli'deki bir ofis için yapılan komple ofis boyama hizmeti" width="400" height="300"
+                        loading="lazy" decoding="async">
+                    <div class="gallery-overlay">
+                        <h3>Kurumsal Ofis Boyama</h3>
+                        <p>Şişli / İstanbul</p>
+                    </div>
+                </div>
+
+
+                <div class="gallery-item">
+                    <img src="images/services/istanbul-boya-ustas-IsYeri.WebP"
+                        alt="Fatih'te bir mağazanın iç dekorasyon boya ve badana işleri" width="400" height="300"
+                        loading="lazy" decoding="async">
+                    <div class="gallery-overlay">
+                        <h3>Mağaza & İş Yeri Boyama</h3>
+                        <p>Fatih / İstanbul</p>
+                    </div>
+                </div>
+
+
+                <div class="gallery-item">
+                    <img src="images/services/istanbul-boya-ustas-villa.WebP"
+                        alt="Beykoz'daki bir villa için yapılan komple iç ve dış cephe boya projesi" width="400"
+                        height="300" loading="lazy" decoding="async">
+                    <div class="gallery-overlay">
+                        <h3>Villa Boyama Projesi</h3>
+                        <p>Beykoz / İstanbul</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="neden-biz" class="why-us">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Neden İstanbul'da Bizi Tercih Etmelisiniz?</h2>
+                </div>
+                <div class="reasons-grid">
+                    <div class="reason-card">
+                        <i class="fas fa-broom"></i>
+                        <h3>Titiz ve Temiz İşçilik</h3>
+                        <p>Evinizi veya ofisinizi kendi mekanımız gibi görüyor, işe başlamadan her yeri koruma altına
+                            alıyor
+                            ve iş bitiminde tertemiz teslim ediyoruz.</p>
+                    </div>
+                    <div class="reason-card">
+                        <i class="fas fa-check-circle"></i>
+                        <h3>Söz Verilen Zamanda Teslim</h3>
+                        <p>Anlaştığımız işi, anlaştığımız günde, beklenmedik bahaneler üretmeden bitiririz. Zamanınızın
+                            değerli olduğunu biliyoruz.</p>
+                    </div>
+                    <div class="reason-card">
+                        <i class="fas fa-brush"></i>
+                        <h3>Sadece Kaliteli Malzeme</h3>
+                        <p>İsteğinize göre Filli Boya, Marshall, Jotun gibi en iyi markalarla çalışarak, yatırımınızın
+                            karşılığı olan kalıcı sonuçlar elde ederiz.</p>
+                    </div>
+                    <div class="reason-card">
+                        <i class="fas fa-handshake"></i>
+                        <h3>Güvenilir ve Şeffaf Usta</h3>
+                        <p>Ücretsiz keşiften iş teslimine kadar tüm süreçte şeffaf iletişim kurar, size güven verir ve
+                            aklınızda soru işareti bırakmayız.</p>
+                    </div>
+                    <div class="reason-card">
+                        <i class="fas fa-shield-alt"></i>
+                        <h3>Eşya Koruma Garantisi</h3>
+                        <p>Değerli eşyalarınız, mobilyalarınız ve zeminleriniz özel örtülerle titizlikle korunur. Bir
+                            damla
+                            boya lekesiyle karşılaşmazsınız.</p>
+                    </div>
+                    <div class="reason-card">
+                        <i class="fas fa-thumbs-up"></i>
+                        <h3>%100 Müşteri Memnuniyeti</h3>
+                        <p>Amacımız sadece duvarları boyamak değil, bizi İstanbul'daki çevresine gönül rahatlığıyla
+                            tavsiye
+                            eden mutlu müşteriler kazanmaktır.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="nasil-calisiyoruz" class="section">
+            <div class="container section--md">
+                <div class="section-title">
+                    <h2>Adım Adım Hayallerinize Giden Yol</h2>
+                    <p>Sizin için her detayı düşündük. Size sadece hayalinizdeki renklerin keyfini çıkarmak kalıyor.</p>
+                </div>
+                <div class="workflow-timeline">
+
+                    <!-- Adım 1 -->
+                    <div class="workflow-item">
+                        <div class="workflow-icon"><i class="fas fa-handshake"></i></div>
+                        <div class="workflow-content">
+                            <span class="step-number">Adım 1</span>
+                            <h3>Tanışma & Ücretsiz Keşif</h3>
+                            <p>Bize ulaştığınızda, sizi dinlemek için oradayız. Evinizi ziyaret edip isteklerinizi
+                                anlıyor,
+                                size özel renk ve malzeme önerileri sunuyoruz. Elbette tamamen ücretsiz ve samimi bir
+                                sohbetle.</p>
+                        </div>
+                    </div>
+
+                    <!-- Adım 2 -->
+                    <div class="workflow-item">
+                        <div class="workflow-icon"><i class="fa-solid fa-turkish-lira-sign"></i></div>
+                        <div class="workflow-content">
+                            <span class="step-number">Adım 2</span>
+                            <h3>Net ve Anlaşılır Teklif</h3>
+                            <p>Sürprizlere yer yok. Yapılacak her işi, malzeme detaylarını ve toplam ücreti net bir
+                                şekilde
+                                size sunuyoruz. Aklınızda tek bir soru işareti bile kalmıyor.</p>
+                        </div>
+                    </div>
+
+                    <!-- Adım 3 -->
+                    <div class="workflow-item">
+                        <div class="workflow-icon"><i class="fas fa-shield-alt"></i></div>
+                        <div class="workflow-content">
+                            <span class="step-number">Adım 3</span>
+                            <h3>Eşyalarınız Bize Emanet</h3>
+                            <p>Boyadan önce en az boya kadar önem verdiğimiz bir adım var: koruma. Değerli eşyalarınızı
+                                ve
+                                zeminleri titizlikle kaplıyor, evinizi bize emanet ettiğiniz gibi koruyoruz.</p>
+                        </div>
+                    </div>
+
+                    <!-- Adım 4 -->
+                    <div class="workflow-item">
+                        <div class="workflow-icon"><i class="fas fa-paint-roller"></i></div>
+                        <div class="workflow-content">
+                            <span class="step-number">Adım 4</span>
+                            <h3>Usta Dokunuşlarla Renklendirme</h3>
+                            <p>Sıra en keyifli kısımda! Ekibimiz, pürüzsüz hale getirdiğimiz duvarlarınızı
+                                hayallerinizdeki
+                                renklere kavuşturuyor. Her fırça darbesinde kaliteyi ve özeni hissedeceksiniz.</p>
+                        </div>
+                    </div>
+
+                    <!-- Adım 5 -->
+                    <div class="workflow-item">
+                        <div class="workflow-icon"><i class="fas fa-check-circle"></i></div>
+                        <div class="workflow-content">
+                            <span class="step-number">Adım 5</span>
+                            <h3>Mutlu Son & Tertemiz Teslimat</h3>
+                            <p>İşimiz bittiğinde, ardımızda bir damla boya lekesi bırakmıyoruz. Son kontrolü birlikte
+                                yapıyor ve yüzünüzdeki gülümsemeyle size veda ediyoruz.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        <section id="boya-rehberi" class="boya-rehberi">
+            <div class="section-title">
+                <h2>İstanbul'da Boya Ustası Arayanlar İçin Kapsamlı Rehber</h2>
+            </div>
+            <p>İstanbul'da güvenilir bir <strong>boya badana ustası</strong> bulmak, evinizin veya iş yerinizin
+                çehresini
+                değiştirecek en önemli adımdır. Doğru renkler ve profesyonel bir işçilikle mekanlar sadece yenilenmez,
+                aynı
+                zamanda değer kazanır. **İstanbul Boyacılık** olarak, 20 yıllık tecrübemiz ve uzman
+                <strong>boyacı</strong>
+                ekibimizle bu süreçte yanınızdayız. Sunduğumuz kaliteli ve garantili boya badana hizmeti ile
+                mekanlarınıza
+                estetik ve kalıcı çözümler getiriyoruz. Bu rehberde, İstanbul'da bir <strong>boya ustası</strong>
+                seçerken
+                nelere dikkat etmeniz gerektiğini ve merak ettiğiniz tüm soruların cevaplarını bulacaksınız.</p>
+
+            <h3>Boya Ücretleri ve Maliyetler</h3>
+            <div class="pricing-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Hizmet Türü</th>
+                            <th>Metrekare Fiyatı</th>
+                            <th>Ortalama Süre (100m²)</th>
+                            <th>Garanti</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>İç Cephe Boyama</td>
+                            <td>100-200 TL</td>
+                            <td>2-3 Gün</td>
+                            <td>3 Yıl</td>
+                        </tr>
+                        <tr>
+                            <td>Dış Cephe Boyama</td>
+                            <td>150-250 TL</td>
+                            <td>3-5 Gün</td>
+                            <td>5 Yıl</td>
+                        </tr>
+                        <tr>
+                            <td>Dekoratif Boyama</td>
+                            <td>250-500 TL</td>
+                            <td>4-7 Gün</td>
+                            <td>5 Yıl</td>
+                        </tr>
+                        <tr>
+                            <td>Ofis Boyama</td>
+                            <td>120-220 TL</td>
+                            <td>2-4 Gün</td>
+                            <td>3 Yıl</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="calculator">
+                <h3>Boya Maliyeti Hesaplama Aracı</h3>
+                <form id="price-calculator">
+                    <div class="form-group">
+                        <label for="area">Metrekare (m²):</label>
+                        <input type="number" id="area" min="10" max="1000" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="service-type">Hizmet Türü:</label>
+                        <select id="service-type" required>
+                            <option value="100">İç Cephe Boyama</option>
+                            <option value="150">Dış Cephe Boyama</option>
+                            <option value="250">Dekoratif Boyama</option>
+                            <option value="120">Ofis Boyama</option>
                         </select>
                     </div>
-                    <div class="form-group">
-                        <label for="service">Hizmet Türü*</label>
-                        <select id="service" required>
-                            <option value="">Seçiniz</option>
-                            <option value="ic-cephe">İç Cephe Boyama</option>
-                            <option value="dis-cephe">Dış Cephe Boyama</option>
-                            <option value="dekoratif">Dekoratif Boyama</option>
-                        </select>
+                    <button type="button" id="calculate-btn">Hesapla</button>
+                    <div class="result">
+                        <h4 style="color:#222;">Tahmini Maliyet: <span id="estimated-cost" style="color:#111;">0
+                                TL</span>
+                        </h4>
+                        <p style="color:#222;">Detaylı <strong>teklifi al</strong>mak için <a href="#iletisim"
+                                style="color:#005fa3;text-decoration:underline;">iletişime geçin</a></p>
                     </div>
-                    <div class="form-group">
-                        <label for="message">Mesajınız</label>
-                        <textarea id="message" rows="3"></textarea>
-                    </div>
-                    <button type="submit">Gönder</button>
-                    <div class="g-recaptcha" data-sitekey="6LdrTYorAAAAAPsdzkgfblIm5HDXC2mE4-afM2lP"></div>
                 </form>
             </div>
-        </div>
-    </section>
 
+        </section>
 
-
-    <section id="yorumlar" class="testimonials">
-        <div class="section-title">
-            <h2>Müşteri Yorumları</h2>
-        </div>
-        <div id="reviewed-business" hidden itemscope itemtype="https://schema.org/HousePainter" itemid="https://istanbulboyacilik.com/#business">
-            <meta itemprop="name" content="İstanbul Boyacılık">
-            <meta itemprop="telephone" content="+905078322912">
-            <meta itemprop="priceRange" content="₺₺">
-            <meta itemprop="url" content="https://istanbulboyacilik.com/">
-            <link itemprop="image" href="https://istanbulboyacilik.com/images/istanbulboyaustasi.png">
-            <div itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
-                <meta itemprop="streetAddress" content="Demirkapı Cd. No:1">
-                <meta itemprop="addressLocality" content="İstanbul">
-                <meta itemprop="addressRegion" content="İstanbul">
-                <meta itemprop="postalCode" content="34000">
-                <meta itemprop="addressCountry" content="TR">
+        <section class="seo-content">
+            <div class="container">
+                <h2>İstanbul'un Güvenilir Boyacı Ustasıyla Tanışın</h2>
+                <div class="seo-intro">
+                    <p>İstanbul gibi metropol bir şehirde <strong>boyacı ustası</strong> arayışınız, sadece bir hizmet
+                        alımı
+                        değil, aynı zamanda yaşam ve çalışma alanlarınıza gösterdiğiniz özenin bir ifadesidir.
+                        Profesyonel
+                        ekibimizle bu hassasiyetin farkındayız. <strong>İstanbul geneli daire boyama</strong>
+                        hizmetimizden,
+                        büyük ölçekli ofis ve iş yeri projelerine kadar her işi, bir zanaatkar titizliği ve profesyonel
+                        bir
+                        yaklaşımla ele alıyoruz. Amacımız, mekanlarınızı sadece yenilemek değil, onların ruhunu,
+                        karakterini
+                        ve mülkünüzün değerini yüceltmektir.</p>
+                </div>
+                <div id="more-content" style="display: none;">
+                    <h3>Profesyonel Boya Badana Hizmetinin Farkı Nedir?</h3>
+                    <p>Rekabetin yoğun olduğu <strong>İstanbul boyacı</strong> piyasasında hizmet kalitemizi
+                        sıradanlıktan
+                        ayıran temel prensiplerimiz vardır:</p>
+                    <ul>
+                        <li><strong>Danışmanlık ve Keşif:</strong> Sadece boya yapmıyoruz; mekanınızın ışığını, mimari
+                            detaylarını ve sizin yaşam tarzınızı analiz ederek, tüm İstanbul'daki ev ve iş yerleri için
+                            en
+                            doğru renk ve malzeme paletini birlikte oluşturuyoruz.</li>
+                        <li><strong>Altyapı Mükemmelliği:</strong> Duvarlar tuvalimizdir ve tuval kusursuz olmalıdır.
+                            Boyadan önce yüzeydeki tüm pürüzleri, çatlakları ve eski boya katmanlarını profesyonel
+                            ekipmanlarla giderir, tüm İstanbul'daki projelerimizde pürüzsüz bir zemin yaratırız.</li>
+                        <li><strong>Detaylara Önem:</strong> Süpürgelikler, priz kenarları, kapı pervazları gibi en ince
+                            detaylarda bile hatasız ve temiz bir işçilik sunarak farkımızı ortaya koyarız.</li>
+                    </ul>
+                    <p><strong>İstanbul boya badana fiyatları</strong> araştırırken unutmayın; profesyonel bir hizmetin
+                        geri
+                        dönüşü çok daha fazladır. Doğru renkler, pürüzsüz duvarlar ve temiz işçilik, mekanınızın
+                        algılanan
+                        değerini anında yükseltir. Size bu süreci zahmetsiz ve keyifli bir deneyim olarak sunmak için
+                        buradayız. Tüm İstanbul için ücretsiz keşif ve danışmanlık hizmetimizden yararlanmak için
+                        bizimle
+                        iletişime geçebilirsiniz.</p>
+                </div>
+                <div class="read-more-container">
+                    <button id="read-more-btn" class="btn btn-read-more">Daha Fazla Bilgi <i
+                            class="fas fa-chevron-down"></i></button>
+                </div>
             </div>
-        </div>
-        <div class="testimonial-slider">
-            <div class="testimonial-container">
+        </section>
 
-                <div class="testimonial" itemscope itemtype="https://schema.org/Review" itemprop="review">
-                    <meta itemprop="datePublished" content="2024-12-12">
-                    <div itemprop="itemReviewed" itemscope itemtype="https://schema.org/HousePainter" itemid="https://istanbulboyacilik.com/#business" itemref="reviewed-business">
-                        <meta itemprop="name" content="İstanbul Boyacılık">
+        <section id="sss" class="faq-section">
+            <div class="section-title">
+                <h2>Sıkça Sorulan Sorular</h2>
+                <p>İstanbul boya hizmetlerimiz hakkında merak ettikleriniz</p>
+            </div>
+
+            <div class="faq-container">
+                <div class="search-container">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="faq-search" placeholder="Sorunuzu buraya yazın...">
+                </div>
+
+                <div class="stats-bar">
+                    <div class="stat-item">
+                        <div class="number">16</div>
+                        <div class="label">Soru-Cevap</div>
                     </div>
-                    <div class="rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
-                        <meta itemprop="ratingValue" content="5" />
-                        <meta itemprop="bestRating" content="5" />
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                            class="fas fa-star"></i><i class="fas fa-star"></i>
+                    <div class="stat-item">
+                        <div class="number">2025</div>
+                        <div class="label">Güncel Fiyatlar</div>
                     </div>
-                    <p itemprop="reviewBody">"İstanbul Boyacılık ekibi evimde harika bir iş çıkardı. Profesyonel ve
-                        zamanında tamamladılar. Kesinlikle tavsiye ederim."</p>
-                    <div class="client" itemprop="author" itemscope itemtype="https://schema.org/Person">
-                        <strong itemprop="name">Ahmet Yılmaz</strong>
-                        <span>Ataşehir / İstanbul</span>
+                    <div class="stat-item">
+                        <div class="number">7/24</div>
+                        <div class="label">Destek Hattı</div>
                     </div>
                 </div>
-                <div class="testimonial" itemscope itemtype="https://schema.org/Review" itemprop="review">
-                    <meta itemprop="datePublished" content="2025-07-20">
-                    <div itemprop="itemReviewed" itemscope itemtype="https://schema.org/HousePainter" itemid="https://istanbulboyacilik.com/#business" itemref="reviewed-business">
-                        <meta itemprop="name" content="İstanbul Boyacılık">
+
+                <div class="faq-items-container">
+
+                    <div class="faq-column">
+
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <i class="fa-solid fa-brush"></i>
+                                🏠 İstanbul’da güvenilir bir boyacı ustası nasıl bulunur?
+                            </div>
+                            <div class="faq-answer">
+                                <p>İstanbul’da evini ya da iş yerini boyatmak isteyenler için güvenilir bir boyacı
+                                    ustası
+                                    bulmak, işin kalitesi
+                                    açısından oldukça önemlidir. En iyi boyacıları bulmak için <strong>referanslı
+                                        ustalarla
+                                        çalışmak</strong>,
+                                    <strong>müşteri yorumlarını</strong> incelemek ve <strong>yüz yüze fiyat
+                                        teklifi</strong> almak önerilir.
+                                    İstanbul Boyacılık olarak her semte hizmet veriyor, <strong>profesyonel ekip ve
+                                        kaliteli
+                                        malzeme</strong>
+                                    garantisi sunuyoruz. Hemen bizimle iletişime geçerek ücretsiz keşif talebinde
+                                    bulunabilirsiniz.
+                                </p>
+                            </div>
+                        </div>
+
+
+
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <i class="fas fa-building"></i>
+                                ✅ 3+1 dairenin komple boya badana maliyeti ortalama ne kadar tutar?
+                            </div>
+                            <div class="faq-answer">
+                                <p>İstanbul'da 3+1 (yaklaşık 100-120 m²) bir dairenin komple boyanması, seçilen boya
+                                    markası
+                                    (<strong>Filli Boya, Marshall, Jotun vb.</strong>), duvarların durumu ve işçilik
+                                    kalitesine göre genellikle <strong>15.000 TL ile 30.000 TL</strong> arasında
+                                    değişmektedir. Net fiyat için ücretsiz keşif hizmetimizden yararlanabilirsiniz.</p>
+                            </div>
+                        </div>
+
+
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <i class="fas fa-home"></i>
+                                🏠 2+1 dairenin boya badana maliyeti ne kadar olur?
+                            </div>
+                            <div class="faq-answer">
+                                <p>İstanbul'da 2+1 (yaklaşık 70-90 m²) bir dairenin boyanması genellikle <strong>8.000
+                                        TL
+                                        ile 20.000 TL</strong> arasında bir maliyete sahiptir. Fiyatlandırma, tavan,
+                                    duvar,
+                                    kapı ve peteklerin boyanıp boyanmayacağına ve ek tamirat işlerine göre değişebilir.
+                                </p>
+                            </div>
+                        </div>
+
+
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <i class="fas fa-box-open"></i>
+                                ❓ Boya işlemi öncesi benim yapmam gereken bir hazırlık var mı?
+                            </div>
+                            <div class="faq-answer">
+                                <p>Sizin için süreci en kolay hale getiriyoruz. Kırılabilecek küçük ve özel eşyalarınızı
+                                    kaldırmanız yeterlidir. Geri kalan büyük mobilyaların (koltuk, dolap vb.) çekilmesi,
+                                    üzerlerinin koruyucu naylonlarla kaplanması ve yerlerin örtülmesi gibi tüm işlemleri
+                                    <strong>profesyonel ekibimiz titizlikle yapmaktadır.</strong>
+                                </p>
+                            </div>
+                        </div>
+
+
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <i class="fas fa-clock"></i>
+                                🕒 Ortalama bir dairenin boyanması kaç gün sürer?
+                            </div>
+                            <div class="faq-answer">
+                                <p>Eşyalı ve içerisinde yaşam olan standart 3+1 bir dairenin boya badana işlemi, gerekli
+                                    alçı tamiratları da dahil olmak üzere genellikle <strong>2 gün içerisinde</strong>
+                                    tamamlanır. Eşyasız ve boş daireler daha hızlı, yaklaşık <strong>1-2 günde</strong>
+                                    teslim edilebilir.</p>
+                            </div>
+                        </div>
+
+
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <i class="fas fa-broom"></i>
+                                🛡️ İşiniz bittikten sonra temizlik yapıyor musunuz?
+                            </div>
+                            <div class="faq-answer">
+                                <p>En çok önem verdiğimiz konulardan biri temizliktir. İşe başlamadan önce tüm
+                                    eşyalarınızı
+                                    ve zeminleri özel örtülerle tamamen izole ederiz. İş bitiminde tüm koruma
+                                    malzemelerini
+                                    toplar, yerleri süpürür ve evinizi size <strong>tertemiz bir şekilde</strong> teslim
+                                    ederiz. Bir damla boya lekesiyle karşılaşmazsınız.</p>
+                            </div>
+                        </div>
+
+
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <i class="fas fa-tint-slash"></i>
+                                💧 Duvarlarımdaki rutubet ve küf sorununu çözüyor musunuz?
+                            </div>
+                            <div class="faq-answer">
+                                <p>Evet, bu bizim uzmanlık alanlarımızdan biridir. Önce özel küf önleyici solüsyonlarla
+                                    yüzeyi temizliyor, gerekirse <strong>nem bariyeri veya yalıtım astarı</strong>
+                                    uyguluyor
+                                    ve ardından küf oluşumunu engelleyen özel boyalar kullanıyoruz.</p>
+                            </div>
+                        </div>
+
+
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <i class="fas fa-paint-brush"></i>
+                                🎨 Kullandığınız boya markaları nelerdir?
+                            </div>
+                            <div class="faq-answer">
+                                <p>Müşteri memnuniyeti için sadece en kaliteli ve sertifikalı markalarla çalışıyoruz:
+                                    <strong>Filli Boya, Marshall, Jotun, Dyo</strong> gibi sektörün lider markaları.
+                                    Renk ve
+                                    boya türü seçimi konusunda size ücretsiz danışmanlık yapıyoruz.
+                                </p>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
-                        <meta itemprop="ratingValue" content="5" />
-                        <meta itemprop="bestRating" content="5" />
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                            class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </div>
 
-                    <p itemprop="reviewBody">
-                        İstanbul Boyacılık ile çalışmak gerçekten harikaydı.
-                        3+1 evimizi boyattık ve başından sonuna kadar her şey çok düzenli,
-                        temiz ve profesyonelce ilerledi.Hem iletişim çok kuvvetliydi hem de işin her
-                        aşamasında birebir ilgilendiler. Ekip tam zamanında geldi, titizlikle çalıştı
-                        ve evimizi adeta yenilediler. Fiyatlar piyasaya göre biraz yukarıda olabilir
-                        ama verilen hizmet fazlasıyla karşılığını veriyor.
-                        Gözünüz kapalı güvenebilirsiniz.
-                        Teşekkürler İstanbul Boyacılık, teşekkürler Enes Bey!
+                    <div class="faq-column">
+
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <i class="fas fa-wind"></i>
+                                👃 Boya kokusu ne kadar sürede geçer? Sağlığa zararlı mı?
+                            </div>
+                            <div class="faq-answer">
+                                <p>Kullandığımız su bazlı, kaliteli boyaların büyük çoğunluğu <strong>neredeyse
+                                        kokusuzdur</strong> ve insan sağlığına zararlı VOC (Uçucu Organik Bileşen)
+                                    oranları
+                                    çok düşüktür. İyi bir havalandırma ile boya kokusu genellikle <strong>aynı gün
+                                        içerisinde</strong> kaybolur.</p>
+                            </div>
+                        </div>
+
+
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <i class="fas fa-palette"></i>
+                                ✨ Dekoratif boya (İtalyan boya) nedir?
+                            </div>
+                            <div class="faq-answer">
+                                <p>Dekoratif boya, duvarlara doku ve özel efektler (mermer, beton, kadife vb.)
+                                    kazandıran
+                                    sanatsal bir uygulamadır. Genellikle TV ünitesi arkası gibi <strong>odak noktası
+                                        yaratılmak istenen</strong> tek bir duvara uygulanır ve mekana benzersiz bir
+                                    estetik
+                                    katar.</p>
+                            </div>
+                        </div>
+
+
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <i class="fas fa-certificate"></i>
+                                💯 Yaptığınız işe garanti veriyor musunuz?
+                            </div>
+                            <div class="faq-answer">
+                                <p>Evet, yaptığımız tüm işlerin arkasındayız. Bu nedenle, iç cephe boya işlerimizde
+                                    <strong>3 yıla</strong>, dış cephe işlerimizde ise <strong>5 yıla varan işçilik
+                                        garantisi</strong> sunuyoruz.
+                                </p>
+                            </div>
+                        </div>
+
+
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <i class="fas fa-search-dollar"></i>
+                                🔍 Ücretsiz keşif hizmetiniz neleri kapsıyor?
+                            </div>
+                            <div class="faq-answer">
+                                <p>Ücretsiz keşifte uzman ekibimiz adresinize gelir; duvarları inceler, net metraj
+                                    ölçümü
+                                    yapar, renk ve malzeme danışmanlığı sunar ve son olarak size tüm detayları içeren,
+                                    <strong>gizli maliyet barındırmayan</strong> net bir fiyat teklifi sunar.
+                                </p>
+                            </div>
+                        </div>
+
+
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <i class="fas fa-tools"></i>
+                                🛠️ Duvardaki çatlak, delik gibi tamiratları yapıyor musunuz?
+                            </div>
+                            <div class="faq-answer">
+                                <p>Kesinlikle. Boyadan önce duvardaki tüm çivi deliği, çatlak ve dökülmeleri özel alçı
+                                    dolgularıyla titizlikle tamir ediyor, zımparalıyor ve <strong>pürüzsüz bir
+                                        yüzey</strong> elde ettikten sonra boya uygulamasına geçiyoruz.</p>
+                            </div>
+                        </div>
+
+
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <i class="fas fa-user-check"></i>
+                                🧑‍🔧 İyi bir boyacı ustasını nasıl anlarım?
+                            </div>
+                            <div class="faq-answer">
+                                <p>İyi bir usta, sadece fiyat vermez; size süreç hakkında bilgi verir, malzeme
+                                    seçenekleri
+                                    sunar, referans gösterebilir ve <strong>işine garanti verir</strong>. İletişimi
+                                    kuvvetli, temizliğe özen gösteren ve anlaşılan zamanda işi bitiren ustalar
+                                    profesyoneldir.</p>
+                            </div>
+                        </div>
+
+
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <i class="fas fa-ruler-combined"></i>
+                                📐 1 Usta Günde Kaç m² Boya Yapar?
+                            </div>
+                            <div class="faq-answer">
+                                <p>Deneyimli bir boyacı ustası, yüzeyin durumuna ve işin detaylarına bağlı olarak bir
+                                    günde
+                                    ortalama <strong>50 m² ile 100 m²</strong> arasında duvar ve tavan boyayabilir. Bu
+                                    rakam, tamirat işlerinin yoğunluğuna göre değişebilir.</p>
+                            </div>
+                        </div>
+
+
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <i class="fas fa-handshake"></i>
+                                🤝 İstanbul'da güvenilir bir boyacıya nasıl ulaşırım?
+                            </div>
+                            <div class="faq-answer">
+                                <p>İstanbul'da güvenilir bir boyacı ustası için <strong>İstanbul Boyacılık</strong> gibi
+                                    kurumsal ve müşteri yorumları olumlu olan profesyonel firmaları tercih
+                                    edebilirsiniz.
+                                    Online platformlar ve çevrenizden alacağınız tavsiyeler de doğru ustayı bulmanıza
+                                    yardımcı olabilir.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-banner">
+                    <h3>Başka sorunuz mu var?</h3>
+                    <p>7/24 destek ekibimiz sorularınızı yanıtlamak için hazır</p>
+                    <a href="tel:+905078322912" class="btn">
+                        <i class="fas fa-phone"></i> Hemen Arayın: 0507 832 29 12
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="bolgeler" class="districts">
+            <div class="section-title">
+                <h2>Hizmet Verdiğimiz İstanbul İlçeleri</h2>
+            </div>
+            <div class="district-grid">
+
+                <div class="district-group">
+                    <h3>Anadolu Yakası</h3>
+                    <ul>
+                        <li><a href="https://istanbulboyacilik.com/atasehir/">Ataşehir Boyacı</a></li>
+                        <li><a href="https://istanbulboyacilik.com/beykoz/">Beykoz Boyacı</a></li>
+                        <li><a href="https://istanbulboyacilik.com/cekmekoy/">Çekmeköy Boyacı</a></li>
+                        <li><a href="https://istanbulboyacilik.com/kadikoy/">Kadıköy Boyacı</a></li>
+                        <li><a href="https://istanbulboyacilik.com/kartal/">Kartal Boyacı</a></li>
+                        <li><a href="https://istanbulboyacilik.com/maltepe/">Maltepe Boyacı</a></li>
+                        <li><a href="https://istanbulboyacilik.com/pendik/">Pendik Boyacı</a></li>
+                        <li><a href="https://istanbulboyacilik.com/sancaktepe/">Sancaktepe Boyacı</a></li>
+                        <li><a href="https://istanbulboyacilik.com/sultanbeyli/">Sultanbeyli Boyacı</a></li>
+                        <li><a href="https://istanbulboyacilik.com/tuzla/">Tuzla Boyacı</a></li>
+                        <li><a href="https://istanbulboyacilik.com/umraniye/">Ümraniye Boyacı</a></li>
+                        <li><a href="https://istanbulboyacilik.com/uskudar/">Üsküdar Boyacı</a></li>
+                        <li><a href="https://istanbulboyacilik.com/sile/">Şile Boyacı</a></li>
+                    </ul>
+                </div>
+
+                <div class="district-group">
+                    <h3>Avrupa Yakası</h3>
+                    <ul>
+                        <li><a href="https://istanbulboyacilik.com/arnavutkoy/">Arnavutköy Boyacı</a></li>
+                        <li><a href="https://istanbulboyacilik.com/avcilar/">Avcılar Boyacı</a></li>
+                        <li><a href="https://istanbulboyacilik.com/bagcilar/">Bağcılar Boyacı</a></li>
+                        <li><a href="https://istanbulboyacilik.com/bahcelievler/">Bahçelievler Boyacı</a></li>
+                        <li><a href="https://istanbulboyacilik.com/bakirkoy/">Bakırköy Boyacı</a></li>
+                        <li><a href="https://istanbulboyacilik.com/basaksehir/">Başakşehir Boyacı</a></li>
+                        <li><a href="https://istanbulboyacilik.com/bayrampasa/">Bayrampaşa Boyacı</a></li>
+                        <li><a href="https://istanbulboyacilik.com/besiktas/">Beşiktaş Boyacı</a></li>
+                        <li><a href="https://istanbulboyacilik.com/beylikduzu/">Beylikdüzü Boyacı</a></li>
+                        <li><a href="https://istanbulboyacilik.com/beyoglu/">Beyoğlu Boyacı</a></li>
+                        <li><a href="https://istanbulboyacilik.com/buyukcekmece/">Büyükçekmece Boyacı</a></li>
+                        <li><a href="https://istanbulboyacilik.com/catalca/">Çatalca Boyacı</a></li>
+                        <li><a href="https://istanbulboyacilik.com/esenler/">Esenler Boyacı</a></li>
+                        <li><a href="https://istanbulboyacilik.com/esenyurt/">Esenyurt Boyacı</a></li>
+                        <li><a href="https://istanbulboyacilik.com/fatih/">Fatih Boyacı</a></li>
+                        <li><a href="https://istanbulboyacilik.com/gaziosmanpasa/">Gaziosmanpaşa Boyacı</a></li>
+                        <li><a href="https://istanbulboyacilik.com/gungoren/">Güngören Boyacı</a></li>
+                        <li><a href="https://istanbulboyacilik.com/kagithane/">Kağıthane Boyacı</a></li>
+                        <li><a href="https://istanbulboyacilik.com/kucukcekmece/">Küçükçekmece Boyacı</a></li>
+                        <li><a href="https://istanbulboyacilik.com/sariyer/">Sarıyer Boyacı</a></li>
+                        <li><a href="https://istanbulboyacilik.com/silivri/">Silivri Boyacı</a></li>
+                        <li><a href="https://istanbulboyacilik.com/sisli/">Şişli Boyacı</a></li>
+                        <li><a href="https://istanbulboyacilik.com/zeytinburnu/">Zeytinburnu Boyacı</a></li>
+                    </ul>
+                </div>
+                <div class="district-group">
+                    <h3>Semtler</h3>
+                    <ul>
+                        <li><a href="https://istanbulboyacilik.com/acibadem/">Acıbadem Boyacı</a></li>
+                        <li><a href="https://istanbulboyacilik.com/bebek/">Bebek Boyacı</a></li>
+                        <li><a href="https://istanbulboyacilik.com/etiler/">Etiler Boyacı</a></li>
+                        <li><a href="https://istanbulboyacilik.com/camlica/">Çamlıca Boyacı</a></li>
+                        <li><a href="https://istanbulboyacilik.com/levent/">Levent Boyacı</a></li>
+                        <li><a href="https://istanbulboyacilik.com/nisantasi/">Nişantaşı Boyacı</a></li>
+                        <li><a href="https://istanbulboyacilik.com/tarabya/">Tarabya Boyacı</a></li>
+                        <li><a href="https://istanbulboyacilik.com/zekeriyakoy/">Zekeriyaköy Boyacı</a></li>
+                        <li><a href="https://istanbulboyacilik.com/ulus/">Ulus Boyacı</a></li>
+                        <li><a href="https://istanbulboyacilik.com/kandilli/">Kandilli Boyacı</a></li>
+                        <li><a href="https://istanbulboyacilik.com/acarkent/">Acarkent Boyacı</a></li>
+                        <li><a href="https://istanbulboyacilik.com/kemerburgaz/">Kemerburgaz Boyacı</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="iletisim" class="contact">
+            <div class="section-title">
+                <h2>İletişim</h2>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>İletişim Bilgileri</h3>
+                    <p>
+                        <i class="fas fa-phone"></i>
+                        Telefon: <a href="tel:+905078322912" class="clickable-text">0507 832 29 12</a>
                     </p>
-
-                    <div class="client" itemprop="author" itemscope itemtype="https://schema.org/Person">
-                        <strong itemprop="name">Kasım Ayık</strong>
-                        <span>Etiler / İstanbul</span>
+                    <p>
+                        <i class="fas fa-envelope"></i>
+                        <span class="email-content">
+                            E-posta:
+                            <span id="email-text">boyaustamistanbul@gmail.com</span>
+                            <span class="email-icons">
+                                <i class="fas fa-paper-plane" onclick="sendEmail()" title="Gönder"></i>
+                            </span>
+                        </span>
+                    </p>
+                    <p>
+                        <i class="fas fa-map-marker-alt"></i>Demirkapı Cd. No:1 Bayrampaşa/İstanbul
+                    </p>
+                    <p>
+                        <i class="fas fa-clock"></i>Çalışma Saatleri: Pzt-Cmt 00:00-23:59
+                    </p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/people/%C4%B0stanbull-Boyac%C4%B1l%C4%B1k/pfbid02jfsoicPA9G4MQuW6GZA55CsYxLETtxgG2mwi2hH3n2zPguLDeE8tGB4G14bsCxMCl/"
+                            target="_blank" aria-label="İstanbul Boyacılık Facebook sayfası">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.instagram.com/istanbulboyacilik/" target="_blank"
+                            aria-label="İstanbul Boyacılık Instagram sayfası">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://wa.me/905078322912?text=Merhaba%2C%20boya%20ve%20badana%20hizmeti%20i%C3%A7in%20yard%C4%B1m%20almak%20istiyorum.%20Bilgi%20verebilir%20misiniz%3F"
+                            target="_blank" rel="noopener noreferrer"
+                            aria-label="İstanbul Boyacılık WhatsApp ile iletişime geçin">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
                     </div>
                 </div>
-            <div class="testimonial" itemscope itemtype="https://schema.org/Review" itemprop="review">
-            <meta itemprop="datePublished" content="2025-11-21">
-            <div itemprop="itemReviewed" itemscope itemtype="https://schema.org/HousePainter" itemid="https://istanbulboyacilik.com/#business" itemref="reviewed-business">
+
+                <div class="contact-form">
+                    <h3>Hızlı Teklif Formu</h3>
+                    <form id="quote-form">
+                        <div class="form-group">
+                            <label for="name">Adınız Soyadınız*</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Telefon*</label>
+                            <input type="tel" id="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-posta</label>
+                            <input type="email" id="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="district">İlçe / Semt*</label>
+                            <select id="district" required>
+                                <option value="">Seçiniz</option>
+                                <option value="adalar">Adalar</option>
+                                <option value="atasehir">Ataşehir</option>
+                                <option value="beykoz">Beykoz</option>
+                                <option value="camlica">Çamlıca</option>
+                                <option value="cekmekoy">Çekmeköy</option>
+                                <option value="kadikoy">Kadıköy</option>
+                                <option value="kartal">Kartal</option>
+                                <option value="maltepe">Maltepe</option>
+                                <option value="pendik">Pendik</option>
+                                <option value="sancaktepe">Sancaktepe</option>
+                                <option value="sultanbeyli">Sultanbeyli</option>
+                                <option value="tuzla">Tuzla</option>
+                                <option value="umraniye">Ümraniye</option>
+                                <option value="uskudar">Üsküdar</option>
+                                <option value="arnavutkoy">Arnavutköy</option>
+                                <option value="avcilar">Avcılar</option>
+                                <option value="bagcilar">Bağcılar</option>
+                                <option value="bahcelievler">Bahçelievler</option>
+                                <option value="bakirkoy">Bakırköy</option>
+                                <option value="basaksehir">Başakşehir</option>
+                                <option value="bayrampasa">Bayrampaşa</option>
+                                <option value="besiktas">Beşiktaş</option>
+                                <option value="beylikduzu">Beylikdüzü</option>
+                                <option value="beyoglu">Beyoğlu</option>
+                                <option value="buyukcekmece">Büyükçekmece</option>
+                                <option value="catalca">Çatalca</option>
+                                <option value="esenyurt">Esenyurt</option>
+                                <option value="esenler">Esenler</option>
+                                <option value="fatih">Fatih</option>
+                                <option value="gaziosmanpasa">Gaziosmanpaşa</option>
+                                <option value="gungoren">Güngören</option>
+                                <option value="kucukcekmece">Küçükçekmece</option>
+                                <option value="sariyer">Sarıyer</option>
+                                <option value="sile">Şile</option>
+                                <option value="sisli">Şişli</option>
+                                <option value="zeytinburnu">Zeytinburnu</option>
+                                <option value="etiler">Etiler</option>
+                                <option value="ulus">Ulus</option>
+                                <option value="bebek">Bebek</option>
+                                <option value="nisantasi">Nişantaşı</option>
+                                <option value="levent">Levent</option>
+
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Hizmet Türü*</label>
+                            <select id="service" required>
+                                <option value="">Seçiniz</option>
+                                <option value="ic-cephe">İç Cephe Boyama</option>
+                                <option value="dis-cephe">Dış Cephe Boyama</option>
+                                <option value="dekoratif">Dekoratif Boyama</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Mesajınız</label>
+                            <textarea id="message" rows="3"></textarea>
+                        </div>
+                        <button type="submit">Gönder</button>
+                        <div class="g-recaptcha" data-sitekey="6LdrTYorAAAAAPsdzkgfblIm5HDXC2mE4-afM2lP"></div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+
+
+        <section id="yorumlar" class="testimonials" aria-label="Mutlu müşterilerimizden yorumlar">
+            <div class="section-title">
+                <h2>Müşteri Yorumları</h2>
+            </div>
+            <div id="reviewed-business" hidden itemscope itemtype="https://schema.org/HousePainter"
+                itemid="https://istanbulboyacilik.com/#business">
                 <meta itemprop="name" content="İstanbul Boyacılık">
-            </div>
-            <div class="rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
-                <meta itemprop="ratingValue" content="5" />
-                <meta itemprop="bestRating" content="5" />
-                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-            </div>
-            <p itemprop="reviewBody">"Gayet iyi iş oldu ellerinize sağlık"</p>
-            <div class="client" itemprop="author" itemscope itemtype="https://schema.org/Person">
-                <strong itemprop="name">Ömer Faruk Tari</strong>
-                <span>İstanbul</span>
-            </div>
-                        </div>
-                        <div class="testimonial" itemscope itemtype="https://schema.org/Review" itemprop="review">
-            <meta itemprop="datePublished" content="2025-10-05">
-            <div itemprop="itemReviewed" itemscope itemtype="https://schema.org/HousePainter" itemid="https://istanbulboyacilik.com/#business" itemref="reviewed-business">
-                <meta itemprop="name" content="İstanbul Boyacılık">
-            </div>
-            <div class="rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
-                <meta itemprop="ratingValue" content="5" />
-                <meta itemprop="bestRating" content="5" />
-                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-            </div>
-            <p itemprop="reviewBody">"Çok hızlı yardımcı oldular, çok teşekkürler 🙏"</p>
-            <div class="client" itemprop="author" itemscope itemtype="https://schema.org/Person">
-                <strong itemprop="name">Şeyma Sak</strong>
-                <span>İstanbul</span>
-            </div>
-                        </div>
-                        <div class="testimonial" itemscope itemtype="https://schema.org/Review" itemprop="review">
-            <meta itemprop="datePublished" content="2025-08-24">
-            <div itemprop="itemReviewed" itemscope itemtype="https://schema.org/HousePainter" itemid="https://istanbulboyacilik.com/#business" itemref="reviewed-business">
-                <meta itemprop="name" content="İstanbul Boyacılık">
-            </div>
-            <div class="rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
-                <meta itemprop="ratingValue" content="5" />
-                <meta itemprop="bestRating" content="5" />
-                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-            </div>
-            <p itemprop="reviewBody">"Yaptığın iş için teşekkürler Enes bey size ve ekibine teşekkür ederiz. piyasaya göre biraz pahalı yapıyorsunuz ama yaptığınız işe değer elinize sağlık"</p>
-            <div class="client" itemprop="author" itemscope itemtype="https://schema.org/Person">
-                <strong itemprop="name">Mehmet Esen</strong>
-                <span>İstanbul</span>
-            </div>
-                        </div> 
-                        <div class="testimonial" itemscope itemtype="https://schema.org/Review" itemprop="review">
-                            <meta itemprop="datePublished" content="2025-05-11">
-                            <div itemprop="itemReviewed" itemscope itemtype="https://schema.org/HousePainter" itemid="https://istanbulboyacilik.com/#business" itemref="reviewed-business">
-                                <meta itemprop="name" content="İstanbul Boyacılık">
-                            </div>
-
-                            <div class="rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
-                                <meta itemprop="ratingValue" content="5" />
-                                <meta itemprop="bestRating" content="5" />
-                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                    class="fas fa-star"></i><i class="fas fa-star"></i>
-                            </div>
-                            <p itemprop="reviewBody">"Enes beyle kurduğumuz iletişim, pozitif ve son derece yardım etme isteği
-                                ile bizi Baran bey ve Barış beye yönlendirerek çok doğru, tertemiz bir hizmetle buluşturdu.
-                                Evimizde gerek eşyaların çekilmesi, muhafaza edilmesi, tekrar yerlerine yerleştirilip bir damla
-                                boya izi olmadan teslim edilmesinden dolayı çok mutlu olduk. teşekkürler 😇"</p>
-                            <div class="client" itemprop="author" itemscope itemtype="https://schema.org/Person">
-                                <strong itemprop="name">Esma Aldoğan</strong>
-                                <span>Şişli / İstanbul</span>
-                            </div>
-                        </div>
-                        <div class="testimonial" itemscope itemtype="https://schema.org/Review" itemprop="review">
-                            <meta itemprop="datePublished" content="2025-05-25">
-                            <div itemprop="itemReviewed" itemscope itemtype="https://schema.org/HousePainter" itemid="https://istanbulboyacilik.com/#business" itemref="reviewed-business">
-                                <meta itemprop="name" content="İstanbul Boyacılık">
-                            </div>
-
-                            <div class="rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
-                                <meta itemprop="ratingValue" content="5" />
-                                <meta itemprop="bestRating" content="5" />
-                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                    class="fas fa-star"></i><i class="fas fa-star"></i>
-                            </div>
-                            <p itemprop="reviewBody">"Enes beye verdiği hizmetten ötürü teşekkürlerimi borç bilirim.Her daim
-                                böyle kaliteli güzel insanlarla denk gelmek bizi mutlu etti umarım çok güzel yerlere gelmesi
-                                dileğimle."</p>
-                            <div class="client" itemprop="author" itemscope itemtype="https://schema.org/Person">
-                                <strong itemprop="name">Tamer Tunc Taygun</strong>
-                                <span>Beşiktaş / İstanbul</span>
-                            </div>
-                        </div>
-                        <div class="testimonial" itemscope itemtype="https://schema.org/Review" itemprop="review">
-                            <meta itemprop="datePublished" content="2025-05-18">
-                            <div itemprop="itemReviewed" itemscope itemtype="https://schema.org/HousePainter" itemid="https://istanbulboyacilik.com/#business" itemref="reviewed-business">
-                                <meta itemprop="name" content="İstanbul Boyacılık">
-                            </div>
-
-                            <div class="rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
-                                <meta itemprop="ratingValue" content="5" />
-                                <meta itemprop="bestRating" content="5" />
-                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                    class="fas fa-star"></i><i class="fas fa-star"></i>
-                            </div>
-                            <p itemprop="reviewBody">"Aldığım hizmetten çok memnun kaldım boyama işleri için gönül rahatlığıyla
-                                Enes abiden destek alabilirsiniz"</p>
-                            <div class="client" itemprop="author" itemscope itemtype="https://schema.org/Person">
-                                <strong itemprop="name">Ahmet KİRİŞCİ</strong>
-                                <span>Ataşehir / İstanbul</span>
-                            </div>
-                        </div>
-                        <div class="testimonial" itemscope itemtype="https://schema.org/Review" itemprop="review">
-                            <meta itemprop="datePublished" content="2025-02-16">
-                            <div itemprop="itemReviewed" itemscope itemtype="https://schema.org/HousePainter" itemid="https://istanbulboyacilik.com/#business" itemref="reviewed-business">
-                                <meta itemprop="name" content="İstanbul Boyacılık">
-                            </div>
-
-                            <div class="rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
-                                <meta itemprop="ratingValue" content="5" />
-                                <meta itemprop="bestRating" content="5" />
-                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                    class="fas fa-star"></i><i class="fas fa-star"></i>
-                            </div>
-                            <p itemprop="reviewBody">"Çok tecrübeli ve işlerini titizlikle yapıyorlar. Kesinlikle tavsiye
-                                ederim."</p>
-                            <div class="client" itemprop="author" itemscope itemtype="https://schema.org/Person">
-                                <strong itemprop="name">Cemal Cantepe</strong>
-                                <span>İstanbul</span>
-                            </div>
-                        </div>
-                <div class="testimonial" itemscope itemtype="https://schema.org/Review" itemprop="review">
-                    <meta itemprop="datePublished" content="2025-05-18">
-                    <div itemprop="itemReviewed" itemscope itemtype="https://schema.org/HousePainter" itemid="https://istanbulboyacilik.com/#business" itemref="reviewed-business">
-                        <meta itemprop="name" content="İstanbul Boyacılık">
-                    </div>
-
-                    <div class="rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
-                        <meta itemprop="ratingValue" content="5" />
-                        <meta itemprop="bestRating" content="5" />
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                            class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </div>
-                    <p itemprop="reviewBody">"İşçiliğinizi çok beğendim, teşekkür ederim. Herkese tavsiye ediyorum."</p>
-                    <div class="client" itemprop="author" itemscope itemtype="https://schema.org/Person">
-                        <strong itemprop="name">Muhammed Yıldız</strong>
-                        <span>İstanbul</span>
-                    </div>
-                </div>
-                <div class="testimonial" itemscope itemtype="https://schema.org/Review" itemprop="review">
-                    <meta itemprop="datePublished" content="2025-03-02">
-                    <div itemprop="itemReviewed" itemscope itemtype="https://schema.org/HousePainter" itemid="https://istanbulboyacilik.com/#business" itemref="reviewed-business">
-                        <meta itemprop="name" content="İstanbul Boyacılık">
-                    </div>
-
-                    <div class="rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
-                        <meta itemprop="ratingValue" content="5" />
-                        <meta itemprop="bestRating" content="5" />
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                            class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </div>
-                    <p itemprop="reviewBody">"İşçilik çok iyi, ustalar işi hızlı ve temiz şekilde halletti."</p>
-                    <div class="client" itemprop="author" itemscope itemtype="https://schema.org/Person">
-                        <strong itemprop="name">Sabahattin Varhan</strong>
-                        <span>İstanbul</span>
-                    </div>
-                </div>
-                <div class="testimonial" itemscope itemtype="https://schema.org/Review" itemprop="review">
-                    <meta itemprop="datePublished" content="2025-05-18">
-                    <div itemprop="itemReviewed" itemscope itemtype="https://schema.org/HousePainter" itemid="https://istanbulboyacilik.com/#business" itemref="reviewed-business">
-                        <meta itemprop="name" content="İstanbul Boyacılık">
-                    </div>
-
-                    <div class="rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
-                        <meta itemprop="ratingValue" content="5" />
-                        <meta itemprop="bestRating" content="5" />
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                            class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </div>
-                    <p itemprop="reviewBody">"Enes Bey’le iletişime geçtim, evimi boyattım. Hiç boya dökülmeden tertemiz
-                        çalışıldı. Herkese tavsiye ederim."</p>
-                    <div class="client" itemprop="author" itemscope itemtype="https://schema.org/Person">
-                        <strong itemprop="name">Suat Aslan</strong>
-                        <span>İstanbul</span>
-                    </div>
-                </div>
-                <div class="testimonial" itemscope itemtype="https://schema.org/Review" itemprop="review">
-                    <meta itemprop="datePublished" content="2025-05-11">
-                    <div itemprop="itemReviewed" itemscope itemtype="https://schema.org/HousePainter" itemid="https://istanbulboyacilik.com/#business" itemref="reviewed-business">
-                        <meta itemprop="name" content="İstanbul Boyacılık">
-                    </div>
-
-                    <div class="rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
-                        <meta itemprop="ratingValue" content="5" />
-                        <meta itemprop="bestRating" content="5" />
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                            class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </div>
-                    <p itemprop="reviewBody">"Yapılan işin maddi karşılığını ödedik ama maneviyatı ölçülemez. Titiz ve
-                        becerili ustalara teşekkür ederiz."</p>
-                    <div class="client" itemprop="author" itemscope itemtype="https://schema.org/Person">
-                        <strong itemprop="name">Soner DOĞAN</strong>
-                        <span>İstanbul</span>
-                    </div>
-                </div>
-                <div class="testimonial" itemscope itemtype="https://schema.org/Review" itemprop="review">
-                    <meta itemprop="datePublished" content="2025-02-09">
-                    <div itemprop="itemReviewed" itemscope itemtype="https://schema.org/HousePainter" itemid="https://istanbulboyacilik.com/#business" itemref="reviewed-business">
-                        <meta itemprop="name" content="İstanbul Boyacılık">
-                    </div>
-
-                    <div class="rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
-                        <meta itemprop="ratingValue" content="5" />
-                        <meta itemprop="bestRating" content="5" />
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                            class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </div>
-                    <p itemprop="reviewBody">"Çok güzel işçilik emeği geçen ustaların ellerine sağlık"</p>
-                    <div class="client" itemprop="author" itemscope itemtype="https://schema.org/Person">
-                        <strong itemprop="name">Cüneyt Aydan</strong>
-                        <span>İstanbul</span>
-                    </div>
+                <meta itemprop="telephone" content="+905078322912">
+                <meta itemprop="priceRange" content="₺₺">
+                <meta itemprop="url" content="https://istanbulboyacilik.com/">
+                <link itemprop="image" href="https://istanbulboyacilik.com/images/istanbulboyaustasi.png">
+                <div itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
+                    <meta itemprop="streetAddress" content="Demirkapı Cd. No:1">
+                    <meta itemprop="addressLocality" content="İstanbul">
+                    <meta itemprop="addressRegion" content="İstanbul">
+                    <meta itemprop="postalCode" content="34000">
+                    <meta itemprop="addressCountry" content="TR">
                 </div>
             </div>
-        </div>
-        <div class="slider-nav">
-            <button id="prev-testimonial">&#10094;</button>
-            <button id="next-testimonial">&#10095;</button>
-        </div>
-        <div class="slider-indicators" id="slider-indicators"></div>
-    </section>
-    <a href="https://wa.me/905078322912?text=Merhaba%2C%20boya%20ve%20badana%20hizmeti%20i%C3%A7in%20yard%C4%B1m%20almak%20istiyorum.%20Bilgi%20verebilir%20misiniz%3F"
-        class="whatsapp-button" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp ile iletişime geç">
-        <i class="fab fa-whatsapp"></i>
-    </a>
+            <div class="testimonial-slider" role="region" aria-label="Müşteri yorumları slaytları" aria-live="polite">
+                <div class="testimonial-container">
+
+                    <div class="testimonial" itemscope itemtype="https://schema.org/Review" itemprop="review">
+                        <meta itemprop="datePublished" content="2024-12-12">
+                        <div itemprop="itemReviewed" itemscope itemtype="https://schema.org/HousePainter"
+                            itemid="https://istanbulboyacilik.com/#business" itemref="reviewed-business">
+                            <meta itemprop="name" content="İstanbul Boyacılık">
+                        </div>
+                        <div class="rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+                            <meta itemprop="ratingValue" content="5" />
+                            <meta itemprop="bestRating" content="5" />
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p itemprop="reviewBody">"İstanbul Boyacılık ekibi evimde harika bir iş çıkardı. Profesyonel ve
+                            zamanında tamamladılar. Kesinlikle tavsiye ederim."</p>
+                        <div class="client" itemprop="author" itemscope itemtype="https://schema.org/Person">
+                            <strong itemprop="name">Ahmet Yılmaz</strong>
+                            <span>Ataşehir / İstanbul</span>
+                        </div>
+                    </div>
+                    <div class="testimonial" itemscope itemtype="https://schema.org/Review" itemprop="review">
+                        <meta itemprop="datePublished" content="2025-07-20">
+                        <div itemprop="itemReviewed" itemscope itemtype="https://schema.org/HousePainter"
+                            itemid="https://istanbulboyacilik.com/#business" itemref="reviewed-business">
+                            <meta itemprop="name" content="İstanbul Boyacılık">
+                        </div>
+
+                        <div class="rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+                            <meta itemprop="ratingValue" content="5" />
+                            <meta itemprop="bestRating" content="5" />
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+
+                        <p itemprop="reviewBody">
+                            İstanbul Boyacılık ile çalışmak gerçekten harikaydı.
+                            3+1 evimizi boyattık ve başından sonuna kadar her şey çok düzenli,
+                            temiz ve profesyonelce ilerledi.Hem iletişim çok kuvvetliydi hem de işin her
+                            aşamasında birebir ilgilendiler. Ekip tam zamanında geldi, titizlikle çalıştı
+                            ve evimizi adeta yenilediler. Fiyatlar piyasaya göre biraz yukarıda olabilir
+                            ama verilen hizmet fazlasıyla karşılığını veriyor.
+                            Gözünüz kapalı güvenebilirsiniz.
+                            Teşekkürler İstanbul Boyacılık, teşekkürler Enes Bey!
+                        </p>
+
+                        <div class="client" itemprop="author" itemscope itemtype="https://schema.org/Person">
+                            <strong itemprop="name">Kasım Ayık</strong>
+                            <span>Etiler / İstanbul</span>
+                        </div>
+                    </div>
+                    <div class="testimonial" itemscope itemtype="https://schema.org/Review" itemprop="review">
+                        <meta itemprop="datePublished" content="2025-11-21">
+                        <div itemprop="itemReviewed" itemscope itemtype="https://schema.org/HousePainter"
+                            itemid="https://istanbulboyacilik.com/#business" itemref="reviewed-business">
+                            <meta itemprop="name" content="İstanbul Boyacılık">
+                        </div>
+                        <div class="rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+                            <meta itemprop="ratingValue" content="5" />
+                            <meta itemprop="bestRating" content="5" />
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p itemprop="reviewBody">"Gayet iyi iş oldu ellerinize sağlık"</p>
+                        <div class="client" itemprop="author" itemscope itemtype="https://schema.org/Person">
+                            <strong itemprop="name">Ömer Faruk Tari</strong>
+                            <span>İstanbul</span>
+                        </div>
+                    </div>
+                    <div class="testimonial" itemscope itemtype="https://schema.org/Review" itemprop="review">
+                        <meta itemprop="datePublished" content="2025-10-05">
+                        <div itemprop="itemReviewed" itemscope itemtype="https://schema.org/HousePainter"
+                            itemid="https://istanbulboyacilik.com/#business" itemref="reviewed-business">
+                            <meta itemprop="name" content="İstanbul Boyacılık">
+                        </div>
+                        <div class="rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+                            <meta itemprop="ratingValue" content="5" />
+                            <meta itemprop="bestRating" content="5" />
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p itemprop="reviewBody">"Çok hızlı yardımcı oldular, çok teşekkürler 🙏"</p>
+                        <div class="client" itemprop="author" itemscope itemtype="https://schema.org/Person">
+                            <strong itemprop="name">Şeyma Sak</strong>
+                            <span>İstanbul</span>
+                        </div>
+                    </div>
+                    <div class="testimonial" itemscope itemtype="https://schema.org/Review" itemprop="review">
+                        <meta itemprop="datePublished" content="2025-08-24">
+                        <div itemprop="itemReviewed" itemscope itemtype="https://schema.org/HousePainter"
+                            itemid="https://istanbulboyacilik.com/#business" itemref="reviewed-business">
+                            <meta itemprop="name" content="İstanbul Boyacılık">
+                        </div>
+                        <div class="rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+                            <meta itemprop="ratingValue" content="5" />
+                            <meta itemprop="bestRating" content="5" />
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p itemprop="reviewBody">"Yaptığın iş için teşekkürler Enes bey size ve ekibine teşekkür ederiz.
+                            piyasaya göre biraz pahalı yapıyorsunuz ama yaptığınız işe değer elinize sağlık"</p>
+                        <div class="client" itemprop="author" itemscope itemtype="https://schema.org/Person">
+                            <strong itemprop="name">Mehmet Esen</strong>
+                            <span>İstanbul</span>
+                        </div>
+                    </div>
+                    <div class="testimonial" itemscope itemtype="https://schema.org/Review" itemprop="review">
+                        <meta itemprop="datePublished" content="2025-05-11">
+                        <div itemprop="itemReviewed" itemscope itemtype="https://schema.org/HousePainter"
+                            itemid="https://istanbulboyacilik.com/#business" itemref="reviewed-business">
+                            <meta itemprop="name" content="İstanbul Boyacılık">
+                        </div>
+
+                        <div class="rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+                            <meta itemprop="ratingValue" content="5" />
+                            <meta itemprop="bestRating" content="5" />
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p itemprop="reviewBody">"Enes beyle kurduğumuz iletişim, pozitif ve son derece yardım etme
+                            isteği
+                            ile bizi Baran bey ve Barış beye yönlendirerek çok doğru, tertemiz bir hizmetle buluşturdu.
+                            Evimizde gerek eşyaların çekilmesi, muhafaza edilmesi, tekrar yerlerine yerleştirilip bir
+                            damla
+                            boya izi olmadan teslim edilmesinden dolayı çok mutlu olduk. teşekkürler 😇"</p>
+                        <div class="client" itemprop="author" itemscope itemtype="https://schema.org/Person">
+                            <strong itemprop="name">Esma Aldoğan</strong>
+                            <span>Şişli / İstanbul</span>
+                        </div>
+                    </div>
+                    <div class="testimonial" itemscope itemtype="https://schema.org/Review" itemprop="review">
+                        <meta itemprop="datePublished" content="2025-05-25">
+                        <div itemprop="itemReviewed" itemscope itemtype="https://schema.org/HousePainter"
+                            itemid="https://istanbulboyacilik.com/#business" itemref="reviewed-business">
+                            <meta itemprop="name" content="İstanbul Boyacılık">
+                        </div>
+
+                        <div class="rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+                            <meta itemprop="ratingValue" content="5" />
+                            <meta itemprop="bestRating" content="5" />
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p itemprop="reviewBody">"Enes beye verdiği hizmetten ötürü teşekkürlerimi borç bilirim.Her daim
+                            böyle kaliteli güzel insanlarla denk gelmek bizi mutlu etti umarım çok güzel yerlere gelmesi
+                            dileğimle."</p>
+                        <div class="client" itemprop="author" itemscope itemtype="https://schema.org/Person">
+                            <strong itemprop="name">Tamer Tunc Taygun</strong>
+                            <span>Beşiktaş / İstanbul</span>
+                        </div>
+                    </div>
+                    <div class="testimonial" itemscope itemtype="https://schema.org/Review" itemprop="review">
+                        <meta itemprop="datePublished" content="2025-05-18">
+                        <div itemprop="itemReviewed" itemscope itemtype="https://schema.org/HousePainter"
+                            itemid="https://istanbulboyacilik.com/#business" itemref="reviewed-business">
+                            <meta itemprop="name" content="İstanbul Boyacılık">
+                        </div>
+
+                        <div class="rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+                            <meta itemprop="ratingValue" content="5" />
+                            <meta itemprop="bestRating" content="5" />
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p itemprop="reviewBody">"Aldığım hizmetten çok memnun kaldım boyama işleri için gönül
+                            rahatlığıyla
+                            Enes abiden destek alabilirsiniz"</p>
+                        <div class="client" itemprop="author" itemscope itemtype="https://schema.org/Person">
+                            <strong itemprop="name">Ahmet KİRİŞCİ</strong>
+                            <span>Ataşehir / İstanbul</span>
+                        </div>
+                    </div>
+                    <div class="testimonial" itemscope itemtype="https://schema.org/Review" itemprop="review">
+                        <meta itemprop="datePublished" content="2025-02-16">
+                        <div itemprop="itemReviewed" itemscope itemtype="https://schema.org/HousePainter"
+                            itemid="https://istanbulboyacilik.com/#business" itemref="reviewed-business">
+                            <meta itemprop="name" content="İstanbul Boyacılık">
+                        </div>
+
+                        <div class="rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+                            <meta itemprop="ratingValue" content="5" />
+                            <meta itemprop="bestRating" content="5" />
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p itemprop="reviewBody">"Çok tecrübeli ve işlerini titizlikle yapıyorlar. Kesinlikle tavsiye
+                            ederim."</p>
+                        <div class="client" itemprop="author" itemscope itemtype="https://schema.org/Person">
+                            <strong itemprop="name">Cemal Cantepe</strong>
+                            <span>İstanbul</span>
+                        </div>
+                    </div>
+                    <div class="testimonial" itemscope itemtype="https://schema.org/Review" itemprop="review">
+                        <meta itemprop="datePublished" content="2025-05-18">
+                        <div itemprop="itemReviewed" itemscope itemtype="https://schema.org/HousePainter"
+                            itemid="https://istanbulboyacilik.com/#business" itemref="reviewed-business">
+                            <meta itemprop="name" content="İstanbul Boyacılık">
+                        </div>
+
+                        <div class="rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+                            <meta itemprop="ratingValue" content="5" />
+                            <meta itemprop="bestRating" content="5" />
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p itemprop="reviewBody">"İşçiliğinizi çok beğendim, teşekkür ederim. Herkese tavsiye ediyorum."
+                        </p>
+                        <div class="client" itemprop="author" itemscope itemtype="https://schema.org/Person">
+                            <strong itemprop="name">Muhammed Yıldız</strong>
+                            <span>İstanbul</span>
+                        </div>
+                    </div>
+                    <div class="testimonial" itemscope itemtype="https://schema.org/Review" itemprop="review">
+                        <meta itemprop="datePublished" content="2025-03-02">
+                        <div itemprop="itemReviewed" itemscope itemtype="https://schema.org/HousePainter"
+                            itemid="https://istanbulboyacilik.com/#business" itemref="reviewed-business">
+                            <meta itemprop="name" content="İstanbul Boyacılık">
+                        </div>
+
+                        <div class="rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+                            <meta itemprop="ratingValue" content="5" />
+                            <meta itemprop="bestRating" content="5" />
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p itemprop="reviewBody">"İşçilik çok iyi, ustalar işi hızlı ve temiz şekilde halletti."</p>
+                        <div class="client" itemprop="author" itemscope itemtype="https://schema.org/Person">
+                            <strong itemprop="name">Sabahattin Varhan</strong>
+                            <span>İstanbul</span>
+                        </div>
+                    </div>
+                    <div class="testimonial" itemscope itemtype="https://schema.org/Review" itemprop="review">
+                        <meta itemprop="datePublished" content="2025-05-18">
+                        <div itemprop="itemReviewed" itemscope itemtype="https://schema.org/HousePainter"
+                            itemid="https://istanbulboyacilik.com/#business" itemref="reviewed-business">
+                            <meta itemprop="name" content="İstanbul Boyacılık">
+                        </div>
+
+                        <div class="rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+                            <meta itemprop="ratingValue" content="5" />
+                            <meta itemprop="bestRating" content="5" />
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p itemprop="reviewBody">"Enes Bey’le iletişime geçtim, evimi boyattım. Hiç boya dökülmeden
+                            tertemiz
+                            çalışıldı. Herkese tavsiye ederim."</p>
+                        <div class="client" itemprop="author" itemscope itemtype="https://schema.org/Person">
+                            <strong itemprop="name">Suat Aslan</strong>
+                            <span>İstanbul</span>
+                        </div>
+                    </div>
+                    <div class="testimonial" itemscope itemtype="https://schema.org/Review" itemprop="review">
+                        <meta itemprop="datePublished" content="2025-05-11">
+                        <div itemprop="itemReviewed" itemscope itemtype="https://schema.org/HousePainter"
+                            itemid="https://istanbulboyacilik.com/#business" itemref="reviewed-business">
+                            <meta itemprop="name" content="İstanbul Boyacılık">
+                        </div>
+
+                        <div class="rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+                            <meta itemprop="ratingValue" content="5" />
+                            <meta itemprop="bestRating" content="5" />
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p itemprop="reviewBody">"Yapılan işin maddi karşılığını ödedik ama maneviyatı ölçülemez. Titiz
+                            ve
+                            becerili ustalara teşekkür ederiz."</p>
+                        <div class="client" itemprop="author" itemscope itemtype="https://schema.org/Person">
+                            <strong itemprop="name">Soner DOĞAN</strong>
+                            <span>İstanbul</span>
+                        </div>
+                    </div>
+                    <div class="testimonial" itemscope itemtype="https://schema.org/Review" itemprop="review">
+                        <meta itemprop="datePublished" content="2025-02-09">
+                        <div itemprop="itemReviewed" itemscope itemtype="https://schema.org/HousePainter"
+                            itemid="https://istanbulboyacilik.com/#business" itemref="reviewed-business">
+                            <meta itemprop="name" content="İstanbul Boyacılık">
+                        </div>
+
+                        <div class="rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+                            <meta itemprop="ratingValue" content="5" />
+                            <meta itemprop="bestRating" content="5" />
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p itemprop="reviewBody">"Çok güzel işçilik emeği geçen ustaların ellerine sağlık"</p>
+                        <div class="client" itemprop="author" itemscope itemtype="https://schema.org/Person">
+                            <strong itemprop="name">Cüneyt Aydan</strong>
+                            <span>İstanbul</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slider-nav" aria-label="Yorum gezinme düğmeleri">
+                <button id="prev-testimonial" aria-label="Önceki yorumu göster">&#10094;</button>
+                <button id="next-testimonial" aria-label="Sonraki yorumu göster">&#10095;</button>
+            </div>
+            <div class="slider-indicators" id="slider-indicators"></div>
+        </section>
+        <a href="https://wa.me/905078322912?text=Merhaba%2C%20boya%20ve%20badana%20hizmeti%20i%C3%A7in%20yard%C4%B1m%20almak%20istiyorum.%20Bilgi%20verebilir%20misiniz%3F"
+            class="whatsapp-button" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp ile iletişime geç">
+            <i class="fab fa-whatsapp"></i>
+        </a>
     </main>
     <footer>
         <div class="footer-content">
@@ -1900,7 +1978,43 @@
         </div>
     </footer>
     <script src="js/main.js" defer></script>
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script>
+        (function () {
+            const widget = document.querySelector('.g-recaptcha');
+            if (!widget) {
+                return;
+            }
+
+            let isRequested = false;
+            const loadRecaptcha = () => {
+                if (isRequested) {
+                    return;
+                }
+                isRequested = true;
+                const script = document.createElement('script');
+                script.src = 'https://www.google.com/recaptcha/api.js';
+                script.async = true;
+                script.defer = true;
+                document.body.appendChild(script);
+            };
+
+            if ('IntersectionObserver' in window) {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            loadRecaptcha();
+                            observer.disconnect();
+                        }
+                    });
+                }, { rootMargin: '200px' });
+                observer.observe(widget);
+            } else {
+                loadRecaptcha();
+            }
+
+            window.addEventListener('focus', loadRecaptcha, { once: true });
+        })();
+    </script>
 </body>
 
 </html>
