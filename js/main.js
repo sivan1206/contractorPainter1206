@@ -74,6 +74,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const initHeroSlider = () => {
             if (sliderInitialized) return;
+            // Materialize lazy slide images (data-src → src)
+            document.querySelectorAll('.slide img[data-src]').forEach(img => {
+                if (img.dataset.srcset) { img.srcset = img.dataset.srcset; img.removeAttribute('data-srcset'); }
+                if (img.dataset.sizes) { img.sizes = img.dataset.sizes; img.removeAttribute('data-sizes'); }
+                img.src = img.dataset.src; img.removeAttribute('data-src');
+                img.loading = 'lazy';
+            });
             showSlide(0);
             if (!motionQuery?.matches) {
                 startSlider();
@@ -198,105 +205,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     });
-    const testimonialContainer = select('.testimonial-container');
-    if (testimonialContainer) {
-        const items = selectAll('.testimonial');
-        const totalItems = items.length;
-        if (totalItems === 0) return;
-
-        const indicatorsContainer = select('#slider-indicators');
-        const sliderWrapper = select('.testimonial-slider');
-        const motionQuery = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
-        let currentIndex = 0;
-        let autoSlideInterval;
-        let testimonialsInitialized = false;
-
-        for (let i = 0; i < totalItems; i++) {
-            const indicator = document.createElement('div');
-            indicator.classList.add('indicator');
-            indicator.dataset.index = i;
-            indicatorsContainer.appendChild(indicator);
-        }
-        const indicators = selectAll('.indicator');
-
-        const updateSlider = (index) => {
-            testimonialContainer.style.transform = `translateX(-${index * 100}%)`;
-            indicators.forEach((ind, i) => ind.classList.toggle('active', i === index));
-            currentIndex = index;
-        };
-
-        const stopAutoSlide = () => {
-            clearInterval(autoSlideInterval);
-            autoSlideInterval = null;
-        };
-
-        const startAutoSlide = () => {
-            if (motionQuery?.matches) {
-                stopAutoSlide();
-                return;
-            }
-            stopAutoSlide();
-            autoSlideInterval = setInterval(() => updateSlider((currentIndex + 1) % totalItems), 5000);
-        };
-
-        const initTestimonialSlider = () => {
-            if (testimonialsInitialized) return;
-            updateSlider(0);
-            if (!motionQuery?.matches) {
-                startAutoSlide();
-            }
-            testimonialsInitialized = true;
-        };
-
-        const handleMotionChange = (event) => {
-            if (!testimonialsInitialized) return;
-            if (event.matches) {
-                stopAutoSlide();
-            } else {
-                startAutoSlide();
-            }
-        };
-
-        motionQuery?.addEventListener('change', handleMotionChange);
-
-        select('#prev-testimonial')?.addEventListener('click', () => {
-            if (!testimonialsInitialized) initTestimonialSlider();
-            updateSlider((currentIndex - 1 + totalItems) % totalItems);
-            startAutoSlide();
-        });
-        select('#next-testimonial')?.addEventListener('click', () => {
-            if (!testimonialsInitialized) initTestimonialSlider();
-            updateSlider((currentIndex + 1) % totalItems);
-            startAutoSlide();
-        });
-        indicatorsContainer?.addEventListener('click', (e) => {
-            if (e.target.matches('.indicator')) updateSlider(parseInt(e.target.dataset.index));
-        });
-
-        const pauseEvents = ['mouseenter', 'focusin', 'touchstart'];
-        const resumeEvents = ['mouseleave', 'focusout', 'touchend'];
-        pauseEvents.forEach(evt => sliderWrapper?.addEventListener(evt, stopAutoSlide));
-        resumeEvents.forEach(evt => sliderWrapper?.addEventListener(evt, () => {
-            if (motionQuery?.matches) return;
-            if (!testimonialsInitialized) {
-                initTestimonialSlider();
-                return;
-            }
-            startAutoSlide();
-        }));
-
-        if ('IntersectionObserver' in window && sliderWrapper) {
-            const testimonialObserver = new IntersectionObserver((entries, observer) => {
-                if (entries.some(entry => entry.isIntersecting)) {
-                    initTestimonialSlider();
-                    observer.disconnect();
-                }
-            }, { threshold: 0.25 });
-            testimonialObserver.observe(sliderWrapper);
-        } else {
-            initTestimonialSlider();
-        }
-    }
+    // Testimonial slider removed – reviews handled by Elfsight widget
 
     const faqItems = document.querySelectorAll('.faq-item');
     const searchInput = document.getElementById('faq-search');

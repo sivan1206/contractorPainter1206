@@ -12,11 +12,12 @@
     <link rel="preconnect" href="https://www.gstatic.com" crossorigin>
     <link rel="dns-prefetch" href="https://www.googletagmanager.com">
     <link rel="dns-prefetch" href="https://www.gstatic.com">
-    <!-- Montserrat Font for Premium Typography -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap"
-        rel="stylesheet">
+    <!-- Montserrat Variable Font - Self-hosted for Performance -->
+    <style>
+    @font-face{font-family:'Montserrat';font-style:normal;font-weight:400 800;font-display:swap;src:url('fonts/montserrat-latin.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+    @font-face{font-family:'Montserrat';font-style:normal;font-weight:400 800;font-display:swap;src:url('fonts/montserrat-latin-ext.woff2') format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+    </style>
+    <link rel="preload" as="font" type="font/woff2" href="fonts/montserrat-latin.woff2" crossorigin>
     <link rel="preconnect" href="https://www.google.com" crossorigin>
     <meta property="og:title" content="İstanbul Profesyonel Boyacı Ustası | Garantili Boya Badana">
     <meta property="og:description"
@@ -393,13 +394,29 @@
         <link rel="stylesheet" href="styles.pure.css">
     </noscript>
 
-    <!-- Google Analytics - Async Loading -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E4JBWT478X"></script>
+    <!-- Google Analytics - Idle Load (2s delay or first scroll) -->
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-        gtag('config', 'G-E4JBWT478X');
+        (function(){
+            var loaded = false;
+            function loadGTM() {
+                if (loaded) return;
+                loaded = true;
+                var s = document.createElement('script');
+                s.src = 'https://www.googletagmanager.com/gtag/js?id=G-E4JBWT478X';
+                s.async = true;
+                document.head.appendChild(s);
+                s.onload = function() {
+                    gtag('js', new Date());
+                    gtag('config', 'G-E4JBWT478X');
+                };
+            }
+            window.addEventListener('load', function() {
+                setTimeout(loadGTM, 2000);
+            });
+            window.addEventListener('scroll', loadGTM, {once: true, passive: true});
+        })();
     </script>
 </head>
 
@@ -432,36 +449,37 @@
             <div class="hero-slider">
                 <div class="slider-container" aria-live="polite">
                     <div class="slide active" data-title="İstanbul Boya Ustası">
-                        <img src="images/hero/discephe/istanbul-boya-ustasi-boyaustasi.WebP" srcset="images/hero/discephe/istanbul-boya-ustasi-boyaustasi-400.webp 400w,
-                                    images/hero/discephe/istanbul-boya-ustasi-boyaustasi-800.webp 800w,
-                                    images/hero/discephe/istanbul-boya-ustasi-boyaustasi.WebP 1200w"
-                            sizes="(max-width: 600px) 400px, (max-width: 900px) 800px, 1200px"
-                            alt="İstanbul boyacı ustası daire uygulaması" width="1200" height="800"
-                            fetchpriority="high" loading="eager" decoding="async">
+                        <picture>
+                            <source media="(max-width: 600px)" srcset="images/hero/discephe/istanbul-boya-ustasi-boyaustasi-400.webp" type="image/webp" width="400" height="267">
+                            <source media="(max-width: 900px)" srcset="images/hero/discephe/istanbul-boya-ustasi-boyaustasi-800.webp" type="image/webp" width="800" height="533">
+                            <img src="images/hero/discephe/istanbul-boya-ustasi-boyaustasi.WebP"
+                                alt="İstanbul boyacı ustası daire uygulaması" width="1200" height="800"
+                                fetchpriority="high" loading="eager" decoding="async">
+                        </picture>
                     </div>
                     <div class="slide" data-title="İç Mekan Boyama">
-                        <img src="images/hero/icmekan/istanbul-boya-ustasi-icmekan.WebP" srcset="images/hero/icmekan/istanbul-boya-ustasi-icmekan-400.webp 400w,
+                        <img data-src="images/hero/icmekan/istanbul-boya-ustasi-icmekan.WebP" data-srcset="images/hero/icmekan/istanbul-boya-ustasi-icmekan-400.webp 400w,
                                     images/hero/icmekan/istanbul-boya-ustasi-icmekan-800.webp 800w,
                                     images/hero/icmekan/istanbul-boya-ustasi-icmekan.WebP 1200w"
-                            sizes="(max-width: 600px) 400px, (max-width: 900px) 800px, 1200px"
-                            alt="İstanbul boyacı ustası daire uygulaması" width="1200" height="800" loading="lazy"
+                            data-sizes="(max-width: 600px) 400px, (max-width: 900px) 800px, 1200px"
+                            alt="İstanbul boyacı ustası daire uygulaması" width="1200" height="800"
                             decoding="async">
                     </div>
                     <div class="slide" data-title="Ofis Boyama">
-                        <img src="images/hero/icmekan/istanbul-boya-ustasi-ofis.WebP" srcset="images/hero/icmekan/istanbul-boya-ustasi-ofis-400.webp 400w,
+                        <img data-src="images/hero/icmekan/istanbul-boya-ustasi-ofis.WebP" data-srcset="images/hero/icmekan/istanbul-boya-ustasi-ofis-400.webp 400w,
                                     images/hero/icmekan/istanbul-boya-ustasi-ofis-800.webp 800w,
                                     images/hero/icmekan/istanbul-boya-ustasi-ofis.WebP 1200w"
-                            sizes="(max-width: 600px) 400px, (max-width: 900px) 800px, 1200px"
-                            alt="İstanbul boyacı ustası daire uygulaması" width="1200" height="800" loading="lazy"
+                            data-sizes="(max-width: 600px) 400px, (max-width: 900px) 800px, 1200px"
+                            alt="İstanbul boyacı ustası daire uygulaması" width="1200" height="800"
                             decoding="async">
                     </div>
                     <div class="slide" data-title="Dekoratif Boyama">
-                        <img src="images/hero/dekoratif/istanbul-boya-ustasi-dekoratif1.WebP" srcset="images/hero/dekoratif/istanbul-boya-ustasi-dekoratif1-400.webp 400w,
+                        <img data-src="images/hero/dekoratif/istanbul-boya-ustasi-dekoratif1.WebP" data-srcset="images/hero/dekoratif/istanbul-boya-ustasi-dekoratif1-400.webp 400w,
                                     images/hero/dekoratif/istanbul-boya-ustasi-dekoratif1-800.webp 800w,
                                     images/hero/dekoratif/istanbul-boya-ustasi-dekoratif1.WebP 1200w"
-                            sizes="(max-width: 600px) 400px, (max-width: 900px) 800px, 1200px"
+                            data-sizes="(max-width: 600px) 400px, (max-width: 900px) 800px, 1200px"
                             alt="İstanbul boyacı ustası daire uygulaması" width="1200" height="800"
-                            loading="lazy" decoding="async">
+                            decoding="async">
                     </div>
                 </div>
             </div>
@@ -493,12 +511,12 @@
             <div class="slide" data-title="İstanbul Profesyonel Boya Ustası | Ücretsiz Keşif, Net Fiyatlar"
                 data-description="İstanbul'da tecrübeli boya ustası arıyorsanız, 1 günde temiz ve garantili boya badana hizmetimizle tanışın. Eşyalarınız korunur, eviniz tertemiz teslim edilir.">
 
-                <img src="images/hero/discephe/istanbul-boya-ustasi-istanbulboyaustasi.WebP" srcset="images/hero/discephe/istanbul-boya-ustasi-istanbulboyaustasi-400.webp 400w,
+                <img data-src="images/hero/discephe/istanbul-boya-ustasi-istanbulboyaustasi.WebP" data-srcset="images/hero/discephe/istanbul-boya-ustasi-istanbulboyaustasi-400.webp 400w,
                                     images/hero/discephe/istanbul-boya-ustasi-istanbulboyaustasi-800.webp 800w,
                                     images/hero/discephe/istanbul-boya-ustasi-istanbulboyaustasi.WebP 1200w"
-                    sizes="(max-width: 600px) 400px, (max-width: 900px) 800px, 1200px"
+                    data-sizes="(max-width: 600px) 400px, (max-width: 900px) 800px, 1200px"
                     alt="İstanbul boyacı ustası daire uygulaması" width="1200"
-                    height="800" loading="lazy" decoding="async">
+                    height="800" decoding="async">
 
                 <div class="slide-content">
                     <div class="slide-title">Hayalinizdeki Renkler, Usta Ellerle 1 Günde Teslim!</div>
@@ -510,12 +528,12 @@
 
             <div class="slide" data-title="Dış Cephe Boyama"
                 data-description="Binanızın dış cephesini yenileyin, değerini artırın.">
-                <img src="images/hero/discephe/istanbul-boya-ustasi-discepheres1.WebP" srcset="images/hero/discephe/istanbul-boya-ustasi-discepheres1-400.webp 400w,
+                <img data-src="images/hero/discephe/istanbul-boya-ustasi-discepheres1.WebP" data-srcset="images/hero/discephe/istanbul-boya-ustasi-discepheres1-400.webp 400w,
                                     images/hero/discephe/istanbul-boya-ustasi-discepheres1-800.webp 800w,
                                     images/hero/discephe/istanbul-boya-ustasi-discepheres1.WebP 1200w"
-                    sizes="(max-width: 600px) 400px, (max-width: 900px) 800px, 1200px"
+                    data-sizes="(max-width: 600px) 400px, (max-width: 900px) 800px, 1200px"
                     alt="İstanbul boyacı ustası daire uygulaması" width="1200"
-                    height="800" loading="lazy" decoding="async">
+                    height="800" decoding="async">
                 <div class="slide-content">
                     <p class="slide-title">Dayanıklı ve Estetik Dış Cephe Boyama</p>
 
@@ -529,11 +547,11 @@
 
             <div class="slide" data-title="İstanbul Boya Ustası - İstanbul Boya Badana Ustası | İç Mekan Boyama"
                 data-description="İç mekan boyama">
-                <img src="images/hero/icmekan/istanbul-boya-ustasi-hero-bg.webp" srcset="images/hero/icmekan/istanbul-boya-ustasi-hero-bg-400.webp 400w,
+                <img data-src="images/hero/icmekan/istanbul-boya-ustasi-hero-bg.webp" data-srcset="images/hero/icmekan/istanbul-boya-ustasi-hero-bg-400.webp 400w,
                                     images/hero/icmekan/istanbul-boya-ustasi-hero-bg-800.webp 800w,
                                     images/hero/icmekan/istanbul-boya-ustasi-hero-bg.webp 1200w"
-                    sizes="(max-width: 600px) 400px, (max-width: 900px) 800px, 1200px"
-                    alt="İstanbul boyacı ustası daire uygulaması" width="1200" height="800" loading="lazy" decoding="async">
+                    data-sizes="(max-width: 600px) 400px, (max-width: 900px) 800px, 1200px"
+                    alt="İstanbul boyacı ustası daire uygulaması" width="1200" height="800" decoding="async">
                 <div class="slide-content">
                     <p class="slide-title">Modern Renklerle Kusursuz İşçilik</p>
                     <p>İç mekanlarınızı tazeleyin ve estetik bir görünüm kazandırın. Kaliteli iç mekan boyama
@@ -544,12 +562,12 @@
 
             <div class="slide" data-title="İstanbul Boya Ustası - İstanbul Boya Badana Ustası"
                 data-description="İstanbul boya ustasi">
-                <img src="images/hero/discephe/istanbul-boya-ustasi-istanbulboyaustasi.WebP" srcset="images/hero/discephe/istanbul-boya-ustasi-istanbulboyaustasi-400.webp 400w,
+                <img data-src="images/hero/discephe/istanbul-boya-ustasi-istanbulboyaustasi.WebP" data-srcset="images/hero/discephe/istanbul-boya-ustasi-istanbulboyaustasi-400.webp 400w,
                                     images/hero/discephe/istanbul-boya-ustasi-istanbulboyaustasi-800.webp 800w,
                                     images/hero/discephe/istanbul-boya-ustasi-istanbulboyaustasi.WebP 1200w"
-                    sizes="(max-width: 600px) 400px, (max-width: 900px) 800px, 1200px"
+                    data-sizes="(max-width: 600px) 400px, (max-width: 900px) 800px, 1200px"
                     alt="İstanbul boyacı ustası daire uygulaması" width="1200" height="800"
-                    loading="lazy" decoding="async">
+                    decoding="async">
                 <div class="slide-content">
                     <p class="slide-title">20 Yıllık Tecrübe ile Tüm İstanbul'a Hizmet</p>
                     <p>20 yıllık tecrübemizle iç ve dış cephe boya hizmetleri. İstanbul'un her bölgesinde
@@ -561,11 +579,11 @@
 
             <div class="slide" data-title="Dekoratif Boya Uygulamaları"
                 data-description="Evinize sanatsal dokunuşlar katın.">
-                <img src="images/hero/discephe/istanbul-boyaci-ustasi-istanbulboyaustasi.WebP" srcset="images/hero/discephe/istanbul-boyaci-ustasi-istanbulboyaustasi-400.webp 400w,
+                <img data-src="images/hero/discephe/istanbul-boyaci-ustasi-istanbulboyaustasi.WebP" data-srcset="images/hero/discephe/istanbul-boyaci-ustasi-istanbulboyaustasi-400.webp 400w,
                                     images/hero/discephe/istanbul-boyaci-ustasi-istanbulboyaustasi-800.webp 800w,
                                     images/hero/discephe/istanbul-boyaci-ustasi-istanbulboyaustasi.WebP 1200w"
-                    sizes="(max-width: 600px) 400px, (max-width: 900px) 800px, 1200px" alt="İstanbul boyacı ustası daire uygulaması"
-                    width="1200" height="800" loading="lazy" decoding="async">
+                    data-sizes="(max-width: 600px) 400px, (max-width: 900px) 800px, 1200px" alt="İstanbul boyacı ustası daire uygulaması"
+                    width="1200" height="800" decoding="async">
                 <div class="slide-content">
                     <p class="slide-title">İstanbul'un her yerinde</p>
                     <p>Evinize sanatsal dokunuşlar katın. Dekoratif boya teknikleriyle mekanlarınıza benzersiz
@@ -1508,9 +1526,37 @@
             <div class="section-title">
                 <h2>Yorumlar</h2>
             </div>
-            <!-- Elfsight Google Reviews | Untitled Google Reviews -->
-            <script src="https://elfsightcdn.com/platform.js" async defer></script>
-            <div class="elfsight-app-e0741918-4f7c-4f5e-a3ed-eb4783f85130" data-elfsight-app-lazy></div>
+            <!-- Elfsight Google Reviews - Lazy loaded via IntersectionObserver -->
+            <div class="elfsight-app-e0741918-4f7c-4f5e-a3ed-eb4783f85130" data-elfsight-app-lazy id="elfsight-reviews"></div>
+            <script>
+            (function(){
+                var reviewsWidget = document.getElementById('elfsight-reviews');
+                if (!reviewsWidget) return;
+                var loaded = false;
+                function loadElfsight() {
+                    if (loaded) return;
+                    loaded = true;
+                    var s = document.createElement('script');
+                    s.src = 'https://elfsightcdn.com/platform.js';
+                    s.async = true;
+                    s.defer = true;
+                    document.body.appendChild(s);
+                }
+                if ('IntersectionObserver' in window) {
+                    var io = new IntersectionObserver(function(entries) {
+                        entries.forEach(function(entry) {
+                            if (entry.isIntersecting) {
+                                loadElfsight();
+                                io.disconnect();
+                            }
+                        });
+                    }, { rootMargin: '300px' });
+                    io.observe(reviewsWidget);
+                } else {
+                    loadElfsight();
+                }
+            })();
+            </script>
         </section>
 
 
