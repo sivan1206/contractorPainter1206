@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
+Allow: /boyaci/
 Disallow: /404.html
 
 # Sitemap

@@ -114,7 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
             initHeroSlider();
         }
     }
-        const calculateBtn = select('#calculate-btn');
+    const calculateBtn = select('#calculate-btn');
     if (calculateBtn) {
         calculateBtn.addEventListener('click', () => {
             const area = parseFloat(select('#area').value);
@@ -131,51 +131,51 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     const quoteForm = select('#quote-form');
-if (quoteForm) {
-    quoteForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const name = select('#name').value.trim();
-        const phone = select('#phone').value.trim();
-        const district = select('#district') ? select('#district').value.trim() : '';
-        const service = select('#service') ? select('#service').value.trim() : '';
-        const email = select('#email') ? select('#email').value.trim() : '';
-        const message = select('#message') ? select('#message').value.trim() : '';
+    if (quoteForm) {
+        quoteForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = select('#name').value.trim();
+            const phone = select('#phone').value.trim();
+            const district = select('#district') ? select('#district').value.trim() : '';
+            const service = select('#service') ? select('#service').value.trim() : '';
+            const email = select('#email') ? select('#email').value.trim() : '';
+            const message = select('#message') ? select('#message').value.trim() : '';
 
-        // RECATCHA doğrulama (örnek, reCAPTCHA v2 ile)
-        if (typeof grecaptcha !== "undefined") {
-            let recaptchaResponse = grecaptcha.getResponse();
-            if (!recaptchaResponse) {
-                alert('Lütfen doğrulama testi (reCAPTCHA) çözün.');
+            // RECATCHA doğrulama (örnek, reCAPTCHA v2 ile)
+            if (typeof grecaptcha !== "undefined") {
+                let recaptchaResponse = grecaptcha.getResponse();
+                if (!recaptchaResponse) {
+                    alert('Lütfen doğrulama testi (reCAPTCHA) çözün.');
+                    return;
+                }
+            }
+
+            if (!name || !phone || !district || !service) {
+                alert('Lütfen zorunlu alanları doldurun (Adınız Soyadınız, Telefon, İlçe/Semt ve Hizmet Türü)');
                 return;
             }
-        }
 
-        if (!name || !phone || !district || !service) {
-            alert('Lütfen zorunlu alanları doldurun (Adınız Soyadınız, Telefon, İlçe/Semt ve Hizmet Türü)');
-            return;
-        }
+            // WhatsApp mesajı oluştur
+            let waMessage =
+                `Yeni Teklif Talebi:%0A` +
+                `Ad Soyad: ${name}%0A` +
+                `Telefon: ${phone}%0A` +
+                (email ? `E-posta: ${email}%0A` : "") +
+                `İlçe/Semt: ${district}%0A` +
+                `Hizmet Türü: ${service}%0A` +
+                (message ? `Mesaj: ${message}%0A` : "");
 
-        // WhatsApp mesajı oluştur
-        let waMessage =
-            `Yeni Teklif Talebi:%0A` +
-            `Ad Soyad: ${name}%0A` +
-            `Telefon: ${phone}%0A` +
-            (email ? `E-posta: ${email}%0A` : "") +
-            `İlçe/Semt: ${district}%0A` +
-            `Hizmet Türü: ${service}%0A` +
-            (message ? `Mesaj: ${message}%0A` : "");
+            // WhatsApp numarası başında 90 olmadan girme!
+            let whatsappNo = '905078322912';
+            let waURL = `https://wa.me/${whatsappNo}?text=${waMessage}`;
 
-        // WhatsApp numarası başında 90 olmadan girme!
-        let whatsappNo = '905078322912';
-        let waURL = `https://wa.me/${whatsappNo}?text=${waMessage}`;
+            // WhatsApp’a yönlendir
+            window.open(waURL, '_blank');
 
-        // WhatsApp’a yönlendir
-        window.open(waURL, '_blank');
-
-        // İsteğe bağlı: Formu resetle
-        quoteForm.reset();
-    });
-}
+            // İsteğe bağlı: Formu resetle
+            quoteForm.reset();
+        });
+    }
 
 
     document.body.addEventListener('click', (e) => {
