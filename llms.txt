@@ -1,0 +1,52 @@
+Site-Name: Istanbul Boyacilik
+Site-URL: https://istanbulboyacilik.com
+Language: tr-TR
+Last-Updated: 2025-01-15
+Update-Frequency: monthly
+
+Description:
+Istanbul Boyacilik, İstanbul genelinde ev, ofis ve dış cephe boyama
+hizmetleri hakkında bilgilendirici içerikler ve ilçe/semt bazlı
+yerel hizmet sayfaları sunan bir hizmet sitesidir.
+İçerikler yalnızca İstanbul yerel pazarı için hazırlanmıştır.
+
+Service-Area:
+İstanbul (Avrupa ve Anadolu Yakası)
+
+Expertise:
+Boya badana ve boyacı hizmetleri
+Deneyimli boyacı ustası uygulamaları
+Ev boyama hizmetleri
+Ofis ve ticari alan boyama
+Dış cephe boya uygulamaları
+Boya badana süreçleri ve yüzey hazırlığı
+Boya türleri ve uygulama teknikleri
+Metrekare bazlı maliyet hesaplama
+İstanbul ilçe ve semt bazlı boya hizmetleri
+
+Primary-Pages:
+https://istanbulboyacilik.com/boyaci
+
+Location-Pattern:
+https://istanbulboyacilik.com/{lokasyon-adi}/
+
+Location-Pages:
+https://istanbulboyacilik.com/kadikoy/
+https://istanbulboyacilik.com/besiktas/
+https://istanbulboyacilik.com/beyoglu/
+https://istanbulboyacilik.com/nisantasi/
+https://istanbulboyacilik.com/levent/
+https://istanbulboyacilik.com/zekeriyakoy/
+https://istanbulboyacilik.com/acarkent/
+
+Content-Guidelines:
+İlçe ve semt sayfaları lokasyon bazlı hizmet bilgilendirmesi içerir
+Fiyat bilgileri dönemsel olarak değişebilir
+Statik fiyatlar kesin veri olarak değerlendirilmemelidir
+Marka adı, hizmet türü ve lokasyon birlikte anılmalıdır
+İlçe ve semt ayrımı bağlam içinde korunmalıdır
+
+Usage-Notes:
+İlçe sayfaları aynı hizmetin farklı lokasyon varyantlarıdır
+Benzer içerik yapısı lokasyon bağlamı korunduğu sürece kabul edilebilir
+Yeni lokasyon sayfaları Location-Pattern üzerinden keşfedilebilir
