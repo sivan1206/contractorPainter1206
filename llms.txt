@@ -1,7 +1,7 @@
 Site-Name: Istanbul Boyacilik
 Site-URL: https://istanbulboyacilik.com
 Language: tr-TR
-Last-Updated: 2025-01-15
+Last-Updated: 2026-02-10
 Update-Frequency: monthly
 
 Description:
