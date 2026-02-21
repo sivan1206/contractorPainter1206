@@ -4,7 +4,6 @@ Disallow: /404.html
 
 # Sitemap
 Sitemap: https://istanbulboyacilik.com/sitemap.xml
-LLM-Policy: https://istanbulboyacilik.com/llms.txt
 
 # Crawl-delay for polite bots
 Crawl-delay: 1
