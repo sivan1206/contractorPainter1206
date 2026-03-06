@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="tr">
 
 <head>
@@ -17,13 +17,13 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "LocalBusiness",
+  "@type": ["LocalBusiness", "HousePainter"],
   "name": "İstanbul Boyacılık Zeytinburnu",
   "description": "Zeytinburnu’nda iç cephe, dış cephe, ofis ve ev boyama hizmeti sunan güvenilir boyacı ustası. Uygun fiyatlı, kaliteli boya çözümleri.",
   "image": "https://istanbulboyacilik.com/zeytinburnu/images/istanbulboyaustasi.png",
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "Gökalp Mah. 58. Bulvar Cad. No:45",
+    "streetAddress": "Zeytinburnu Bölgesi, İstanbul",
     "addressLocality": "Zeytinburnu",
     "addressRegion": "İstanbul",
     "postalCode": "34020",
@@ -63,7 +63,7 @@
       "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
       "reviewBody": "Zeytinburnu'nda ev boyama hizmeti aldık. İstanbul Boyacılık son derece temiz ve titiz çalıştı. Hizmet kalitesi mükemmeldi.",
       "itemReviewed": {
-        "@type": "LocalBusiness",
+        "@type": ["LocalBusiness", "HousePainter"],
         "name": "İstanbul Boyacılık Zeytinburnu"
       }
     },
@@ -73,7 +73,7 @@
       "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
       "reviewBody": "Ofis boyama işi için iletişime geçtik. Disiplinli ekip ve kaliteli boya malzemeleri ile işimizi eksiksiz tamamladılar.",
       "itemReviewed": {
-        "@type": "LocalBusiness",
+        "@type": ["LocalBusiness", "HousePainter"],
         "name": "İstanbul Boyacılık Zeytinburnu"
       }
     },
@@ -83,7 +83,7 @@
       "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
       "reviewBody": "Dış cephe boyama hizmetinden çok memnun kaldık. Randevuya sadık kaldılar ve işlerini hızlı bitirdiler.",
       "itemReviewed": {
-        "@type": "LocalBusiness",
+        "@type": ["LocalBusiness", "HousePainter"],
         "name": "İstanbul Boyacılık Zeytinburnu"
       }
     }
@@ -333,10 +333,17 @@
 
   <section id="anasayfa" class="hero">
     <div class="hero-content">
+                <div class="hero-usp-banner" style="background:linear-gradient(135deg,#ff6b35,#ff9f1c);color:#fff;padding:10px 20px;border-radius:50px;font-size:.9rem;font-weight:700;display:inline-flex;align-items:center;gap:8px;margin-bottom:15px;box-shadow:0 4px 15px rgba(255,107,53,.4)">
+                    <i class="fas fa-users"></i> 10+ Profesyonel Ustamızla Zeytinburnu'de Hizmetinizdeyiz!
+                </div>
       <h1>İstanbul Zeytinburnu Profesyonel Boya Ustası</h1>
       <p>20 yıllık tecrübemizle iç ve dış cephe boya hizmetleri. Zeytinburnu'nun her bölgesinde profesyonel boyama
         çözümleri sunuyoruz.</p>
-      <div class="hero-buttons">
+      <div class="hero-badge-group" style="display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:18px">
+                    <span style="background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);padding:8px 16px;border-radius:50px;font-size:.82rem;font-weight:600;color:#fff;display:inline-flex;align-items:center;gap:6px"><i class="fas fa-check-circle" style="color:#74b9ff"></i> Aynı Gün Ücretsiz Keşif</span>
+                    <span style="background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);padding:8px 16px;border-radius:50px;font-size:.82rem;font-weight:600;color:#fff;display:inline-flex;align-items:center;gap:6px"><i class="fas fa-bolt" style="color:#74b9ff"></i> 1 Günde Teslimat</span>
+                </div>
+                <div class="hero-buttons">
         <a href="tel:+905078322912" class="btn btn-primary">
           <i class="fas fa-phone"></i>Bizi Hemen Arayın</a>
         <a href="#iletisim" class="btn btn-secondary">
@@ -608,10 +615,7 @@
           <i class="fas fa-envelope"></i>
           E-posta: boyaustamistanbul@gmail.com
         </p>
-        <p>
-          <i class="fas fa-map-marker-alt"></i>
-          Adres: Demirkapı Cd. No:1 İstanbul/Zeytinburnu
-        </p>
+        <p><i class="fas fa-users"></i> <strong>10+ Uzman Ustamızla</strong> Zeytinburnu ve çevresine anında hizmet veriyoruz.</p>
         <p>
           <i class="fas fa-clock"></i>
           Çalışma Saatleri: Pzt-Cmt 00:00-23:59
@@ -694,7 +698,7 @@
         <h3>İletişim</h3>
         <p><i class="fas fa-phone"></i> 0507 832 29 12</p>
         <p><i class="fas fa-envelope"></i> boyaustamistanbul@gmail.com</p>
-        <p><i class="fas fa-map-marker-alt"></i> Demirkapı Cd. No:1 İstanbul/Zeytinburnu</p>
+        <p><i class="fas fa-users"></i> <strong>10+ Uzman Usta</strong> — Zeytinburnu ve tüm İstanbul</p>
       </div>
     </div>
     <div class="copyright">
