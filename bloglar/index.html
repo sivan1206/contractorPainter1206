@@ -176,6 +176,38 @@
             max-width: 600px;
             margin: 0 auto;
         }
+        .blog-pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            padding: 0 5% 30px;
+        }
+        .blog-pagination button {
+            border: 1px solid #d6defd;
+            background: #fff;
+            color: #1f2933;
+            border-radius: 10px;
+            padding: 10px 14px;
+            font-size: .95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all .2s ease;
+        }
+        .blog-pagination button:hover:not(:disabled) {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+        .blog-pagination button.active {
+            background: var(--primary);
+            color: #fff;
+            border-color: var(--primary);
+        }
+        .blog-pagination button:disabled {
+            opacity: .45;
+            cursor: not-allowed;
+        }
         @media(max-width:768px) {
             .blog-grid {
                 grid-template-columns: 1fr;
@@ -295,6 +327,66 @@
                     </div>
                 </div>
             </article>
+
+            <article class="blog-card">
+                <div class="blog-card-image">
+                    <img src="images/kira-evi-boyama-kiraci-mi-ev-sahibi-mi.webp" alt="Kiralık ev boyama masrafı kiracı mı ev sahibi mi öder rehberi" width="400" height="267" loading="lazy">
+                </div>
+                <div class="blog-card-body">
+                    <span class="blog-card-category">Rehber</span>
+                    <h2><a href="kira-evi-boyama-kiraci-mi-ev-sahibi-mi.html">Kiralık Ev Boyama: Kiracı mı Ev Sahibi mi Öder?</a></h2>
+                    <p>Kiralık dairelerde boya badana masrafının kim tarafından karşılanacağını netleştiren yasal ve pratik rehber.</p>
+                    <div class="blog-card-meta">
+                        <span><i class="fas fa-calendar-alt"></i> 10 Mart 2026</span>
+                        <a href="kira-evi-boyama-kiraci-mi-ev-sahibi-mi.html" class="blog-read-more">Devamını Oku <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="blog-card">
+                <div class="blog-card-image">
+                    <img src="images/banyo-boyasi-nasil-secilir.webp" alt="Banyo boyası seçimi için nem dayanımlı boya önerileri" width="400" height="267" loading="lazy">
+                </div>
+                <div class="blog-card-body">
+                    <span class="blog-card-category">Rehber</span>
+                    <h2><a href="banyo-boyasi-nasil-secilir.html">Banyo Boyası Nasıl Seçilir?</a></h2>
+                    <p>Nemli alanlar için küf önleyici, silinebilir ve uzun ömürlü banyo boyası seçimi için kapsamlı ipuçları.</p>
+                    <div class="blog-card-meta">
+                        <span><i class="fas fa-calendar-alt"></i> 10 Mart 2026</span>
+                        <a href="banyo-boyasi-nasil-secilir.html" class="blog-read-more">Devamını Oku <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="blog-card">
+                <div class="blog-card-image">
+                    <img src="images/renk-seciminde-sik-yapilan-5-hata.webp" alt="Renk seçiminde sık yapılan 5 hata ve doğru renk bulma önerileri" width="400" height="267" loading="lazy">
+                </div>
+                <div class="blog-card-body">
+                    <span class="blog-card-category">Rehber</span>
+                    <h2><a href="renk-seciminde-sik-yapilan-5-hata.html">Renk Seçiminde Sık Yapılan 5 Hata</a></h2>
+                    <p>Yanlış renk kararlarına yol açan yaygın hatalar ve eviniz için doğru tonu seçmenizi kolaylaştıran çözüm önerileri.</p>
+                    <div class="blog-card-meta">
+                        <span><i class="fas fa-calendar-alt"></i> 10 Mart 2026</span>
+                        <a href="renk-seciminde-sik-yapilan-5-hata.html" class="blog-read-more">Devamını Oku <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="blog-card">
+                <div class="blog-card-image">
+                    <img src="images/renklerin-insan-psikolojisine-etkisi.webp" alt="Renklerin insan psikolojisine etkisi ve odalara göre renk seçimi" width="400" height="267" loading="lazy">
+                </div>
+                <div class="blog-card-body">
+                    <span class="blog-card-category">Rehber</span>
+                    <h2><a href="renklerin-insan-psikolojisine-etkisi.html">Renklerin İnsan Psikolojisine Etkisi</a></h2>
+                    <p>Renklerin ruh hali, odak ve yaşam alanı algısı üzerindeki etkisini açıklayan akademik temelli dekorasyon rehberi.</p>
+                    <div class="blog-card-meta">
+                        <span><i class="fas fa-calendar-alt"></i> 13 Mart 2026</span>
+                        <a href="renklerin-insan-psikolojisine-etkisi.html" class="blog-read-more">Devamını Oku <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </article>
         </div>
 
         <!-- Fiyat ve Bütçe Odaklı İçerikler -->
@@ -347,6 +439,21 @@
                     </div>
                 </div>
             </article>
+
+            <article class="blog-card">
+                <div class="blog-card-image">
+                    <img src="images/dis-cephe-boyama-fiyatlari-2026.webp" alt="2026 dış cephe boyama fiyatları ve metrekare maliyet tablosu" width="400" height="267" loading="lazy">
+                </div>
+                <div class="blog-card-body">
+                    <span class="blog-card-category">Fiyat</span>
+                    <h2><a href="dis-cephe-boyama-fiyatlari-2026.html">Dış Cephe Boyama Fiyatları 2026</a></h2>
+                    <p>Bina tipine, cephe alanına ve malzeme türüne göre dış cephe boyama fiyatları için güncel 2026 maliyet rehberi.</p>
+                    <div class="blog-card-meta">
+                        <span><i class="fas fa-calendar-alt"></i> 10 Mart 2026</span>
+                        <a href="dis-cephe-boyama-fiyatlari-2026.html" class="blog-read-more">Devamını Oku <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </article>
         </div>
 
         <!-- Teknik ve Sorun Çözücü İçerikler -->
@@ -396,6 +503,51 @@
                     <div class="blog-card-meta">
                         <span><i class="fas fa-calendar-alt"></i> 6 Mart 2026</span>
                         <a href="1-gunde-teslim-boya-badana.html" class="blog-read-more">Devamını Oku <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="blog-card">
+                <div class="blog-card-image">
+                    <img src="images/alci-mi-macun-mu.webp" alt="Alçı mı macun mu farkları ve doğru uygulama sırası" width="400" height="267" loading="lazy">
+                </div>
+                <div class="blog-card-body">
+                    <span class="blog-card-category">Teknik</span>
+                    <h2><a href="alci-mi-macun-mu.html">Alçı mı Macun mu? Farkları Neler?</a></h2>
+                    <p>Duvar hazırlığında alçı ve macun arasındaki farkları, doğru kullanım alanlarını ve uygulama adımlarını öğrenin.</p>
+                    <div class="blog-card-meta">
+                        <span><i class="fas fa-calendar-alt"></i> 10 Mart 2026</span>
+                        <a href="alci-mi-macun-mu.html" class="blog-read-more">Devamını Oku <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="blog-card">
+                <div class="blog-card-image">
+                    <img src="images/tavan-boyasi-icin-en-iyi-secenekler.webp" alt="Tavan boyası için en iyi seçenekler ve damlama yapmayan teknikler" width="400" height="267" loading="lazy">
+                </div>
+                <div class="blog-card-body">
+                    <span class="blog-card-category">Teknik</span>
+                    <h2><a href="tavan-boyasi-icin-en-iyi-secenekler.html">Tavan Boyası İçin En İyi Seçenekler</a></h2>
+                    <p>Tavan boyasında doğru ürün seçimi, uygulama teknikleri ve pürüzsüz sonuç için dikkat edilmesi gerekenler.</p>
+                    <div class="blog-card-meta">
+                        <span><i class="fas fa-calendar-alt"></i> 10 Mart 2026</span>
+                        <a href="tavan-boyasi-icin-en-iyi-secenekler.html" class="blog-read-more">Devamını Oku <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="blog-card">
+                <div class="blog-card-image">
+                    <img src="images/ahsap-boyama-teknikleri.webp" alt="Ahşap boyama teknikleri ile kapı pencere ve mobilya yenileme" width="400" height="267" loading="lazy">
+                </div>
+                <div class="blog-card-body">
+                    <span class="blog-card-category">Teknik</span>
+                    <h2><a href="ahsap-boyama-teknikleri.html">Ahşap Boyama Teknikleri</a></h2>
+                    <p>Kapı, pencere ve mobilyalarda dayanıklı sonuç için ahşap boyama adımlarını ve profesyonel ipuçlarını keşfedin.</p>
+                    <div class="blog-card-meta">
+                        <span><i class="fas fa-calendar-alt"></i> 10 Mart 2026</span>
+                        <a href="ahsap-boyama-teknikleri.html" class="blog-read-more">Devamını Oku <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
             </article>
@@ -453,6 +605,85 @@
             this.classList.toggle('active');
             nav.classList.toggle('active');
         });
+
+        (function () {
+            const perPage = 4;
+            const sections = Array.from(document.querySelectorAll('.blog-grid'));
+
+            sections.forEach((grid) => {
+                const cards = Array.from(grid.querySelectorAll('.blog-card'));
+                const totalPages = Math.ceil(cards.length / perPage);
+
+                if (cards.length === 0) {
+                    return;
+                }
+
+                let currentPage = 1;
+                const paginationRoot = document.createElement('nav');
+                paginationRoot.className = 'blog-pagination';
+                paginationRoot.setAttribute('aria-label', 'Kategori sayfalama');
+                grid.insertAdjacentElement('afterend', paginationRoot);
+
+                function renderPagination() {
+                    if (totalPages <= 1) {
+                        paginationRoot.style.display = 'none';
+                        return;
+                    }
+
+                    paginationRoot.style.display = 'flex';
+                    paginationRoot.innerHTML = '';
+
+                    const prevButton = document.createElement('button');
+                    prevButton.type = 'button';
+                    prevButton.textContent = 'Onceki';
+                    prevButton.disabled = currentPage === 1;
+                    prevButton.addEventListener('click', function () {
+                        if (currentPage > 1) {
+                            renderPage(currentPage - 1);
+                        }
+                    });
+                    paginationRoot.appendChild(prevButton);
+
+                    for (let page = 1; page <= totalPages; page += 1) {
+                        const pageButton = document.createElement('button');
+                        pageButton.type = 'button';
+                        pageButton.textContent = String(page);
+                        if (page === currentPage) {
+                            pageButton.classList.add('active');
+                        }
+                        pageButton.addEventListener('click', function () {
+                            renderPage(page);
+                        });
+                        paginationRoot.appendChild(pageButton);
+                    }
+
+                    const nextButton = document.createElement('button');
+                    nextButton.type = 'button';
+                    nextButton.textContent = 'Sonraki';
+                    nextButton.disabled = currentPage === totalPages;
+                    nextButton.addEventListener('click', function () {
+                        if (currentPage < totalPages) {
+                            renderPage(currentPage + 1);
+                        }
+                    });
+                    paginationRoot.appendChild(nextButton);
+                }
+
+                function renderPage(page) {
+                    currentPage = page;
+                    const start = (page - 1) * perPage;
+                    const end = start + perPage;
+
+                    cards.forEach((card, index) => {
+                        card.style.display = index >= start && index < end ? '' : 'none';
+                    });
+
+                    renderPagination();
+                }
+
+                renderPage(1);
+            });
+        })();
     </script>
     <link rel="stylesheet" href="../fontawesome-free-6.7.2-web/css/all.min.css" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="../fontawesome-free-6.7.2-web/css/all.min.css"></noscript>
