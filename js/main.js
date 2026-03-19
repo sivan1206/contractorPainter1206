@@ -85,10 +85,36 @@ document.addEventListener('DOMContentLoaded', () => {
         let slideInterval;
         let sliderInitialized = false;
 
+        const hydrateSlideImage = (slide) => {
+            if (!slide) return;
+            const img = slide.querySelector('img[data-src]');
+            if (!img) return;
+
+            if (img.dataset.srcset) {
+                img.srcset = img.dataset.srcset;
+                img.removeAttribute('data-srcset');
+            }
+            if (img.dataset.sizes) {
+                img.sizes = img.dataset.sizes;
+                img.removeAttribute('data-sizes');
+            }
+
+            img.src = img.dataset.src;
+            img.removeAttribute('data-src');
+            img.loading = 'lazy';
+        };
+
+        const preloadNeighborSlide = (index) => {
+            const nextIndex = (index + 1) % slides.length;
+            runIdle(() => hydrateSlideImage(slides[nextIndex]), 2500);
+        };
+
         const showSlide = (n) => {
+            hydrateSlideImage(slides[n]);
             slides.forEach((slide, index) => {
                 slide.classList.toggle('active', index === n);
             });
+            preloadNeighborSlide(n);
         };
 
         const nextSlide = () => {
@@ -112,20 +138,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const initHeroSlider = () => {
             if (sliderInitialized) return;
-
-            document.querySelectorAll('.slide img[data-src]').forEach((img) => {
-                if (img.dataset.srcset) {
-                    img.srcset = img.dataset.srcset;
-                    img.removeAttribute('data-srcset');
-                }
-                if (img.dataset.sizes) {
-                    img.sizes = img.dataset.sizes;
-                    img.removeAttribute('data-sizes');
-                }
-                img.src = img.dataset.src;
-                img.removeAttribute('data-src');
-                img.loading = 'lazy';
-            });
 
             showSlide(0);
             if (!motionQuery?.matches) {
