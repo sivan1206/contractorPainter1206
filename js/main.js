@@ -264,13 +264,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
         let currentTestimonial = 0;
         let testimonialInterval;
-        const overflowCache = new WeakMap();
+        const shouldShowReadMore = new WeakMap();
+        const READ_MORE_TEXT_THRESHOLD = 190;
 
-        const recalculateOverflow = () => {
+        const buildReadMoreCache = () => {
             testimonials.forEach((testimonial) => {
-                const p = testimonial.querySelector('p');
-                if (!p) return;
-                overflowCache.set(testimonial, p.scrollHeight > p.clientHeight + 5);
+                const paragraph = testimonial.querySelector('p');
+                if (!paragraph) return;
+                const textLength = (paragraph.textContent || '').trim().length;
+                shouldShowReadMore.set(testimonial, textLength > READ_MORE_TEXT_THRESHOLD);
             });
         };
 
@@ -328,8 +330,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             indicatorsContainer.appendChild(fragment);
-            requestAnimationFrame(recalculateOverflow);
-            window.addEventListener('resize', recalculateOverflow, { passive: true });
+            buildReadMoreCache();
         }
 
         const dots = selectAll('.slider-indicators .dot');
@@ -351,7 +352,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 current.classList.add('active');
                 const btn = current.querySelector('.read-more-btn');
                 if (btn) {
-                    btn.style.display = overflowCache.get(current) ? 'block' : 'none';
+                    btn.style.display = shouldShowReadMore.get(current) ? 'block' : 'none';
                 }
             }
 
