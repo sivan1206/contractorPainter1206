@@ -1,82 +1,87 @@
 document.addEventListener('DOMContentLoaded', function () {
-     window.addEventListener('scroll', () => {
-        const header = document.getElementById('header');
-        if (header) {
-            header.classList.toggle('scrolled', window.scrollY > 100);
-        }
-    });
-
-    const mobileMenuButton = document.querySelector('.mobile-menu-button');
-    const mainNav = document.querySelector('.main-nav');
+    var mobileMenuButton = document.querySelector('.mobile-menu-button');
+    var mainNav = document.querySelector('.main-nav');
+    function updateMenuState(isOpen) {
+        if (!mobileMenuButton) return;
+        mobileMenuButton.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        mobileMenuButton.setAttribute('aria-label', isOpen ? 'Menüyü Kapat' : 'Menüyü Aç');
+    }
 
     if (mobileMenuButton && mainNav) {
-        mobileMenuButton.addEventListener('click', () => {
+        mobileMenuButton.addEventListener('click', function () {
+            var willOpen = !mainNav.classList.contains('active');
             mainNav.classList.toggle('active');
+            mobileMenuButton.classList.toggle('active');
+            document.body.classList.toggle('no-scroll', willOpen);
+            updateMenuState(willOpen);
         });
-    }   
 
-    const navLinks = document.querySelectorAll('.main-nav a');
-    navLinks.forEach(link => {
-        link.addEventListener('click', function () {
-            if (mainNav.classList.contains('active')) {
+        mainNav.querySelectorAll('a').forEach(function (link) {
+            link.addEventListener('click', function () {
                 mainNav.classList.remove('active');
-            }
-            navLinks.forEach(l => l.classList.remove('active'));
-            this.classList.add('active');
-        });
-    });
-  
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
-            // Form butonu gibi başka amaçla kullanılan # linklerini atla
-            if (targetId === '#') return; 
-            const target = document.querySelector(targetId);
-            if (target) {
-                target.scrollIntoView({ behavior: 'smooth' });
-            }
-        });
-    });
-
-    const faqItems = document.querySelectorAll('.faq-item');
-    const searchInput = document.getElementById('faq-search');
-
-    faqItems.forEach(item => {
-        const question = item.querySelector('.faq-question');
-        question.addEventListener('click', () => {
-            const isActive = item.classList.contains('active');
-            faqItems.forEach(otherItem => {
-                otherItem.classList.remove('active');
+                mobileMenuButton.classList.remove('active');
+                document.body.classList.remove('no-scroll');
+                updateMenuState(false);
             });
-            if (!isActive) {
-                item.classList.add('active');
-            }
+        });
+
+        document.addEventListener('keydown', function (event) {
+            if (event.key !== 'Escape' || !mainNav.classList.contains('active')) return;
+            mainNav.classList.remove('active');
+            mobileMenuButton.classList.remove('active');
+            document.body.classList.remove('no-scroll');
+            updateMenuState(false);
+            mobileMenuButton.focus();
+        });
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+        anchor.addEventListener('click', function (event) {
+            var targetId = this.getAttribute('href');
+            if (!targetId || targetId === '#') return;
+            var target = document.querySelector(targetId);
+            if (!target) return;
+            event.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
         });
     });
 
+    var quoteForm = document.getElementById('quote-form');
+    if (quoteForm) {
+        quoteForm.addEventListener('submit', function (event) {
+            event.preventDefault();
+            alert('Formunuz başarıyla gönderildi. En kısa sürede sizinle iletişime geçeceğiz.');
+            this.reset();
+        });
+    }
+
+    var faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach(function (item) {
+        var question = item.querySelector('.faq-question');
+        if (!question) return;
+        question.addEventListener('click', function () {
+            faqItems.forEach(function (otherItem) {
+                if (otherItem !== item) otherItem.classList.remove('active');
+            });
+            item.classList.toggle('active');
+        });
+    });
+
+    var searchInput = document.getElementById('faq-search');
     if (searchInput) {
         searchInput.addEventListener('input', function () {
-            const searchTerm = this.value.toLowerCase().trim();
-            faqItems.forEach(item => {
-                const questionText = item.querySelector('.faq-question').textContent.toLowerCase();
-                const answerText = item.querySelector('.faq-answer').textContent.toLowerCase();
-                const matches = questionText.includes(searchTerm) || answerText.includes(searchTerm);
-                item.style.display = matches ? 'block' : 'none';
+            var searchTerm = this.value.toLowerCase().trim();
+            faqItems.forEach(function (item) {
+                var question = item.querySelector('.faq-question');
+                var answer = item.querySelector('.faq-answer');
+                var questionText = question ? question.textContent.toLowerCase() : '';
+                var answerText = answer ? answer.textContent.toLowerCase() : '';
+                if (!searchTerm || questionText.includes(searchTerm) || answerText.includes(searchTerm)) {
+                    item.style.display = 'block';
+                    return;
+                }
+                item.style.display = 'none';
             });
-        });
-    }    
-
-    const readMoreBtn = document.getElementById('read-more-btn');
-    const moreContent = document.getElementById('more-content');
-
-    if (readMoreBtn && moreContent) {
-        readMoreBtn.addEventListener('click', function () {
-            const isVisible = moreContent.style.display === 'block';
-            moreContent.style.display = isVisible ? 'none' : 'block';
-            this.innerHTML = isVisible
-                ? 'Devamını Oku <i class="fas fa-chevron-down"></i>'
-                : 'Daha Az Göster <i class="fas fa-chevron-up"></i>';
         });
     }
 });

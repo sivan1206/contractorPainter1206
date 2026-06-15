@@ -1,53 +1,87 @@
-
-// Mobile menu toggle
-document.querySelector('.mobile-menu-button').addEventListener('click', function () {
-    document.querySelector('.main-nav').classList.toggle('active');
-    const isExpanded = this.getAttribute('aria-expanded') === 'true' || false;
-    this.setAttribute('aria-expanded', !isExpanded);
-
-    // Change icon
-    if (this.getAttribute('aria-expanded') === 'true') {
-        this.innerHTML = '<i class="fas fa-times"></i>';
-    } else {
-        this.innerHTML = '<i class="fas fa-bars"></i>';
+document.addEventListener('DOMContentLoaded', function () {
+    var mobileMenuButton = document.querySelector('.mobile-menu-button');
+    var mainNav = document.querySelector('.main-nav');
+    function updateMenuState(isOpen) {
+        if (!mobileMenuButton) return;
+        mobileMenuButton.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        mobileMenuButton.setAttribute('aria-label', isOpen ? 'Menüyü Kapat' : 'Menüyü Aç');
     }
-});
 
-// Header scroll effect
-window.addEventListener('scroll', function () {
-    const header = document.getElementById('header');
-    if (window.scrollY > 50) {
-        header.classList.add('scrolled');
-    } else {
-        header.classList.remove('scrolled');
-    }
-});
+    if (mobileMenuButton && mainNav) {
+        mobileMenuButton.addEventListener('click', function () {
+            var willOpen = !mainNav.classList.contains('active');
+            mainNav.classList.toggle('active');
+            mobileMenuButton.classList.toggle('active');
+            document.body.classList.toggle('no-scroll', willOpen);
+            updateMenuState(willOpen);
+        });
 
-// Form submission
-document.getElementById('quote-form').addEventListener('submit', function (e) {
-    e.preventDefault();
-    alert('Teklif isteğiniz alınmıştır. En kısa sürede sizinle iletişime geçeceğiz.');
-    this.reset();
-});
-
-// Smooth scrolling for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            window.scrollTo({
-                top: target.offsetTop - 80,
-                behavior: 'smooth'
+        mainNav.querySelectorAll('a').forEach(function (link) {
+            link.addEventListener('click', function () {
+                mainNav.classList.remove('active');
+                mobileMenuButton.classList.remove('active');
+                document.body.classList.remove('no-scroll');
+                updateMenuState(false);
             });
+        });
 
-            // Close mobile menu if open
-            document.querySelector('.main-nav').classList.remove('active');
-            document.querySelector('.mobile-menu-button').setAttribute('aria-expanded', 'false');
-            document.querySelector('.mobile-menu-button').innerHTML = '<i class="fas fa-bars"></i>';
-        }
+        document.addEventListener('keydown', function (event) {
+            if (event.key !== 'Escape' || !mainNav.classList.contains('active')) return;
+            mainNav.classList.remove('active');
+            mobileMenuButton.classList.remove('active');
+            document.body.classList.remove('no-scroll');
+            updateMenuState(false);
+            mobileMenuButton.focus();
+        });
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+        anchor.addEventListener('click', function (event) {
+            var targetId = this.getAttribute('href');
+            if (!targetId || targetId === '#') return;
+            var target = document.querySelector(targetId);
+            if (!target) return;
+            event.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
     });
-});
 
-// Initialize header state
-window.dispatchEvent(new Event('scroll'));
+    var quoteForm = document.getElementById('quote-form');
+    if (quoteForm) {
+        quoteForm.addEventListener('submit', function (event) {
+            event.preventDefault();
+            alert('Formunuz başarıyla gönderildi. En kısa sürede sizinle iletişime geçeceğiz.');
+            this.reset();
+        });
+    }
+
+    var faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach(function (item) {
+        var question = item.querySelector('.faq-question');
+        if (!question) return;
+        question.addEventListener('click', function () {
+            faqItems.forEach(function (otherItem) {
+                if (otherItem !== item) otherItem.classList.remove('active');
+            });
+            item.classList.toggle('active');
+        });
+    });
+
+    var searchInput = document.getElementById('faq-search');
+    if (searchInput) {
+        searchInput.addEventListener('input', function () {
+            var searchTerm = this.value.toLowerCase().trim();
+            faqItems.forEach(function (item) {
+                var question = item.querySelector('.faq-question');
+                var answer = item.querySelector('.faq-answer');
+                var questionText = question ? question.textContent.toLowerCase() : '';
+                var answerText = answer ? answer.textContent.toLowerCase() : '';
+                if (!searchTerm || questionText.includes(searchTerm) || answerText.includes(searchTerm)) {
+                    item.style.display = 'block';
+                    return;
+                }
+                item.style.display = 'none';
+            });
+        });
+    }
+});

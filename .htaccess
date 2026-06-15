@@ -1,3 +1,7 @@
+# ── 301 Yönlendirmeler ───────────────────────────────────────────
+RedirectMatch 301 ^/bloglar/villa-boyama-fiyatlari-2026$ https://istanbulboyacilik.com/bloglar/villa-boyama-fiyatlari-2026.html
+RedirectMatch 301 ^/bloglar/boya-neden-catlar-onleme-ve-tamir$ https://istanbulboyacilik.com/bloglar/boya-neden-catlar-onleme-ve-tamir.html
+
 # ── Expires: 1 Yıl Önbellek ──────────────────────────────────────
 <IfModule mod_expires.c>
     ExpiresActive On

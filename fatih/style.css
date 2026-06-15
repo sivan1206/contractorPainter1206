@@ -205,7 +205,7 @@ tr:hover {
   color: var(--primary);
 }
 
-.highlight-box {  
+.highlight-box {
   border-left: 4px solid var(--primary);
   padding: 25px;
   margin: 30px 0;
@@ -245,7 +245,7 @@ tr:hover {
 }
 
 .district-group li {
-  
+
   padding: 12px 20px 12px 40px;
   border-radius: 30px;
   position: relative;
