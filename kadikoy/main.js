@@ -35,6 +35,15 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    var siteHeader = document.querySelector('header');
+    if (siteHeader) {
+        var updateHeaderState = function () {
+            siteHeader.classList.toggle('scrolled', window.scrollY > 50);
+        };
+        window.addEventListener('scroll', updateHeaderState, { passive: true });
+        updateHeaderState();
+    }
+
     document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
         anchor.addEventListener('click', function (event) {
             var targetId = this.getAttribute('href');
