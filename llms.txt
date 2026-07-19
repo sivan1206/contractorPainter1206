@@ -1,52 +1,62 @@
-Site-Name: Istanbul Boyacilik
-Site-URL: https://istanbulboyacilik.com
-Language: tr-TR
-Last-Updated: 2026-02-10
-Update-Frequency: monthly
+# İstanbul Boyacılık
 
-Description:
-Istanbul Boyacilik, İstanbul genelinde ev, ofis ve dış cephe boyama
-hizmetleri hakkında bilgilendirici içerikler ve ilçe/semt bazlı
-yerel hizmet sayfaları sunan bir hizmet sitesidir.
-İçerikler yalnızca İstanbul yerel pazarı için hazırlanmıştır.
+> İstanbul genelinde ev, daire, ofis ve iş yerleri için boya badana, iç cephe boyama, yüzey hazırlığı ve randevulu keşif hizmetleri sunan yerel boya ustası hizmet sitesidir.
 
-Service-Area:
-İstanbul (Avrupa ve Anadolu Yakası)
+İstanbul Boyacılık, İstanbul'un Avrupa ve Anadolu yakalarındaki konut ve ticari alanlar için boya uygulamalarını tanıtır. Ana sayfa İstanbul genelindeki hizmetin ticari giriş noktasıdır; ilçe sayfaları aynı hizmetin belirli bölgelerdeki kapsamını açıklar. Rehberler ise fiyatı etkileyen koşullar, usta seçimi, malzeme karşılaştırması, yüzey hazırlığı ve eşya koruma gibi karar konularını ele alır. Rehberlerdeki maliyetler bilgilendirme amaçlıdır; kesin kapsam ve teklif, mekânın ölçüsü, yüzey durumu, malzeme seçimi ve iş programı değerlendirildikten sonra belirlenir.
 
-Expertise:
-Boya badana ve boyacı hizmetleri
-Deneyimli boyacı ustası uygulamaları
-Ev boyama hizmetleri
-Ofis ve ticari alan boyama
-Dış cephe boya uygulamaları
-Boya badana süreçleri ve yüzey hazırlığı
-Boya türleri ve uygulama teknikleri
-Metrekare bazlı maliyet hesaplama
-İstanbul ilçe ve semt bazlı boya hizmetleri
+## Primary Commercial Pages
 
-Primary-Pages:
-https://istanbulboyacilik.com/boyaci
+- [İstanbul Boyacılık ana sayfası](https://istanbulboyacilik.com/): İstanbul genelindeki ev, daire, ofis ve iş yeri boya badana hizmetlerini, çalışma sürecini, fiyatlandırma yaklaşımını, hizmet bölgelerini ve iletişim yollarını bir arada sunar.
+- [İstanbul boyacı hizmet ve seçim rehberi](https://istanbulboyacilik.com/boyaci/): Boyacı ustası seçimi, iç cephe uygulaması, yüzey kontrolü ve İstanbul'da fiyatı etkileyen başlıca değişkenler için ticari ve bilgilendirici bir kaynak sunar.
 
-Location-Pattern:
-https://istanbulboyacilik.com/{lokasyon-adi}/
+## Main Services
 
-Location-Pages:
-https://istanbulboyacilik.com/kadikoy/
-https://istanbulboyacilik.com/besiktas/
-https://istanbulboyacilik.com/beyoglu/
-https://istanbulboyacilik.com/nisantasi/
-https://istanbulboyacilik.com/levent/
-https://istanbulboyacilik.com/zekeriyakoy/
-https://istanbulboyacilik.com/acarkent/
+- Ev ve daire boyama kapsamında duvar ve tavan uygulamaları ile boya öncesi hazırlık değerlendirilir.
+- Ofis ve iş yeri boyama işleri, alanın kullanımı ve çalışma programı dikkate alınarak planlanır.
+- İç cephe işlerinde yüzey hazırlığı, zımpara, astar, alçı ve macun gereksinimi mevcut duvar durumuna göre belirlenir.
+- Dış cephe işlerinde yapı büyüklüğü, yüzey durumu, erişim veya iskele ihtiyacı ve kullanılacak boya sistemi değerlendirilir.
+- Eşyalı alanlarda mobilya, zemin, süpürgelik, kapı, pencere ve sabit yüzeylerin korunması çalışma planının parçasıdır.
+- Randevulu keşif; metraj, yüzey, tamirat, malzeme ve iş programının yerinde değerlendirilmesine yardımcı olur.
 
-Content-Guidelines:
-İlçe ve semt sayfaları lokasyon bazlı hizmet bilgilendirmesi içerir
-Fiyat bilgileri dönemsel olarak değişebilir
-Statik fiyatlar kesin veri olarak değerlendirilmemelidir
-Marka adı, hizmet türü ve lokasyon birlikte anılmalıdır
-İlçe ve semt ayrımı bağlam içinde korunmalıdır
+## Important District Service Pages
 
-Usage-Notes:
-İlçe sayfaları aynı hizmetin farklı lokasyon varyantlarıdır
-Benzer içerik yapısı lokasyon bağlamı korunduğu sürece kabul edilebilir
-Yeni lokasyon sayfaları Location-Pattern üzerinden keşfedilebilir
+Aşağıdaki sayfalar ayrı şube veya işletme adresleri değil, İstanbul Boyacılık hizmetinin ilçelere göre düzenlenmiş ticari açılış sayfalarıdır.
+
+- [Kadıköy boyacı hizmeti](https://istanbulboyacilik.com/kadikoy/): Kadıköy'deki ev, daire ve iş yeri boya talepleri için hizmet kapsamını, hazırlık sürecini ve yerel iletişim adımlarını açıklar.
+- [Beşiktaş boyacı hizmeti](https://istanbulboyacilik.com/besiktas/): Beşiktaş'taki konut, ofis ve ticari mekânlarda boya planlaması, yüzey hazırlığı ve teklif değişkenleri hakkında bilgi verir.
+- [Üsküdar boyacı hizmeti](https://istanbulboyacilik.com/uskudar/): Üsküdar'daki daire, apartman ve iş yeri boyama ihtiyaçları için uygulama ve koruma sürecini tanıtır.
+- [Fatih boyacı hizmeti](https://istanbulboyacilik.com/fatih/): Fatih'teki farklı yapı ve yüzey koşullarında boya öncesi değerlendirme ile iç ve dış cephe hizmet kapsamını açıklar.
+- [Acıbadem boya ustası hizmeti](https://istanbulboyacilik.com/acibadem/): Acıbadem ve çevresindeki konut ve iş yeri boya işleri için keşif, koruma ve yüzey hazırlığı bilgileri sunar.
+- [Şişli boyacı hizmeti](https://istanbulboyacilik.com/sisli/): Şişli'deki ev, ofis ve ticari alan boyama işleri için çalışma saatleri, yüzey durumu ve metrekare gibi planlama unsurlarını açıklar.
+- [Bakırköy boyacı hizmeti](https://istanbulboyacilik.com/bakirkoy/): Bakırköy'deki konut ve iş yeri boya taleplerinin kapsamını, hazırlık aşamalarını ve iletişim seçeneklerini tanıtır.
+- [Bayrampaşa boya ustası hizmeti](https://istanbulboyacilik.com/bayrampasa/): Bayrampaşa'daki ev, ofis, iş yeri ve apartman boya ihtiyaçları için hizmet ve keşif sürecini açıklar.
+
+## Pricing and Decision Guides
+
+Bu bölümdeki içerikler ticari teklif yerine uygulama kararlarını açıklayan bilgi kaynaklarıdır. Tarihe bağlı fiyat içerikleri yayın ve güncelleme tarihleri ile işin gerçek koşulları birlikte değerlendirilerek okunmalıdır.
+
+- [2026 ev boyama fiyatları](https://istanbulboyacilik.com/bloglar/2026-ev-boyama-fiyatlari.html): Daire büyüklüğü, boya sınıfı, duvar durumu, tamirat ve işçilik kapsamının ev boyama maliyetine etkisini örneklerle açıklar.
+- [2026 dış cephe boyama fiyatları](https://istanbulboyacilik.com/bloglar/dis-cephe-boyama-fiyatlari-2026.html): Cephe alanı, bina yüksekliği, erişim, yüzey hazırlığı ve malzeme seçiminin dış cephe bütçesindeki rolünü ele alır.
+- [Boyacı ustası nasıl seçilir?](https://istanbulboyacilik.com/bloglar/boyaci-ustasi-nasil-secilir.html): Referans, malzeme, keşif, fiyatlandırma, alan koruması ve zaman planı üzerinden usta seçim ölçütlerini sıralar.
+- [Jotun mu, Filli Boya mı?](https://istanbulboyacilik.com/bloglar/jotun-mu-filli-boya-mi.html): İki boya markasını ürün özellikleri, kullanım alanları ve uygulama tercihleri açısından karşılaştırır.
+- [Alçı mı, macun mu?](https://istanbulboyacilik.com/bloglar/alci-mi-macun-mu.html): Alçı ve macunun işlevlerini, hangi yüzey sorunlarında kullanıldıklarını ve boya öncesi uygulama sırasını açıklar.
+- [Eşyalı ev boyanırken eşyalar nasıl korunur?](https://istanbulboyacilik.com/bloglar/esyali-ev-boyanirken-esyalar-nasil-korunur.html): Mobilya, zemin, elektronik eşya, kapı ve pencere yüzeyleri için hazırlık ve koruma adımlarını anlatır.
+
+## Business Identity and Contact
+
+- İşletme adı: İstanbul Boyacılık.
+- Ana web adresi: https://istanbulboyacilik.com/
+- Telefon: +90 507 832 29 12.
+- Görünen adres: Orta, Demirkapı Cd. No:1, 34030 Bayrampaşa, İstanbul, Türkiye.
+- Hizmet alanı: İstanbul; Avrupa ve Anadolu yakalarındaki ilçe ve semtler.
+- Ana sayfadaki telefon, WhatsApp ve teklif formu, hizmet kapsamı ve randevulu keşif hakkında iletişim kurmak için kullanılır.
+
+## Policies
+
+- [Gizlilik Politikası](https://istanbulboyacilik.com/gizlilik-politikasi.html): İletişim formları, çerezler, kullanım verileri ve kişisel bilgilerin işlenmesine ilişkin site politikasını açıklar.
+- [Kullanım Koşulları](https://istanbulboyacilik.com/kullanim-kosullari.html): Site içeriğinin kullanımı, hizmet bilgileri ve ziyaretçi sorumluluklarına ilişkin koşulları açıklar.
+
+## Optional Technical Resources
+
+- [XML site haritası](https://istanbulboyacilik.com/sitemap.xml): Arama motorlarının keşfedebileceği kanonik site sayfalarının teknik listesidir.
+- [Robots kuralları](https://istanbulboyacilik.com/robots.txt): Genel ve belirli tarayıcılar için geçerli erişim kurallarını ve site haritası konumunu bildirir.
