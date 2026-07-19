@@ -8,3 +8,4 @@
 .authority-section a{color:var(--primary);font-weight:600;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;transition:var(--transition)}
 .authority-section a:hover,.authority-section a:focus-visible{color:#2b46c9}
 @media(max-width:768px){.authority-section{margin:1.75rem auto;padding:1.75rem 1.15rem;border-radius:16px;width:min(1120px,calc(100% - 1.75rem))}.authority-section .section-title{margin-bottom:1rem}.authority-section .section-title h2{font-size:1.35rem}.authority-section p{font-size:.98rem;line-height:1.75}}
+@media(max-width:768px){.call-us-button,.whatsapp-button{bottom:calc(20px + env(safe-area-inset-bottom))}footer{padding-bottom:calc(5.5rem + env(safe-area-inset-bottom))}}
