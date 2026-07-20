@@ -498,7 +498,7 @@
                         </tr>
                         <tr>
                             <td>Dış Cephe Boyama</td>
-                            <td>180-280 TL</td>
+                            <td>150-280 TL</td>
                             <td>3-5 Gün</td>
                             <td>Uygulama kapsamına göre</td>
                         </tr>
@@ -522,6 +522,7 @@
                 alanın kapsamı, yüzey durumu, tamirat ihtiyacı, kat sayısı ve malzeme seçimi keşif sırasında
                 netleştirilir.
             </p>
+            <p>Dış cephe boya fiyatları uygulama alanı için yaklaşık 150–280 TL/m² aralığındadır. Kesin hesaplama yöntemi ve teklif; yüzey durumu, bina yüksekliği, erişim veya iskele ihtiyacı, tamirat kapsamı, boya sistemi ve uygulanacak kat sayısına göre keşif sırasında netleştirilir.</p>
             <p>
                 Uygulama kapsamına göre işçilik garantisi sağlanır. Garanti kapsamı ve istisnaları teklif veya
                 iş sözleşmesinde belirtilir.
@@ -537,18 +538,19 @@
                     <div class="form-group">
                         <label for="service-type">Hizmet Türü:</label>
                         <select id="service-type" required>
-                            <option value="100">İç Cephe Boyama</option>
-                            <option value="180">Dış Cephe Boyama</option>
-                            <option value="250">Dekoratif Boyama</option>
-                            <option value="120">Ofis Boyama</option>
+                            <option value="100" data-min="100" data-max="200">İç Cephe Boyama</option>
+                            <option value="150" data-min="150" data-max="280">Dış Cephe Boyama</option>
+                            <option value="250" data-min="250" data-max="500">Dekoratif Boyama</option>
+                            <option value="120" data-min="120" data-max="220">Ofis Boyama</option>
                         </select>
                     </div>
                     <button type="button" id="calculate-btn">Hesapla</button>
                     <div class="result">
-                        <h4 class="calculator-result-title">Tahmini Maliyet: <span id="estimated-cost"
+                        <h4 class="calculator-result-title">Tahmini Maliyet Aralığı: <span id="estimated-cost"
                                 class="calculator-result-value" aria-live="polite" role="status">0 TL</span>
                         </h4>
-                        <p class="calculator-result-note">Detaylı <strong>teklifi al</strong>mak için <a
+                        <p class="calculator-result-note">Sonuç yaklaşık bir ön değerlendirme aralığıdır; kesin fiyat
+                            keşif sonrasında netleşir. Detaylı <strong>teklifi al</strong>mak için <a
                                 href="#iletisim" class="calculator-result-link">iletişime geçin</a></p>
                     </div>
                 </form>
@@ -1533,6 +1535,38 @@
         </div>
     </footer>
     <script src="js/main.js" defer></script>
+    <script>
+        /* Geçici köprü: hesaplayıcı sonucunu min-max aralığı olarak gösterir.
+           Aralık mantığı js/main.js içine taşındığında bu blok kaldırılmalıdır. */
+        window.addEventListener('load', function () {
+            var btn = document.getElementById('calculate-btn');
+            var out = document.getElementById('estimated-cost');
+            var sel = document.getElementById('service-type');
+            var areaEl = document.getElementById('area');
+            if (!btn || !out || !sel || !areaEl) {
+                return;
+            }
+            var fresh = btn.cloneNode(true);
+            btn.parentNode.replaceChild(fresh, btn);
+            var fmt = function (n) {
+                return n.toLocaleString('tr-TR', {
+                    minimumFractionDigits: 0,
+                    maximumFractionDigits: 0
+                });
+            };
+            fresh.addEventListener('click', function () {
+                var area = parseFloat(areaEl.value);
+                var opt = sel.options[sel.selectedIndex];
+                var min = opt ? parseFloat(opt.getAttribute('data-min')) : NaN;
+                var max = opt ? parseFloat(opt.getAttribute('data-max')) : NaN;
+                if (!(area > 0 && min > 0 && max > 0)) {
+                    alert('Lütfen geçerli bir metrekare ve hizmet türü girin!');
+                    return;
+                }
+                out.textContent = fmt(area * min) + '–' + fmt(area * max) + ' TL';
+            });
+        });
+    </script>
     <script>
         (function () {
             const widget = document.querySelector('.g-recaptcha');
