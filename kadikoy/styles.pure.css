@@ -11,3 +11,5 @@
 .call-us-button i{font-size:18px}
 .call-us-button:hover{background:#0a44c0;color:#fff}
 @media(max-width:768px){.call-us-button{bottom:16px;left:16px;font-size:14px;padding:10px 16px}}
+.contact-info p{overflow-wrap:anywhere}
+@media(max-width:768px){.contact .contact-container{grid-template-columns:1fr}}

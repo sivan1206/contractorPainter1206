@@ -29,3 +29,4 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:1rem 5
   .main-nav li a{display:block;padding:1rem;border-radius:0;color:#fff}
   .hero{padding-top:80px}
 }
+.contact-info p{overflow-wrap:anywhere}
