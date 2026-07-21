@@ -1,8 +1,15 @@
 /*
  * Shared GA4 (gtag.js) implementation for istanbulboyacilik.com.
  *
- * Replaces the two divergent inline bootstraps that previously lived on the
- * homepage and the Kadıköy page. This is a Google tag, not Tag Manager.
+ * This is a Google tag, not Tag Manager.
+ *
+ * Consent: Basic consent mode. Google is not loaded at all until the visitor
+ * accepts analytics, so before acceptance there are no gtag.js requests, no
+ * collect requests, no Analytics cookies and no events. Events raised before
+ * consent are dropped, never queued for later transmission.
+ *
+ * Everything lives in this one file because it is already included on all 116
+ * canonical pages; gating did not require touching the HTML again.
  *
  * Tracks: phone_click, whatsapp_click, generate_lead.
  */
@@ -10,6 +17,9 @@
     'use strict';
 
     var GA_MEASUREMENT_ID = 'G-E4JBWT478X';
+    var CONSENT_KEY = 'ib-analytics-consent';
+    var POLICY_URL = '/gizlilik-politikasi.html';
+
     var googleTagStarted = false;
 
     window.dataLayer = window.dataLayer || [];
@@ -18,17 +28,55 @@
         window.dataLayer.push(arguments);
     };
 
+    /* ------------------------------------------------------------ consent */
+
+    function readConsent() {
+        try {
+            var v = window.localStorage.getItem(CONSENT_KEY);
+            return v === 'granted' || v === 'denied' ? v : null;
+        } catch (e) {
+            return null;               // private mode / storage disabled
+        }
+    }
+
+    function writeConsent(value) {
+        try {
+            window.localStorage.setItem(CONSENT_KEY, value);
+        } catch (e) {
+            /* choice cannot be persisted; it still applies to this page view */
+        }
+    }
+
+    var consent = readConsent();
+
+    function analyticsAllowed() {
+        return consent === 'granted';
+    }
+
+    /* ---------------------------------------------------------- analytics */
+
     function loadGoogleAnalytics() {
-        if (googleTagStarted) {
+        if (googleTagStarted || !analyticsAllowed()) {
             return;
         }
 
         googleTagStarted = true;
 
         /*
-         * Queue configuration before inserting the remote script so that any
-         * event fired during loading is processed after config, not before.
+         * Default consent state must be set before any command that sends
+         * configuration or events. Advertising storage is denied and stays
+         * denied — this site runs no advertising or remarketing.
          */
+        window.gtag('consent', 'default', {
+            ad_storage: 'denied',
+            ad_user_data: 'denied',
+            ad_personalization: 'denied',
+            analytics_storage: 'denied'
+        });
+        window.gtag('consent', 'update', {
+            analytics_storage: 'granted'
+        });
+
         window.gtag('js', new Date());
         window.gtag('config', GA_MEASUREMENT_ID, {
             send_page_view: true
@@ -45,6 +93,14 @@
         };
 
         document.head.appendChild(script);
+    }
+
+    function revokeGoogleAnalytics() {
+        if (googleTagStarted) {
+            window.gtag('consent', 'update', {
+                analytics_storage: 'denied'
+            });
+        }
     }
 
     function normalizedText(element) {
@@ -66,13 +122,16 @@
     }
 
     function sendAnalyticsEvent(eventName, parameters) {
+        if (!analyticsAllowed()) {
+            return;                    // dropped, not queued
+        }
         loadGoogleAnalytics();
         window.gtag('event', eventName, parameters);
     }
 
     /*
-     * Preserve the delayed loading the inline implementations used, so the
-     * measured PageSpeed profile does not change.
+     * Delayed loading, so accepting analytics does not change the measured
+     * PageSpeed profile. Each of these is a no-op until consent is granted.
      */
     window.addEventListener(
         'load',
@@ -82,10 +141,6 @@
         { once: true }
     );
 
-    /*
-     * Start loading before a likely navigation or contact click, so the tag is
-     * in flight by the time an event needs to be sent.
-     */
     ['scroll', 'pointerdown', 'touchstart', 'keydown'].forEach(
         function (eventName) {
             window.addEventListener(eventName, loadGoogleAnalytics, {
@@ -95,9 +150,8 @@
         }
     );
 
-    /*
-     * Delegated tracking, so CTAs rendered later are covered too.
-     */
+    /* -------------------------------------------------------- CTA tracking */
+
     document.addEventListener('click', function (event) {
         var target = event.target;
 
@@ -176,4 +230,147 @@
             transport_type: 'beacon'
         });
     });
+
+    /* ------------------------------------------------------------- banner */
+
+    var STYLE = [
+        '.ib-consent{position:fixed;left:0;right:0;bottom:0;z-index:3000;',
+        'background:#fff;color:#1f2933;box-shadow:0 -2px 16px rgb(0 0 0/.18);',
+        'padding:1rem clamp(.75rem,4vw,2rem);font-size:.95rem;line-height:1.5;',
+        'max-width:100%;box-sizing:border-box;overflow-wrap:anywhere}',
+        '.ib-consent[hidden]{display:none}',
+        '.ib-consent-inner{max-width:1200px;margin:0 auto}',
+        '.ib-consent p{margin:0 0 .75rem}',
+        '.ib-consent a{color:#4361ee;font-weight:600}',
+        '.ib-consent-actions{display:flex;flex-wrap:wrap;gap:.6rem}',
+        '.ib-consent button{font:inherit;font-weight:600;cursor:pointer;',
+        'border-radius:8px;padding:.7rem 1.15rem;min-height:44px;',
+        'border:2px solid #4361ee;flex:1 1 auto;min-width:0}',
+        '.ib-consent .ib-accept{background:#4361ee;color:#fff}',
+        '.ib-consent .ib-reject{background:#fff;color:#4361ee}',
+        '.ib-consent .ib-prefs{background:#fff;color:#1f2933;border-color:#9aa5b1}',
+        '.ib-consent-details{margin:.85rem 0 0;border-top:1px solid #e4e7eb;padding-top:.85rem}',
+        '.ib-consent-details[hidden]{display:none}',
+        '.ib-consent-details ul{margin:0;padding-left:1.2rem}',
+        '.ib-consent-details li{margin:.35rem 0}',
+        '.ib-consent-note{font-size:.85rem;color:#52606d;margin-top:.6rem}',
+        '.ib-consent-link{display:inline-block;margin:.5rem 0;font-size:.9rem}',
+        '@media(max-width:520px){.ib-consent-actions{flex-direction:column}',
+        '.ib-consent button{width:100%}}'
+    ].join('');
+
+    var BANNER =
+        '<div class="ib-consent-inner">' +
+        '<p><strong>Çerez tercihi.</strong> Siteyi nasıl kullandığınızı anlamak ' +
+        'için Google Analytics kullanmak istiyoruz. Bu tamamen isteğe bağlıdır; ' +
+        'reddederseniz site aynı şekilde çalışmaya devam eder. ' +
+        '<a href="' + POLICY_URL + '">Gizlilik ve çerez politikası</a></p>' +
+        '<div class="ib-consent-actions">' +
+        '<button type="button" class="ib-accept">Analitiği Kabul Et</button>' +
+        '<button type="button" class="ib-reject">Analitiği Reddet</button>' +
+        '<button type="button" class="ib-prefs" aria-expanded="false">Tercihleri Gör</button>' +
+        '</div>' +
+        '<div class="ib-consent-details" hidden>' +
+        '<ul>' +
+        '<li><strong>Zorunlu çerezler:</strong> her zaman etkin. Sitenin ' +
+        'çalışması ve tercihinizin hatırlanması için gereklidir.</li>' +
+        '<li><strong>Analitik çerezler:</strong> isteğe bağlı. Google Analytics ' +
+        '(' + GA_MEASUREMENT_ID + ') ile ziyaret ve iletişim etkileşimlerini ölçer.</li>' +
+        '<li><strong>Reklam çerezleri:</strong> her zaman reddedilir. Bu sitede ' +
+        'reklam veya yeniden pazarlama kullanılmaz.</li>' +
+        '</ul>' +
+        '<p class="ib-consent-note">Tercihinizi istediğiniz zaman sayfa altındaki ' +
+        '“Çerez Tercihleri” bağlantısından değiştirebilirsiniz. Onayı geri ' +
+        'çekmek sonraki ölçümleri durdurur; daha önce gönderilmiş veriler ' +
+        'tarayıcı üzerinden geri alınamaz, silinmesi için bizimle iletişime ' +
+        'geçmeniz gerekir.</p>' +
+        '</div>' +
+        '</div>';
+
+    var banner = null;
+
+    function buildBanner() {
+        if (banner) {
+            return banner;
+        }
+
+        var style = document.createElement('style');
+        style.textContent = STYLE;
+        document.head.appendChild(style);
+
+        banner = document.createElement('aside');
+        banner.className = 'ib-consent';
+        banner.setAttribute('role', 'dialog');
+        banner.setAttribute('aria-label', 'Çerez tercihi');
+        banner.innerHTML = BANNER;
+        document.body.appendChild(banner);
+
+        var details = banner.querySelector('.ib-consent-details');
+        var prefs = banner.querySelector('.ib-prefs');
+
+        banner.querySelector('.ib-accept').addEventListener('click', function () {
+            consent = 'granted';
+            writeConsent('granted');
+            banner.hidden = true;
+            loadGoogleAnalytics();
+        });
+
+        banner.querySelector('.ib-reject').addEventListener('click', function () {
+            consent = 'denied';
+            writeConsent('denied');
+            revokeGoogleAnalytics();
+            banner.hidden = true;
+        });
+
+        prefs.addEventListener('click', function () {
+            var open = details.hidden;
+            details.hidden = !open;
+            prefs.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+
+        return banner;
+    }
+
+    function showBanner() {
+        buildBanner().hidden = false;
+    }
+
+    /*
+     * Reopening the panel lives in the footer rather than in a fixed corner,
+     * so it cannot collide with the fixed phone and WhatsApp CTAs.
+     */
+    function addPreferencesLink() {
+        var host = document.querySelector('footer') || document.body;
+        var link = document.createElement('a');
+
+        link.href = '#';
+        link.className = 'ib-consent-link';
+        link.textContent = 'Çerez Tercihleri';
+        link.addEventListener('click', function (event) {
+            event.preventDefault();
+            showBanner();
+        });
+
+        host.appendChild(link);
+    }
+
+    function initConsentUi() {
+        addPreferencesLink();
+
+        if (consent === null) {
+            showBanner();
+        }
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initConsentUi);
+    } else {
+        initConsentUi();
+    }
+
+    /*
+     * A previously granted choice needs no further interaction: the load timer
+     * and interaction listeners above pick it up, keeping the same lazy timing
+     * a returning visitor had before consent gating existed.
+     */
 })();
