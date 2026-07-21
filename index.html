@@ -1011,7 +1011,8 @@
                         <div class="form-group">
                             <label for="phone">Telefon*</label>
                             <input type="tel" id="phone" name="phone" required autocomplete="tel" inputmode="tel"
-                                pattern="^\+?[0-9\s-]{8,}$" placeholder="05xx xxx xx xx">
+                                pattern="\+?[0-9\s\-]{8,}" placeholder="05xx xxx xx xx"
+                                title="En az 8 karakter içeren geçerli bir telefon numarası girin.">
                         </div>
                         <div class="form-group">
                             <label for="email">E-posta</label>
