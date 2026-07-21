@@ -18,6 +18,7 @@
 
     var GA_MEASUREMENT_ID = 'G-E4JBWT478X';
     var CONSENT_KEY = 'ib-analytics-consent';
+    var CONSENT_MAX_AGE_MS = 180 * 24 * 60 * 60 * 1000;   // six months
     var POLICY_URL = '/gizlilik-politikasi.html';
 
     var googleTagStarted = false;
@@ -30,21 +31,91 @@
 
     /* ------------------------------------------------------------ consent */
 
-    function readConsent() {
+    function clearConsent() {
         try {
-            var v = window.localStorage.getItem(CONSENT_KEY);
-            return v === 'granted' || v === 'denied' ? v : null;
+            window.localStorage.removeItem(CONSENT_KEY);
+        } catch (e) {
+            /* nothing to clear */
+        }
+    }
+
+    /*
+     * A stored choice is valid for six months. Anything unreadable, unknown,
+     * undated or out of date is discarded and the visitor is asked again.
+     * There is no path here that defaults to accepted.
+     */
+    function readConsent() {
+        var raw;
+
+        try {
+            raw = window.localStorage.getItem(CONSENT_KEY);
         } catch (e) {
             return null;               // private mode / storage disabled
         }
+
+        if (!raw) {
+            return null;
+        }
+
+        var saved;
+
+        try {
+            saved = JSON.parse(raw);   // pre-expiry versions stored a bare string
+        } catch (e) {
+            clearConsent();
+            return null;
+        }
+
+        if (!saved || typeof saved !== 'object' ||
+            (saved.choice !== 'granted' && saved.choice !== 'denied') ||
+            typeof saved.ts !== 'number' || !isFinite(saved.ts) || saved.ts <= 0) {
+            clearConsent();
+            return null;
+        }
+
+        var age = Date.now() - saved.ts;
+
+        if (age < 0 || age > CONSENT_MAX_AGE_MS) {
+            clearConsent();            // expired, or a timestamp in the future
+            return null;
+        }
+
+        return saved.choice;
     }
 
     function writeConsent(value) {
         try {
-            window.localStorage.setItem(CONSENT_KEY, value);
+            window.localStorage.setItem(CONSENT_KEY, JSON.stringify({
+                choice: value,
+                ts: Date.now()
+            }));
         } catch (e) {
             /* choice cannot be persisted; it still applies to this page view */
         }
+    }
+
+    /*
+     * Best effort only: this clears the first-party Analytics cookies the page
+     * can reach. Data already delivered to Google cannot be deleted from the
+     * browser and needs a request to us or to Google.
+     */
+    function removeAnalyticsCookies() {
+        var names = ['_ga', '_ga_' + GA_MEASUREMENT_ID.replace(/^G-/, ''), '_gid', '_gat'];
+        var host = window.location.hostname;
+        var parts = host.split('.');
+        var domains = ['', host];
+        var i;
+
+        for (i = 0; i < parts.length - 1; i++) {
+            domains.push('.' + parts.slice(i).join('.'));
+        }
+
+        names.forEach(function (name) {
+            domains.forEach(function (domain) {
+                document.cookie = name + '=; Max-Age=0; path=/' +
+                    (domain ? '; domain=' + domain : '');
+            });
+        });
     }
 
     var consent = readConsent();
@@ -101,6 +172,7 @@
                 analytics_storage: 'denied'
             });
         }
+        removeAnalyticsCookies();
     }
 
     function normalizedText(element) {
@@ -279,11 +351,13 @@
         '<li><strong>Reklam çerezleri:</strong> her zaman reddedilir. Bu sitede ' +
         'reklam veya yeniden pazarlama kullanılmaz.</li>' +
         '</ul>' +
-        '<p class="ib-consent-note">Tercihinizi istediğiniz zaman sayfa altındaki ' +
-        '“Çerez Tercihleri” bağlantısından değiştirebilirsiniz. Onayı geri ' +
-        'çekmek sonraki ölçümleri durdurur; daha önce gönderilmiş veriler ' +
-        'tarayıcı üzerinden geri alınamaz, silinmesi için bizimle iletişime ' +
-        'geçmeniz gerekir.</p>' +
+        '<p class="ib-consent-note">Tercihiniz altı ay boyunca saklanır; bu ' +
+        'sürenin sonunda size yeniden sorulur. Tercihinizi istediğiniz zaman ' +
+        'sayfa altındaki “Çerez Tercihleri” bağlantısından değiştirebilirsiniz. ' +
+        'Onayı geri çekmek sonraki ölçümleri durdurur ve erişilebilen analitik ' +
+        'çerezleri siler; daha önce Google’a gönderilmiş veriler tarayıcı ' +
+        'üzerinden geri alınamaz, silinmesi için bizimle iletişime geçmeniz ' +
+        'gerekir.</p>' +
         '</div>' +
         '</div>';
 
