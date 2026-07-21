@@ -30,3 +30,4 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:1rem 5
   .hero{padding-top:80px}
 }
 .contact-info p{overflow-wrap:anywhere}
+.section-title h2{overflow-wrap:anywhere}
