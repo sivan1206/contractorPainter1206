@@ -1533,7 +1533,7 @@
                     maximumFractionDigits: 0
                 });
             };
-            fresh.addEventListener('click', function () {
+            var calculate = function () {
                 var area = parseFloat(areaEl.value);
                 var opt = sel.options[sel.selectedIndex];
                 var min = opt ? parseFloat(opt.getAttribute('data-min')) : NaN;
@@ -1543,7 +1543,19 @@
                     return;
                 }
                 out.textContent = fmt(area * min) + '–' + fmt(area * max) + ' TL';
-            });
+            };
+            fresh.addEventListener('click', calculate);
+            /* The calculator has no submit button, but #area is a field that
+               blocks implicit submission, so pressing Enter in it submitted the
+               form and reloaded the page with an empty query string, discarding
+               the result. Calculate instead. */
+            var calculatorForm = document.getElementById('price-calculator');
+            if (calculatorForm) {
+                calculatorForm.addEventListener('submit', function (event) {
+                    event.preventDefault();
+                    calculate();
+                });
+            }
         });
     </script>
     <script>
