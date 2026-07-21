@@ -309,6 +309,7 @@
         '.ib-consent{position:fixed;left:0;right:0;bottom:0;z-index:3000;',
         'background:#fff;color:#1f2933;box-shadow:0 -2px 16px rgb(0 0 0/.18);',
         'padding:1rem clamp(.75rem,4vw,2rem);font-size:.95rem;line-height:1.5;',
+        'padding-bottom:calc(1rem + env(safe-area-inset-bottom,0px));',
         'max-width:100%;box-sizing:border-box;overflow-wrap:anywhere}',
         '.ib-consent[hidden]{display:none}',
         '.ib-consent-inner{max-width:1200px;margin:0 auto}',
@@ -328,7 +329,24 @@
         '.ib-consent-note{font-size:.85rem;color:#52606d;margin-top:.6rem}',
         '.ib-consent-link{display:inline-block;margin:.5rem 0;font-size:.9rem}',
         '@media(max-width:520px){.ib-consent-actions{flex-direction:column}',
-        '.ib-consent button{width:100%}}'
+        '.ib-consent button{width:100%}}',
+        /*
+         * The banner is bottom-anchored and would sit on top of the floating
+         * phone and WhatsApp CTAs, which are the site's primary conversion
+         * path. Lift exactly those three while it is open.
+         *
+         * margin-bottom, not transform: .whatsapp-button, .call-button and
+         * .call-fixed all define a :hover transform, which would cancel a
+         * translate. margin-bottom also composes with each element's own
+         * bottom value (30px desktop, 20px + safe-area on mobile) instead of
+         * overriding it.
+         *
+         * The offset lives in one custom property on <html>, so reopening the
+         * panel cannot accumulate inline styles on the elements themselves.
+         */
+        'html.ib-consent-open .call-us-button,',
+        'html.ib-consent-open .whatsapp-button,',
+        'html.ib-consent-open .call-fixed{margin-bottom:var(--ib-consent-lift,0px)}'
     ].join('');
 
     var BANNER =
@@ -362,6 +380,28 @@
         '</div>';
 
     var banner = null;
+    var CTA_GAP_PX = 12;
+
+    /*
+     * Keep the floating CTAs clear of the banner. The height is measured from
+     * the live element rather than assumed, because the banner wraps to a
+     * different height per viewport and grows again when the preferences panel
+     * is expanded.
+     */
+    function syncCtaOffset() {
+        var root = document.documentElement;
+
+        if (!banner || banner.hidden) {
+            root.classList.remove('ib-consent-open');
+            root.style.removeProperty('--ib-consent-lift');
+            return;
+        }
+
+        var height = Math.ceil(banner.getBoundingClientRect().height);
+
+        root.style.setProperty('--ib-consent-lift', (height + CTA_GAP_PX) + 'px');
+        root.classList.add('ib-consent-open');
+    }
 
     function buildBanner() {
         if (banner) {
@@ -386,6 +426,7 @@
             consent = 'granted';
             writeConsent('granted');
             banner.hidden = true;
+            syncCtaOffset();
             loadGoogleAnalytics();
         });
 
@@ -394,19 +435,29 @@
             writeConsent('denied');
             revokeGoogleAnalytics();
             banner.hidden = true;
+            syncCtaOffset();
         });
 
         prefs.addEventListener('click', function () {
             var open = details.hidden;
             details.hidden = !open;
             prefs.setAttribute('aria-expanded', open ? 'true' : 'false');
+            syncCtaOffset();          // the panel changes the banner height
         });
+
+        if (typeof window.ResizeObserver === 'function') {
+            new window.ResizeObserver(syncCtaOffset).observe(banner);
+        }
+
+        window.addEventListener('resize', syncCtaOffset, { passive: true });
+        window.addEventListener('orientationchange', syncCtaOffset, { passive: true });
 
         return banner;
     }
 
     function showBanner() {
         buildBanner().hidden = false;
+        syncCtaOffset();
     }
 
     /*
