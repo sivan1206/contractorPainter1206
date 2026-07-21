@@ -52,21 +52,7 @@
   <link rel="preload" as="image" type="image/webp"
     imagesrcset="images/kadikoy-boyaci-768.webp 768w, images/kadikoy-boyaci-1280.webp 1280w, images/kadikoy-boyaci-1920.webp 1920w"
     imagesizes="100vw">
-  <script>
-    window.addEventListener('load', function () {
-      setTimeout(function () {
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        var script = document.createElement('script');
-        script.src = "https://www.googletagmanager.com/gtag/js?id=G-E4JBWT478X";
-        script.async = true;
-        script.defer = true;
-        document.head.appendChild(script);
-        gtag('js', new Date());
-        gtag('config', 'G-E4JBWT478X');
-      }, 3000);
-    });
-  </script>
+  <script defer src="/assets/js/analytics.js"></script>
 
 </head>
 
