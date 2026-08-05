@@ -27,3 +27,13 @@
 .breadcrumb-nav a:hover{text-decoration:underline}
 .breadcrumb-nav a:focus-visible{outline:3px solid var(--primary,#0050B5);outline-offset:2px}
 .breadcrumb-nav li[aria-current="page"]{color:var(--primary,#0050B5);font-weight:600}
+
+/* Package B-G - location page content blocks */
+.local-intro{padding:48px 0 8px}
+.local-intro h2{font-size:clamp(1.5rem,3vw,2rem);margin-bottom:18px;color:var(--secondary,#2c3e50)}
+.local-intro p{line-height:1.8;margin-bottom:14px;color:var(--text-gray,#555)}
+.local-intro .local-intro-links{margin:18px 0 0;padding-left:1.2rem;line-height:1.9}
+.local-intro .local-intro-links a{color:var(--primary,#0050B5);font-weight:600}
+.price-basis{width:90%;max-width:900px;margin:26px auto 0;padding:20px 24px;border-left:4px solid var(--primary,#0050B5);background:#f4f7fb;border-radius:8px}
+.price-basis p{margin:0 0 10px;line-height:1.75;color:#444;font-size:.97rem}
+.price-basis p:last-child{margin-bottom:0}
