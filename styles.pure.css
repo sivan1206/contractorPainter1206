@@ -37,3 +37,11 @@
 .price-basis{width:90%;max-width:900px;margin:26px auto 0;padding:20px 24px;border-left:4px solid var(--primary,#0050B5);background:#f4f7fb;border-radius:8px}
 .price-basis p{margin:0 0 10px;line-height:1.75;color:#444;font-size:.97rem}
 .price-basis p:last-child{margin-bottom:0}
+
+/* Minimum touch-target size for the persistent controls (WCAG 2.5.8 target
+   size). The mobile menu button measured 38x43 and the floating call button
+   50x38 before this. */
+.mobile-menu-button{min-width:44px;min-height:44px}
+.call-us-button .call-button,.call-us-button>a{min-width:44px;min-height:44px}
+.whatsapp-button,.phone-button{min-width:44px;min-height:44px}
+.blog-pagination button{min-width:44px;min-height:44px}

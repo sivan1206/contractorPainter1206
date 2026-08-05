@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <link rel="preload" as="style" href="/assets/css/site-components.css">
     <link rel="stylesheet" href="../styles.pure.css">
 <title>İstanbul Boyacı Hizmet Bölgeleri | İlçe ve Semt Rehberi</title>
 
@@ -19,7 +20,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=optional"
         rel="stylesheet">
 
     <!-- Open Graph -->
@@ -42,6 +43,9 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"İstanbul'un hangi ilçe ve semtlerinde boya badana hizmeti veriyorsunuz?","acceptedAnswer":{"@type":"Answer","text":"Bu sayfada 36 ilçe ve 12 semt için ayrı sayfa bulunuyor. Merkez ofisimiz Bayrampaşa'da; ekip planlaması buradan yapıldığı için Avrupa yakasının merkez ilçelerine ulaşım genellikle daha kısa sürüyor. Listede sayfası olmayan bir yerde oturuyorsanız yine arayabilirsiniz; hizmet listesi sayfa listesinden geniştir."}},{"@type":"Question","name":"Boyacı fiyatları ilçeye göre neden değişiyor?","acceptedAnswer":{"@type":"Answer","text":"Değişen şey metrekare fiyatı değil, işin kendisi. Bina yaşı ve yüzey durumu, rutubet, çatlak ve dökülme miktarı, gereken astar ve kat sayısı, evin eşyalı mı boş mu olduğu, kat, asansör ve park imkânı ile işin kaç gün süreceği ilçeden ilçeye farklılaşır. Eski yapı stoğunun ve hazırlık işinin yoğun olduğu bölgelerde aynı büyüklükteki daire daha fazla işçilik ister; ulaşım ve çalışma koşullarının rahat olduğu bölgelerde bu kalem düşer."}},{"@type":"Question","name":"Sayfalardaki fiyatlar piyasa ortalaması mı?","acceptedAnswer":{"@type":"Answer","text":"Hayır. Sayfalarda gördüğünüz aralıklar İstanbul Boyacılık'ın kendi 2026 gösterge fiyatlarıdır; bir piyasa araştırmasının ortalaması değildir. Kesin fiyat; yüzey durumu, hazırlık ve tamirat miktarı, kat sayısı, seçilen malzeme sınıfı, ulaşım koşulları ve evin eşyalı olup olmaması keşifte görüldükten sonra belirlenir."}},{"@type":"Question","name":"Keşif ücretli mi ve ne kadar sürede gelebiliyorsunuz?","acceptedAnswer":{"@type":"Answer","text":"Keşif ücretsizdir ve randevuludur. Aynı gün keşif ya da aynı gün başlangıç her zaman garanti edilemez; konuma, işin kapsamına, yüzeyin durumuna ve o gün ekibin müsaitliğine bağlıdır. Telefon veya WhatsApp'ta adresi ve işin büyüklüğünü aldıktan sonra size gerçekçi bir gün söyleriz."}},{"@type":"Question","name":"Verdiğiniz garanti neyi kapsıyor?","acceptedAnswer":{"@type":"Answer","text":"Verdiğimiz garanti işçilik garantisidir: uyguladığımız işin kendisinden kaynaklanan kusurları kapsar. Boya üreticisinin ürün garantisi ayrıdır ve markanın kendi koşullarına tabidir. Rutubet, su kaçağı veya yalıtım kaynaklı sorunlar boya işçiliğinin kapsamı dışındadır; keşifte böyle bir durum görürsek boyadan önce çözülmesi gerektiğini söyleriz."}},{"@type":"Question","name":"Ev eşyalıyken boyama yapılabiliyor mu?","acceptedAnswer":{"@type":"Answer","text":"Yapılabiliyor. Eşyalar oda düzenine göre toplanır veya odanın ortasına alınıp örtülür; zemin, süpürgelik, priz ve kapı kenarları maskelenir. Eşyalı çalışma boş eve göre daha fazla hazırlık ve toplama süresi ister, bu da süreyi ve dolayısıyla fiyatı etkiler. Boş evde ekip daha hızlı ilerler."}}]}</script>
 
     <style>
+        /* This page has no hero: offset the fixed header so the breadcrumb
+           and first heading are not covered by it. */
+        body { font-family: 'Montserrat', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif; color: #333; background: #fff; }
         .boyaci-rehber { max-width: 900px; margin: auto; padding: 3rem 2rem 4rem; }
         .boyaci-rehber h1 { font-size: clamp(2rem, 5vw, 2.8rem); font-weight: 800; line-height: 1.2; }
         .boyaci-lede { font-size: 1.12rem; line-height: 1.75; margin-top: 1.2rem; }
@@ -70,6 +74,7 @@
         @media (max-width: 576px) { .boyaci-rehber { padding: 2rem 1.1rem 3rem; } }
     </style>
     <script defer src="/assets/js/analytics.js"></script>
+  <link rel="stylesheet" href="/assets/css/site-components.css">
 </head>
 
 <body>
@@ -92,7 +97,7 @@
         </nav>
     </header>
 
-    <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+    <nav class="breadcrumb-nav breadcrumb-nav--hub" aria-label="Breadcrumb">
       <div class="container">
         <ol>
           <li><a href="https://istanbulboyacilik.com/">Ana Sayfa</a></li>

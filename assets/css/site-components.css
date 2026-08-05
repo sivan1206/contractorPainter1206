@@ -1,0 +1,346 @@
+/* ==========================================================================
+   Istanbul Boyacilik - shared component layer
+   --------------------------------------------------------------------------
+   Loaded LAST, from an absolute path, by the 48 location pages and /boyaci/.
+
+   Why this file exists: every location directory carries its own copy of
+   styles.pure.css (48 divergent copies), so a rule added to the root
+   stylesheet never reaches them. Components introduced across those pages -
+   skip link, breadcrumb, local intro, pricing note - therefore had no styling
+   at all on 47 of 48 pages. This layer is the single place those shared
+   components are defined, and it is path-absolute so it resolves from any
+   directory depth.
+
+   Scope rule: everything here is scoped to a component class this project
+   owns, or to values that already match the better-styled template family, so
+   loading it last cannot restyle a page that was already correct.
+   ========================================================================== */
+
+:root {
+  --ib-primary: #0050b5;
+  --ib-primary-dark: #002f7a;
+  --ib-ink: #2c3e50;
+  --ib-text: #444;
+  --ib-muted: #6c757d;
+  --ib-line: #e4e8ef;
+  --ib-surface: #fff;
+  --ib-tint: #f4f7fb;
+
+  --ib-radius: 12px;
+  --ib-shadow: 0 8px 24px rgb(0 0 0 / 7%);
+  --ib-max: 1200px;          /* shared desktop content width  */
+  --ib-read: 72ch;           /* comfortable measure for prose */
+  --ib-section-y: clamp(2rem, 4vw, 3.25rem);
+}
+
+/* --------------------------------------------------------------- skip link
+   Must be out of normal flow (it was static, so it sat visible at the top of
+   every location page and pushed the header down by 26px), still focusable,
+   and never hidden with display/visibility. */
+a.skip-link {
+  position: absolute;
+  left: 12px;
+  top: 0;
+  z-index: 4000;
+  display: inline-block;
+  margin: 0;
+  padding: 12px 22px;
+  background: var(--ib-primary);
+  color: #fff;
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.2;
+  text-decoration: none;
+  border-radius: 0 0 10px 10px;
+  box-shadow: 0 8px 22px rgb(0 0 0 / 32%);
+  transform: translateY(-140%);
+  transition: transform .18s ease-in-out;
+}
+a.skip-link:focus,
+a.skip-link:focus-visible {
+  transform: translateY(0);
+  outline: 3px solid #fff;
+  outline-offset: -6px;
+}
+@media (prefers-reduced-motion: reduce) {
+  a.skip-link { transition: none; }
+}
+
+/* -------------------------------------------------------------- breadcrumb
+   The location templates style the bare `nav` element (display:flex, padded,
+   max-width), which collapsed the breadcrumb container to ~112px and left the
+   <ol> with default decimal markers. Reset those explicitly. */
+.breadcrumb-nav {
+  display: block;
+  position: relative;
+  z-index: 1;
+  width: auto;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  background: var(--ib-tint);
+  border-bottom: 1px solid var(--ib-line);
+  font-size: .95rem;
+}
+.breadcrumb-nav > .container {
+  display: block;
+  width: min(92%, var(--ib-max));
+  max-width: var(--ib-max);
+  margin: 0 auto;
+  padding: 14px 0;
+}
+.breadcrumb-nav ol {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .2rem .5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  color: var(--ib-muted);
+}
+.breadcrumb-nav li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.breadcrumb-nav li::marker { content: ""; }
+.breadcrumb-nav a {
+  color: var(--ib-ink);
+  font-weight: 600;
+  text-decoration: none;
+}
+.breadcrumb-nav a:hover { text-decoration: underline; }
+.breadcrumb-nav a:focus-visible {
+  outline: 3px solid var(--ib-primary);
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+.breadcrumb-nav li[aria-current="page"] {
+  color: var(--ib-primary);
+  font-weight: 700;
+}
+
+/* ------------------------------------------------- location intro section */
+.local-intro {
+  padding: var(--ib-section-y) 0 .5rem;
+  background: var(--ib-surface);
+}
+/* The surrounding templates lay their prose out in 900px blocks, so match
+   that rather than stretching to the 1200px shell and leaving the right
+   half of the section empty. */
+.local-intro > .container {
+  display: block;
+  width: min(92%, 900px);
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0;
+}
+.local-intro h2 {
+  margin: 0 0 1.1rem;
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  line-height: 1.25;
+  color: var(--ib-ink);
+  border: 0;
+  padding: 0;
+}
+.local-intro p {
+  margin: 0 0 1.05rem;
+  font-size: 1.125rem;
+  line-height: 1.8;
+  color: var(--ib-text);
+}
+.local-intro p strong { color: var(--ib-ink); }
+.local-intro .local-intro-links {
+  margin: 1.35rem 0 0;
+  padding: 1rem 1.25rem 1rem 2.4rem;
+  background: var(--ib-tint);
+  border-radius: var(--ib-radius);
+  line-height: 1.95;
+  font-size: 1.02rem;
+}
+.local-intro .local-intro-links li { margin: 0; }
+.local-intro .local-intro-links a {
+  color: var(--ib-primary);
+  font-weight: 600;
+}
+
+/* --------------------------------------------------------- pricing basis */
+.price-basis {
+  width: min(92%, 900px);
+  max-width: 900px;
+  margin: 1.75rem auto 0;
+  padding: 1.25rem 1.5rem;
+  background: var(--ib-tint);
+  border: 1px solid var(--ib-line);
+  border-left: 4px solid var(--ib-primary);
+  border-radius: var(--ib-radius);
+  box-shadow: var(--ib-shadow);
+  box-sizing: border-box;
+}
+.price-basis p {
+  margin: 0 0 .75rem;
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--ib-text);
+}
+.price-basis p:last-child { margin-bottom: 0; }
+.price-basis strong { color: var(--ib-ink); }
+.price-basis a { color: var(--ib-primary); font-weight: 600; }
+
+/* ------------------------------------------------------- template parity
+   Two template families exist. Family A (30 pages, e.g. Atasehir,
+   Bayrampasa) renders ~10% smaller than family B (18 pages, e.g. Bebek,
+   Sisli). Values below equal family B's measured sizes, so family B is
+   unchanged and family A is lifted to match. The hero is excluded so its
+   own scale is preserved. */
+/* Scoped to the specific content wrappers rather than
+   `main section:not(.hero) h2`. The :not() descendant form had to be matched
+   against every h2 on the page and measured ~16ms of extra style work on
+   /kadikoy/, the largest page in the population. */
+.section-title h2 { font-size: clamp(1.7rem, 2.6vw, 2.2rem); }
+.seo-content h2,
+.services h2,
+.pricing h2,
+.districts h2 { font-size: clamp(1.6rem, 2.4vw, 2rem); }
+
+.pricing-table table td,
+.pricing-table table th,
+#fiyatlar table td,
+#fiyatlar table th { font-size: 1rem; }
+
+/* The compact template writes its FAQ headings and section title with inline
+   font-size (1.05rem / 1.8rem), which no stylesheet rule can override without
+   !important. These four declarations are the only ones in this file that use
+   it, and they exist solely to beat those inline attributes. */
+#sss > div > h2,
+section#sss h2 { font-size: clamp(1.7rem, 2.6vw, 2.2rem) !important; }
+#sss h3 { font-size: 1.25rem !important; line-height: 1.45; }
+#sss h3 + p { font-size: 1.05rem !important; line-height: 1.75; }
+.faq-question { font-size: 1.25rem; line-height: 1.45; }
+.faq-answer,
+.faq-answer p { font-size: 1.05rem; line-height: 1.75; }
+
+.service-card p,
+.price-option p,
+.price-features li { font-size: 1rem; line-height: 1.7; }
+
+/* Tables must stay readable, and scroll accessibly when they cannot fit. */
+.pricing-table,
+#fiyatlar .pricing-table { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+/* ------------------------------------------------------------ /boyaci/ hub
+   The hub has no hero, so the fixed header would sit on top of the
+   breadcrumb and the first heading. .boyaci-rehber only exists on that page. */
+.boyaci-rehber { max-width: 1080px; }
+/* Prose keeps a readable measure; the area grid below is free to use the
+   full width of the shell. */
+.boyaci-rehber > p,
+.boyaci-rehber .boyaci-lede,
+.boyaci-rehber .surec-list,
+.boyaci-rehber .rehber-list { max-width: 74ch; }
+
+/* The hub has no hero, so the fixed header would cover the breadcrumb. */
+.breadcrumb-nav--hub { margin-top: 74px; }
+@media (max-width: 768px) { .breadcrumb-nav--hub { margin-top: 66px; } }
+.boyaci-rehber h2 {
+  font-size: clamp(1.6rem, 2.6vw, 2.1rem);
+  line-height: 1.3;
+  color: var(--ib-ink);
+}
+.boyaci-rehber h3 {
+  font-size: clamp(1.15rem, 1.7vw, 1.35rem);
+  color: var(--ib-ink);
+}
+.boyaci-rehber p,
+.boyaci-rehber li { font-size: 1.06rem; line-height: 1.8; color: var(--ib-text); }
+.boyaci-rehber .boyaci-lede { font-size: 1.18rem; }
+.boyaci-rehber .surec-list li { margin-bottom: .45rem; }
+.boyaci-rehber .rehber-list li { margin-bottom: .3rem; }
+.boyaci-rehber a { color: var(--ib-primary); }
+
+/* Area directory: a responsive grid instead of one long single column.
+   DOM order and every link are untouched. */
+.bolge-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(228px, 1fr));
+  gap: 10px 18px;
+  list-style: none;
+  margin: 1.1rem 0 0;
+  padding: 0;
+}
+.bolge-grid li { margin: 0; }
+.bolge-grid a {
+  display: block;
+  padding: 11px 14px;
+  border: 1px solid var(--ib-line);
+  border-radius: 10px;
+  background: var(--ib-surface);
+  color: var(--ib-ink);
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: border-color .15s ease, color .15s ease, box-shadow .15s ease;
+}
+.bolge-grid a:hover,
+.bolge-grid a:focus-visible {
+  border-color: var(--ib-primary);
+  color: var(--ib-primary);
+  box-shadow: var(--ib-shadow);
+}
+.bolge-grid .semt-parent {
+  display: block;
+  margin-top: 2px;
+  font-weight: 400;
+  font-size: .84rem;
+  color: var(--ib-muted);
+}
+
+.boyaci-faq details {
+  border: 1px solid var(--ib-line);
+  border-radius: var(--ib-radius);
+  background: var(--ib-surface);
+  margin-bottom: 12px;
+}
+.boyaci-faq summary {
+  padding: 15px 20px;
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--ib-ink);
+  cursor: pointer;
+}
+.boyaci-faq summary:focus-visible {
+  outline: 3px solid var(--ib-primary);
+  outline-offset: -3px;
+}
+.boyaci-faq .faq-body {
+  padding: 0 20px 18px;
+  font-size: 1.02rem;
+  line-height: 1.75;
+  color: var(--ib-text);
+}
+
+/* --------------------------------------------------------------- responsive */
+@media (max-width: 992px) {
+  .bolge-grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
+}
+@media (max-width: 768px) {
+  .breadcrumb-nav { font-size: .9rem; }
+  .breadcrumb-nav > .container { padding: 11px 0; }
+  .local-intro p { font-size: 1.06rem; }
+  .price-basis { padding: 1.05rem 1.15rem; }
+  .bolge-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 12px; }
+  .boyaci-rehber p, .boyaci-rehber li { font-size: 1.02rem; }
+}
+@media (max-width: 560px) {
+  .bolge-grid { grid-template-columns: 1fr; }
+  .local-intro { padding-top: 1.75rem; }
+  .local-intro .local-intro-links { padding: .9rem 1rem .9rem 2.1rem; }
+}
+
+/* Minimum touch-target size for the persistent controls (WCAG 2.5.8). */
+.mobile-menu-button { min-width: 44px; min-height: 44px; }
+.call-us-button .call-button,
+.call-us-button > a { min-width: 44px; min-height: 44px; }
+.whatsapp-button,
+.phone-button { min-width: 44px; min-height: 44px; }
