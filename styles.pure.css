@@ -13,3 +13,17 @@
 @media(max-width:768px){table:not(.pricing-table table){display:block;max-width:100%;min-width:0;overflow-x:auto;-webkit-overflow-scrolling:touch}table:not(.pricing-table table) td,table:not(.pricing-table table) th{min-width:8rem}}
 .contact-info p{overflow-wrap:anywhere}
 .article-card h2{overflow-wrap:anywhere}
+
+/* Package I - skip link + breadcrumb, shared by every location page.
+   The location templates style the bare `nav` element (display:flex, padded),
+   so .breadcrumb-nav resets those explicitly rather than relying on order. */
+.skip-link{position:absolute;left:10px;top:-80px;background:var(--primary,#0050B5);color:#fff;padding:10px 16px;border-radius:8px;box-shadow:0 6px 18px rgb(0 0 0 / .2);transition:top .2s ease,opacity .2s ease;opacity:0;font-weight:600;z-index:2000;text-decoration:none}
+.skip-link:focus{top:10px;opacity:1}
+.breadcrumb-nav{display:block;background:#e9ecef;font-size:.95rem;padding:0;margin:0;max-width:none;width:auto;justify-content:normal;align-items:normal}
+.breadcrumb-nav .container{width:90%;max-width:1200px;margin:0 auto;padding:12px 0}
+.breadcrumb-nav ol{display:flex;flex-wrap:wrap;align-items:center;gap:10px;list-style:none;padding:0;margin:0;color:#6c757d}
+.breadcrumb-nav li{margin:0}
+.breadcrumb-nav a{color:#2c3e50;text-decoration:none;font-weight:600}
+.breadcrumb-nav a:hover{text-decoration:underline}
+.breadcrumb-nav a:focus-visible{outline:3px solid var(--primary,#0050B5);outline-offset:2px}
+.breadcrumb-nav li[aria-current="page"]{color:var(--primary,#0050B5);font-weight:600}
