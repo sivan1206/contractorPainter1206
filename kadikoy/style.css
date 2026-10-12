@@ -106,7 +106,7 @@ section {
 
     .service-features li::before {
       content: '\f00c';
-      font-family: 'Font Awesome 5 Free';
+      font-family: 'IB Site Icons Free';
       font-weight: 900;
       position: absolute;
       left: 0;
@@ -222,7 +222,7 @@ section {
 
     .testimonial-card::before {
       content: '\f10d';
-      font-family: 'Font Awesome 5 Free';
+      font-family: 'IB Site Icons Free';
       font-weight: 900;
       position: absolute;
       top: 15px;
@@ -590,7 +590,7 @@ section {
 
 .district-group li::before {
   content: '\f3c5'; /* Font Awesome map marker icon */
-  font-family: 'Font Awesome 5 Free';
+  font-family: 'IB Site Icons Free';
   font-weight: 900;
   position: absolute;
   left: 0;

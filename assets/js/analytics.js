@@ -11,7 +11,7 @@
  * Everything lives in this one file because it is already included on all 116
  * canonical pages; gating did not require touching the HTML again.
  *
- * Tracks: phone_click, whatsapp_click, generate_lead.
+ * Tracks: phone_click, whatsapp_click, quote_request_started.
  */
 (function () {
     'use strict';
@@ -233,7 +233,7 @@
 
         var link = target.closest('a[href]');
 
-        if (!link) {
+        if (!link || link.hasAttribute('data-quote-fallback')) {
             return;
         }
 
@@ -260,46 +260,17 @@
         }
     });
 
-    /*
-     * Only the quote form is a lead. Selector audited against the repository:
-     * every contact form on the site is form#quote-form (homepage + 48
-     * district pages). form#price-calculator is deliberately NOT matched — it
-     * is a price estimator, not a contact request.
-     *
-     * These forms carry required fields and no novalidate attribute, so the
-     * browser fires 'submit' only after native validation passes. An invalid
-     * form therefore cannot produce a lead event.
-     *
-     * The site's own handler calls preventDefault() and opens WhatsApp via
-     * window.open(). That is not an anchor click, so it does not also trigger
-     * whatsapp_click — one submission produces exactly one generate_lead.
-     */
-    document.addEventListener('submit', function (event) {
+    // Emitted only by the validated form launch; no personal fields enter GA4.
+    document.addEventListener('ib:quote-started', function (event) {
         var form = event.target;
-
-        if (!(form instanceof HTMLFormElement)) {
-            return;
-        }
-
-        var isContactForm = form.matches(
-            'form[data-analytics-form="contact"], form#quote-form'
-        );
-
-        if (!isContactForm) {
-            return;
-        }
-
-        sendAnalyticsEvent('generate_lead', {
-            contact_method: 'form',
-            form_id: form.id || 'quote_form',
-            form_name:
-                form.getAttribute('name') ||
-                form.getAttribute('aria-label') ||
-                form.id ||
-                'quote_form',
-            page_path: window.location.pathname,
-            page_title: document.title,
-            transport_type: 'beacon'
+        var detail = event.detail;
+        if (!(form instanceof HTMLFormElement) || form.id !== 'quote-form' ||
+            !detail || detail.form_id !== 'quote-form' || detail.contact_method !== 'whatsapp' ||
+            (detail.launch_method !== 'popup' && detail.launch_method !== 'fallback')) return;
+        sendAnalyticsEvent('quote_request_started', {
+            contact_method: 'whatsapp', form_id: 'quote-form',
+            launch_method: detail.launch_method,
+            page_path: window.location.pathname, transport_type: 'beacon'
         });
     });
 
@@ -308,8 +279,8 @@
     var STYLE = [
         '.ib-consent{position:fixed;left:0;right:0;bottom:0;z-index:3000;',
         'background:#fff;color:#1f2933;box-shadow:0 -2px 16px rgb(0 0 0/.18);',
-        'padding:1rem clamp(.75rem,4vw,2rem);font-size:.95rem;line-height:1.5;',
-        'padding-bottom:calc(1rem + env(safe-area-inset-bottom,0px));',
+        'padding:.75rem clamp(.75rem,4vw,2rem);font-size:.9rem;line-height:1.4;',
+        'padding-bottom:calc(.75rem + env(safe-area-inset-bottom,0px));',
         'max-width:100%;box-sizing:border-box;overflow-wrap:anywhere}',
         '.ib-consent[hidden]{display:none}',
         '.ib-consent-inner{max-width:1200px;margin:0 auto}',
@@ -328,33 +299,29 @@
         '.ib-consent-details li{margin:.35rem 0}',
         '.ib-consent-note{font-size:.85rem;color:#52606d;margin-top:.6rem}',
         '.ib-consent-link{display:inline-block;margin:.5rem 0;font-size:.9rem}',
-        '@media(max-width:520px){.ib-consent-actions{flex-direction:column}',
-        '.ib-consent button{width:100%}}',
-        /*
-         * The banner is bottom-anchored and would sit on top of the floating
-         * phone and WhatsApp CTAs, which are the site's primary conversion
-         * path. Lift exactly those three while it is open.
-         *
-         * margin-bottom, not transform: .whatsapp-button, .call-button and
-         * .call-fixed all define a :hover transform, which would cancel a
-         * translate. margin-bottom also composes with each element's own
-         * bottom value (30px desktop, 20px + safe-area on mobile) instead of
-         * overriding it.
-         *
-         * The offset lives in one custom property on <html>, so reopening the
-         * panel cannot accumulate inline styles on the elements themselves.
-         */
-        'html.ib-consent-open .call-us-button,',
-        'html.ib-consent-open .whatsapp-button,',
-        'html.ib-consent-open .call-fixed{margin-bottom:var(--ib-consent-lift,0px)}'
+        '.ib-consent-dialog{border:0;border-radius:12px;box-shadow:0 8px 40px #0005;',
+        'padding:1rem;max-width:560px;width:calc(100% - 2rem);max-height:80dvh;',
+        'overflow:auto;box-sizing:border-box;color:#1f2933;background:#fff}',
+        '.ib-consent-dialog::backdrop{background:#0007}',
+        '.ib-consent-dialog .ib-consent-details{margin:0;border:0;padding:0}',
+        '.ib-consent-dialog button{font:inherit;min-height:44px;padding:.6rem;border-radius:8px;',
+        'border:2px solid #4361ee;background:white;color:#243fba;cursor:pointer}',
+        '.ib-consent-dialog .ib-accept{background:#4361ee;color:white}',
+        '.ib-consent-dialog .ib-consent-actions{margin-top:1rem}',
+        '.ib-consent button:focus-visible,.ib-consent-dialog button:focus-visible{outline:3px solid #152c8c;outline-offset:3px}',
+        '@media(max-width:520px){.ib-consent-actions{display:grid;grid-template-columns:1fr 1fr}',
+        '.ib-consent button{width:100%;padding:.45rem .3rem;font-size:.85rem}',
+        '.ib-consent .ib-prefs{grid-column:1/-1;border:0;padding:.2rem;min-height:44px}}',
+        // Only fixed outer contact containers participate. Nested phone
+        // links and ordinary hero/contact links retain their normal layout.
+        'html.ib-consent-open .ib-consent-floating{margin-bottom:var(--ib-consent-lift,0px)}',
+        '@media(max-width:768px){html.ib-consent-open .ib-consent-floating{display:none!important}}'
     ].join('');
 
     var BANNER =
         '<div class="ib-consent-inner">' +
-        '<p><strong>Çerez tercihi.</strong> Siteyi nasıl kullandığınızı anlamak ' +
-        'için Google Analytics kullanmak istiyoruz. Bu tamamen isteğe bağlıdır; ' +
-        'reddederseniz site aynı şekilde çalışmaya devam eder. ' +
-        '<a href="' + POLICY_URL + '">Gizlilik ve çerez politikası</a></p>' +
+        '<p><strong>İsteğe bağlı analitik.</strong> Kullanımı Google Analytics ile ölçmemize izin verir misiniz? ' +
+        '<a href="' + POLICY_URL + '">Çerez politikası</a></p>' +
         '<div class="ib-consent-actions">' +
         '<button type="button" class="ib-accept">Analitiği Kabul Et</button>' +
         '<button type="button" class="ib-reject">Analitiği Reddet</button>' +
@@ -397,6 +364,10 @@
             return;
         }
 
+        document.querySelectorAll('.call-us-button,.call-button,.call-fixed,.whatsapp-button').forEach(function (element) {
+            element.classList.toggle('ib-consent-floating', window.getComputedStyle(element).position === 'fixed');
+        });
+
         var height = Math.ceil(banner.getBoundingClientRect().height);
 
         root.style.setProperty('--ib-consent-lift', (height + CTA_GAP_PX) + 'px');
@@ -414,19 +385,52 @@
 
         banner = document.createElement('aside');
         banner.className = 'ib-consent';
-        banner.setAttribute('role', 'dialog');
+        banner.setAttribute('role', 'region');
         banner.setAttribute('aria-label', 'Çerez tercihi');
         banner.innerHTML = BANNER;
         document.body.appendChild(banner);
 
         var details = banner.querySelector('.ib-consent-details');
         var prefs = banner.querySelector('.ib-prefs');
+        var dialog = document.createElement('dialog');
+        dialog.className = 'ib-consent-dialog';
+        dialog.id = 'ib-consent-preferences';
+        prefs.setAttribute('aria-controls', dialog.id);
+        dialog.setAttribute('aria-label', 'Çerez tercihleri ayrıntıları');
+        details.hidden = false;
+        dialog.appendChild(details);
+        var dialogActions = banner.querySelector('.ib-consent-actions').cloneNode(true);
+        dialogActions.querySelector('.ib-prefs').remove();
+        dialogActions.querySelector('.ib-accept').addEventListener('click', function () {
+            dialog.close(); banner.querySelector('.ib-accept').click();
+        });
+        dialogActions.querySelector('.ib-reject').addEventListener('click', function () {
+            dialog.close(); banner.querySelector('.ib-reject').click();
+        });
+        var close = document.createElement('button');
+        close.type = 'button'; close.textContent = 'Tercihlere dön';
+        close.addEventListener('click', function () { dialog.close(); });
+        dialogActions.appendChild(close);
+        dialog.appendChild(dialogActions);
+        document.body.appendChild(dialog);
+        dialog.addEventListener('close', function () {
+            prefs.setAttribute('aria-expanded', 'false');
+            var focusTarget = banner.hidden ? document.querySelector('.ib-consent-link') : prefs;
+            if (focusTarget) focusTarget.focus({ preventScroll: true });
+        });
 
         banner.querySelector('.ib-accept').addEventListener('click', function () {
             consent = 'granted';
             writeConsent('granted');
             banner.hidden = true;
             syncCtaOffset();
+            // The tag stays loaded after revocation; restore its consent state
+            // explicitly when the visitor grants again on this page.
+            if (googleTagStarted) {
+                window.gtag('consent', 'update', {
+                    analytics_storage: 'granted'
+                });
+            }
             loadGoogleAnalytics();
         });
 
@@ -439,10 +443,8 @@
         });
 
         prefs.addEventListener('click', function () {
-            var open = details.hidden;
-            details.hidden = !open;
-            prefs.setAttribute('aria-expanded', open ? 'true' : 'false');
-            syncCtaOffset();          // the panel changes the banner height
+            prefs.setAttribute('aria-expanded', 'true');
+            dialog.showModal();
         });
 
         if (typeof window.ResizeObserver === 'function') {

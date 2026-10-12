@@ -340,7 +340,26 @@ section#sss h2 { font-size: clamp(1.7rem, 2.6vw, 2.2rem) !important; }
 
 /* Minimum touch-target size for the persistent controls (WCAG 2.5.8). */
 .mobile-menu-button { min-width: 44px; min-height: 44px; }
+.mobile-menu-button.active i::before {
+  content: "\f00d";
+  font-family: "IB Site Icons Free";
+  font-weight: 900;
+}
 .call-us-button .call-button,
 .call-us-button > a { min-width: 44px; min-height: 44px; }
 .whatsapp-button,
 .phone-button { min-width: 44px; min-height: 44px; }
+
+/* Preserve the requested white WhatsApp text and icons across all pages. */
+.btn-whatsapp-hero,
+.whatsapp-button,
+.social-links a[href^="https://wa.me/"],
+#ilinks a[href^="https://wa.me/"] { color: #fff !important; }
+/* White on the orange banner endpoints is 2.84:1 / 2.05:1. */
+.hero-usp-banner { color: #2b2d42 !important; }
+.business-center { line-height: 1.65; }
+.business-center a { text-decoration: underline; overflow-wrap: anywhere; }
+#quote-form :is(input, select, textarea):focus-visible {
+    outline: 3px solid #3251d4;
+    outline-offset: 2px;
+}

@@ -396,7 +396,7 @@
 
  .faq-question::after {
    content: '\f107';
-   font-family: "Font Awesome 6 Free";
+   font-family: "IB Site Icons Free";
    font-weight: 900;
    position: absolute;
    right: 30px;

@@ -46,14 +46,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    var quoteForm = document.getElementById('quote-form');
-    if (quoteForm) {
-        quoteForm.addEventListener('submit', function (event) {
-            event.preventDefault();
-            alert('Formunuz başarıyla gönderildi. En kısa sürede sizinle iletişime geçeceğiz.');
-            this.reset();
-        });
-    }
+    // Quote forms are handled by /assets/js/quote-form.js.
 
     var faqItems = document.querySelectorAll('.faq-item');
     faqItems.forEach(function (item) {

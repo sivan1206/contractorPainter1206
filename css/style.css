@@ -298,7 +298,7 @@ h1,
 
 .service-features li::before {
     content: '\f00c';
-    font-family: 'Font Awesome 6 Free';
+    font-family: 'IB Site Icons Free';
     font-weight: 900;
     position: absolute;
     left: 0;
@@ -595,7 +595,7 @@ button:hover {
 
 .district-group li::before {
     content: '\f3c5';
-    font-family: 'Font Awesome 6 Free';
+    font-family: 'IB Site Icons Free';
     font-weight: 900;
     position: absolute;
     left: 0;
@@ -914,7 +914,7 @@ footer {
 
 #sss .faq-question::after {
     content: '\f107';
-    font-family: 'Font Awesome 6 Free';
+    font-family: 'IB Site Icons Free';
     font-weight: 900;
     position: absolute;
     right: 1.5rem;
@@ -1036,7 +1036,7 @@ footer {
 
 .seo-content li::before {
     content: '\f058';
-    font-family: 'Font Awesome 6 Free';
+    font-family: 'IB Site Icons Free';
     font-weight: 900;
     position: absolute;
     left: 0;
@@ -1713,3 +1713,17 @@ footer {
     }
 }
 
+
+/* Preserve the requested white WhatsApp text and icons across all pages. */
+.btn-whatsapp-hero,
+.whatsapp-button,
+.social-links a[href^="https://wa.me/"],
+#ilinks a[href^="https://wa.me/"] { color: #fff !important; }
+/* White on the orange banner endpoints is 2.84:1 / 2.05:1. */
+.hero-usp-banner { color: #2b2d42 !important; }
+.business-center { line-height: 1.65; }
+.business-center a { text-decoration: underline; overflow-wrap: anywhere; }
+#quote-form :is(input, select, textarea):focus-visible {
+    outline: 3px solid #3251d4;
+    outline-offset: 2px;
+}

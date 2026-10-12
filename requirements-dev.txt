@@ -1,0 +1,6 @@
+# Versions used for SEO, form, asset and export verification.
+beautifulsoup4==4.13.4
+Pillow==11.3.0
+playwright==1.62.0
+fonttools==4.58.5
+Brotli==1.2.0

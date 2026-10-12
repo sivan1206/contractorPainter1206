@@ -1,2 +1,10 @@
 # Local audit/release reports
+/.docs/
 /docs/
+/.seo-cache/
+
+# Generated public site export
+/dist/
+
+# Python execution cache
+__pycache__/

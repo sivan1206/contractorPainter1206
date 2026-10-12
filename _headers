@@ -1,0 +1,16 @@
+# Used by Cloudflare Pages for static assets after the owner's migration.
+# GitHub Pages does not apply this file.
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: SAMEORIGIN
+  Cache-Control: public, max-age=0, must-revalidate
+
+/assets/*
+  Cache-Control: public, max-age=600, must-revalidate
+
+/images/*
+  Cache-Control: public, max-age=600, must-revalidate
+
+/fonts/*
+  Cache-Control: public, max-age=600, must-revalidate

@@ -204,45 +204,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    const quoteForm = select('#quote-form');
-    if (quoteForm) {
-        quoteForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-
-            const name = select('#name').value.trim();
-            const phone = select('#phone').value.trim();
-            const district = select('#district') ? select('#district').value.trim() : '';
-            const service = select('#service') ? select('#service').value.trim() : '';
-            const email = select('#email') ? select('#email').value.trim() : '';
-            const message = select('#message') ? select('#message').value.trim() : '';
-
-            if (typeof grecaptcha !== 'undefined') {
-                const recaptchaResponse = grecaptcha.getResponse();
-                if (!recaptchaResponse) {
-                    alert('Lütfen doğrulama testi (reCAPTCHA) çözün.');
-                    return;
-                }
-            }
-
-            if (!name || !phone || !district || !service) {
-                alert('Lütfen zorunlu alanları doldurun (Adınız Soyadınız, Telefon, İlçe/Semt ve Hizmet Türü)');
-                return;
-            }
-
-            const waMessage =
-                `Yeni Teklif Talebi:%0A` +
-                `Ad Soyad: ${name}%0A` +
-                `Telefon: ${phone}%0A` +
-                (email ? `E-posta: ${email}%0A` : '') +
-                `İlçe/Semt: ${district}%0A` +
-                `Hizmet Türü: ${service}%0A` +
-                (message ? `Mesaj: ${message}%0A` : '');
-
-            const waURL = `https://wa.me/905078322912?text=${waMessage}`;
-            window.open(waURL, '_blank');
-            quoteForm.reset();
-        });
-    }
+    // Quote forms are handled by /assets/js/quote-form.js.
 
     document.body.addEventListener('click', (e) => {
         const anchor = e.target.closest('a[href^="#"]');

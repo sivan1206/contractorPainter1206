@@ -5,9 +5,6 @@ Disallow: /404.html
 # Sitemap
 Sitemap: https://istanbulboyacilik.com/sitemap.xml
 
-# Crawl-delay for polite bots
-Crawl-delay: 1
-
 # Google specific
 User-agent: Googlebot
 Allow: /
