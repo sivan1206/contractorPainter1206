@@ -59,3 +59,7 @@
     outline: 3px solid #3251d4;
     outline-offset: 2px;
 }
+
+/* Accessible white WhatsApp CTA on green, including keyboard/hover. */
+.btn-whatsapp-hero{background:#15803d!important}
+.btn-whatsapp-hero:hover,.btn-whatsapp-hero:focus-visible{background:#166534!important}

@@ -77,6 +77,10 @@ def icon_assets():
     classes=set(); literal_codes=set()
     for p in sources():
         raw=p.read_text(encoding='utf8')
+        # Generated CSS includes --fa-* variables and font filenames, neither
+        # of which is a markup class. Exclude it from the next source scan.
+        if p.suffix=='.html':
+            raw=re.sub(r'<style\b[^>]*\bdata-ib-icons\b[^>]*>.*?</style\s*>','',raw,flags=re.S)
         if p.suffix in {'.html','.js'}:
             classes.update(re.findall(r'\bfa-[a-z0-9-]+',raw))
         if p.suffix in {'.html','.css'}:
@@ -92,7 +96,7 @@ def icon_assets():
     fonts=ROOT/'assets/fonts';fonts.mkdir(exist_ok=True)
     reports=[]; rules=[]
     for style,weight in [('solid',900),('brands',400),('regular',400)]:
-        src=vendor/f'webfonts/fa-{style}-{weight}.woff2';font=TTFont(src)
+        src=vendor/f'webfonts/fa-{style}-{weight}.woff2';font=TTFont(src,recalcTimestamp=False)
         available=set(font.getBestCmap());selected=codes & available
         options=subset.Options();options.flavor='woff2';options.recalc_timestamp=False;options.name_IDs=['*'];options.name_legacy=True;options.name_languages=['*']
         sub=subset.Subsetter(options=options);sub.populate(unicodes=selected);sub.subset(font)
@@ -113,9 +117,12 @@ def icon_assets():
     glyphs=''.join(f'.{name}{{--fa:"\\{code:x}"}}' for name,code in used.items())
     cssout=base+glyphs+''.join(rules)+'.fa-solid,.fas{font-weight:900}.fa-brands,.fab,.fa-regular,.far{font-weight:400}'
     (ROOT/'assets/css/icons.css').write_text(cssout,encoding='utf8')
-    # The full license is included in the exported stylesheet because .txt is not public.
+    # Keep the full OFL/MIT/CC-BY license beside the subsets. The build policy
+    # permits this exact path, without exposing arbitrary internal text files.
     license=(vendor/'LICENSE.txt').read_text(encoding='utf8')
-    with (ROOT/'assets/css/icons.css').open('a',encoding='utf8') as f:f.write('\n/*\n'+license.replace('*/','* /')+'\n*/\n')
+    (fonts/'LICENSE.txt').write_text(license,encoding='utf8')
+    with (ROOT/'assets/css/icons.css').open('a',encoding='utf8') as f:
+        f.write('\n/*! Font Awesome subset: full license /assets/fonts/LICENSE.txt */\n')
     solid=set(int(c,16) for f in reports if f['style']=='solid' for c in f['codepoints']);brands=set(int(c,16) for f in reports if f['style']=='brands' for c in f['codepoints'])
     if not codes.issubset(solid|brands):raise ValueError('Icon glyph not in solid/brands subsets')
     if not literal_codes.issubset(solid):raise ValueError('CSS pseudo-element glyph missing from solid subset')
@@ -140,6 +147,8 @@ def apply_references():
     data=json.loads((OUT/'media-format-map.json').read_text(encoding='utf8'));byfile={}
     for r in data['replacements']:byfile.setdefault(r['source'],{})[r['old']]=r['new']
     changes=[]
+    icons=(ROOT/'assets/css/icons.css').read_text(encoding='utf8')
+    inline_icons='<style data-ib-icons="inline">'+icons.replace('</style','<\\/style')+'</style>'
     for source in sources():
         old=source.read_text(encoding='utf8');new=old
         for ref,replacement in sorted(byfile.get(source.relative_to(ROOT).as_posix(),{}).items(),key=lambda p:-len(p[0])):new=new.replace(ref,replacement)
@@ -147,8 +156,16 @@ def apply_references():
         if source.suffix in {'.html','.css'}:
             new=FA_FACE.sub('',new)
             new=migrate_icon_families(new)
-            if source.suffix=='.html' and re.search(r'\b(?:fas|fab|far|fa-solid|fa-brands|fa-regular)\b|IB Site Icons',new) and '/assets/css/icons.css' not in new:
-                new=new.replace('</head>','    <link rel="stylesheet" href="/assets/css/icons.css">\n</head>',1)
+            if source.suffix=='.html':
+                new=re.sub(r'<style\b[^>]*\bdata-ib-icons\b[^>]*>.*?</style\s*>',lambda _:inline_icons,new,flags=re.S)
+                def inline_link(match):
+                    tag=match[0]
+                    if re.search(r'\bhref=["\']/assets/css/icons\.css(?:\?[^"\']*)?["\']',tag):
+                        return inline_icons
+                    return tag
+                new=re.sub(r'<link\b[^>]*>',inline_link,new)
+                if re.search(r'\b(?:fas|fab|far|fa-solid|fa-brands|fa-regular)\b|IB Site Icons',new) and 'data-ib-icons=' not in new:
+                    new=new.replace('</head>',inline_icons+'\n</head>',1)
         if new!=old:source.write_text(new,encoding='utf8');changes.append(source.relative_to(ROOT).as_posix())
     (OUT/'asset-reference-integration.json').write_text(json.dumps({'changed_files':changes},indent=2),encoding='utf8');print('Integrated',len(changes),'public sources')
 

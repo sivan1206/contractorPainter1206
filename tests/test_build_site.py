@@ -36,6 +36,7 @@ class SiteExportTests(unittest.TestCase):
                      'google123.html', 'sultanbeyli/google123.html', '.htaccess', 'CNAME', 'robots.txt', '_headers',
                      '.docs/private.html', 'tests/example.html', 'tools/demo.html',
                      'README.md', 'desktop.ini', '.seo-cache/page.html',
+                     'assets/fonts/LICENSE.txt', 'assets/fonts/private.txt',
                      'assets/private.md', 'random-secret.html']
             for name in files:
                 target = root / name
@@ -45,7 +46,7 @@ class SiteExportTests(unittest.TestCase):
             subprocess.run(['git', '-C', str(root), 'add', '.'], check=True)
             subprocess.run(['python', str(BUILDER), '--root', str(root)], check=True)
             exported = {p.relative_to(root / 'dist').as_posix() for p in (root / 'dist').rglob('*') if p.is_file()}
-            self.assertEqual(exported, {'index.html', 'assets/js/app.js', 'images/photo.webp', 'bloglar/images/hero.webp', 'google123.html', 'sultanbeyli/google123.html', '.htaccess', 'CNAME', 'robots.txt', '_headers'})
+            self.assertEqual(exported, {'index.html', 'assets/js/app.js', 'images/photo.webp', 'bloglar/images/hero.webp', 'google123.html', 'sultanbeyli/google123.html', '.htaccess', 'CNAME', 'robots.txt', '_headers', 'assets/fonts/LICENSE.txt'})
             self.assertTrue((root / 'dist/assets/js/app.js').is_file())
 
     def test_rebuild_updates_readonly_files_without_removing_directories(self):

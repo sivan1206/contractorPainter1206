@@ -19,3 +19,15 @@ GA4 delivery, CAPTCHA service success, WhatsApp message delivery or field CWV.
 
 The generated `dist/` contains only allowed public pages, verification files and
 assets. Working reports, tests, tooling and Python caches are excluded.
+
+Run the complete browser and export regression suite with:
+
+```sh
+python -m unittest discover -s tests -v
+```
+
+After editing `assets/js/analytics.js`, regenerate the delivered version with
+`python tools/minify_analytics.py` (Node/npm required; pinned Terser 5.51.2).
+The PageSpeed regression tests check the generated source hash and the loaded
+script, crawlable WhatsApp fallback, white CTA contrast and inline icon CSS.
+The readable analytics source remains available for maintenance.

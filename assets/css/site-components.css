@@ -355,6 +355,9 @@ section#sss h2 { font-size: clamp(1.7rem, 2.6vw, 2.2rem) !important; }
 .whatsapp-button,
 .social-links a[href^="https://wa.me/"],
 #ilinks a[href^="https://wa.me/"] { color: #fff !important; }
+.btn-whatsapp-hero { background: #15803d !important; }
+.btn-whatsapp-hero:hover,
+.btn-whatsapp-hero:focus-visible { background: #166534 !important; }
 /* White on the orange banner endpoints is 2.84:1 / 2.05:1. */
 .hero-usp-banner { color: #2b2d42 !important; }
 .business-center { line-height: 1.65; }

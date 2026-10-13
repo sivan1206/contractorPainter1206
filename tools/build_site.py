@@ -20,6 +20,8 @@ def public_file(name):
     path = PurePosixPath(name)
     if any(part.startswith('.') or part in {'tests', 'tools', 'dist', '__pycache__'} for part in path.parts):
         return name == '.htaccess'
+    if name == 'assets/fonts/LICENSE.txt':
+        return True
     if len(path.parts) == 1:
         return name in PUBLIC_ROOT_FILES or bool(re.fullmatch(r'(google[0-9a-f]+|yandex_[0-9a-f]+)\.html', name))
     if path.parts[0] in {'bloglar', 'boyaci'} and len(path.parts) == 2 and path.suffix == '.html':

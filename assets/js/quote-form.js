@@ -15,6 +15,7 @@
             fallback.textContent = 'WhatsApp’ı aç ve mesajı gönder';
             fallback.target = '_blank';
             fallback.rel = 'noopener noreferrer';
+            fallback.href = 'https://wa.me/905078322912';
             fallback.hidden = true;
             form.append(status, fallback);
             var attempt = null;
@@ -105,7 +106,7 @@
                 fallback.hidden = true;
                 attempt = null;
                 status.hidden = true;
-                fallback.removeAttribute('href');
+                fallback.href = 'https://wa.me/905078322912';
             });
         });
     }

@@ -59,7 +59,14 @@ class PublicAssetTests(unittest.TestCase):
                 assets.apply_references()
                 result=page.read_text(encoding='utf8')
                 self.assertNotIn('Font Awesome 6 Free',result);self.assertNotIn('Font Awesome 5 Free',result)
-                self.assertIn('IB Site Icons Free',result);self.assertIn('/assets/css/icons.css',result)
-                assets.apply_references();self.assertEqual(page.read_text(encoding='utf8'),result)
+                self.assertIn('IB Site Icons Free',result);self.assertIn('data-ib-icons="inline"',result)
+                self.assertNotIn('<link rel="stylesheet" href="/assets/css/icons.css">',result)
+                self.assertEqual((root/'assets/fonts/LICENSE.txt').read_text(encoding='utf8'),(vendor/'LICENSE.txt').read_text(encoding='utf8'))
+                generated={p.name:p.read_bytes() for p in (root/'assets/fonts').iterdir()}
+                with patch('fontTools.ttLib.tables._h_e_a_d.timestampNow',return_value=4000000000):
+                    assets.icon_assets()
+                assets.apply_references()
+                self.assertEqual(page.read_text(encoding='utf8'),result)
+                self.assertEqual({p.name:p.read_bytes() for p in (root/'assets/fonts').iterdir()},generated)
 
 if __name__=='__main__':unittest.main()
