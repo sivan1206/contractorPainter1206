@@ -63,3 +63,7 @@
 /* Accessible white WhatsApp CTA on green, including keyboard/hover. */
 .btn-whatsapp-hero{background:#15803d!important}
 .btn-whatsapp-hero:hover,.btn-whatsapp-hero:focus-visible{background:#166534!important}
+/* Touch screens have no hover: keep the project captions readable. */
+@media(hover:none),(max-width:768px){.gallery-item .gallery-overlay{transform:translateY(0);background:linear-gradient(0deg,rgb(0 0 0 / .85) 0,rgb(0 0 0 / .5) 65%,transparent 100%);padding:1rem}.gallery-overlay h3{font-size:1.1rem;margin-bottom:.15rem}.gallery-overlay p{font-size:.9rem}}
+/* The calculator total is a div now; keep the former h4 look. */
+.result .calculator-result-title{font-size:1.5rem;font-weight:700;margin-bottom:.5rem}

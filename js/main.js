@@ -74,117 +74,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    const slides = selectAll('.slide');
-    if (slides.length > 0) {
-        const sliderContainer = select('.slider-container');
-        const motionQuery = window.matchMedia
-            ? window.matchMedia('(prefers-reduced-motion: reduce)')
-            : null;
-
-        let currentSlide = 0;
-        let slideInterval;
-        let sliderInitialized = false;
-
-        const hydrateSlideImage = (slide) => {
-            if (!slide) return;
-            const img = slide.querySelector('img[data-src]');
-            if (!img) return;
-
-            if (img.dataset.srcset) {
-                img.srcset = img.dataset.srcset;
-                img.removeAttribute('data-srcset');
-            }
-            if (img.dataset.sizes) {
-                img.sizes = img.dataset.sizes;
-                img.removeAttribute('data-sizes');
-            }
-
-            img.src = img.dataset.src;
-            img.removeAttribute('data-src');
-            img.loading = 'lazy';
-        };
-
-        const preloadNeighborSlide = (index) => {
-            const nextIndex = (index + 1) % slides.length;
-            runIdle(() => hydrateSlideImage(slides[nextIndex]), 2500);
-        };
-
-        const showSlide = (n) => {
-            hydrateSlideImage(slides[n]);
-            slides.forEach((slide, index) => {
-                slide.classList.toggle('active', index === n);
-            });
-            preloadNeighborSlide(n);
-        };
-
-        const nextSlide = () => {
-            currentSlide = (currentSlide + 1) % slides.length;
-            showSlide(currentSlide);
-        };
-
-        const stopSlider = () => {
-            clearInterval(slideInterval);
-            slideInterval = null;
-        };
-
-        const startSlider = () => {
-            if (motionQuery?.matches) {
-                stopSlider();
-                return;
-            }
-            stopSlider();
-            slideInterval = setInterval(nextSlide, 5000);
-        };
-
-        const initHeroSlider = () => {
-            if (sliderInitialized) return;
-
-            showSlide(0);
-            if (!motionQuery?.matches) {
-                startSlider();
-            }
-
-            sliderInitialized = true;
-        };
-
-        motionQuery?.addEventListener('change', (event) => {
-            if (!sliderInitialized) return;
-            if (event.matches) {
-                stopSlider();
-            } else {
-                startSlider();
-            }
-        });
-
-        ['mouseenter', 'focusin', 'touchstart'].forEach((evt) => {
-            sliderContainer?.addEventListener(evt, stopSlider);
-        });
-
-        ['mouseleave', 'focusout', 'touchend'].forEach((evt) => {
-            sliderContainer?.addEventListener(evt, () => {
-                if (motionQuery?.matches) return;
-                if (!sliderInitialized) {
-                    initHeroSlider();
-                    return;
-                }
-                startSlider();
-            });
-        });
-
-        if ('IntersectionObserver' in window && sliderContainer) {
-            const heroObserver = new IntersectionObserver((entries, observer) => {
-                if (entries.some((entry) => entry.isIntersecting)) {
-                    initHeroSlider();
-                    observer.disconnect();
-                }
-            }, { threshold: 0.25 });
-
-            heroObserver.observe(sliderContainer);
-        } else {
-            initHeroSlider();
-        }
-    }
-
     const calculateBtn = select('#calculate-btn');
     if (calculateBtn) {
         calculateBtn.addEventListener('click', () => {
@@ -232,8 +121,6 @@ document.addEventListener('DOMContentLoaded', () => {
         testimonialSlider.dataset.initialized = 'true';
 
         const testimonials = selectAll('.testimonial');
-        const prevBtn = select('#prev-testimonial');
-        const nextBtn = select('#next-testimonial');
         const indicatorsContainer = select('#slider-indicators');
 
         let currentTestimonial = 0;
@@ -338,10 +225,6 @@ document.addEventListener('DOMContentLoaded', () => {
             showTestimonial((currentTestimonial + 1) % testimonials.length);
         };
 
-        const prevTestimonial = () => {
-            showTestimonial((currentTestimonial - 1 + testimonials.length) % testimonials.length);
-        };
-
         const startAutoSlide = () => {
             stopAutoSlide();
             testimonialInterval = setInterval(nextTestimonial, 7000);
@@ -357,16 +240,6 @@ document.addEventListener('DOMContentLoaded', () => {
             stopAutoSlide();
             startAutoSlide();
         };
-
-        prevBtn?.addEventListener('click', () => {
-            prevTestimonial();
-            resetAutoSlide();
-        });
-
-        nextBtn?.addEventListener('click', () => {
-            nextTestimonial();
-            resetAutoSlide();
-        });
 
         const testimonialContainer = select('.testimonial-container');
         if (testimonialContainer) {
@@ -445,6 +318,7 @@ document.addEventListener('DOMContentLoaded', () => {
         readMoreBtn.addEventListener('click', function onReadMoreClick() {
             const isVisible = moreContent.style.display === 'block';
             moreContent.style.display = isVisible ? 'none' : 'block';
+            this.setAttribute('aria-expanded', isVisible ? 'false' : 'true');
             this.innerHTML = isVisible
                 ? 'Daha Fazla Bilgi <i class="fas fa-chevron-down"></i>'
                 : 'Daha Az Göster <i class="fas fa-chevron-up"></i>';

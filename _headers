@@ -7,10 +7,10 @@
   Cache-Control: public, max-age=0, must-revalidate
 
 /assets/*
-  Cache-Control: public, max-age=600, must-revalidate
+  Cache-Control: public, max-age=86400, must-revalidate
 
 /images/*
-  Cache-Control: public, max-age=600, must-revalidate
+  Cache-Control: public, max-age=86400, must-revalidate
 
 /fonts/*
-  Cache-Control: public, max-age=600, must-revalidate
+  Cache-Control: public, max-age=86400, must-revalidate

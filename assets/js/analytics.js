@@ -309,18 +309,25 @@
         '.ib-consent-dialog .ib-accept{background:#4361ee;color:white}',
         '.ib-consent-dialog .ib-consent-actions{margin-top:1rem}',
         '.ib-consent button:focus-visible,.ib-consent-dialog button:focus-visible{outline:3px solid #152c8c;outline-offset:3px}',
-        '@media(max-width:520px){.ib-consent-actions{display:grid;grid-template-columns:1fr 1fr}',
-        '.ib-consent button{width:100%;padding:.45rem .3rem;font-size:.85rem}',
-        '.ib-consent .ib-prefs{grid-column:1/-1;border:0;padding:.2rem;min-height:44px}}',
+        '.ib-consent-short{display:none}',
+        // Compact mobile panel: the long sentence is hidden, the buttons share
+        // one short row, and the min-height is lowered (still above the 24px
+        // WCAG 2.2 target size) so the strip stays small and the floating
+        // contact buttons can sit just above it.
+        '@media(max-width:520px){',
+        '.ib-consent{padding:.4rem .6rem calc(.4rem + env(safe-area-inset-bottom,0px));font-size:.78rem;line-height:1.25}',
+        '.ib-consent p{margin:0 0 .35rem}',
+        '.ib-consent-long{display:none}.ib-consent-short{display:inline}',
+        '.ib-consent-actions{display:grid;grid-template-columns:repeat(3,1fr);gap:.35rem}',
+        '.ib-consent button{width:100%;min-height:34px;padding:.15rem;font-size:.75rem;line-height:1.1;border-width:1.5px}}',
         // Only fixed outer contact containers participate. Nested phone
         // links and ordinary hero/contact links retain their normal layout.
-        'html.ib-consent-open .ib-consent-floating{margin-bottom:var(--ib-consent-lift,0px)}',
-        '@media(max-width:768px){html.ib-consent-open .ib-consent-floating{display:none!important}}'
+        'html.ib-consent-open .ib-consent-floating{margin-bottom:var(--ib-consent-lift,0px)}'
     ].join('');
 
     var BANNER =
         '<div class="ib-consent-inner">' +
-        '<p><strong>İsteğe bağlı analitik.</strong> Kullanımı Google Analytics ile ölçmemize izin verir misiniz? ' +
+        '<p><strong>İsteğe bağlı analitik.</strong><span class="ib-consent-long"> Kullanımı Google Analytics ile ölçmemize izin verir misiniz?</span><span class="ib-consent-short"> Google Analytics ölçümüne izin verir misiniz?</span> ' +
         '<a href="' + POLICY_URL + '">Çerez politikası</a></p>' +
         '<div class="ib-consent-actions">' +
         '<button type="button" class="ib-accept">Analitiği Kabul Et</button>' +
@@ -347,13 +354,15 @@
         '</div>';
 
     var banner = null;
-    var CTA_GAP_PX = 12;
+    var CTA_GAP_PX = 8;
 
     /*
      * Keep the floating CTAs clear of the banner. The height is measured from
      * the live element rather than assumed, because the banner wraps to a
      * different height per viewport and grows again when the preferences panel
-     * is expanded.
+     * is expanded. Each CTA already has its own distance from the viewport
+     * bottom, so the lift is computed per element: that distance counts toward
+     * the gap instead of being added on top of it.
      */
     function syncCtaOffset() {
         var root = document.documentElement;
@@ -361,14 +370,24 @@
         if (!banner || banner.hidden) {
             root.classList.remove('ib-consent-open');
             root.style.removeProperty('--ib-consent-lift');
+            document.querySelectorAll('.ib-consent-floating').forEach(function (element) {
+                element.style.removeProperty('--ib-consent-lift');
+            });
             return;
         }
 
-        document.querySelectorAll('.call-us-button,.call-button,.call-fixed,.whatsapp-button').forEach(function (element) {
-            element.classList.toggle('ib-consent-floating', window.getComputedStyle(element).position === 'fixed');
-        });
-
         var height = Math.ceil(banner.getBoundingClientRect().height);
+
+        document.querySelectorAll('.call-us-button,.call-button,.call-fixed,.whatsapp-button').forEach(function (element) {
+            var floating = window.getComputedStyle(element).position === 'fixed';
+            element.classList.toggle('ib-consent-floating', floating);
+            if (floating) {
+                var own = parseFloat(window.getComputedStyle(element).bottom) || 0;
+                element.style.setProperty('--ib-consent-lift', Math.max(0, height + CTA_GAP_PX - own) + 'px');
+            } else {
+                element.style.removeProperty('--ib-consent-lift');
+            }
+        });
 
         root.style.setProperty('--ib-consent-lift', (height + CTA_GAP_PX) + 'px');
         root.classList.add('ib-consent-open');

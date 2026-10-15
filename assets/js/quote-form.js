@@ -26,6 +26,15 @@
                 var field = fieldFor(id);
                 return field ? field.value.trim() : '';
             }
+            // The homepage keeps its price calculator in a separate form; its
+            // area still belongs in the message the visitor sends.
+            function area() {
+                var own = value('area');
+                if (own) return own;
+                var calculator = document.querySelector('#price-calculator #area');
+                var typed = calculator ? calculator.value.trim() : '';
+                return parseFloat(typed) > 0 ? typed : '';
+            }
             function label(id) {
                 var field = fieldFor(id);
                 return field && field.selectedOptions ? field.selectedOptions[0].textContent.trim() : value(id);
@@ -40,17 +49,6 @@
                     inform('Lütfen zorunlu alanları doldurun.');
                     return false;
                 }
-                if (form.querySelector('.g-recaptcha[data-sitekey]')) {
-                    try {
-                        if (!window.grecaptcha || typeof window.grecaptcha.getResponse !== 'function' || !window.grecaptcha.getResponse()) {
-                            inform('Doğrulama testi yüklenmeli ve tamamlanmalı. Lütfen tekrar deneyin.');
-                            return false;
-                        }
-                    } catch (e) {
-                        inform('Doğrulama testi hazır değil. Lütfen tekrar deneyin.');
-                        return false;
-                    }
-                }
                 return true;
             }
             function url() {
@@ -62,7 +60,7 @@
                 lines.push('İlçe/Semt: ' + district);
                 if (value('service')) lines.push('Hizmet Türü: ' + label('service'));
                 if (value('timing')) lines.push('Başlama Zamanı: ' + label('timing'));
-                if (value('area')) lines.push('Alan (m²): ' + value('area'));
+                if (area()) lines.push('Alan (m²): ' + area());
                 if (value('message')) lines.push('Mesaj: ' + value('message'));
                 return 'https://wa.me/905078322912?text=' + encodeURIComponent(lines.join('\n'));
             }

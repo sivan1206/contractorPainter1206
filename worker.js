@@ -98,10 +98,22 @@ export default {
     );
 
     // Cache configuration.
-    if (/^\/(assets|images|fonts)\//.test(url.pathname)) {
+    // CSS/JS references are rewritten with ?v=<content hash> by
+    // tools/version_assets.py, so a hashed URL never changes in place.
+    const hashedCode =
+      /\.(css|js)$/i.test(url.pathname) &&
+      /^[0-9a-f]{8,}$/i.test(url.searchParams.get("v") || "");
+
+    if (hashedCode) {
       headers.set(
         "Cache-Control",
-        "public, max-age=600, must-revalidate"
+        "public, max-age=31536000, immutable"
+      );
+    } else if (/^\/(assets|images|fonts)\//.test(url.pathname)) {
+      // Images and fonts are not content-hashed, so stay revalidatable.
+      headers.set(
+        "Cache-Control",
+        "public, max-age=86400, must-revalidate"
       );
     } else {
       headers.set(

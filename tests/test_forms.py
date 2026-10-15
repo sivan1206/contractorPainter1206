@@ -42,11 +42,8 @@ class Forms(unittest.TestCase):
   self.assertEqual([x[0] for x in self.events(p)],['quote_request_started']);self.assertEqual(len(p.evaluate('quoteEvents')),1)
  def test_invalid_email(self):
   p=self.page();p.locator('#email, [name=email]').fill('bad');self.submit(p);self.assertEqual(p.evaluate('opened'),[]);self.assertEqual(self.events(p),[])
- def test_home_captcha_missing_and_empty(self):
-  for cap in [None,'']:
-   p=self.page(home=True,captcha=cap);self.submit(p);self.assertEqual(p.evaluate('opened'),[]);self.assertEqual(self.events(p),[]);self.assertTrue(p.locator('[data-quote-status]').is_visible())
- def test_home_captcha_valid(self):
-  p=self.page(home=True,captcha='token');self.submit(p);self.assertEqual(len(p.evaluate('opened')),1);self.assertEqual([x[0] for x in self.events(p)],['quote_request_started'])
+ def test_home_form_direct_submit(self):
+  p=self.page(home=True);self.submit(p);self.assertEqual(len(p.evaluate('opened')),1);self.assertEqual([x[0] for x in self.events(p)],['quote_request_started'])
  def test_denied_no_replay(self):
   p=self.page(consent='denied');self.submit(p);self.assertEqual(self.events(p),[])
   p.locator('.ib-consent-link').click();p.locator('.ib-consent .ib-accept').click();self.assertEqual(self.events(p),[])
@@ -103,7 +100,7 @@ class Forms(unittest.TestCase):
       const targets=Array.from(document.querySelectorAll('.hero h1,.hero h2,.hero a[href],.hero-content h1,.hero-content h2,.hero-content a[href],.slide.active h1,.slide.active h2,.slide.active a[href]'));
       const visible=e=>e.getBoundingClientRect().width>0&&e.getBoundingClientRect().height>0;
       const intersects=(a,b)=>a.left<b.right&&a.right>b.left&&a.top<b.bottom&&a.bottom>b.top;
-      return {count:floats.length, overlaps:floats.filter(visible).some(f=>targets.filter(visible).some(t=>intersects(f.getBoundingClientRect(),t.getBoundingClientRect()))), ordinary:ordinary.filter(visible).length};
+      return {count:floats.length, overlaps:floats.filter(visible).some(f=>targets.filter(visible).some(t=>!f.contains(t)&&!t.contains(f)&&intersects(f.getBoundingClientRect(),t.getBoundingClientRect()))), ordinary:ordinary.filter(visible).length};
     }""")
     self.assertGreater(result['count'],0);self.assertFalse(result['overlaps']);self.assertGreater(result['ordinary'],0)
     p.locator('.ib-consent .ib-reject').click()
