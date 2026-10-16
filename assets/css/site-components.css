@@ -366,3 +366,143 @@ section#sss h2 { font-size: clamp(1.7rem, 2.6vw, 2.2rem) !important; }
     outline: 3px solid #3251d4;
     outline-offset: 2px;
 }
+
+/* Location heroes must grow with their content on short screens. Fixed vh
+   heights plus vertical centering used to push the banner under the header. */
+.location-page .hero {
+  box-sizing: border-box;
+  height: auto;
+  min-height: 100vh;
+  min-height: 100svh;
+  margin-top: 0;
+  padding: 120px 24px 64px;
+  overflow: visible;
+}
+.location-page .hero > .container {
+  width: 100%;
+  max-width: var(--ib-max);
+  padding: 0;
+}
+.location-page .hero .hero-content {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+@media (max-width: 768px) {
+  .location-page > header {
+    background: rgb(15 23 42 / 96%);
+    padding: 0 20px;
+  }
+  .location-page > header > .container {
+    width: 100%;
+    padding: 0;
+  }
+  .location-page > header nav {
+    width: 100%;
+    min-height: 76px;
+    padding: 12px 0;
+  }
+  .location-page > header .logo {
+    font-size: 1.25rem;
+    line-height: 1.2;
+  }
+  .location-page > header .main-nav {
+    top: 76px;
+    max-height: calc(100vh - 76px);
+    max-height: calc(100dvh - 76px);
+    overflow-y: auto;
+  }
+
+  .location-page .hero {
+    padding: 104px 20px 40px;
+    text-align: center;
+  }
+  .location-page .hero .hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 40rem;
+  }
+  .location-page .hero .hero-usp-banner {
+    max-width: 100%;
+    margin-bottom: 16px !important;
+    padding: 8px 14px !important;
+    border-radius: 12px !important;
+    font-size: .8rem !important;
+    line-height: 1.45;
+    box-shadow: none !important;
+  }
+  .location-page .hero h1 {
+    margin: 0 0 16px;
+    font-size: clamp(1.65rem, 7.2vw, 2.125rem);
+    line-height: 1.2;
+    letter-spacing: -.025em;
+    text-transform: none;
+    overflow-wrap: break-word;
+  }
+  .location-page .hero p {
+    max-width: 36rem;
+    margin: 0 0 24px;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  .location-page .hero .hero-buttons {
+    order: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    width: 100%;
+    max-width: 360px;
+    margin: 0;
+  }
+  .location-page .hero-buttons .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: none;
+    min-height: 48px;
+    padding: 12px 16px;
+    border-radius: 12px;
+    font-size: 1rem;
+    line-height: 1.4;
+    text-align: center;
+    box-shadow: none;
+  }
+  .location-page .hero .hero-badge-group {
+    order: 2;
+    gap: 8px 16px !important;
+    max-width: 100%;
+    margin: 20px 0 0 !important;
+  }
+  .location-page .hero-badge-group > span {
+    padding: 0 !important;
+    border: 0 !important;
+    background: transparent !important;
+    border-radius: 0 !important;
+    font-size: .8rem !important;
+    line-height: 1.5;
+  }
+
+  /* The hero already contains the contact actions. Show the persistent pair
+     only once it has left the viewport, avoiding duplicate overlapping CTAs.
+     Without JavaScript the ordinary hero/footer contact links stay usable. */
+  .location-page .call-us-button,
+  .location-page .phone-button,
+  .location-page .whatsapp-button {
+    visibility: hidden;
+    pointer-events: none;
+  }
+  .location-page.ib-hero-passed .call-us-button,
+  .location-page.ib-hero-passed .phone-button,
+  .location-page.ib-hero-passed .whatsapp-button {
+    visibility: visible;
+    pointer-events: auto;
+    min-width: 48px;
+    min-height: 48px;
+  }
+}
