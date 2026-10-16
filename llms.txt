@@ -42,13 +42,32 @@ Bu bölümdeki içerikler ticari teklif yerine uygulama kararlarını açıklaya
 - [Alçı mı, macun mu?](https://istanbulboyacilik.com/bloglar/alci-mi-macun-mu.html): Alçı ve macunun işlevlerini, hangi yüzey sorunlarında kullanıldıklarını ve boya öncesi uygulama sırasını açıklar.
 - [Eşyalı ev boyanırken eşyalar nasıl korunur?](https://istanbulboyacilik.com/bloglar/esyali-ev-boyanirken-esyalar-nasil-korunur.html): Mobilya, zemin, elektronik eşya, kapı ve pencere yüzeyleri için hazırlık ve koruma adımlarını anlatır.
 
+## 2026 Indicative Pricing Summary (Gösterge Fiyat Aralıkları)
+
+Aşağıdaki aralıklar 2026 yılı için gösterge niteliğindedir; kesin fiyat ücretsiz yerinde keşif, yüzey hazırlığı, eşyalı/boş durumu ve seçilen boya markasına (Filli Boya, Marshall, Jotun, Dyo) göre yazılı teklifle netleşir:
+
+- İç Cephe Boyama (Metrekare bazlı): 100 – 200 TL / m² (100 m² için ortalama 2–3 gün)
+- Dış Cephe Boyama (Metrekare bazlı): 180 – 280 TL / m² (100 m² için ortalama 3–5 gün)
+- Dekoratif / İtalyan Boyama: 250 – 500 TL / m² (100 m² için ortalama 4–7 gün)
+- Ofis & İş Yeri Boyama: 150 – 250 TL / m² (100 m² için ortalama 2–4 gün)
+- 1+1 Daire Komple Boya Badana (80–120 m² boyama alanı, malzeme dahil yaklaşık proje aralığı): 16.000 – 28.000 TL (sadece işçilik: 9.600 – 18.000 TL)
+- 2+1 Daire Komple Boya Badana (130–180 m² boyama alanı, malzeme dahil yaklaşık proje aralığı): 25.000 – 42.000 TL (sadece işçilik: 15.600 – 27.000 TL)
+- 3+1 Daire Komple Boya Badana (190–260 m² boyama alanı, malzeme dahil yaklaşık proje aralığı): 35.000 – 58.000 TL (sadece işçilik: 22.800 – 39.000 TL)
+- 4+1 Daire / Villa Komple Boya Badana (280+ m² boyama alanı, malzeme dahil yaklaşık proje aralığı): 50.000 – 80.000+ TL (sadece işçilik: 33.600 – 50.000+ TL)
+
+## All 48 Active District & Neighborhood Pages (17 Anadolu & 31 Avrupa Yakası)
+
+- Anadolu Yakası (17): https://istanbulboyacilik.com/acarkent/, https://istanbulboyacilik.com/acibadem/, https://istanbulboyacilik.com/atasehir/, https://istanbulboyacilik.com/beykoz/, https://istanbulboyacilik.com/camlica/, https://istanbulboyacilik.com/cekmekoy/, https://istanbulboyacilik.com/kadikoy/, https://istanbulboyacilik.com/kandilli/, https://istanbulboyacilik.com/kartal/, https://istanbulboyacilik.com/maltepe/, https://istanbulboyacilik.com/pendik/, https://istanbulboyacilik.com/sancaktepe/, https://istanbulboyacilik.com/sile/, https://istanbulboyacilik.com/sultanbeyli/, https://istanbulboyacilik.com/tuzla/, https://istanbulboyacilik.com/umraniye/, https://istanbulboyacilik.com/uskudar/
+- Avrupa Yakası (31): https://istanbulboyacilik.com/arnavutkoy/, https://istanbulboyacilik.com/avcilar/, https://istanbulboyacilik.com/bagcilar/, https://istanbulboyacilik.com/bahcelievler/, https://istanbulboyacilik.com/bakirkoy/, https://istanbulboyacilik.com/basaksehir/, https://istanbulboyacilik.com/bayrampasa/, https://istanbulboyacilik.com/bebek/, https://istanbulboyacilik.com/besiktas/, https://istanbulboyacilik.com/beylikduzu/, https://istanbulboyacilik.com/beyoglu/, https://istanbulboyacilik.com/buyukcekmece/, https://istanbulboyacilik.com/catalca/, https://istanbulboyacilik.com/esenler/, https://istanbulboyacilik.com/esenyurt/, https://istanbulboyacilik.com/etiler/, https://istanbulboyacilik.com/fatih/, https://istanbulboyacilik.com/gaziosmanpasa/, https://istanbulboyacilik.com/gungoren/, https://istanbulboyacilik.com/kagithane/, https://istanbulboyacilik.com/kemerburgaz/, https://istanbulboyacilik.com/kucukcekmece/, https://istanbulboyacilik.com/levent/, https://istanbulboyacilik.com/nisantasi/, https://istanbulboyacilik.com/sariyer/, https://istanbulboyacilik.com/silivri/, https://istanbulboyacilik.com/sisli/, https://istanbulboyacilik.com/tarabya/, https://istanbulboyacilik.com/ulus/, https://istanbulboyacilik.com/zekeriyakoy/, https://istanbulboyacilik.com/zeytinburnu/
+
 ## Business Identity and Contact
 
 - İşletme adı: İstanbul Boyacılık.
 - Ana web adresi: https://istanbulboyacilik.com/
 - Telefon: +90 507 832 29 12.
+- E-posta: boyaustamistanbul@gmail.com
 - Görünen adres: Orta, Demirkapı Cd. No:1, 34030 Bayrampaşa, İstanbul, Türkiye.
-- Hizmet alanı: İstanbul; Avrupa ve Anadolu yakalarındaki ilçe ve semtler.
+- Hizmet alanı: İstanbul; Avrupa ve Anadolu yakalarındaki ilçe ve semtler (7/24 randevulu keşif).
 - Ana sayfadaki telefon, WhatsApp ve teklif formu, hizmet kapsamı ve randevulu keşif hakkında iletişim kurmak için kullanılır.
 
 ## Policies

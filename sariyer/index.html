@@ -8,10 +8,8 @@
   <title>Sarıyer Boyacı Ustası | Profesyonel Boya Badana Hizmeti</title>
   <meta name="description"
     content="Sarıyer ve Boğaz hattında villa, daire ve ofis boyama. İstinye-Tarabya çevresinde eşya koruma, dış cephe ve temiz teslim için randevulu keşif alın.">
-  <meta name="keywords"
-    content="Sarıyer boyacı ustası, Sarıyer boya ustası, Sarıyer boya badana, Sarıyer ev boyama, Sarıyer iç cephe boyama, Sarıyer dış cephe boyama, Sarıyer uygun fiyatlı boyacı, Sarıyer ofis boyama hizmeti, Sarıyer profesyonel boyacı, Sarıyer boya işleri, Sarıyer badana ustası, Sarıyer ev boya ustası, Sarıyer boyacı, Sarıyer daire boyama">
   <meta name="author" content="İstanbul Boyacılık">
-  <meta name="robots" content="index, follow">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <link rel="canonical" href="https://istanbulboyacilik.com/sariyer/">
   <meta property="og:title" content="Sarıyer Boyacı Ustası | Profesyonel Boya Badana Hizmeti">
   <meta property="og:description" content="Sarıyer ve Boğaz hattında villa, daire ve ofis boyama. İstinye-Tarabya çevresinde eşya koruma, dış cephe ve temiz teslim için randevulu keşif alın.">
@@ -68,7 +66,7 @@
     }
 
     body {
-      font-family: 'Poppins', sans-serif;
+      font-family: 'Segoe UI',Tahoma,sans-serif;
       line-height: 1.6;
       color: var(--text-dark);
       background-color: var(--white);
@@ -380,8 +378,8 @@
 
     }
   </style>
-  <link rel="stylesheet" href="styles.pure.css?v=223bb98be824">
-  <script defer src="/assets/js/analytics.min.js?v=e43eff294fc5"></script>
+  <link rel="stylesheet" href="styles.pure.css?v=552184f9b117">
+  <script defer src="/assets/js/analytics.min.js?v=5ef4c70dc681"></script>
   <link rel="stylesheet" href="/assets/css/site-components.css?v=3e74ca5514b8">
 <style data-phase2="responsive-hero">@media(max-width:768px){.hero::before{background:linear-gradient(var(--overlay), var(--overlay)),
         url("images/gallery/istanbul-boya-ustas-IsYeri-800.webp") no-repeat center center/cover!important}}@media(max-width:480px){.hero::before{background:linear-gradient(var(--overlay), var(--overlay)),
@@ -403,18 +401,18 @@
   <header id="header">
     <div class="container">
       <nav>
-        <div class="logo">
+        <div class="logo"><a href="/" style="color:inherit;text-decoration:none;display:inline-flex;align-items:center;gap:inherit">
           <i class="fas fa-paint-roller"></i>İstanbul Boyacılık
-        </div>
+        </a></div>
         <ul class="main-nav">
-          <li><a href="#anasayfa" class="active">Ana Sayfa</a></li>
+          <li><a href="/" class="active">Ana Sayfa</a></li>
           <li><a href="#hizmetler">Hizmetler</a></li>
           <li><a href="#fiyatlar">Fiyatlar</a></li>
           <li><a href="#sariyer-mahalleler">Mahalleler</a></li>
           <li><a href="#yorumlar">Yorumlar</a></li>
           <li><a href="#iletisim">İletişim</a></li>
         </ul>
-        <button class="mobile-menu-button" aria-label="Menüyü Aç/Kapat">
+        <button type="button" class="mobile-menu-button" aria-label="Menüyü Aç/Kapat" aria-expanded="false">
           <i class="fas fa-bars"></i>
         </button>
       </nav>
@@ -837,30 +835,32 @@
           <form id="quote-form">
             <div class="form-group">
               <label for="name">Adınız Soyadınız*</label>
-              <input type="text" id="name" required>
+              <input type="text" id="name" name="name" autocomplete="name" required>
             </div>
             <div class="form-group">
               <label for="phone">Telefon*</label>
-              <input type="tel" id="phone" required>
+              <input type="tel" id="phone" name="phone" autocomplete="tel" inputmode="tel" required>
             </div>
             <div class="form-group">
               <label for="email">E-posta</label>
-              <input type="email" id="email">
+              <input type="email" id="email" name="email" autocomplete="email" inputmode="email">
             </div>
             <div class="form-group">
               <label for="service">Hizmet Türü*</label>
-              <select id="service" required>
+              <select id="service" name="service" required>
                 <option value="">Seçiniz</option>
                 <option value="ic-cephe">İç Cephe Boyama</option>
                 <option value="dis-cephe">Dış Cephe Boyama</option>
                 <option value="dekoratif">Dekoratif Boyama</option>
-                <option value="ofis">Ofis Boyama</option>
-                <option value="badana">Badana Hizmeti</option>
+                <option value="ofis">Ofis ve İş Yeri Boyama</option>
+                <option value="villa">Villa ve Müstakil Ev Boyama</option>
+                <option value="tamirat">Alçı, Sıva ve Duvar Tamiratı</option>
+                <option value="apartman">Apartman ve Merdiven Boşluğu</option>
               </select>
             </div>
             <div class="form-group">
               <label for="message">Mesajınız</label>
-              <textarea id="message" rows="4"></textarea>
+              <textarea id="message" name="message" rows="4"></textarea>
             </div>
             <button type="submit" class="btn-form">
               <i class="fas fa-paper-plane"></i> Gönder
@@ -888,7 +888,7 @@
         <div class="footer-section">
           <h3>Hızlı Erişim</h3>
           <ul>
-            <li><a href="#anasayfa">Ana Sayfa</a></li>
+            <li><a href="/">Ana Sayfa</a></li>
             <li><a href="#hizmetler">Hizmetlerimiz</a></li>
             <li><a href="#fiyatlar">Fiyatlar</a></li>
             <li><a href="#yorumlar">Yorumlar</a></li>
@@ -910,7 +910,7 @@
       </div>
     </div>
   </footer>
-  <script src="main.js?v=199ef497a112" defer></script>
+  <script src="main.js?v=3f22189b48b7" defer></script>
   <a href="tel:+905078322912" class="call-us-button" aria-label="Telefonla ara: 0507 832 29 12"><i class="fas fa-phone"></i></a>
   <script src="/assets/js/quote-form.js?v=8091e1f88dc1" defer></script>
 </body>

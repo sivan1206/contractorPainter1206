@@ -61,29 +61,74 @@ document.addEventListener('DOMContentLoaded', function () {
     faqItems.forEach(function (item) {
         var question = item.querySelector('.faq-question');
         if (!question) return;
-        question.addEventListener('click', function () {
+        if (!question.hasAttribute('role')) question.setAttribute('role', 'button');
+        if (!question.hasAttribute('tabindex')) question.setAttribute('tabindex', '0');
+        question.setAttribute('aria-expanded', item.classList.contains('active') ? 'true' : 'false');
+        var toggleFaq = function () {
+            var isActive = item.classList.contains('active');
             faqItems.forEach(function (otherItem) {
-                if (otherItem !== item) otherItem.classList.remove('active');
+                if (otherItem !== item) {
+                    otherItem.classList.remove('active');
+                    var otherQ = otherItem.querySelector('.faq-question');
+                    if (otherQ) otherQ.setAttribute('aria-expanded', 'false');
+                }
             });
-            item.classList.toggle('active');
+            item.classList.toggle('active', !isActive);
+            question.setAttribute('aria-expanded', !isActive ? 'true' : 'false');
+        };
+        question.addEventListener('click', toggleFaq);
+        question.addEventListener('keydown', function (event) {
+            if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                toggleFaq();
+            }
         });
     });
 
     var searchInput = document.getElementById('faq-search');
     if (searchInput) {
+        var emptyStateEl = document.getElementById('faq-empty-state');
+        if (!emptyStateEl && faqItems.length && faqItems[0].parentNode) {
+            emptyStateEl = document.createElement('p');
+            emptyStateEl.id = 'faq-empty-state';
+            emptyStateEl.setAttribute('role', 'status');
+            emptyStateEl.setAttribute('aria-live', 'polite');
+            emptyStateEl.style.display = 'none';
+            emptyStateEl.style.textAlign = 'center';
+            emptyStateEl.style.padding = '1rem';
+            emptyStateEl.textContent = 'Aramanızla eşleşen soru bulunamadı.';
+            var contactBanner = faqItems[0].parentNode.querySelector('.contact-banner');
+            if (contactBanner) {
+                faqItems[0].parentNode.insertBefore(emptyStateEl, contactBanner);
+            } else {
+                faqItems[0].parentNode.appendChild(emptyStateEl);
+            }
+        }
         searchInput.addEventListener('input', function () {
             var searchTerm = this.value.toLowerCase().trim();
+            var matchCount = 0;
             faqItems.forEach(function (item) {
                 var question = item.querySelector('.faq-question');
                 var answer = item.querySelector('.faq-answer');
                 var questionText = question ? question.textContent.toLowerCase() : '';
                 var answerText = answer ? answer.textContent.toLowerCase() : '';
-                if (!searchTerm || questionText.includes(searchTerm) || answerText.includes(searchTerm)) {
-                    item.style.display = 'block';
-                    return;
+                var matches = !searchTerm || questionText.includes(searchTerm) || answerText.includes(searchTerm);
+                item.style.display = matches ? 'block' : 'none';
+                if (matches) {
+                    matchCount += 1;
+                    if (searchTerm && answerText.includes(searchTerm) && !item.classList.contains('active')) {
+                        item.classList.add('active');
+                        if (question) question.setAttribute('aria-expanded', 'true');
+                    }
                 }
-                item.style.display = 'none';
+                if (!searchTerm) {
+                    item.classList.remove('active');
+                    if (question) question.setAttribute('aria-expanded', 'false');
+                }
             });
+            if (emptyStateEl) {
+                emptyStateEl.style.display = matchCount === 0 ? 'block' : 'none';
+            }
         });
     }
 });

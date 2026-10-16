@@ -62,5 +62,44 @@ class PageSpeedRegressions(unittest.TestCase):
         page=self.page()
         self.assertEqual(page.locator('script[src*="assets/js/analytics.min.js"]').count(),1)
         self.assertEqual(page.locator('script[src*="assets/js/analytics.js"]').count(),0)
+    def test_calculator_validates_bounds_on_click_and_enter(self):
+        page=self.page()
+        valid={'10':'1.000–2.000 TL','100':'10.000–20.000 TL','1000':'100.000–200.000 TL'}
+        invalid=['','-5','0','1','1001','2000','10.5']
+        for val,expected in valid.items():
+            page.locator('#area').fill(val);page.locator('#calculate-btn').click()
+            self.assertEqual(page.locator('#estimated-cost').text_content(),expected)
+            page.locator('#estimated-cost').evaluate("e=>e.textContent='RESET'")
+            page.locator('#area').fill(val);page.locator('#area').press('Enter')
+            self.assertEqual(page.locator('#estimated-cost').text_content(),expected)
+        for val in invalid:
+            page.locator('#area').fill('100');page.locator('#calculate-btn').click()
+            page.locator('#area').fill(val);page.locator('#calculate-btn').click()
+            click_msg=page.locator('#estimated-cost').text_content()
+            self.assertIn('10 ile 1000',click_msg)
+            page.locator('#area').fill('100');page.locator('#calculate-btn').click()
+            page.locator('#area').fill(val);page.locator('#area').press('Enter')
+            enter_msg=page.locator('#estimated-cost').text_content()
+            self.assertEqual(click_msg,enter_msg)
+    def test_hero_h1_geometry_matches_before_and_after_external_css(self):
+        base=f'http://127.0.0.1:{self.server.server_port}'
+        probe="""e=>{const cs=getComputedStyle(e),r=e.getBoundingClientRect();return {fontFamily:cs.fontFamily,fontSize:cs.fontSize,lineHeight:cs.lineHeight,maxWidth:cs.maxWidth,letterSpacing:cs.letterSpacing,width:Math.round(r.width*100)/100,height:Math.round(r.height*100)/100}}"""
+        for w,h in [(390,844),(600,900),(1365,900)]:
+            with self.subTest(viewport=f'{w}x{h}'):
+                p1=self.browser.new_page(viewport={'width':w,'height':h})
+                p1.route('**/*',lambda r:r.abort() if 'styles.pure.css' in r.request.url or not r.request.url.startswith(base) else r.continue_())
+                p1.goto(f'{base}/',wait_until='load');before=p1.locator('.hero-content h1').evaluate(probe);p1.close()
+                p2=self.browser.new_page(viewport={'width':w,'height':h})
+                p2.route('**/*',lambda r:r.continue_() if r.request.url.startswith(base) else r.abort())
+                p2.goto(f'{base}/',wait_until='load');after=p2.locator('.hero-content h1').evaluate(probe);p2.close()
+                self.assertEqual(before,after)
+    def test_district_faq_search_shows_accessible_empty_state(self):
+        page=self.page()
+        page.goto(f'http://127.0.0.1:{self.server.server_port}/kadikoy/',wait_until='load')
+        page.locator('#faq-search').fill('zzzzz_olmayan_kelime')
+        empty=page.locator('#faq-empty-state')
+        self.assertEqual(empty.count(),1);self.assertTrue(empty.is_visible())
+        self.assertEqual(empty.get_attribute('role'),'status')
+        self.assertEqual(empty.get_attribute('aria-live'),'polite')
 
 if __name__=='__main__':unittest.main()

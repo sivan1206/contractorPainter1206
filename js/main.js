@@ -75,22 +75,59 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const calculateBtn = select('#calculate-btn');
+    const calculatorForm = select('#price-calculator');
     if (calculateBtn) {
-        calculateBtn.addEventListener('click', () => {
-            const area = parseFloat(select('#area').value);
-            const servicePrice = parseFloat(select('#service-type').value);
+        const formatTL = (n) => n.toLocaleString('tr-TR', {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0
+        });
+        const runCalculation = () => {
+            const areaEl = select('#area');
+            const serviceEl = select('#service-type');
+            const outEl = select('#estimated-cost');
+            if (!areaEl || !serviceEl || !outEl) return;
 
-            if (!(area > 0 && servicePrice > 0)) {
-                alert('Lütfen geçerli bir metrekare ve hizmet türü girin!');
+            const rawValue = areaEl.value.trim();
+            const area = Number(rawValue);
+            const minArea = Number(areaEl.min) || 10;
+            const maxArea = Number(areaEl.max) || 1000;
+            const opt = serviceEl.options[serviceEl.selectedIndex];
+            const min = opt ? parseFloat(opt.getAttribute('data-min')) : NaN;
+            const max = opt ? parseFloat(opt.getAttribute('data-max')) : NaN;
+            const servicePrice = parseFloat(serviceEl.value);
+
+            const isValidArea =
+                rawValue !== '' &&
+                Number.isFinite(area) &&
+                Number.isInteger(area) &&
+                area >= minArea &&
+                area <= maxArea &&
+                (typeof areaEl.checkValidity !== 'function' || areaEl.checkValidity());
+
+            if (!isValidArea || !((min > 0 && max > 0) || servicePrice > 0)) {
+                outEl.textContent = `Lütfen ${minArea} ile ${maxArea} m² arasında geçerli bir tam sayı girin.`;
+                if (typeof areaEl.reportValidity === 'function') {
+                    areaEl.reportValidity();
+                }
+                areaEl.focus();
                 return;
             }
 
-            const cost = area * servicePrice;
-            select('#estimated-cost').textContent = `${cost.toLocaleString('tr-TR', {
-                minimumFractionDigits: 0,
-                maximumFractionDigits: 0
-            })} TL`;
-        });
+            if (min > 0 && max > 0) {
+                outEl.textContent = `${formatTL(area * min)}–${formatTL(area * max)} TL`;
+            } else {
+                outEl.textContent = `${formatTL(area * servicePrice)} TL`;
+            }
+        };
+
+        calculateBtn.addEventListener('click', runCalculation);
+        if (calculatorForm) {
+            calculatorForm.setAttribute('novalidate', 'novalidate');
+            calculatorForm.addEventListener('submit', (event) => {
+                event.preventDefault();
+                runCalculation();
+            });
+        }
     }
 
     // Quote forms are handled by /assets/js/quote-form.js.
@@ -241,15 +278,6 @@ document.addEventListener('DOMContentLoaded', () => {
             startAutoSlide();
         };
 
-        const testimonialContainer = select('.testimonial-container');
-        if (testimonialContainer) {
-            testimonialContainer.addEventListener('click', () => {
-                nextTestimonial();
-                resetAutoSlide();
-            });
-            testimonialContainer.style.cursor = 'pointer';
-        }
-
         testimonialSlider.addEventListener('mouseenter', stopAutoSlide);
         testimonialSlider.addEventListener('mouseleave', startAutoSlide);
         testimonialSlider.addEventListener('touchstart', stopAutoSlide, { passive: true });
@@ -278,15 +306,46 @@ document.addEventListener('DOMContentLoaded', () => {
 
         faqItems.forEach((item) => {
             const question = item.querySelector('.faq-question');
-            question?.addEventListener('click', () => {
+            if (!question) return;
+            if (!question.hasAttribute('role')) question.setAttribute('role', 'button');
+            if (!question.hasAttribute('tabindex')) question.setAttribute('tabindex', '0');
+            question.setAttribute('aria-expanded', item.classList.contains('active') ? 'true' : 'false');
+
+            const toggleItem = () => {
+                const isActive = item.classList.contains('active');
                 faqItems.forEach((other) => {
-                    if (other !== item) other.classList.remove('active');
+                    if (other !== item) {
+                        other.classList.remove('active');
+                        other.querySelector('.faq-question')?.setAttribute('aria-expanded', 'false');
+                    }
                 });
-                item.classList.toggle('active');
+                item.classList.toggle('active', !isActive);
+                question.setAttribute('aria-expanded', !isActive ? 'true' : 'false');
+            };
+
+            question.addEventListener('click', toggleItem);
+            question.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    toggleItem();
+                }
             });
         });
 
         if (!searchInput) return;
+
+        let emptyStateEl = document.getElementById('faq-empty-state');
+        if (!emptyStateEl && faqItems[0]?.parentNode) {
+            emptyStateEl = document.createElement('p');
+            emptyStateEl.id = 'faq-empty-state';
+            emptyStateEl.setAttribute('role', 'status');
+            emptyStateEl.setAttribute('aria-live', 'polite');
+            emptyStateEl.style.display = 'none';
+            emptyStateEl.style.textAlign = 'center';
+            emptyStateEl.style.padding = '1rem';
+            emptyStateEl.textContent = 'Aramanızla eşleşen soru bulunamadı.';
+            faqItems[0].parentNode.appendChild(emptyStateEl);
+        }
 
         let searchDebounce;
         searchInput.addEventListener('input', function onInput() {
@@ -294,17 +353,25 @@ document.addEventListener('DOMContentLoaded', () => {
             const term = this.value.toLowerCase().trim();
 
             searchDebounce = setTimeout(() => {
+                let matchCount = 0;
                 faqIndex.forEach(({ item, questionText, answerText }) => {
                     const matches = !term || questionText.includes(term) || answerText.includes(term);
                     item.style.display = matches ? 'block' : 'none';
+                    if (matches) matchCount += 1;
 
+                    const qEl = item.querySelector('.faq-question');
                     if (matches && term && answerText.includes(term) && !item.classList.contains('active')) {
                         item.classList.add('active');
+                        qEl?.setAttribute('aria-expanded', 'true');
                     }
                     if (!term) {
                         item.classList.remove('active');
+                        qEl?.setAttribute('aria-expanded', 'false');
                     }
                 });
+                if (emptyStateEl) {
+                    emptyStateEl.style.display = matchCount === 0 ? 'block' : 'none';
+                }
             }, 120);
         });
     };
@@ -326,6 +393,6 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     runWhenVisible('.testimonial-slider', initTestimonialSlider, '280px');
-    runWhenVisible('#sss', initFaq, '280px');
-    runWhenVisible('#read-more-btn', initReadMore, '280px');
+    initFaq();
+    initReadMore();
 });

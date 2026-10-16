@@ -6,9 +6,8 @@
   <link rel="preload" as="style" href="/assets/css/site-components.css?v=3e74ca5514b8">
   <title>İstanbul Beykoz Boya Ustası | Profesyonel Boya Badana Hizmeti</title>
   <meta name="description" content="Beykoz'da villa, yalı ve apartman daireleri için iç-dış cephe boya badana. Kavacık ve Paşabahçe çevresinde eşya koruma, dış cephe yenileme ve ücretsiz keşif.">
-  <meta name="keywords" content="Beykoz boyacı, İstanbul boya ustası, ev boyama, iç cephe boya, dış cephe boya, dekoratif boya, profesyonel boyacı, uygun fiyatlı boya badana, güvenilir boyacı Beykoz">
   <meta name="author" content="İstanbul Boyacılık">
-  <meta name="robots" content="index, follow">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <link rel="canonical" href="https://istanbulboyacilik.com/beykoz/">
   <meta property="og:title" content="İstanbul Beykoz Boya Ustası | Profesyonel Boya Badana Hizmeti">
   <meta property="og:description" content="Beykoz'da villa, yalı ve apartman daireleri için iç-dış cephe boya badana. Kavacık ve Paşabahçe çevresinde eşya koruma, dış cephe yenileme ve ücretsiz keşif.">
@@ -269,7 +268,7 @@
 
 
     <link rel="preload" as="image" href="images/gallery/istanbul-boya-ustas-ofis.jpg">
-    <script defer src="/assets/js/analytics.min.js?v=e43eff294fc5"></script>
+    <script defer src="/assets/js/analytics.min.js?v=5ef4c70dc681"></script>
   <link rel="stylesheet" href="/assets/css/site-components.css?v=3e74ca5514b8">
 <style data-phase2="responsive-hero">@media(max-width:768px){.hero{background:linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
                   url("images/gallery/istanbul-boya-ustas-ofis-800.webp") center/cover no-repeat!important}}@media(max-width:480px){.hero{background:linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
@@ -289,11 +288,11 @@
   <a href="#main-content" class="skip-link">Ana İçeriğe Atla</a>
     <header>
         <nav>
-            <div class="logo">
+            <div class="logo"><a href="/" style="color:inherit;text-decoration:none;display:inline-flex;align-items:center;gap:inherit">
                 <i class="fas fa-paint-roller"></i>İstanbul Boyacılık
-            </div>
+            </a></div>
             <ul class="main-nav">
-                <li><a href="#anasayfa" class="active">Ana Sayfa</a></li>
+                <li><a href="/" class="active">Ana Sayfa</a></li>
                 <li><a href="#hizmetler">Hizmetler</a></li>
                 <li><a href="#fiyatlar">Fiyatlar</a></li>
                 <li><a href="#beykoz">Mahalleler</a></li>
@@ -301,7 +300,7 @@
                 <li><a href="#iletisim">İletişim</a></li>
 
             </ul>
-            <button class="mobile-menu-button" aria-label="Menüyü Aç/Kapat">
+            <button type="button" class="mobile-menu-button" aria-label="Menüyü Aç/Kapat" aria-expanded="false">
                 <i class="fas fa-bars"></i>
             </button>
         </nav>
@@ -703,28 +702,32 @@
                 <form id="quote-form">
                     <div class="form-group">
                         <label for="name">Adınız Soyadınız*</label>
-                        <input type="text" id="name" required>
+                        <input type="text" id="name" name="name" autocomplete="name" required>
                     </div>
                     <div class="form-group">
                         <label for="phone">Telefon*</label>
-                        <input type="tel" id="phone" required>
+                        <input type="tel" id="phone" name="phone" autocomplete="tel" inputmode="tel" required>
                     </div>
                     <div class="form-group">
                         <label for="email">E-posta</label>
-                        <input type="email" id="email">
+                        <input type="email" id="email" name="email" autocomplete="email" inputmode="email">
                     </div>
                     <div class="form-group">
                         <label for="service">Hizmet Türü*</label>
-                        <select id="service" required>
+                        <select id="service" name="service" required>
                             <option value="">Seçiniz</option>
                             <option value="ic-cephe">İç Cephe Boyama</option>
                             <option value="dis-cephe">Dış Cephe Boyama</option>
                             <option value="dekoratif">Dekoratif Boyama</option>
+              <option value="ofis">Ofis ve İş Yeri Boyama</option>
+              <option value="villa">Villa ve Müstakil Ev Boyama</option>
+              <option value="tamirat">Alçı, Sıva ve Duvar Tamiratı</option>
+              <option value="apartman">Apartman ve Merdiven Boşluğu</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="message">Mesajınız</label>
-                        <textarea id="message"></textarea>
+                        <textarea id="message" name="message"></textarea>
                     </div>
                     <button type="submit" class="btn-form">
                         <i class="fas fa-paper-plane"></i> Gönder
@@ -751,7 +754,7 @@
             <div class="footer-section">
                 <h3>Hızlı Erişim</h3>
                 <ul>
-                    <li><a href="#anasayfa">Ana Sayfa</a></li>
+                    <li><a href="/">Ana Sayfa</a></li>
                     <li><a href="#hizmetler">Hizmetlerimiz</a></li>
                     <li><a href="#fiyatlar">Fiyatlar</a></li>
                     <li><a href="#yorumlar">Yorumlar</a></li>
@@ -771,7 +774,7 @@
               <a href="https://istanbulboyacilik.com/gizlilik-politikasi.html">Gizlilik Politikası</a> | <a href="https://istanbulboyacilik.com/kullanim-kosullari.html">Kullanım Koşulları</a></p>
         </div>
     </footer>
-     <script src="main.js?v=199ef497a112"></script>
+     <script defer src="main.js?v=3f22189b48b7"></script>
 
   <a href="tel:+905078322912" class="call-us-button" aria-label="Telefonla ara: 0507 832 29 12"><i class="fas fa-phone"></i></a>
   <script src="/assets/js/quote-form.js?v=8091e1f88dc1" defer></script>
