@@ -90,7 +90,12 @@ def icon_assets():
         for cls in re.findall(r'\.([\w-]+)',selectors):mappings[cls]=int(code,16)
     used={c:mappings[c] for c in sorted(classes) if c in mappings}
     unknown=classes-set(mappings)
-    utilities=set(re.findall(r'\.([\w-]+)',css.split('.fa-0{')[0]))
+    # Screen-reader utilities occur after the glyph mappings in vendor CSS.
+    # They must survive the subset too: their labels stay in the accessibility
+    # tree while being clipped out of the visual layout.
+    screen_reader_rules=''.join(selectors+'{'+body+'}' for selectors,body in re.findall(r'([^{}]+)\{([^{}]*)\}',css)
+                                if re.search(r'\.(?:fa-)?sr-only(?:-focusable)?(?=[:,\s]|$)',selectors))
+    utilities=set(re.findall(r'\.([\w-]+)',css.split('.fa-0{')[0]+screen_reader_rules))
     if unknown-utilities: raise ValueError(f'Unresolved icon classes: {unknown-utilities}')
     codes=set(used.values()) | literal_codes
     fonts=ROOT/'assets/fonts';fonts.mkdir(exist_ok=True)
@@ -115,7 +120,7 @@ def icon_assets():
     # Base, sizing and animation rules come directly from the licensed vendor CSS.
     base=css[:css.index('.fa-0{')].replace('Font Awesome 6 Free','IB Site Icons Free').replace('Font Awesome 6 Brands','IB Site Icons Brands')
     glyphs=''.join(f'.{name}{{--fa:"\\{code:x}"}}' for name,code in used.items())
-    cssout=base+glyphs+''.join(rules)+'.fa-solid,.fas{font-weight:900}.fa-brands,.fab,.fa-regular,.far{font-weight:400}'
+    cssout=base+screen_reader_rules+glyphs+''.join(rules)+'.fa-solid,.fas{font-weight:900}.fa-brands,.fab,.fa-regular,.far{font-weight:400}'
     (ROOT/'assets/css/icons.css').write_text(cssout,encoding='utf8')
     # Keep the full OFL/MIT/CC-BY license beside the subsets. The build policy
     # permits this exact path, without exposing arbitrary internal text files.
@@ -166,6 +171,16 @@ def apply_references():
                 new=re.sub(r'<link\b[^>]*>',inline_link,new)
                 if re.search(r'\b(?:fas|fab|far|fa-solid|fa-brands|fa-regular)\b|IB Site Icons',new) and 'data-ib-icons=' not in new:
                     new=new.replace('</head>',inline_icons+'\n</head>',1)
+                if re.search(r'<style\b[^>]*\bdata-ib-icons\b',new):
+                    def remove_legacy_icons(match):
+                        href=re.search(r'\bhref\s*=\s*(["\'])(.*?)\1',match[0],re.I)
+                        if not href: return match[0]
+                        url=urlsplit(href[2])
+                        if (not url.netloc or url.hostname in {'istanbulboyacilik.com','www.istanbulboyacilik.com'}) and url.path.endswith('fontawesome-free-6.7.2-web/css/all.min.css'):
+                            return ''
+                        return match[0]
+                    new=re.sub(r'(?:^[ \t]*)?<link\b[^>]*>',remove_legacy_icons,new,flags=re.I|re.M)
+                    new=re.sub(r'(?:^[ \t]*)?<noscript\b[^>]*>\s*</noscript\s*>','',new,flags=re.I|re.M)
         if new!=old:source.write_text(new,encoding='utf8');changes.append(source.relative_to(ROOT).as_posix())
     (OUT/'asset-reference-integration.json').write_text(json.dumps({'changed_files':changes},indent=2),encoding='utf8');print('Integrated',len(changes),'public sources')
 

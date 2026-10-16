@@ -1,9 +1,12 @@
 """Regressions reported by the real PageSpeed run, tested in a browser."""
 from pathlib import Path
-import functools,http.server,re,threading,unittest,hashlib
+import functools,http.server,re,threading,unittest,hashlib,sys
 from playwright.sync_api import sync_playwright
+from bs4 import BeautifulSoup
 
 ROOT=Path(__file__).resolve().parents[1]
+sys.path.insert(0,str(ROOT))
+from tools.build_site import AREAS
 def contrast(foreground,background):
     def luminance(color):
         rgb=[int(x)/255 for x in re.findall(r'\d+',color)[:3]]
@@ -95,11 +98,33 @@ class PageSpeedRegressions(unittest.TestCase):
                 self.assertEqual(before,after)
     def test_district_faq_search_shows_accessible_empty_state(self):
         page=self.page()
-        page.goto(f'http://127.0.0.1:{self.server.server_port}/kadikoy/',wait_until='load')
-        page.locator('#faq-search').fill('zzzzz_olmayan_kelime')
-        empty=page.locator('#faq-empty-state')
-        self.assertEqual(empty.count(),1);self.assertTrue(empty.is_visible())
-        self.assertEqual(empty.get_attribute('role'),'status')
-        self.assertEqual(empty.get_attribute('aria-live'),'polite')
+        regions=[p.parent.name for p in ROOT.glob('*/index.html')
+                 if p.parent.name in AREAS
+                 and BeautifulSoup(p.read_text(encoding='utf8'),'html.parser').select_one('#faq-search')]
+        self.assertTrue(regions)
+        for region in sorted(regions):
+            with self.subTest(region=region):
+                page.goto(f'http://127.0.0.1:{self.server.server_port}/{region}/',wait_until='load')
+                search=page.locator('#faq-search')
+                questions=page.locator('.faq-item')
+                total=questions.count()
+                self.assertGreater(total,0)
+                first=page.locator('.faq-question').first
+                self.assertEqual(first.get_attribute('role'),'button')
+                self.assertEqual(first.get_attribute('tabindex'),'0')
+                first.press('Enter')
+                self.assertEqual(first.get_attribute('aria-expanded'),'true')
+                first.press('Space')
+                self.assertEqual(first.get_attribute('aria-expanded'),'false')
+                search.fill('zzzzz_olmayan_kelime')
+                empty=page.locator('#faq-empty-state')
+                self.assertEqual(empty.count(),1);self.assertTrue(empty.is_visible())
+                self.assertEqual(empty.get_attribute('role'),'status')
+                self.assertEqual(empty.get_attribute('aria-live'),'polite')
+                self.assertEqual(page.locator('.faq-item:visible').count(),0)
+                search.fill('')
+                self.assertFalse(empty.is_visible())
+                self.assertEqual(page.locator('.faq-item:visible').count(),total)
+                self.assertEqual(page.locator('.faq-question[aria-expanded="true"]').count(),0)
 
 if __name__=='__main__':unittest.main()

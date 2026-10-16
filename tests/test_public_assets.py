@@ -10,6 +10,26 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'tools'))
 import prepare_public_assets as assets
 
 class PublicAssetTests(unittest.TestCase):
+    def test_inline_icon_integration_removes_legacy_links_and_is_idempotent(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root=Path(temp);out=root/'reports';out.mkdir();(root/'assets/css').mkdir(parents=True)
+            (root/'assets/css/icons.css').write_text('.fas{font-family:"IB Site Icons Free"}',encoding='utf8')
+            (out/'media-format-map.json').write_text('{"replacements":[]}',encoding='utf8')
+            page=root/'index.html'
+            page.write_text('<head><link rel="preload" as="style" href="/fontawesome-free-6.7.2-web/css/all.min.css">'
+                            '<link rel="stylesheet" href="../fontawesome-free-6.7.2-web/css/all.min.css?v=old" media="print">'
+                            '<noscript><link rel="stylesheet" href="https://istanbulboyacilik.com/fontawesome-free-6.7.2-web/css/all.min.css"></noscript>'
+                            '<link rel="stylesheet" href="/styles.pure.css"></head><body><i class="fas fa-phone"></i></body>',encoding='utf8')
+            with patch.object(assets,'ROOT',root),patch.object(assets,'OUT',out),patch.object(assets,'sources',return_value=[page]):
+                assets.apply_references()
+                result=page.read_text(encoding='utf8')
+                self.assertNotIn('fontawesome-free-6.7.2-web/css/all.min.css',result)
+                self.assertEqual(result.count('data-ib-icons="inline"'),1)
+                self.assertIn('href="/styles.pure.css"',result)
+                self.assertNotIn('<noscript></noscript>',result)
+                assets.apply_references()
+                self.assertEqual(page.read_text(encoding='utf8'),result)
+
     def test_reference_parser_covers_css_srcset_and_schema(self):
         text = '<img srcset="../images/a.WebP 400w, /images/b.webp 800w"><style>p{background:url(/images/c.webp)}</style>{"image":"https://istanbulboyacilik.com/images/d.webp"}'
         self.assertEqual(list(assets.image_references(text)), ['../images/a.WebP','/images/b.webp','/images/c.webp','https://istanbulboyacilik.com/images/d.webp'])
@@ -60,6 +80,7 @@ class PublicAssetTests(unittest.TestCase):
                 result=page.read_text(encoding='utf8')
                 self.assertNotIn('Font Awesome 6 Free',result);self.assertNotIn('Font Awesome 5 Free',result)
                 self.assertIn('IB Site Icons Free',result);self.assertIn('data-ib-icons="inline"',result)
+                self.assertIn('.sr-only',result)
                 self.assertNotIn('<link rel="stylesheet" href="/assets/css/icons.css">',result)
                 self.assertEqual((root/'assets/fonts/LICENSE.txt').read_text(encoding='utf8'),(vendor/'LICENSE.txt').read_text(encoding='utf8'))
                 generated={p.name:p.read_bytes() for p in (root/'assets/fonts').iterdir()}

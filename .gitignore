@@ -8,3 +8,6 @@
 
 # Python execution cache
 __pycache__/
+
+# Windows Explorer folder metadata
+desktop.ini
